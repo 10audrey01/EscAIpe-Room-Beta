@@ -1,11 +1,14 @@
 package nz.ac.auckland.se206.controllers.rooms;
 
 import java.io.IOException;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
@@ -21,6 +24,26 @@ public class RaveController {
 
   @FXML
   private void initialize() {}
+
+  @FXML
+  private void onPosterEnter() throws IOException {
+    Image currentImage =
+        new Image(App.class.getResource("/images/raveRoom/posterSel.png").openStream());
+    Platform.runLater(
+        () -> {
+          posterBtn.setImage(currentImage);
+        });
+  }
+
+  @FXML
+  private void onPosterExit() throws IOException {
+    Image currentImage =
+        new Image(App.class.getResource("/images/raveRoom/poster.png").openStream());
+    Platform.runLater(
+        () -> {
+          posterBtn.setImage(currentImage);
+        });
+  }
 
   @FXML
   private void onClickPoster(MouseEvent event) {
