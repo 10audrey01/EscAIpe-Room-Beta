@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.ClassicalController">
+   <children>
+      <Text layoutX="232.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="classical" />
+      <Rectangle fx:id="raveDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="20.0" layoutY="87.0" onMouseClicked="#doGoRave" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle fx:id="rockDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="365.0" layoutY="87.0" onMouseClicked="#doGoRock" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+   </children>
+</Pane>

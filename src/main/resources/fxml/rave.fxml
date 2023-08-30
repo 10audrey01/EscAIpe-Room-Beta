@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.RaveController">
+   <children>
+      <Text layoutX="232.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="rav" />
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/raveRoom/background.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="rockDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="244.0" layoutX="12.0" layoutY="147.0" onMouseClicked="#doGoRock" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="76.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor></Rectangle>
+      <Rectangle fx:id="classicalDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="227.0" layoutX="528.0" layoutY="166.0" onMouseClicked="#doGoClassical" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="66.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+         <effect>
+            <Glow level="0.83" />
+         </effect></Rectangle>
+      <ImageView fx:id="djBtn" fitHeight="103.0" fitWidth="105.0" layoutX="152.0" layoutY="200.0" onMouseClicked="#onClickDj" onMouseEntered="#onDjEnter" onMouseExited="#onDjExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/raveRoom/dj.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="posterBtn" fitHeight="111.0" fitWidth="66.0" layoutX="88.0" layoutY="176.0" onMouseClicked="#onClickPoster" onMouseEntered="#onPosterEnter" onMouseExited="#onPosterExit" pickOnBounds="true">
+         <image>
+            <Image url="@../images/raveRoom/poster.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="discoBtn" fitHeight="150.0" fitWidth="200.0" layoutX="218.0" onMouseClicked="#onClickDisco" onMouseEntered="#onDiscoEnter" onMouseExited="#onDiscoExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/raveRoom/discoball.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bodybuilderBtn" fitHeight="150.0" fitWidth="92.0" layoutX="343.0" layoutY="157.0" onMouseClicked="#onClickBodybuilder" onMouseEntered="#onBodybuilderEnter" onMouseExited="#onBodybuilderExit" pickOnBounds="true">
+         <image>
+            <Image url="@../images/raveRoom/bodybuilder.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bouncerBtn" fitHeight="208.0" fitWidth="92.0" layoutX="435.0" layoutY="183.0" onMouseClicked="#onClickBouncer" onMouseEntered="#onBouncerEnter" onMouseExited="#onBouncerExit" pickOnBounds="true">
+         <image>
+            <Image url="@../images/raveRoom/bouncer.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="speakerBtn" fitHeight="150.0" fitWidth="85.0" layoutX="258.0" layoutY="232.0" onMouseClicked="#onClickSpeaker" onMouseEntered="#onSpeakerEnter" onMouseExited="#onSpeakerExit" pickOnBounds="true">
+         <image>
+            <Image url="@../images/raveRoom/speaker.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
