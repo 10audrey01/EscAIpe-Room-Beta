@@ -39,3 +39,39 @@
   -fx-border-width: 2px;
   -fx-border-style: solid;
 }
+
+#posterPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#djPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#bodybuilderPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#bouncerPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#discoPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#speakerPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
