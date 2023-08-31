@@ -47,7 +47,9 @@ public class App extends Application {
     SceneManager.addUi(AppUi.CLASSICAL, loadFxml("classical"));
     SceneManager.addUi(AppUi.RAVE, loadFxml("rave"));
     SceneManager.addUi(AppUi.ROCK, loadFxml("rock"));
-    scene = new Scene(SceneManager.getUiRoot(AppUi.CLASSICAL), 600, 470);
+    scene = new Scene(SceneManager.getUiRoot(AppUi.ROCK), 600, 470);
+    String css = App.class.getResource("/css/app.css").toExternalForm();
+    scene.getStylesheets().add(css);
     stage.setScene(scene);
     stage.show();
   }

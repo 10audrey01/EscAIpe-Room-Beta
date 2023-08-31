@@ -14,7 +14,7 @@
       </ImageView>
       <Rectangle fx:id="classicalDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="259.0" layoutX="14.0" layoutY="127.0" onMouseClicked="#doGoClassical" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="71.0" />
       <Rectangle fx:id="raveDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="265.0" layoutX="519.0" layoutY="127.0" onMouseClicked="#doGoRave" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="71.0" />
-      <ImageView fitHeight="123.0" fitWidth="120.0" layoutX="101.0" layoutY="228.0" preserveRatio="true">
+      <ImageView fitHeight="123.0" fitWidth="126.0" layoutX="107.0" layoutY="227.0" preserveRatio="true">
          <image>
             <Image url="@../images/rockRoom/amplifier.png" />
          </image>
@@ -49,5 +49,12 @@
             <Image url="@../images/rockRoom/guitar3.png" />
          </image>
       </ImageView>
+      <Pane fx:id="amplifierPane" layoutX="109.0" layoutY="225.0" prefHeight="123.0" prefWidth="118.0" />
+      <Pane fx:id="drumsPane" layoutX="319.0" layoutY="117.0" prefHeight="178.0" prefWidth="164.0" />
+      <Pane fx:id="purpleGuitarPane" layoutX="222.0" layoutY="167.0" prefHeight="45.0" prefWidth="118.0" rotate="143.1" snapToPixel="false" />
+      <Pane fx:id="cyanGuitarPane" layoutX="91.0" layoutY="73.0" prefHeight="168.0" prefWidth="36.0" />
+      <Pane fx:id="blueGuitarPane" layoutX="126.0" layoutY="14.0" prefHeight="161.0" prefWidth="36.0" />
+      <Pane fx:id="yellowGuitarPane" layoutX="162.0" layoutY="43.0" prefHeight="172.0" prefWidth="36.0" />
+      <Pane fx:id="gameMasterPane" layoutX="226.0" layoutY="87.0" prefHeight="90.0" prefWidth="83.0" />
    </children>
 </Pane>
