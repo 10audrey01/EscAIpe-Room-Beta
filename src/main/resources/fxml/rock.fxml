@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -12,8 +13,14 @@
             <Image url="@../images/rockRoom/rockBackground.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="classicalDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="259.0" layoutX="14.0" layoutY="127.0" onMouseClicked="#doGoClassical" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="71.0" />
-      <Rectangle fx:id="raveDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="265.0" layoutX="519.0" layoutY="127.0" onMouseClicked="#doGoRave" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="71.0" />
+      <Rectangle fx:id="classicalDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="259.0" layoutX="14.0" layoutY="127.0" onMouseClicked="#doGoClassical" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="71.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor></Rectangle>
+      <Rectangle fx:id="raveDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="265.0" layoutX="519.0" layoutY="127.0" onMouseClicked="#doGoRave" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="71.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor></Rectangle>
       <ImageView fitHeight="123.0" fitWidth="126.0" layoutX="107.0" layoutY="227.0" preserveRatio="true">
          <image>
             <Image url="@../images/rockRoom/amplifier.png" />
