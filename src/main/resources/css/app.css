@@ -1,0 +1,41 @@
+#amplifierPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#gameMasterPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#drumsPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#cyanGuitarPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#blueGuitarPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#purpleGuitarPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#yellowGuitarPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
