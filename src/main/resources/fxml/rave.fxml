@@ -27,27 +27,27 @@
          <effect>
             <Glow level="0.83" />
          </effect></Rectangle>
-      <ImageView fx:id="djBtn" fitHeight="103.0" fitWidth="105.0" layoutX="152.0" layoutY="200.0" onMouseClicked="#onClickDj" onMouseEntered="#onDjEnter" onMouseExited="#onDjExit" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="103.0" fitWidth="105.0" layoutX="152.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/raveRoom/dj.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="posterBtn" fitHeight="111.0" fitWidth="66.0" layoutX="88.0" layoutY="176.0" onMouseClicked="#onClickPoster" onMouseEntered="#onPosterEnter" onMouseExited="#onPosterExit" pickOnBounds="true">
+      <ImageView fitHeight="111.0" fitWidth="66.0" layoutX="88.0" layoutY="176.0" pickOnBounds="true">
          <image>
             <Image url="@../images/raveRoom/poster.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="discoBtn" fitHeight="150.0" fitWidth="200.0" layoutX="218.0" onMouseClicked="#onClickDisco" onMouseEntered="#onDiscoEnter" onMouseExited="#onDiscoExit" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="218.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/raveRoom/discoball.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="bodybuilderBtn" fitHeight="150.0" fitWidth="92.0" layoutX="343.0" layoutY="157.0" onMouseClicked="#onClickBodybuilder" onMouseEntered="#onBodybuilderEnter" onMouseExited="#onBodybuilderExit" pickOnBounds="true">
+      <ImageView fitHeight="150.0" fitWidth="92.0" layoutX="343.0" layoutY="157.0" pickOnBounds="true">
          <image>
             <Image url="@../images/raveRoom/bodybuilder.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="bouncerBtn" fitHeight="208.0" fitWidth="92.0" layoutX="435.0" layoutY="183.0" onMouseClicked="#onClickBouncer" onMouseEntered="#onBouncerEnter" onMouseExited="#onBouncerExit" pickOnBounds="true">
+      <ImageView fitHeight="208.0" fitWidth="92.0" layoutX="435.0" layoutY="183.0" pickOnBounds="true">
          <image>
             <Image url="@../images/raveRoom/bouncer.png" />
          </image>
@@ -55,10 +55,16 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="speakerBtn" fitHeight="150.0" fitWidth="85.0" layoutX="258.0" layoutY="232.0" onMouseClicked="#onClickSpeaker" onMouseEntered="#onSpeakerEnter" onMouseExited="#onSpeakerExit" pickOnBounds="true">
+      <ImageView fitHeight="150.0" fitWidth="85.0" layoutX="258.0" layoutY="232.0" pickOnBounds="true">
          <image>
             <Image url="@../images/raveRoom/speaker.png" />
          </image>
       </ImageView>
+      <Pane fx:id="djPane" layoutX="158.0" layoutY="200.0" onMouseClicked="#onClickDj" prefHeight="97.0" prefWidth="92.0" />
+      <Pane fx:id="posterPane" layoutX="94.0" layoutY="180.0" onMouseClicked="#onClickPoster" prefHeight="103.0" prefWidth="52.0" />
+      <Pane fx:id="discoPane" layoutX="218.0" layoutY="6.0" onMouseClicked="#onClickDisco" prefHeight="128.0" prefWidth="150.0" />
+      <Pane fx:id="bodybuilderPane" layoutX="343.0" layoutY="169.0" onMouseClicked="#onClickBodybuilder" prefHeight="135.0" prefWidth="92.0" />
+      <Pane fx:id="bouncerPane" layoutX="435.0" layoutY="187.0" onMouseClicked="#onClickBouncer" prefHeight="184.0" prefWidth="92.0" />
+      <Pane fx:id="speakerPane" layoutX="258.0" layoutY="237.0" onMouseClicked="#onClickSpeaker" prefHeight="150.0" prefWidth="85.0" />
    </children>
 </Pane>
