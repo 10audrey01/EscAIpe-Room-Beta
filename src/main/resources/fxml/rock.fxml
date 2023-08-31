@@ -49,12 +49,12 @@
             <Image url="@../images/rockRoom/guitar3.png" />
          </image>
       </ImageView>
-      <Pane fx:id="amplifierPane" layoutX="109.0" layoutY="225.0" prefHeight="123.0" prefWidth="118.0" />
-      <Pane fx:id="drumsPane" layoutX="319.0" layoutY="117.0" prefHeight="178.0" prefWidth="164.0" />
-      <Pane fx:id="purpleGuitarPane" layoutX="222.0" layoutY="167.0" prefHeight="45.0" prefWidth="118.0" rotate="143.1" snapToPixel="false" />
-      <Pane fx:id="cyanGuitarPane" layoutX="91.0" layoutY="73.0" prefHeight="168.0" prefWidth="36.0" />
-      <Pane fx:id="blueGuitarPane" layoutX="126.0" layoutY="14.0" prefHeight="161.0" prefWidth="36.0" />
-      <Pane fx:id="yellowGuitarPane" layoutX="162.0" layoutY="43.0" prefHeight="172.0" prefWidth="36.0" />
-      <Pane fx:id="gameMasterPane" layoutX="226.0" layoutY="87.0" prefHeight="90.0" prefWidth="83.0" />
+      <Pane fx:id="amplifierPane" layoutX="109.0" layoutY="225.0" onMouseClicked="#onClickAmplifier" prefHeight="123.0" prefWidth="118.0" />
+      <Pane fx:id="drumsPane" layoutX="319.0" layoutY="117.0" onMouseClicked="#onClickDrums" prefHeight="178.0" prefWidth="164.0" />
+      <Pane fx:id="purpleGuitarPane" layoutX="222.0" layoutY="167.0" onMouseClicked="#onClickPurpleGuitar" prefHeight="45.0" prefWidth="118.0" rotate="143.1" snapToPixel="false" />
+      <Pane fx:id="cyanGuitarPane" layoutX="91.0" layoutY="73.0" onMouseClicked="#onClickCyanGuitar" prefHeight="168.0" prefWidth="36.0" />
+      <Pane fx:id="blueGuitarPane" layoutX="126.0" layoutY="14.0" onMouseClicked="#onClickBlueGuitar" prefHeight="161.0" prefWidth="36.0" />
+      <Pane fx:id="yellowGuitarPane" layoutX="162.0" layoutY="43.0" onMouseClicked="#onClickYellowGuitar" prefHeight="172.0" prefWidth="36.0" />
+      <Pane fx:id="gameMasterPane" layoutX="226.0" layoutY="87.0" onMouseClicked="#onClickGameMaster" prefHeight="90.0" prefWidth="83.0" />
    </children>
 </Pane>

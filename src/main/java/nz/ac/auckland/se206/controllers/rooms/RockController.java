@@ -36,4 +36,39 @@ public class RockController {
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICAL));
   }
+
+  @FXML
+  private void onClickGameMaster(MouseEvent event) {
+    System.out.println("game master clicked");
+  }
+
+  @FXML
+  private void onClickDrums(MouseEvent event) {
+    System.out.println("drums clicked");
+  }
+
+  @FXML
+  private void onClickCyanGuitar(MouseEvent event) {
+    System.out.println("cyan guitar clicked");
+  }
+
+  @FXML
+  private void onClickBlueGuitar(MouseEvent event) {
+    System.out.println("blue guitar clicked");
+  }
+
+  @FXML
+  private void onClickPurpleGuitar(MouseEvent event) {
+    System.out.println("purple guitar clicked");
+  }
+
+  @FXML
+  private void onClickYellowGuitar(MouseEvent event) {
+    System.out.println("yellow guitar clicked");
+  }
+
+  @FXML
+  private void onClickAmplifier(MouseEvent event) {
+    System.out.println("amplifier clicked");
+  }
 }
