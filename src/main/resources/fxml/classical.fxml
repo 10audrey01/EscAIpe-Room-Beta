@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.ClassicalController">
    <children>
@@ -13,43 +13,55 @@
             <Image url="@../images/classicalRoom/ClassicalRoom.png" />
          </image>
       </ImageView>
-      <Text layoutX="279.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="classical" />
-      <Rectangle fx:id="raveDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="275.0" layoutX="47.0" layoutY="431.0" onMouseClicked="#doGoRave" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="107.0" />
-      <Rectangle fx:id="rockDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="275.0" layoutX="1123.0" layoutY="431.0" onMouseClicked="#doGoRock" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="107.0" />
-      <ImageView fx:id="Cello" fitHeight="372.0" fitWidth="146.0" layoutX="231.0" layoutY="293.0" onMouseClicked="#doClickedCello" onMouseEntered="#doEnteredCello" onMouseExited="#doExitedCello" pickOnBounds="true" preserveRatio="true">
+      <Rectangle fx:id="raveDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="275.0" layoutX="47.0" layoutY="431.0" onMouseClicked="#doGoRave" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="107.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor></Rectangle>
+      <Rectangle fx:id="rockDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="275.0" layoutX="1123.0" layoutY="431.0" onMouseClicked="#doGoRock" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="107.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor></Rectangle>
+      <ImageView fx:id="cello" fitHeight="372.0" fitWidth="146.0" layoutX="231.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/classicalRoom/Cello.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="celloBow" fitHeight="312.0" fitWidth="21.0" layoutX="290.0" layoutY="379.0" onMouseClicked="#doClickedBow" onMouseEntered="#doEnteredBow" onMouseExited="#doExitedBow" pickOnBounds="true" preserveRatio="true" rotate="46.4">
+      <ImageView fx:id="celloBow" fitHeight="312.0" fitWidth="21.0" layoutX="290.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true" rotate="46.4">
          <image>
             <Image url="@../images/classicalRoom/CelloBow.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="clarinet" fitHeight="288.0" fitWidth="57.0" layoutX="846.0" layoutY="29.0" onMouseClicked="#doClickedClarinet" onMouseEntered="#doEnteredClarinet" onMouseExited="#doExitedClarinet" pickOnBounds="true" preserveRatio="true" rotate="-82.9">
+      <ImageView fx:id="clarinet" fitHeight="288.0" fitWidth="57.0" layoutX="846.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" rotate="-82.9">
          <image>
             <Image url="@../images/classicalRoom/Clarinet.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="grandPiano" cache="true" fitHeight="470.0" fitWidth="513.0" layoutX="712.0" layoutY="244.0" onMouseClicked="#doClickedGrandPiano" onMouseEntered="#doEnteredGrandPiano" onMouseExited="#doExitedGrandPiano" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="grandPiano" cache="true" fitHeight="470.0" fitWidth="513.0" layoutX="712.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/classicalRoom/GrandPiano.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="harp" fitHeight="255.0" fitWidth="275.0" layoutX="417.0" layoutY="410.0" onMouseClicked="#doClickedHarp" onMouseEntered="#doEnteredHarp" onMouseExited="#doExitedHarp" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="harp" fitHeight="255.0" fitWidth="275.0" layoutX="417.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/classicalRoom/Harp.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="tambourine" fitHeight="142.0" fitWidth="120.0" layoutX="572.0" layoutY="244.0" onMouseClicked="#doClickedTambourine" onMouseEntered="#doEnteredTambourine" onMouseExited="#doExitedTambourine" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tambourine" fitHeight="142.0" fitWidth="120.0" layoutX="572.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/classicalRoom/Tambourine.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="trumpet" fitHeight="121.0" fitWidth="347.0" layoutX="243.0" layoutY="141.0" onMouseClicked="#doClickedTrumpet" onMouseEntered="#doEnteredTrumpet" onMouseExited="#doExitedTrumpet" pickOnBounds="true" preserveRatio="true" rotate="-5.2">
+      <ImageView fx:id="trumpet" fitHeight="121.0" fitWidth="347.0" layoutX="243.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true" rotate="-5.2">
          <image>
             <Image url="@../images/classicalRoom/Trumpet.png" />
          </image>
       </ImageView>
+      <Pane fx:id="celloPane" layoutX="234.0" layoutY="293.0" onMouseClicked="#doClickedCello" prefHeight="325.0" prefWidth="132.0" />
+      <Pane fx:id="celloBowPane" layoutX="176.0" layoutY="489.0" onMouseClicked="#doClickedCelloBow" prefHeight="27.0" prefWidth="249.0" rotate="-45.0" />
+      <Pane fx:id="trumpetPane" layoutX="241.0" layoutY="141.0" onMouseClicked="#doClickedTrumpet" prefHeight="119.0" prefWidth="346.0" rotate="-4.8" />
+      <Pane fx:id="tambourinePane" layoutX="572.0" layoutY="244.0" onMouseClicked="#doClickedTambourine" prefHeight="123.0" prefWidth="123.0" />
+      <Pane fx:id="clarinetPane" layoutX="719.0" layoutY="157.0" onMouseClicked="#doClickedClarinet" prefHeight="38.0" prefWidth="290.0" rotate="8.1" />
+      <Pane fx:id="harpPane" layoutX="417.0" layoutY="410.0" onMouseClicked="#doClickedHarp" prefHeight="251.0" prefWidth="275.0" />
+      <Pane fx:id="grandPianoPane" layoutX="703.0" layoutY="244.0" onMouseClicked="#doClickedGrandPiano" prefHeight="470.0" prefWidth="354.0" />
    </children>
 </Pane>
