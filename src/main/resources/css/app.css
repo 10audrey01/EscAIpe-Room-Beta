@@ -75,3 +75,45 @@
   -fx-border-width: 2px;
   -fx-border-style: solid;
 }
+
+#celloPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#celloBowPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#clarinetPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#harpPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#grandPianoPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#tambourinePane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#trumpetPane:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
