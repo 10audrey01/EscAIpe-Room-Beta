@@ -2,10 +2,45 @@ package nz.ac.auckland.se206;
 
 /** Represents the state of the game. */
 public class GameState {
+  public enum Difficulty {
+    EASY,
+    MEDIUM,
+    HARD
+  }
 
-  /** Indicates whether the riddle has been resolved. */
-  public static boolean isRiddleResolved = false;
+  public enum PlayTime {
+    TWO,
+    FOUR,
+    SIX
+  }
 
-  /** Indicates whether the key has been found. */
-  public static boolean isKeyFound = false;
+  // static reference to itself
+  private static GameState instance;
+
+  // returns the current instance of the gamestate. Only one will exist
+  public static GameState getInstance() {
+    if (instance == null) {
+      instance = new GameState();
+    }
+    return instance;
+  }
+
+  public Difficulty difficulty;
+  public PlayTime time;
+
+  public void setDifficulty(Difficulty difficulty) {
+    this.difficulty = difficulty;
+  }
+
+  public void setTime(PlayTime time) {
+    this.time = time;
+  }
+
+  public Difficulty getDifficulty() {
+    return this.difficulty;
+  }
+
+  public PlayTime getTime() {
+    return this.time;
+  }
 }
