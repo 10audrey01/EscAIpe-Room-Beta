@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleButton;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.GameState.Difficulty;
 import nz.ac.auckland.se206.GameState.PlayTime;
@@ -14,12 +14,12 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class StartController {
 
-  @FXML private RadioButton easyBtn;
-  @FXML private RadioButton mediumBtn;
-  @FXML private RadioButton hardBtn;
-  @FXML private RadioButton twoMinsBtn;
-  @FXML private RadioButton fourMinsBtn;
-  @FXML private RadioButton sixMinsBtn;
+  @FXML private ToggleButton easyBtn;
+  @FXML private ToggleButton mediumBtn;
+  @FXML private ToggleButton hardBtn;
+  @FXML private ToggleButton twoMinsBtn;
+  @FXML private ToggleButton fourMinsBtn;
+  @FXML private ToggleButton sixMinsBtn;
   @FXML private Button startGameBtn;
 
   private GameState gamestate = GameState.getInstance();
