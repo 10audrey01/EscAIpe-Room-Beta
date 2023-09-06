@@ -94,7 +94,7 @@ public class StartController {
       difficultyDescriptionLabel.setText("Please select a difficulty!");
       return;
     } else if (twoMinsBtn.getToggleGroup().getSelectedToggle() == null) { // no time selected
-      difficultyDescriptionLabel.setText("Please select a time!");
+      difficultyDescriptionLabel.setText("Please select a time limit!");
       return;
     }
     Button current = (Button) event.getSource();
