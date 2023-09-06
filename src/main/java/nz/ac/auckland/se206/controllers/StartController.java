@@ -5,20 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 
 public class StartController {
-  //       <RadioButton fx:id="easyBtn" layoutX="162.0" layoutY="99.0" mnemonicParsing="false"
-  // onMouseClicked="#onClickEasy" text="Easy" />
-  //       <RadioButton fx:id="mediumBtn" layoutX="256.0" layoutY="99.0" mnemonicParsing="false"
-  // text="Medium" />
-  //       <RadioButton fx:id="hardBtn" layoutX="373.0" layoutY="99.0" mnemonicParsing="false"
-  // text="Hard" />
-  //       <RadioButton fx:id="twoMinsBtn" layoutX="162.0" layoutY="234.0" mnemonicParsing="false"
-  // onMouseClicked="#onClickTwo" text="2 mins" />
-  //       <RadioButton fx:id="fourMinsBtn" layoutX="275.0" layoutY="234.0" mnemonicParsing="false"
-  // onMouseClicked="#onClickFour" text="4 mins" />
-  //       <RadioButton fx:id="sixMinsBtn" layoutX="383.0" layoutY="234.0" mnemonicParsing="false"
-  // onMouseClicked="#onClickSix" text="6 mins" />
-  //       <Button fx:id="startGameBtn" layoutX="259.0" layoutY="333.0" mnemonicParsing="false"
-  // onAction="#onGameStart" text="Start Game!" />
+
   @FXML private RadioButton easyBtn;
   @FXML private RadioButton mediumBtn;
   @FXML private RadioButton hardBtn;
@@ -36,23 +23,47 @@ public class StartController {
     hardBtn.selectedProperty().set(false);
   }
 
-  @FXML
-  private void onClickEasy() {}
+  private void resetTime() {
+    twoMinsBtn.selectedProperty().set(false);
+    fourMinsBtn.selectedProperty().set(false);
+    sixMinsBtn.selectedProperty().set(false);
+  }
 
   @FXML
-  private void onClickMedium() {}
+  private void onClickEasy() {
+    resetDifficulty();
+    easyBtn.selectedProperty().set(true);
+  }
 
   @FXML
-  private void onClickHard() {}
+  private void onClickMedium() {
+    resetDifficulty();
+    mediumBtn.selectedProperty().set(true);
+  }
 
   @FXML
-  private void onClickTwo() {}
+  private void onClickHard() {
+    resetDifficulty();
+    hardBtn.selectedProperty().set(true);
+  }
 
   @FXML
-  private void onClickFour() {}
+  private void onClickTwo() {
+    resetTime();
+    twoMinsBtn.selectedProperty().set(true);
+  }
 
   @FXML
-  private void onClickSix() {}
+  private void onClickFour() {
+    resetTime();
+    fourMinsBtn.selectedProperty().set(true);
+  }
+
+  @FXML
+  private void onClickSix() {
+    resetTime();
+    sixMinsBtn.selectedProperty().set(true);
+  }
 
   @FXML
   private void onGameStart() {}
