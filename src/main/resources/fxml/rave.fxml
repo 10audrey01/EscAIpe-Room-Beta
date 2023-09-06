@@ -16,11 +16,11 @@
             <Image url="@../images/raveRoom/background.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="rockDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="244.0" layoutX="12.0" layoutY="147.0" onMouseClicked="#doGoRock" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="76.0">
+      <Rectangle fx:id="rockDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="444.0" layoutX="23.0" layoutY="261.0" onMouseClicked="#doGoRock" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="141.0">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Rectangle>
-      <Rectangle fx:id="classicalDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="227.0" layoutX="528.0" layoutY="166.0" onMouseClicked="#doGoClassical" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="66.0">
+      <Rectangle fx:id="classicalDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="396.0" layoutX="1132.0" layoutY="310.0" onMouseClicked="#doGoClassical" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
