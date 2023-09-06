@@ -15,6 +15,9 @@ public class GameState {
   }
 
   // static reference to itself
+  public static boolean isRiddleResolved = false;
+  public static boolean isKeyFound = false;
+
   private static GameState instance;
 
   // returns the current instance of the gamestate. Only one will exist

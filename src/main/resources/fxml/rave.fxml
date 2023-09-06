@@ -8,10 +8,10 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.RaveController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.RaveController">
    <children>
       <Text layoutX="232.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="rav" />
-      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true">
          <image>
             <Image url="@../images/raveRoom/background.png" />
          </image>
@@ -27,27 +27,27 @@
          <effect>
             <Glow level="0.83" />
          </effect></Rectangle>
-      <ImageView fitHeight="103.0" fitWidth="105.0" layoutX="152.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="219.0" fitWidth="227.0" layoutX="323.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/raveRoom/dj.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="111.0" fitWidth="66.0" layoutX="88.0" layoutY="176.0" pickOnBounds="true">
+      <ImageView fitHeight="236.0" fitWidth="150.0" layoutX="187.0" layoutY="314.0" pickOnBounds="true">
          <image>
             <Image url="@../images/raveRoom/poster.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="218.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView layoutX="470.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/raveRoom/discoball.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="92.0" layoutX="343.0" layoutY="157.0" pickOnBounds="true">
+      <ImageView fitHeight="276.0" fitWidth="175.0" layoutX="747.0" layoutY="267.0" pickOnBounds="true">
          <image>
             <Image url="@../images/raveRoom/bodybuilder.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="208.0" fitWidth="92.0" layoutX="435.0" layoutY="183.0" pickOnBounds="true">
+      <ImageView fitHeight="362.0" fitWidth="185.0" layoutX="928.0" layoutY="318.0" pickOnBounds="true">
          <image>
             <Image url="@../images/raveRoom/bouncer.png" />
          </image>
@@ -55,16 +55,16 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="85.0" layoutX="258.0" layoutY="232.0" pickOnBounds="true">
+      <ImageView fitHeight="300.0" fitWidth="185.0" layoutX="548.0" layoutY="389.0" pickOnBounds="true">
          <image>
             <Image url="@../images/raveRoom/speaker.png" />
          </image>
       </ImageView>
-      <Pane fx:id="djPane" layoutX="158.0" layoutY="200.0" onMouseClicked="#onClickDj" prefHeight="97.0" prefWidth="92.0" />
-      <Pane fx:id="posterPane" layoutX="94.0" layoutY="180.0" onMouseClicked="#onClickPoster" prefHeight="103.0" prefWidth="52.0" />
-      <Pane fx:id="discoPane" layoutX="218.0" layoutY="6.0" onMouseClicked="#onClickDisco" prefHeight="128.0" prefWidth="150.0" />
-      <Pane fx:id="bodybuilderPane" layoutX="343.0" layoutY="169.0" onMouseClicked="#onClickBodybuilder" prefHeight="135.0" prefWidth="92.0" />
-      <Pane fx:id="bouncerPane" layoutX="435.0" layoutY="187.0" onMouseClicked="#onClickBouncer" prefHeight="184.0" prefWidth="92.0" />
-      <Pane fx:id="speakerPane" layoutX="258.0" layoutY="237.0" onMouseClicked="#onClickSpeaker" prefHeight="150.0" prefWidth="85.0" />
+      <Pane fx:id="djPane" layoutX="346.0" layoutY="341.0" onMouseClicked="#onClickDj" prefHeight="196.0" prefWidth="175.0" />
+      <Pane fx:id="posterPane" layoutX="200.0" layoutY="320.0" onMouseClicked="#onClickPoster" prefHeight="219.0" prefWidth="122.0" />
+      <Pane fx:id="discoPane" layoutX="473.0" onMouseClicked="#onClickDisco" prefHeight="244.0" prefWidth="300.0" />
+      <Pane fx:id="bodybuilderPane" layoutX="755.0" layoutY="297.0" onMouseClicked="#onClickBodybuilder" prefHeight="236.0" prefWidth="156.0" />
+      <Pane fx:id="bouncerPane" layoutX="945.0" layoutY="332.0" onMouseClicked="#onClickBouncer" prefHeight="306.0" prefWidth="156.0" />
+      <Pane fx:id="speakerPane" layoutX="559.0" layoutY="405.0" onMouseClicked="#onClickSpeaker" prefHeight="283.0" prefWidth="166.0" />
    </children>
 </Pane>
