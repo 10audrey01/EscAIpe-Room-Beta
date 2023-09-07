@@ -36,12 +36,13 @@ public class GameState {
   public static GameState getInstance() {
     if (instance == null) {
       instance = new GameState();
+      instance.timeManager = new TimeManager();
     }
     return instance;
   }
 
-  public void resetGame() {
-    this.timeManager = new TimeManager();
-    this.timeManager.setTime(time.getTime());
+  public void startGame() {
+    this.timeManager.setTime(time.getTime() * 60);
+    this.timeManager.startCountdown();
   }
 }

@@ -29,10 +29,11 @@ public class RaveController {
   @FXML private ImageView yellowLock;
   @FXML private Label timerLabel;
 
-  private GameState gameState = GameState.getInstance();
+  private GameState gameState;
 
   @FXML
   private void initialize() {
+    gameState = GameState.getInstance();
     gameState.timeManager.addToTimers(timerLabel);
   }
 

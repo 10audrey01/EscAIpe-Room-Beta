@@ -114,6 +114,6 @@ public class StartController {
             + " and time: "
             + GameState.time
             + " minutes.");
-    gamestate.resetGame();
+    gamestate.startGame();
   }
 }

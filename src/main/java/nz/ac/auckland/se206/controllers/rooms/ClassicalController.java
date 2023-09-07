@@ -24,10 +24,11 @@ public class ClassicalController {
   @FXML private Pane trumpetPane;
   @FXML private Label timerLabel;
 
-  private GameState gameState = GameState.getInstance();
+  private GameState gameState;
 
   @FXML
   private void initialize() {
+    gameState = GameState.getInstance();
     gameState.timeManager.addToTimers(timerLabel);
   }
 
