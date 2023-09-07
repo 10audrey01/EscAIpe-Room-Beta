@@ -12,6 +12,7 @@ public class TimeManager {
   private ArrayList<Label> timers;
   private int time;
   private boolean timerStarted;
+  private Thread timerThread;
 
   public TimeManager() {
     this.timers = new ArrayList<Label>();
@@ -34,7 +35,7 @@ public class TimeManager {
 
     timer = new Timer();
     System.out.println("timer started");
-    timers.get(0).setText("hello");
+    updateTime();
     this.timerStarted = true;
 
     // task for the update of the timer, decrements timer every second and updates GUI, aswell as
@@ -50,15 +51,12 @@ public class TimeManager {
                 new TimerTask() {
                   @Override
                   public void run() {
-                    time--;
-                    int minutes = time / 60;
-                    int seconds = time % 60;
-                    Platform.runLater(
-                        () -> {
-                          for (Label label : timers)
-                            label.setText(
-                                Integer.toString(minutes) + ":" + Integer.toString(seconds));
-                        });
+                    if (time > 0) {
+                      time--;
+                      updateTime();
+                    } else {
+                      stopCountdown();
+                    }
                   }
                 },
                 1000,
@@ -69,5 +67,27 @@ public class TimeManager {
 
     Thread timerThread = new Thread(timerTask, "TimerThread");
     timerThread.start();
+  }
+
+  private void updateTime() {
+    int minutes = time / 60;
+    int seconds = time % 60;
+    Platform.runLater(
+        () -> {
+          for (Label label : timers) label.setText(String.format("%02d:%02d", minutes, seconds));
+        });
+  }
+
+  public void stopCountdown() {
+    if (timer != null) {
+      timer.cancel();
+    }
+
+    if (timerThread != null) {
+      timerThread.interrupt();
+    }
+
+    this.timerStarted = false;
+    System.out.println("timer stopped");
   }
 }
