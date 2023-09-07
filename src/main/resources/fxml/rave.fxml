@@ -109,12 +109,7 @@
                </image>
             </ImageView>
          </children></Pane>
-      <Label fx:id="timerSecLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1159.0" layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;" text=": 00">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Label fx:id="timerMinLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1127.0" layoutY="27.0" prefHeight="45.0" prefWidth="32.0" style="-fx-background-color: FFFF;" text="6">
+      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1159.0" layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
          <font>
             <Font size="30.0" />
          </font>

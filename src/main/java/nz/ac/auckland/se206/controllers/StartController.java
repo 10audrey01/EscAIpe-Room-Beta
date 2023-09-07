@@ -13,9 +13,6 @@ import nz.ac.auckland.se206.GameState.Difficulty;
 import nz.ac.auckland.se206.GameState.PlayTime;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.controllers.rooms.ClassicalController;
-import nz.ac.auckland.se206.controllers.rooms.RaveController;
-import nz.ac.auckland.se206.controllers.rooms.RockController;
 
 public class StartController {
 
@@ -29,8 +26,12 @@ public class StartController {
   @FXML private ToggleButton sixMinsBtn;
   @FXML private Button startGameBtn;
 
+  private GameState gamestate;
+
   @FXML
-  private void initialize() {}
+  private void initialize() {
+    this.gamestate = GameState.getInstance();
+  }
 
   @FXML
   private void onClickEasy() {
@@ -113,9 +114,6 @@ public class StartController {
             + " and time: "
             + GameState.time
             + " minutes.");
-
-    RockController.playTimer();
-    RaveController.playTimer();
-    ClassicalController.playTimer();
+    gamestate.startGame();
   }
 }

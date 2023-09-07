@@ -24,9 +24,28 @@ public class GameState {
     }
   }
 
-  public static final String App = null;
-
   // variables to keep track of the game state
+  private static GameState instance;
+  public static boolean isRiddleResolved = false;
+  public static boolean isKeyFound = false;
+  public static Difficulty difficulty;
+  public static PlayTime time;
+
+  public TimeManager timeManager;
+
+  public static GameState getInstance() {
+    if (instance == null) {
+      instance = new GameState();
+      instance.timeManager = new TimeManager();
+    }
+    return instance;
+  }
+
+  public void startGame() {
+    this.timeManager.setTime(time.getTime() * 60);
+    this.timeManager.startCountdown();
+  }
+  
   public static Difficulty difficulty;
   public static PlayTime time;
   public static boolean isRiddleResolved = false;

@@ -76,12 +76,7 @@
       </Pane>
       <Pane fx:id="gameMasterPane" layoutX="491.0" layoutY="171.0" onMouseClicked="#onClickGameMaster" prefHeight="154.0" prefWidth="148.0" />
       <Pane fx:id="purpleGuitarPane" layoutX="457.0" layoutY="345.0" onMouseClicked="#onClickPurpleGuitar" prefHeight="75.0" prefWidth="233.0" rotate="143.1" snapToPixel="false" />
-      <Label fx:id="timerSecLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1159.0" layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;" text=": 00">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Label fx:id="timerMinLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1127.0" layoutY="27.0" prefHeight="45.0" prefWidth="32.0" style="-fx-background-color: FFFF;" text="6">
+      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1159.0" layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
          <font>
             <Font size="30.0" />
          </font>
