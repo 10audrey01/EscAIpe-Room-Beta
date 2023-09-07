@@ -33,16 +33,24 @@ public class GameState {
   public static boolean isEscaped = false;
 
   public TimeManager timeManager;
+  public TaskManager taskManager;
+  public ChatManager chatManager;
 
   public static GameState getInstance() {
     if (instance == null) {
       instance = new GameState();
       instance.timeManager = new TimeManager();
+      instance.taskManager = new TaskManager();
+      instance.chatManager = new ChatManager();
     }
     return instance;
   }
 
   public void startGame() {
+    // reset task and chat manager
+    this.taskManager = new TaskManager();
+    this.chatManager = new ChatManager();
+
     this.timeManager.setTime(time.getTime() * 60);
     this.timeManager.startCountdown();
   }
