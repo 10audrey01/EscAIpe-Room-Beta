@@ -4,15 +4,20 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
 public class ClassicalController {
-  
+
   @FXML private Rectangle raveDoor;
   @FXML private Rectangle rockDoor;
   @FXML private Pane celloPane;
@@ -22,7 +27,11 @@ public class ClassicalController {
   @FXML private Pane harpPane;
   @FXML private Pane tambourinePane;
   @FXML private Pane trumpetPane;
+  @FXML private Pane chatBoxPane;
   @FXML private Label timerLabel;
+  @FXML private TextArea textArea;
+  @FXML private TextField textField;
+  @FXML private boolean chatOpened;
 
   private GameState gameState;
 
@@ -30,6 +39,9 @@ public class ClassicalController {
   private void initialize() {
     gameState = GameState.getInstance();
     gameState.timeManager.addToTimers(timerLabel);
+    gameState.chatManager.addTextArea(textArea);
+    gameState.chatManager.addTextField(textField);
+    chatOpened = false;
   }
 
   @FXML
@@ -79,5 +91,32 @@ public class ClassicalController {
   @FXML
   private void doClickedTambourine(MouseEvent event) throws IOException {
     System.out.println("Tambourine Clicked");
+  }
+
+  @FXML
+  private void toggleChat() {
+    if (chatOpened) {
+      chatBoxPane.setDisable(true);
+      chatBoxPane.setOpacity(0);
+    } else {
+      chatBoxPane.setDisable(false);
+      chatBoxPane.setOpacity(0.95);
+    }
+    chatOpened = !chatOpened;
+  }
+
+  @FXML
+  public void onKeyPressed(KeyEvent event) {
+    System.out.println("key " + event.getCode() + " pressed");
+  }
+
+  @FXML
+  public void onKeyReleased(KeyEvent event) throws ApiProxyException, IOException {
+    System.out.println("key " + event.getCode() + " released");
+    if (event.getCode() == KeyCode.ENTER) {
+      System.out.println("Message Sent");
+      gameState = GameState.getInstance();
+      gameState.chatManager.onSendMessage(textField);
+    }
   }
 }
