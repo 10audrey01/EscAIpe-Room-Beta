@@ -12,7 +12,7 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class RockController {
-
+  
   @FXML private Rectangle classicalDoor;
   @FXML private Rectangle raveDoor;
   @FXML private Pane gameMasterPane;

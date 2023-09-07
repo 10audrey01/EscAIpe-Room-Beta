@@ -12,7 +12,7 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class ClassicalController {
-
+  
   @FXML private Rectangle raveDoor;
   @FXML private Rectangle rockDoor;
   @FXML private Pane celloPane;

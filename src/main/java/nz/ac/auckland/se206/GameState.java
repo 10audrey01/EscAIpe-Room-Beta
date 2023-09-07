@@ -13,13 +13,13 @@ public class GameState {
     FOUR(4),
     SIX(6);
 
-    private final int time;
+    private final Integer time;
 
-    PlayTime(int time) {
+    PlayTime(Integer time) {
       this.time = time;
     }
 
-    public int getTime() {
+    public Integer getTime() {
       return this.time;
     }
   }
@@ -45,4 +45,10 @@ public class GameState {
     this.timeManager.setTime(time.getTime() * 60);
     this.timeManager.startCountdown();
   }
+  
+  public static Difficulty difficulty;
+  public static PlayTime time;
+  public static boolean isRiddleResolved = false;
+  public static boolean isKeyFound = false;
+  public static boolean isEscaped = false;
 }
