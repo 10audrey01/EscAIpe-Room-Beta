@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -20,8 +21,6 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 public class RaveController {
 
   private static Timeline timeline;
-  private static final Integer START_TIME_MIN = GameState.time.getTime();
-  private static final Integer START_TIME_SEC = 00;
 
   public static void playTimer() {
     timeline.play();
@@ -47,8 +46,8 @@ public class RaveController {
   @FXML private Label timerMinLabel;
   @FXML private Label timerSecLabel;
 
-  private Integer timeMinutes = START_TIME_MIN;
-  private Integer timeSeconds = START_TIME_SEC;
+  private Integer timeMinutes = GameState.time.getTime();
+  private Integer timeSeconds = 00;
 
   @FXML
   private void initialize() {
@@ -151,11 +150,11 @@ public class RaveController {
                     }
                     if (timeMinutes <= 0 && timeSeconds <= 0) {
                       timeline.stop();
-                      // try {
-                      //   App.setRoot("endPage"); // go to end page if time runs out
-                      // } catch (IOException e) {
-                      //   e.printStackTrace();
-                      // }
+                      try {
+                        App.setRoot("end"); // go to end page if time runs out
+                      } catch (IOException e) {
+                        e.printStackTrace();
+                      }
                     }
                   }
                 }));

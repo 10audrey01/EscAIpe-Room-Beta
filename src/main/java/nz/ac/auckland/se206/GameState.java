@@ -13,20 +13,23 @@ public class GameState {
     FOUR(4),
     SIX(6);
 
-    private final int time;
+    private final Integer time;
 
-    PlayTime(int time) {
+    PlayTime(Integer time) {
       this.time = time;
     }
 
-    public int getTime() {
+    public Integer getTime() {
       return this.time;
     }
   }
 
+  public static final String App = null;
+
   // variables to keep track of the game state
-  public static boolean isRiddleResolved = false;
-  public static boolean isKeyFound = false;
   public static Difficulty difficulty;
   public static PlayTime time;
+  public static boolean isRiddleResolved = false;
+  public static boolean isKeyFound = false;
+  public static boolean isEscaped = false;
 }
