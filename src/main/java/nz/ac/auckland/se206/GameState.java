@@ -14,33 +14,9 @@ public class GameState {
     SIX
   }
 
-  // static reference to itself
-  private static GameState instance;
-
-  // returns the current instance of the gamestate. Only one will exist
-  public static GameState getInstance() {
-    if (instance == null) {
-      instance = new GameState();
-    }
-    return instance;
-  }
-
-  public Difficulty difficulty;
-  public PlayTime time;
-
-  public void setDifficulty(Difficulty difficulty) {
-    this.difficulty = difficulty;
-  }
-
-  public void setTime(PlayTime time) {
-    this.time = time;
-  }
-
-  public Difficulty getDifficulty() {
-    return this.difficulty;
-  }
-
-  public PlayTime getTime() {
-    return this.time;
-  }
+  // variables to keep track of the game state
+  public static boolean isRiddleResolved = false;
+  public static boolean isKeyFound = false;
+  public static Difficulty difficulty;
+  public static PlayTime time;
 }
