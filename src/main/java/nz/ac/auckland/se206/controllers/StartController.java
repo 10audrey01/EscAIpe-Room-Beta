@@ -7,11 +7,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.GameState.Difficulty;
 import nz.ac.auckland.se206.GameState.PlayTime;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.controllers.rooms.ClassicalController;
+import nz.ac.auckland.se206.controllers.rooms.RaveController;
+import nz.ac.auckland.se206.controllers.rooms.RockController;
 
 public class StartController {
 
@@ -97,6 +101,9 @@ public class StartController {
       difficultyDescriptionLabel.setText("Please select a time limit!");
       return;
     }
+    SceneManager.addUi(AppUi.CLASSICAL, App.loadFxml("classical"));
+    SceneManager.addUi(AppUi.RAVE, App.loadFxml("rave"));
+    SceneManager.addUi(AppUi.ROCK, App.loadFxml("rock"));
     Button current = (Button) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
@@ -106,5 +113,9 @@ public class StartController {
             + " and time: "
             + GameState.time
             + " minutes.");
+
+    RockController.playTimer();
+    RaveController.playTimer();
+    ClassicalController.playTimer();
   }
 }
