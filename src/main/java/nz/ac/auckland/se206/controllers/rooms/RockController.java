@@ -1,15 +1,35 @@
 package nz.ac.auckland.se206.controllers.rooms;
 
 import java.io.IOException;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
+import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class RockController {
+
+  private static Timeline timeline;
+  private static final Integer START_TIME_MIN = GameState.time.getTime();
+  private static final Integer START_TIME_SEC = 00;
+
+  public static void playTimer() {
+    timeline.play();
+  }
+
+  public static void stopTimer() {
+    timeline.stop();
+  }
+
   @FXML private Rectangle classicalDoor;
   @FXML private Rectangle raveDoor;
   @FXML private Pane gameMasterPane;
@@ -19,9 +39,16 @@ public class RockController {
   @FXML private Pane purpleGuitarPane;
   @FXML private Pane yellowGuitarPane;
   @FXML private Pane amplifierPane;
+  @FXML private Label timerMinLabel;
+  @FXML private Label timerSecLabel;
+
+  private Integer timeMinutes = START_TIME_MIN;
+  private Integer timeSeconds = START_TIME_SEC;
 
   @FXML
-  private void initialize() {}
+  private void initialize() {
+    startTimer();
+  }
 
   @FXML
   private void doGoRave(MouseEvent event) throws IOException {
@@ -70,5 +97,42 @@ public class RockController {
   @FXML
   private void onClickAmplifier(MouseEvent event) {
     System.out.println("amplifier clicked");
+  }
+
+  public void startTimer() {
+    timerMinLabel.setText(timeMinutes.toString());
+    timerSecLabel.setText(": 00");
+    timeline = new Timeline(); // create a timeline for the timer
+    timeline.setCycleCount(Timeline.INDEFINITE);
+    timeline
+        .getKeyFrames()
+        .add(
+            new KeyFrame(
+                Duration.seconds(1), // handler is called every second
+                new EventHandler<ActionEvent>() {
+                  @Override
+                  public void handle(ActionEvent event) {
+                    timeSeconds--;
+                    if (timeSeconds < 0
+                        && timeMinutes > 0) { // decrement minutes if seconds reach 0
+                      timeMinutes--;
+                      timeSeconds = 59;
+                    }
+                    timerMinLabel.setText(timeMinutes.toString());
+                    if (timeSeconds < 10) {
+                      timerSecLabel.setText(": 0" + timeSeconds.toString()); // aesthetic purposes
+                    } else {
+                      timerSecLabel.setText(": " + timeSeconds.toString());
+                    }
+                    if (timeMinutes <= 0 && timeSeconds <= 0) {
+                      timeline.stop();
+                      // try {
+                      //   App.setRoot("endPage"); // go to end page if time runs out
+                      // } catch (IOException e) {
+                      //   e.printStackTrace();
+                      // }
+                    }
+                  }
+                }));
   }
 }

@@ -29,14 +29,9 @@
          <effect>
             <Glow level="0.83" />
          </effect></Rectangle>
-      <ImageView fitHeight="236.0" fitWidth="150.0" layoutX="187.0" layoutY="314.0" pickOnBounds="true">
-         <image>
-            <Image url="@../images/raveRoom/poster.png" />
-         </image>
-      </ImageView>
       <Pane fx:id="djPane" layoutX="339.0" layoutY="401.0" onMouseClicked="#onClickDj" prefHeight="136.0" prefWidth="139.0">
          <children>
-            <ImageView fitHeight="208.0" fitWidth="131.0" layoutX="6.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="208.0" fitWidth="131.0" layoutX="4.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/raveRoom/dj.png" />
                </image>
@@ -80,16 +75,16 @@
          </children></Pane>
       <Pane fx:id="bodybuilderPane" layoutX="769.0" layoutY="433.0" onMouseClicked="#onClickBodybuilder" prefHeight="256.0" prefWidth="161.0">
          <children>
-            <ImageView fitHeight="272.0" fitWidth="185.0" pickOnBounds="true">
+            <ImageView fitHeight="287.0" fitWidth="179.0" layoutX="-6.0" layoutY="-25.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/raveRoom/bodybuilder.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="bouncerPane" layoutX="931.0" layoutY="315.0" onMouseClicked="#onClickBouncer" prefHeight="362.0" prefWidth="201.0">
+      <Pane fx:id="bouncerPane" layoutX="931.0" layoutY="320.0" onMouseClicked="#onClickBouncer" prefHeight="312.0" prefWidth="201.0">
          <children>
-            <ImageView fitHeight="356.0" fitWidth="191.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true">
+            <ImageView fitHeight="359.0" fitWidth="191.0" layoutX="5.0" layoutY="-14.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/raveRoom/bouncer.png" />
                </image>
@@ -98,15 +93,22 @@
                </cursor>
             </ImageView>
          </children></Pane>
-      <Pane fx:id="speakerPane" layoutX="302.0" layoutY="535.0" onMouseClicked="#onClickSpeaker" prefHeight="188.0" prefWidth="149.0">
+      <Pane fx:id="speakerPane" layoutX="323.0" layoutY="517.0" onMouseClicked="#onClickSpeaker" prefHeight="188.0" prefWidth="149.0">
          <children>
-            <ImageView fitHeight="195.0" fitWidth="152.0" layoutX="-3.0" layoutY="-1.0" pickOnBounds="true">
+            <ImageView fitHeight="195.0" fitWidth="152.0" layoutX="-1.0" layoutY="-7.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/raveRoom/speaker.png" />
                </image>
             </ImageView>
          </children></Pane>
-      <Pane fx:id="posterPane" layoutX="189.0" layoutY="342.0" onMouseClicked="#onClickPoster" prefHeight="219.0" prefWidth="122.0" />
+      <Pane fx:id="posterPane" layoutX="191.0" layoutY="310.0" onMouseClicked="#onClickPoster" prefHeight="219.0" prefWidth="122.0">
+         <children>
+            <ImageView fitHeight="236.0" fitWidth="150.0" layoutX="-14.0" layoutY="-8.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/raveRoom/poster.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
       <Label fx:id="timerSecLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1159.0" layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;" text=": 00">
          <font>
             <Font size="30.0" />
