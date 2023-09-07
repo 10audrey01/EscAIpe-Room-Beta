@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -56,6 +57,12 @@ public class TimeManager {
                       updateTime();
                     } else {
                       stopCountdown();
+                      try {
+                        App.setRoot("end");
+                      } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                      }
                     }
                   }
                 },
@@ -74,7 +81,7 @@ public class TimeManager {
     int seconds = time % 60;
     Platform.runLater(
         () -> {
-          for (Label label : timers) label.setText(String.format("%02d:%02d", minutes, seconds));
+          for (Label label : timers) label.setText(String.format("%01d:%02d", minutes, seconds));
         });
   }
 
