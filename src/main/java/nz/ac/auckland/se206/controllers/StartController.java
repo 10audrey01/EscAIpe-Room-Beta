@@ -26,8 +26,12 @@ public class StartController {
   @FXML private ToggleButton sixMinsBtn;
   @FXML private Button startGameBtn;
 
+  private GameState gamestate;
+
   @FXML
-  private void initialize() {}
+  private void initialize() {
+    this.gamestate = GameState.getInstance();
+  }
 
   @FXML
   private void onClickEasy() {
@@ -110,5 +114,6 @@ public class StartController {
             + " and time: "
             + GameState.time
             + " minutes.");
+    gamestate.resetGame();
   }
 }
