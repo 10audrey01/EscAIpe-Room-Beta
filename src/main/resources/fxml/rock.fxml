@@ -28,6 +28,11 @@
             <Image url="@../images/rockRoom/guitar4.png" />
          </image>
       </ImageView>
+      <ImageView layoutX="471.0" layoutY="171.0" preserveRatio="true">
+         <image>
+            <Image url="@../images/rockRoom/gameMaster.png" />
+         </image>
+      </ImageView>
       <Pane fx:id="amplifierPane" layoutX="272.0" layoutY="420.0" onMouseClicked="#onClickAmplifier" prefHeight="228.0" prefWidth="218.0">
          <children>
             <ImageView fitHeight="237.0" fitWidth="231.0" layoutX="-11.0" preserveRatio="true">
@@ -44,7 +49,6 @@
                </image>
             </ImageView>
          </children></Pane>
-      <Pane fx:id="purpleGuitarPane" layoutX="457.0" layoutY="345.0" onMouseClicked="#onClickPurpleGuitar" prefHeight="75.0" prefWidth="233.0" rotate="143.1" snapToPixel="false" />
       <Pane fx:id="cyanGuitarPane" layoutX="184.0" layoutY="143.0" onMouseClicked="#onClickCyanGuitar" prefHeight="316.0" prefWidth="82.0">
          <children>
             <ImageView fitHeight="339.0" fitWidth="89.0" layoutX="-3.0" preserveRatio="true">
@@ -71,6 +75,7 @@
          </children>
       </Pane>
       <Pane fx:id="gameMasterPane" layoutX="491.0" layoutY="171.0" onMouseClicked="#onClickGameMaster" prefHeight="154.0" prefWidth="148.0" />
+      <Pane fx:id="purpleGuitarPane" layoutX="457.0" layoutY="345.0" onMouseClicked="#onClickPurpleGuitar" prefHeight="75.0" prefWidth="233.0" rotate="143.1" snapToPixel="false" />
       <Label fx:id="timerSecLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1159.0" layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;" text=": 00">
          <font>
             <Font size="30.0" />
@@ -81,10 +86,5 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <ImageView layoutX="471.0" layoutY="171.0" preserveRatio="true">
-         <image>
-            <Image url="@../images/rockRoom/gameMaster.png" />
-         </image>
-      </ImageView>
    </children>
 </Pane>
