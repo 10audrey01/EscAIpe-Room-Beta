@@ -32,7 +32,7 @@ public class App extends Application {
    * @return The node of the input file.
    * @throws IOException If the file is not found.
    */
-  private static Parent loadFxml(final String fxml) throws IOException {
+  public static Parent loadFxml(final String fxml) throws IOException {
     return new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml")).load();
   }
 
@@ -46,9 +46,7 @@ public class App extends Application {
   public void start(final Stage stage) throws IOException {
 
     SceneManager.addUi(AppUi.START, loadFxml("start"));
-    SceneManager.addUi(AppUi.CLASSICAL, loadFxml("classical"));
-    SceneManager.addUi(AppUi.RAVE, loadFxml("rave"));
-    SceneManager.addUi(AppUi.ROCK, loadFxml("rock"));
+
     scene = new Scene(SceneManager.getUiRoot(AppUi.START), 1280, 720);
     String css = App.class.getResource("/css/app.css").toExternalForm();
     scene.getStylesheets().add(css);

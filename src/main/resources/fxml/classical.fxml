@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.ClassicalController">
    <children>
@@ -63,5 +65,15 @@
       <Pane fx:id="clarinetPane" layoutX="719.0" layoutY="157.0" onMouseClicked="#doClickedClarinet" prefHeight="38.0" prefWidth="290.0" rotate="8.1" />
       <Pane fx:id="harpPane" layoutX="417.0" layoutY="410.0" onMouseClicked="#doClickedHarp" prefHeight="251.0" prefWidth="275.0" />
       <Pane fx:id="grandPianoPane" layoutX="703.0" layoutY="244.0" onMouseClicked="#doClickedGrandPiano" prefHeight="470.0" prefWidth="354.0" />
+      <Label fx:id="timerMinLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1127.0" layoutY="27.0" prefHeight="45.0" prefWidth="32.0" style="-fx-background-color: FFFF;" text="6">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="timerSecLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1159.0" layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;" text=": 00">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

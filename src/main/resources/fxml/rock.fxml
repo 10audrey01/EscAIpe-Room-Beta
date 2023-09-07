@@ -1,67 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.RockController">
+<Pane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.RockController">
    <children>
-      <ImageView>
+      <ImageView fitHeight="720.0" fitWidth="1280.0">
          <image>
             <Image url="@../images/rockRoom/rockBackground.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="classicalDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="522.0" layoutX="23.0" layoutY="257.0" onMouseClicked="#doGoClassical" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="154.0">
+      <Rectangle fx:id="classicalDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="477.0" layoutX="23.0" layoutY="222.0" onMouseClicked="#doGoClassical" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="154.0">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Rectangle>
-      <Rectangle fx:id="raveDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="532.0" layoutX="1106.0" layoutY="257.0" onMouseClicked="#doGoRave" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="154.0">
+      <Rectangle fx:id="raveDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="477.0" layoutX="1106.0" layoutY="227.0" onMouseClicked="#doGoRave" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="154.0">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Rectangle>
-      <ImageView layoutX="250.0" layoutY="449.0" preserveRatio="true">
-         <image>
-            <Image url="@../images/rockRoom/amplifier.png" />
-         </image>
-      </ImageView>
-      <ImageView layoutX="689.0" layoutY="243.0" preserveRatio="true">
-         <image>
-            <Image url="@../images/rockRoom/drums.png" />
-         </image>
-      </ImageView>
-      <ImageView layoutX="471.0" layoutY="340.0" preserveRatio="true">
+      <ImageView layoutX="471.0" layoutY="312.0" preserveRatio="true">
          <image>
             <Image url="@../images/rockRoom/guitar4.png" />
          </image>
       </ImageView>
-      <ImageView layoutX="471.0" layoutY="198.0" preserveRatio="true">
+      <ImageView layoutX="471.0" layoutY="171.0" preserveRatio="true">
          <image>
             <Image url="@../images/rockRoom/gameMaster.png" />
          </image>
       </ImageView>
-      <ImageView layoutX="177.0" layoutY="144.0" preserveRatio="true">
-         <image>
-            <Image url="@../images/rockRoom/guitar1.png" />
-         </image>
-      </ImageView>
-      <ImageView layoutX="259.0" layoutY="14.0" preserveRatio="true">
-         <image>
-            <Image url="@../images/rockRoom/guitar2.png" />
-         </image>
-      </ImageView>
-      <ImageView layoutX="331.0" layoutY="65.0" preserveRatio="true">
-         <image>
-            <Image url="@../images/rockRoom/guitar3.png" />
-         </image>
-      </ImageView>
-      <Pane fx:id="amplifierPane" layoutX="265.0" layoutY="446.0" onMouseClicked="#onClickAmplifier" prefHeight="237.0" prefWidth="218.0" />
-      <Pane fx:id="drumsPane" layoutX="699.0" layoutY="243.0" onMouseClicked="#onClickDrums" prefHeight="375.0" prefWidth="355.0" />
-      <Pane fx:id="purpleGuitarPane" layoutX="461.0" layoutY="373.0" onMouseClicked="#onClickPurpleGuitar" prefHeight="75.0" prefWidth="233.0" rotate="143.1" snapToPixel="false" />
-      <Pane fx:id="cyanGuitarPane" layoutX="184.0" layoutY="143.0" onMouseClicked="#onClickCyanGuitar" prefHeight="350.0" prefWidth="82.0" />
-      <Pane fx:id="blueGuitarPane" layoutX="264.0" layoutY="16.0" onMouseClicked="#onClickBlueGuitar" prefHeight="329.0" prefWidth="82.0" />
-      <Pane fx:id="yellowGuitarPane" layoutX="337.0" layoutY="69.0" onMouseClicked="#onClickYellowGuitar" prefHeight="375.0" prefWidth="92.0" />
-      <Pane fx:id="gameMasterPane" layoutX="490.0" layoutY="193.0" onMouseClicked="#onClickGameMaster" prefHeight="175.0" prefWidth="148.0" />
+      <Pane fx:id="amplifierPane" layoutX="272.0" layoutY="420.0" onMouseClicked="#onClickAmplifier" prefHeight="228.0" prefWidth="218.0">
+         <children>
+            <ImageView fitHeight="237.0" fitWidth="231.0" layoutX="-11.0" preserveRatio="true">
+               <image>
+                  <Image url="@../images/rockRoom/amplifier.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <Pane fx:id="drumsPane" layoutX="726.0" layoutY="195.0" onMouseClicked="#onClickDrums" prefHeight="357.0" prefWidth="362.0">
+         <children>
+            <ImageView fitHeight="379.0" fitWidth="371.0" layoutX="-4.0" layoutY="-8.0" preserveRatio="true">
+               <image>
+                  <Image url="@../images/rockRoom/drums.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <Pane fx:id="cyanGuitarPane" layoutX="184.0" layoutY="143.0" onMouseClicked="#onClickCyanGuitar" prefHeight="316.0" prefWidth="82.0">
+         <children>
+            <ImageView fitHeight="339.0" fitWidth="89.0" layoutX="-3.0" preserveRatio="true">
+               <image>
+                  <Image url="@../images/rockRoom/guitar1.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <Pane fx:id="blueGuitarPane" layoutX="264.0" layoutY="16.0" onMouseClicked="#onClickBlueGuitar" prefHeight="296.0" prefWidth="76.0">
+         <children>
+            <ImageView fitHeight="324.0" fitWidth="82.0" layoutX="-5.0" layoutY="-3.0" preserveRatio="true">
+               <image>
+                  <Image url="@../images/rockRoom/guitar2.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <Pane fx:id="yellowGuitarPane" layoutX="346.0" layoutY="66.0" onMouseClicked="#onClickYellowGuitar" prefHeight="316.0" prefWidth="82.0">
+         <children>
+            <ImageView fitHeight="388.0" fitWidth="82.0" layoutX="-2.0" layoutY="-4.0" preserveRatio="true">
+               <image>
+                  <Image url="@../images/rockRoom/guitar3.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="gameMasterPane" layoutX="491.0" layoutY="171.0" onMouseClicked="#onClickGameMaster" prefHeight="154.0" prefWidth="148.0" />
+      <Pane fx:id="purpleGuitarPane" layoutX="457.0" layoutY="345.0" onMouseClicked="#onClickPurpleGuitar" prefHeight="75.0" prefWidth="233.0" rotate="143.1" snapToPixel="false" />
+      <Label fx:id="timerSecLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1159.0" layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;" text=": 00">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="timerMinLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1127.0" layoutY="27.0" prefHeight="45.0" prefWidth="32.0" style="-fx-background-color: FFFF;" text="6">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
