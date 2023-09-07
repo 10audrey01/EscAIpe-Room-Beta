@@ -3,6 +3,7 @@ package nz.ac.auckland.se206.controllers.rooms;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
@@ -18,6 +19,11 @@ public class RaveController {
   @FXML private Pane bouncerPane;
   @FXML private Pane discoPane;
   @FXML private Pane speakerPane;
+  @FXML private ImageView doorImage;
+  @FXML private ImageView greenLock;
+  @FXML private ImageView redLock;
+  @FXML private ImageView blueLock;
+  @FXML private ImageView yellowLock;
 
   @FXML
   private void initialize() {}
@@ -50,6 +56,31 @@ public class RaveController {
   @FXML
   private void onClickSpeaker(MouseEvent event) {
     System.out.println("speaker clicked");
+  }
+
+  @FXML
+  private void onClickRed(MouseEvent event) {
+    System.out.println("red clicked");
+  }
+
+  @FXML
+  private void onClickGreen(MouseEvent event) {
+    System.out.println("green clicked");
+  }
+
+  @FXML
+  private void onClickBlue(MouseEvent event) {
+    System.out.println("blue clicked");
+  }
+
+  @FXML
+  private void onClickYellow(MouseEvent event) {
+    System.out.println("yellow clicked");
+  }
+
+  @FXML
+  private void onClickDoor(MouseEvent event) {
+    System.out.println("door clicked");
   }
 
   @FXML
