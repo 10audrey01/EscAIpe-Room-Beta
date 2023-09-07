@@ -5,9 +5,14 @@ import javafx.scene.control.Label;
 
 public class TimeManager {
   private ArrayList<Label> timers;
+  private int time;
 
   public TimeManager() {
     this.timers = new ArrayList<Label>();
+  }
+
+  public void setTime(int time) {
+    this.time = time;
   }
 
   public void addToTimers(Label label) {

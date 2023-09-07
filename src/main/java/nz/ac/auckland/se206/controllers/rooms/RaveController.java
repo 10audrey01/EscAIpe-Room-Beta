@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
@@ -28,8 +29,12 @@ public class RaveController {
   @FXML private ImageView yellowLock;
   @FXML private Label timerLabel;
 
+  private GameState gameState = GameState.getInstance();
+
   @FXML
-  private void initialize() {}
+  private void initialize() {
+    gameState.timeManager.addToTimers(timerLabel);
+  }
 
   @FXML
   private void onClickPoster(MouseEvent event) {

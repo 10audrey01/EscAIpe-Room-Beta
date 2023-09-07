@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
@@ -23,8 +24,12 @@ public class RockController {
   @FXML private Pane amplifierPane;
   @FXML private Label timerLabel;
 
+  private GameState gameState = GameState.getInstance();
+
   @FXML
-  private void initialize() {}
+  private void initialize() {
+    gameState.timeManager.addToTimers(timerLabel);
+  }
 
   @FXML
   private void doGoRave(MouseEvent event) throws IOException {

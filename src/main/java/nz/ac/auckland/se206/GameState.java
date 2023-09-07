@@ -42,5 +42,6 @@ public class GameState {
 
   public void resetGame() {
     this.timeManager = new TimeManager();
+    this.timeManager.setTime(time.getTime());
   }
 }
