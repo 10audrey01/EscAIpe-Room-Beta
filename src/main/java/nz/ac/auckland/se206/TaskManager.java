@@ -1,6 +1,8 @@
 package nz.ac.auckland.se206;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class TaskManager {
   public enum Task {
@@ -16,6 +18,17 @@ public class TaskManager {
 
   public TaskManager() {
     this.tasks = new ArrayList<Task>();
+  }
+
+  public void generateTasks() {
+    List<Task> availableTasks = new ArrayList<Task>(List.of(Task.values()));
+    Collections.shuffle(availableTasks);
+
+    for (int i = 0; i < 4; i++) {
+      Task selectedTask = availableTasks.get(i);
+      tasks.add(selectedTask);
+      System.out.println(selectedTask);
+    }
   }
 
   public void addTask(Task thisTask) {

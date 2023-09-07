@@ -51,6 +51,7 @@ public class GameState {
     this.taskManager = new TaskManager();
     this.chatManager = new ChatManager();
 
+    this.taskManager.generateTasks();
     this.timeManager.setTime(time.getTime() * 60);
     this.timeManager.startCountdown();
   }
