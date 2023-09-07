@@ -10,9 +10,6 @@ import javafx.scene.control.Label;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.controllers.rooms.ClassicalController;
-import nz.ac.auckland.se206.controllers.rooms.RaveController;
-import nz.ac.auckland.se206.controllers.rooms.RockController;
 
 public class EndController {
 
@@ -28,12 +25,6 @@ public class EndController {
     } else {
       endLabel.setText("You failed to escape . . .");
     }
-
-    // Stop all timers to allow replayability
-    RockController.stopTimer();
-    RaveController.stopTimer();
-    ClassicalController.stopTimer();
-    // ChatController.stopTimer();
   }
 
   @FXML

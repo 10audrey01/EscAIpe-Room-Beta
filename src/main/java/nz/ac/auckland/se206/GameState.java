@@ -30,6 +30,7 @@ public class GameState {
   public static boolean isKeyFound = false;
   public static Difficulty difficulty;
   public static PlayTime time;
+  public static boolean isEscaped = false;
 
   public TimeManager timeManager;
 
@@ -45,10 +46,4 @@ public class GameState {
     this.timeManager.setTime(time.getTime() * 60);
     this.timeManager.startCountdown();
   }
-  
-  public static Difficulty difficulty;
-  public static PlayTime time;
-  public static boolean isRiddleResolved = false;
-  public static boolean isKeyFound = false;
-  public static boolean isEscaped = false;
 }
