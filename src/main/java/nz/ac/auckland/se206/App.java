@@ -2,6 +2,7 @@ package nz.ac.auckland.se206;
 
 import java.io.IOException;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -56,5 +57,11 @@ public class App extends Application {
     scene.getStylesheets().add(css);
     stage.setScene(scene);
     stage.show();
+  }
+
+  @Override
+  public void stop() {
+    Platform.exit();
+    System.exit(0);
   }
 }
