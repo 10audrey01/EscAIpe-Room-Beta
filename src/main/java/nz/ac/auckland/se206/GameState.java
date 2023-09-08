@@ -49,7 +49,6 @@ public class GameState {
   public void startGame() {
     // reset task and chat manager
     this.taskManager = new TaskManager();
-    this.chatManager = new ChatManager();
 
     this.taskManager.generateTasks();
     this.timeManager.setTime(time.getTime() * 60);
