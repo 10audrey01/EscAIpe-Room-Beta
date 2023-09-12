@@ -28,6 +28,10 @@ public class RockController {
   @FXML private Pane yellowGuitarPane;
   @FXML private Pane amplifierPane;
   @FXML private Pane chatBoxPane;
+  @FXML private Pane colourPane1;
+  @FXML private Pane colourPane2;
+  @FXML private Pane colourPane3;
+  @FXML private Pane colourPane4;
   @FXML private Label timerLabel;
   @FXML private TextArea textArea;
   @FXML private TextField textField;
@@ -42,6 +46,10 @@ public class RockController {
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
     gameState.chatManager.generateInitialMessage();
+    gameState.colourManager.addToColourPanes1(colourPane1);
+    gameState.colourManager.addToColourPanes2(colourPane2);
+    gameState.colourManager.addToColourPanes3(colourPane3);
+    gameState.colourManager.addToColourPanes4(colourPane4);
     chatOpened = false;
   }
 

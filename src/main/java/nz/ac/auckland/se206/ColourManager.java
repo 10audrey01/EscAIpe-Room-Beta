@@ -41,7 +41,7 @@ public class ColourManager {
     colourPanes4.add(pane);
   }
 
-  public void setColourPanes() {
+  public void setPaneColours() {
     for (Pane pane : colourPanes1) {
       pane.setStyle("-fx-background-color: " + colours.get(0));
     }

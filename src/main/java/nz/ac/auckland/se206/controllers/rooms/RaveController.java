@@ -22,6 +22,12 @@ public class RaveController {
   private static ArrayList<String> objects;
   private static String riddleObject;
 
+  public static String getRiddleObject() {
+    riddleObject = objects.get((int) (Math.random() * objects.size()));
+    System.out.println("Riddle object: " + riddleObject);
+    return riddleObject;
+  }
+
   @FXML private Rectangle classicalDoor;
   @FXML private Rectangle rockDoor;
   @FXML private Pane posterPane;
@@ -30,12 +36,16 @@ public class RaveController {
   @FXML private Pane bouncerPane;
   @FXML private Pane discoPane;
   @FXML private Pane speakerPane;
+  @FXML private Pane chatBoxPane;
+  @FXML private Pane colourPane1;
+  @FXML private Pane colourPane2;
+  @FXML private Pane colourPane3;
+  @FXML private Pane colourPane4;
   @FXML private ImageView doorImage;
   @FXML private ImageView greenLock;
   @FXML private ImageView redLock;
   @FXML private ImageView blueLock;
   @FXML private ImageView yellowLock;
-  @FXML private Pane chatBoxPane;
   @FXML private Label timerLabel;
   @FXML private TextArea textArea;
   @FXML private TextField textField;
@@ -49,6 +59,10 @@ public class RaveController {
     gameState.timeManager.addToTimers(timerLabel);
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
+    gameState.colourManager.addToColourPanes1(colourPane1);
+    gameState.colourManager.addToColourPanes2(colourPane2);
+    gameState.colourManager.addToColourPanes3(colourPane3);
+    gameState.colourManager.addToColourPanes4(colourPane4);
     chatOpened = false;
 
     objects = new ArrayList<String>();
@@ -63,31 +77,37 @@ public class RaveController {
   @FXML
   private void onClickPoster(MouseEvent event) {
     System.out.println("poster clicked");
+    isRiddleObject("poster");
   }
 
   @FXML
   private void onClickDj(MouseEvent event) {
     System.out.println("dj clicked");
+    isRiddleObject("dj");
   }
 
   @FXML
   private void onClickBodybuilder(MouseEvent event) {
     System.out.println("bodybuilder clicked");
+    isRiddleObject("bodybuilder");
   }
 
   @FXML
   private void onClickBouncer(MouseEvent event) {
     System.out.println("bouncer clicked");
+    isRiddleObject("bouncer");
   }
 
   @FXML
   private void onClickDisco(MouseEvent event) {
     System.out.println("disco clicked");
+    isRiddleObject("disco");
   }
 
   @FXML
   private void onClickSpeaker(MouseEvent event) {
     System.out.println("speaker clicked");
+    isRiddleObject("speaker");
   }
 
   @FXML
@@ -156,9 +176,10 @@ public class RaveController {
     }
   }
 
-  public static String getRiddleObject() {
-    riddleObject = objects.get((int) (Math.random() * objects.size()));
-    System.out.println("Riddle object: " + riddleObject);
-    return riddleObject;
+  public void isRiddleObject(String object) {
+    if (riddleObject.equals(object) && GameState.isRiddleResolved) {
+      GameState.isRiddleObjectFound = true;
+      gameState.colourManager.setPaneColours();
+    }
   }
 }
