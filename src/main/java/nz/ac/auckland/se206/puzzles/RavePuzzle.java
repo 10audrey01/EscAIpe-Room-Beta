@@ -1,15 +1,18 @@
 package nz.ac.auckland.se206.puzzles;
 
 import java.util.Random;
+import nz.ac.auckland.se206.GameState;
 
 public class RavePuzzle {
   // rave puzzle - Find the safe, unlock the code through finding respective object in each of rock
   // and classical rooms
+  private GameState gamestate;
   private boolean isSafeFound;
   private boolean isSafeSolved;
   private String safeSolution;
 
   public RavePuzzle() {
+    this.gamestate = GameState.getInstance();
     this.isSafeFound = false;
     this.isSafeSolved = false;
 
@@ -33,8 +36,16 @@ public class RavePuzzle {
   public boolean attemptSolveSafe(String input) {
     if (input.equals(safeSolution)) {
       this.isSafeSolved = true;
+      this.gamestate.taskManager.completeLargeTask();
       return true;
     }
     return false;
+  }
+
+  public void setHints() {
+    String firstHalfOfSolution = this.safeSolution.substring(0, 2);
+    String secondHalfOfSolution = this.safeSolution.substring(3, 5);
+
+    // TODO: set first note to first half, set second note to second half.
   }
 }

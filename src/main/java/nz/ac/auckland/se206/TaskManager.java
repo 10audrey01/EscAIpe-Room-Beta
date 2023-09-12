@@ -23,6 +23,7 @@ public class TaskManager {
   public ArrayList<Task> tasks;
   public ArrayList<Task> completedTasks;
   public LargeTask largeTask;
+  private boolean isLargeTaskSolved;
 
   public TaskManager() {
     this.tasks = new ArrayList<Task>();
@@ -51,5 +52,9 @@ public class TaskManager {
   public void completeTask(Task thisTask) {
     this.tasks.remove(thisTask);
     this.completedTasks.add(thisTask);
+  }
+
+  public void completeLargeTask() {
+    this.isLargeTaskSolved = true;
   }
 }
