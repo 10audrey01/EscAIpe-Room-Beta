@@ -11,6 +11,7 @@ public class ColourManager {
   private ArrayList<Label> colourLabels3;
   private ArrayList<Label> colourLabels4;
   private ArrayList<String> colours;
+  private ArrayList<Integer> order;
 
   ColourManager() {
     this.colourLabels1 = new ArrayList<Label>();
@@ -23,6 +24,12 @@ public class ColourManager {
     colours.add("#7D2DB6");
     colours.add("#18E5CD");
     Collections.shuffle(colours);
+    this.order = new ArrayList<Integer>();
+    order.add(1);
+    order.add(2);
+    order.add(3);
+    order.add(4);
+    Collections.shuffle(order);
   }
 
   public void addToColourLabels1(Label label) {
@@ -34,7 +41,7 @@ public class ColourManager {
   }
 
   public void addToColourLabels3(Label label) {
-    colourLabels4.add(label);
+    colourLabels3.add(label);
   }
 
   public void addToColourLabels4(Label label) {
@@ -43,19 +50,39 @@ public class ColourManager {
 
   public void setLabelColours() {
     for (Label label : colourLabels1) {
-      label.setStyle("-fx-background-color: " + colours.get(0));
+      label.setStyle(
+          "-fx-background-color: #ffff"
+              + "; -fx-border-color:"
+              + colours.get(0)
+              + "; -fx-border-width: 7px");
+      label.setText(Integer.toString(order.get(0)));
     }
 
     for (Label label : colourLabels2) {
-      label.setStyle("-fx-background-color: " + colours.get(1));
+      label.setStyle(
+          "-fx-background-color: #ffff"
+              + "; -fx-border-color:"
+              + colours.get(1)
+              + "; -fx-border-width: 7px");
+      label.setText(Integer.toString(order.get(1)));
     }
 
     for (Label label : colourLabels3) {
-      label.setStyle("-fx-background-color: " + colours.get(2));
+      label.setStyle(
+          "-fx-background-color: #ffff"
+              + "; -fx-border-color:"
+              + colours.get(2)
+              + "; -fx-border-width: 7px");
+      label.setText(Integer.toString(order.get(2)));
     }
 
     for (Label label : colourLabels4) {
-      label.setStyle("-fx-background-color: " + colours.get(3));
+      label.setStyle(
+          "-fx-background-color: #ffff"
+              + "; -fx-border-color:"
+              + colours.get(3)
+              + "; -fx-border-width: 7px");
+      label.setText(Integer.toString(order.get(3)));
     }
   }
 }
