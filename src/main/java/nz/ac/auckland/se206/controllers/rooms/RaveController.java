@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers.rooms;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -18,6 +19,8 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
 public class RaveController {
+  private static ArrayList<String> objects;
+  private static String riddleObject;
 
   @FXML private Rectangle classicalDoor;
   @FXML private Rectangle rockDoor;
@@ -47,6 +50,14 @@ public class RaveController {
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
     chatOpened = false;
+
+    objects = new ArrayList<String>();
+    objects.add("poster");
+    objects.add("dj");
+    objects.add("bodybuilder");
+    objects.add("bouncer");
+    objects.add("disco");
+    objects.add("speaker");
   }
 
   @FXML
@@ -118,7 +129,7 @@ public class RaveController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
   }
 
-    @FXML
+  @FXML
   private void toggleChat() {
     if (chatOpened) {
       chatBoxPane.setDisable(true);
@@ -143,5 +154,10 @@ public class RaveController {
       gameState = GameState.getInstance();
       gameState.chatManager.onSendMessage(textField);
     }
+  }
+
+  public static String getRiddleObject() {
+    riddleObject = objects.get((int) (Math.random() * objects.size()));
+    return riddleObject;
   }
 }
