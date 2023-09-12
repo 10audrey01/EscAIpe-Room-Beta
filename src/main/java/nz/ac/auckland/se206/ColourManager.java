@@ -6,14 +6,17 @@ import javafx.scene.control.Label;
 
 public class ColourManager {
 
+  private String[] noteSequence;
   private ArrayList<Label> colourLabels1;
   private ArrayList<Label> colourLabels2;
   private ArrayList<Label> colourLabels3;
   private ArrayList<Label> colourLabels4;
   private ArrayList<String> colours;
+  private ArrayList<String> notes;
   private ArrayList<Integer> order;
 
   ColourManager() {
+    this.noteSequence = new String[4];
     this.colourLabels1 = new ArrayList<Label>();
     this.colourLabels2 = new ArrayList<Label>();
     this.colourLabels3 = new ArrayList<Label>();
@@ -24,6 +27,15 @@ public class ColourManager {
     colours.add("#7D2DB6");
     colours.add("#18E5CD");
     Collections.shuffle(colours);
+    this.notes = new ArrayList<String>();
+    notes.add("C");
+    notes.add("D");
+    notes.add("E");
+    notes.add("F");
+    notes.add("G");
+    notes.add("A");
+    notes.add("B");
+    setNoteSequence();
     this.order = new ArrayList<Integer>();
     order.add(1);
     order.add(2);
@@ -84,5 +96,13 @@ public class ColourManager {
               + "; -fx-border-width: 7px");
       label.setText(Integer.toString(order.get(3)));
     }
+  }
+
+  public void setNoteSequence() {
+    for (int i = 0; i < 4; i++) {
+      noteSequence[i] = notes.get((int) (Math.random() * notes.size()));
+    }
+    System.out.println(
+        "Note sequence: " + noteSequence[0] + noteSequence[1] + noteSequence[2] + noteSequence[3]);
   }
 }
