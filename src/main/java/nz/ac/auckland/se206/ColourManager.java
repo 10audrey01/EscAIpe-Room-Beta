@@ -2,21 +2,21 @@ package nz.ac.auckland.se206;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.Label;
 
 public class ColourManager {
 
-  private ArrayList<Pane> colourPanes1;
-  private ArrayList<Pane> colourPanes2;
-  private ArrayList<Pane> colourPanes3;
-  private ArrayList<Pane> colourPanes4;
+  private ArrayList<Label> colourLabels1;
+  private ArrayList<Label> colourLabels2;
+  private ArrayList<Label> colourLabels3;
+  private ArrayList<Label> colourLabels4;
   private ArrayList<String> colours;
 
   ColourManager() {
-    this.colourPanes1 = new ArrayList<Pane>();
-    this.colourPanes2 = new ArrayList<Pane>();
-    this.colourPanes3 = new ArrayList<Pane>();
-    this.colourPanes4 = new ArrayList<Pane>();
+    this.colourLabels1 = new ArrayList<Label>();
+    this.colourLabels2 = new ArrayList<Label>();
+    this.colourLabels3 = new ArrayList<Label>();
+    this.colourLabels4 = new ArrayList<Label>();
     this.colours = new ArrayList<String>();
     colours.add("#EADE3B");
     colours.add("#2E2EB6");
@@ -25,37 +25,37 @@ public class ColourManager {
     Collections.shuffle(colours);
   }
 
-  public void addToColourPanes1(Pane pane) {
-    colourPanes1.add(pane);
+  public void addToColourLabels1(Label label) {
+    colourLabels1.add(label);
   }
 
-  public void addToColourPanes2(Pane pane) {
-    colourPanes2.add(pane);
+  public void addToColourLabels2(Label label) {
+    colourLabels2.add(label);
   }
 
-  public void addToColourPanes3(Pane pane) {
-    colourPanes3.add(pane);
+  public void addToColourLabels3(Label label) {
+    colourLabels4.add(label);
   }
 
-  public void addToColourPanes4(Pane pane) {
-    colourPanes4.add(pane);
+  public void addToColourLabels4(Label label) {
+    colourLabels4.add(label);
   }
 
-  public void setPaneColours() {
-    for (Pane pane : colourPanes1) {
-      pane.setStyle("-fx-background-color: " + colours.get(0));
+  public void setLabelColours() {
+    for (Label label : colourLabels1) {
+      label.setStyle("-fx-background-color: " + colours.get(0));
     }
 
-    for (Pane pane : colourPanes2) {
-      pane.setStyle("-fx-background-color: " + colours.get(1));
+    for (Label label : colourLabels2) {
+      label.setStyle("-fx-background-color: " + colours.get(1));
     }
 
-    for (Pane pane : colourPanes3) {
-      pane.setStyle("-fx-background-color: " + colours.get(2));
+    for (Label label : colourLabels3) {
+      label.setStyle("-fx-background-color: " + colours.get(2));
     }
 
-    for (Pane pane : colourPanes4) {
-      pane.setStyle("-fx-background-color: " + colours.get(3));
+    for (Label label : colourLabels4) {
+      label.setStyle("-fx-background-color: " + colours.get(3));
     }
   }
 }

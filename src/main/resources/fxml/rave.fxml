@@ -141,9 +141,25 @@
          </children>
       </Pane>
       <Button fx:id="toggleChatButton" layoutX="1150.0" layoutY="465.0" mnemonicParsing="false" onAction="#toggleChat" text="Toggle Chat" />
-      <Pane fx:id="colourPane1" layoutX="1001.0" layoutY="37.0" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: fff;" />
-      <Pane fx:id="colourPane2" layoutX="1032.0" layoutY="37.0" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: fff;" />
-      <Pane fx:id="colourPane3" layoutX="1063.0" layoutY="37.0" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: fff;" />
-      <Pane fx:id="colourPane4" layoutX="1094.0" layoutY="37.0" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: ffff;" />
+      <Label fx:id="colourLabel1" alignment="CENTER" contentDisplay="CENTER" layoutX="981.0" layoutY="32.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: fff;" text="1" textAlignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="colourLabel2" alignment="CENTER" contentDisplay="CENTER" layoutX="1022.0" layoutY="32.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: fff;" text="2" textAlignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="colourLabel3" alignment="CENTER" contentDisplay="CENTER" layoutX="1063.0" layoutY="32.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: fff;" text="3" textAlignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="colourLabel4" alignment="CENTER" contentDisplay="CENTER" layoutX="1104.0" layoutY="32.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: fff;" text="4" textAlignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

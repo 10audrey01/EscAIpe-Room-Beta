@@ -37,16 +37,16 @@ public class RaveController {
   @FXML private Pane discoPane;
   @FXML private Pane speakerPane;
   @FXML private Pane chatBoxPane;
-  @FXML private Pane colourPane1;
-  @FXML private Pane colourPane2;
-  @FXML private Pane colourPane3;
-  @FXML private Pane colourPane4;
+  @FXML private Label colourLabel1;
+  @FXML private Label colourLabel2;
+  @FXML private Label colourLabel3;
+  @FXML private Label colourLabel4;
+  @FXML private Label timerLabel;
   @FXML private ImageView doorImage;
   @FXML private ImageView greenLock;
   @FXML private ImageView redLock;
   @FXML private ImageView blueLock;
   @FXML private ImageView yellowLock;
-  @FXML private Label timerLabel;
   @FXML private TextArea textArea;
   @FXML private TextField textField;
   @FXML private boolean chatOpened;
@@ -59,10 +59,10 @@ public class RaveController {
     gameState.timeManager.addToTimers(timerLabel);
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
-    gameState.colourManager.addToColourPanes1(colourPane1);
-    gameState.colourManager.addToColourPanes2(colourPane2);
-    gameState.colourManager.addToColourPanes3(colourPane3);
-    gameState.colourManager.addToColourPanes4(colourPane4);
+    gameState.colourManager.addToColourLabels1(colourLabel1);
+    gameState.colourManager.addToColourLabels2(colourLabel2);
+    gameState.colourManager.addToColourLabels3(colourLabel3);
+    gameState.colourManager.addToColourLabels4(colourLabel4);
     chatOpened = false;
 
     objects = new ArrayList<String>();
@@ -179,7 +179,7 @@ public class RaveController {
   public void isRiddleObject(String object) {
     if (riddleObject.equals(object) && GameState.isRiddleResolved) {
       GameState.isRiddleObjectFound = true;
-      gameState.colourManager.setPaneColours();
+      gameState.colourManager.setLabelColours();
     }
   }
 }
