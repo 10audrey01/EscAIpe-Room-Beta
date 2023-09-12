@@ -59,8 +59,10 @@ public class RockController {
   }
 
   @FXML
-  private void onClickGameMaster(MouseEvent event) {
+  private void onClickGameMaster(MouseEvent event) throws ApiProxyException {
     System.out.println("game master clicked");
+    toggleChat();
+    gameState.chatManager.generateInitialMessage();
   }
 
   @FXML

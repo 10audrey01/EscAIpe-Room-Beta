@@ -73,6 +73,7 @@ public class ChatManager {
     clearAllTextFields();
     ChatMessage msg = new ChatMessage("user", message);
     addMessage(msg);
+    ChatMessage response = runGpt(msg);
   }
 
   /**
