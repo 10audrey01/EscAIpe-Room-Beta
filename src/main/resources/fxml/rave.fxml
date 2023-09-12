@@ -141,5 +141,9 @@
          </children>
       </Pane>
       <Button fx:id="toggleChatButton" layoutX="1150.0" layoutY="465.0" mnemonicParsing="false" onAction="#toggleChat" text="Toggle Chat" />
+      <Pane fx:id="colourPane1" layoutX="1001.0" layoutY="37.0" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: fff;" />
+      <Pane fx:id="colourPane2" layoutX="1032.0" layoutY="37.0" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: fff;" />
+      <Pane fx:id="colourPane3" layoutX="1063.0" layoutY="37.0" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: fff;" />
+      <Pane fx:id="colourPane4" layoutX="1094.0" layoutY="37.0" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: ffff;" />
    </children>
 </Pane>

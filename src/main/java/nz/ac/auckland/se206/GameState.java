@@ -27,6 +27,7 @@ public class GameState {
   // variables to keep track of the game state
   private static GameState instance;
   public static boolean isRiddleResolved = false;
+  public static boolean isRiddleObjectFound = false;
   public static boolean isKeyFound = false;
   public static Difficulty difficulty;
   public static PlayTime time;
@@ -35,6 +36,7 @@ public class GameState {
   public TimeManager timeManager;
   public TaskManager taskManager;
   public ChatManager chatManager;
+  public ColourManager colourManager;
 
   public static GameState getInstance() {
     if (instance == null) {
@@ -42,6 +44,7 @@ public class GameState {
       instance.timeManager = new TimeManager();
       instance.taskManager = new TaskManager();
       instance.chatManager = new ChatManager();
+      instance.colourManager = new ColourManager();
     }
     return instance;
   }
