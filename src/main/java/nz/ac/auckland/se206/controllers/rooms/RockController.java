@@ -36,11 +36,12 @@ public class RockController {
   private GameState gameState;
 
   @FXML
-  private void initialize() {
+  private void initialize() throws ApiProxyException {
     gameState = GameState.getInstance();
     gameState.timeManager.addToTimers(timerLabel);
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
+    gameState.chatManager.generateInitialMessage();
     chatOpened = false;
   }
 
@@ -59,10 +60,9 @@ public class RockController {
   }
 
   @FXML
-  private void onClickGameMaster(MouseEvent event) throws ApiProxyException {
+  private void onClickGameMaster(MouseEvent event) {
     System.out.println("game master clicked");
     toggleChat();
-    gameState.chatManager.generateInitialMessage();
   }
 
   @FXML

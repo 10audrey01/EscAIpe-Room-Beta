@@ -158,6 +158,7 @@ public class RaveController {
 
   public static String getRiddleObject() {
     riddleObject = objects.get((int) (Math.random() * objects.size()));
+    System.out.println("Riddle object: " + riddleObject);
     return riddleObject;
   }
 }

@@ -3,6 +3,7 @@ package nz.ac.auckland.se206;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -45,11 +46,28 @@ public class ChatManager {
   }
 
   public void generateInitialMessage() throws ApiProxyException {
-    chatCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(100);
-    runGpt(
-        new ChatMessage(
-            "user", GptPromptEngineering.getRiddleWithGivenWord(RaveController.getRiddleObject())));
+
+    Task<Void> initializeRiddleTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            chatCompletionRequest =
+                new ChatCompletionRequest()
+                    .setN(1)
+                    .setTemperature(0.2)
+                    .setTopP(0.5)
+                    .setMaxTokens(100);
+            runGpt(
+                new ChatMessage(
+                    "user",
+                    GptPromptEngineering.getRiddleWithGivenWord(RaveController.getRiddleObject())));
+            return null;
+          }
+        };
+
+    System.out.println("Generating initial message");
+    Thread initializeRiddleThread = new Thread(initializeRiddleTask, "initializeRiddleThread");
+    initializeRiddleThread.start();
   }
 
   public void addMessage(ChatMessage msg) {
@@ -70,10 +88,25 @@ public class ChatManager {
       System.out.println("Whoops");
       return;
     }
-    clearAllTextFields();
-    ChatMessage msg = new ChatMessage("user", message);
-    addMessage(msg);
-    ChatMessage response = runGpt(msg);
+
+    Task<Void> onSendMessageTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            clearAllTextFields();
+            ChatMessage msg = new ChatMessage("user", message);
+            addMessage(msg);
+            ChatMessage response = runGpt(msg);
+            if (response.getRole().equals("assistant")) {
+              if (response.getContent().startsWith("Correct")) {
+                GameState.isRiddleResolved = true;
+              }
+            }
+            return null;
+          }
+        };
+    Thread onSendMessageThread = new Thread(onSendMessageTask, "onSendMessageThread");
+    onSendMessageThread.start();
   }
 
   /**
