@@ -49,6 +49,9 @@ public class RockController {
 
   private GameState gameState;
   private MediaPlayer guitarNotePlayer;
+  private RockBigTaskManager.Note[] noteSequence;
+  private HashMap<Colour, Integer> orderColourMap;
+  private int numberOfCorrectGuitarClicks = 0;
 
   @FXML
   private void initialize() throws ApiProxyException {
@@ -95,24 +98,28 @@ public class RockController {
   private void onClickCyanGuitar(MouseEvent event) throws URISyntaxException {
     System.out.println("cyan guitar clicked");
     playNote(Colour.CYAN);
+    checkNoteSequence(Colour.CYAN);
   }
 
   @FXML
   private void onClickBlueGuitar(MouseEvent event) throws URISyntaxException {
     System.out.println("blue guitar clicked");
     playNote(Colour.BLUE);
+    checkNoteSequence(Colour.BLUE);
   }
 
   @FXML
   private void onClickPurpleGuitar(MouseEvent event) throws URISyntaxException {
     System.out.println("purple guitar clicked");
     playNote(Colour.PURPLE);
+    checkNoteSequence(Colour.PURPLE);
   }
 
   @FXML
   private void onClickYellowGuitar(MouseEvent event) throws URISyntaxException {
     System.out.println("yellow guitar clicked");
     playNote(Colour.YELLOW);
+    checkNoteSequence(Colour.YELLOW);
   }
 
   @FXML
@@ -154,8 +161,8 @@ public class RockController {
 
   public void playNote(Colour guitarColour) throws URISyntaxException {
     if (GameState.isRiddleObjectFound) {
-      RockBigTaskManager.Note[] noteSequence = gameState.rockBigTaskManager.getNoteSequence();
-      HashMap<Colour, Integer> orderColourMap = gameState.rockBigTaskManager.getOrderColourMap();
+      noteSequence = gameState.rockBigTaskManager.getNoteSequence();
+      orderColourMap = gameState.rockBigTaskManager.getOrderColourMap();
 
       RockBigTaskManager.Note noteToPlay = noteSequence[orderColourMap.get(guitarColour) - 1];
 
@@ -210,5 +217,19 @@ public class RockController {
         new Media(getClass().getResource("/sounds/" + audioName + ".mp3").toURI().toString());
     guitarNotePlayer = new MediaPlayer(note);
     guitarNotePlayer.play();
+  }
+
+  public void checkNoteSequence(Colour guitarColour) {
+    if (GameState.isRiddleObjectFound) {
+      if (orderColourMap.get(guitarColour) - 1 == numberOfCorrectGuitarClicks) {
+        numberOfCorrectGuitarClicks++;
+      } else {
+        numberOfCorrectGuitarClicks = 0;
+      }
+
+      if (numberOfCorrectGuitarClicks == 4) {
+        System.out.println("Correct sequence played");
+      }
+    }
   }
 }
