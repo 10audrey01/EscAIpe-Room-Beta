@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers.rooms;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -12,6 +13,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.RockBigTaskManager;
@@ -44,6 +47,7 @@ public class RockController {
   @FXML private boolean chatOpened;
 
   private GameState gameState;
+  private MediaPlayer guitarNotePlayer;
 
   @FXML
   private void initialize() throws ApiProxyException {
@@ -87,25 +91,25 @@ public class RockController {
   }
 
   @FXML
-  private void onClickCyanGuitar(MouseEvent event) {
+  private void onClickCyanGuitar(MouseEvent event) throws URISyntaxException {
     System.out.println("cyan guitar clicked");
     playNote(Colour.CYAN);
   }
 
   @FXML
-  private void onClickBlueGuitar(MouseEvent event) {
+  private void onClickBlueGuitar(MouseEvent event) throws URISyntaxException {
     System.out.println("blue guitar clicked");
     playNote(Colour.BLUE);
   }
 
   @FXML
-  private void onClickPurpleGuitar(MouseEvent event) {
+  private void onClickPurpleGuitar(MouseEvent event) throws URISyntaxException {
     System.out.println("purple guitar clicked");
     playNote(Colour.PURPLE);
   }
 
   @FXML
-  private void onClickYellowGuitar(MouseEvent event) {
+  private void onClickYellowGuitar(MouseEvent event) throws URISyntaxException {
     System.out.println("yellow guitar clicked");
     playNote(Colour.YELLOW);
   }
@@ -144,14 +148,10 @@ public class RockController {
 
   @FXML
   private void onToggleNote() {
-    if (toggleNoteBtn.isSelected()) {
-      gameState.rockBigTaskManager.setVisibilityNotePanes(false);
-    } else {
-      gameState.rockBigTaskManager.setVisibilityNotePanes(true);
-    }
+    gameState.rockBigTaskManager.setVisibilityNotePanes(true);
   }
 
-  public void playNote(Colour guitarColour) {
+  public void playNote(Colour guitarColour) throws URISyntaxException {
     if (GameState.isRiddleObjectFound) {
       RockBigTaskManager.Note[] noteSequence = gameState.rockBigTaskManager.getNoteSequence();
       HashMap<Colour, Integer> orderColourMap = gameState.rockBigTaskManager.getOrderColourMap();
@@ -161,26 +161,40 @@ public class RockController {
       switch (noteToPlay) {
         case C:
           System.out.println("C note played");
+          playGuitarNotePlayer("c2");
           break;
         case D:
           System.out.println("D note played");
+          playGuitarNotePlayer("d2");
           break;
         case E:
           System.out.println("E note played");
+          playGuitarNotePlayer("e2");
           break;
         case F:
           System.out.println("F note played");
+          playGuitarNotePlayer("f2");
           break;
         case G:
           System.out.println("G note played");
+          playGuitarNotePlayer("g2");
           break;
         case A:
           System.out.println("A note played");
+          playGuitarNotePlayer("a2");
           break;
         case B:
           System.out.println("B note played");
+          playGuitarNotePlayer("b2");
           break;
       }
     }
+  }
+
+  public void playGuitarNotePlayer(String audioName) throws URISyntaxException {
+    Media note =
+        new Media(getClass().getResource("/sounds/" + audioName + ".mp3").toURI().toString());
+    guitarNotePlayer = new MediaPlayer(note);
+    guitarNotePlayer.play();
   }
 }

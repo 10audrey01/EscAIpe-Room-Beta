@@ -135,10 +135,6 @@ public class ClassicalController {
 
   @FXML
   private void onToggleNote() {
-    if (toggleNoteBtn.isSelected()) {
-      gameState.rockBigTaskManager.setVisibilityNotePanes(false);
-    } else {
-      gameState.rockBigTaskManager.setVisibilityNotePanes(true);
-    }
+    gameState.rockBigTaskManager.setVisibilityNotePanes(true);
   }
 }
