@@ -224,8 +224,11 @@ public class RockController {
   public void checkGuitarSequence(Colour guitarColour) {
     if (GameState.isRiddleObjectFound) {
       if (orderColourMap.get(guitarColour) - 1 == numberOfCorrectGuitarClicks) {
+        gameState.rockBigTaskManager.setNoteSequenceLabels(
+            noteSequence[orderColourMap.get(guitarColour) - 1].toString());
         numberOfCorrectGuitarClicks++;
       } else {
+        gameState.rockBigTaskManager.clearNoteSequenceLabels();
         numberOfCorrectGuitarClicks = 0;
       }
 

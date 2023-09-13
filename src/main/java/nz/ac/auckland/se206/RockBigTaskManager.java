@@ -47,6 +47,7 @@ public class RockBigTaskManager {
   private ArrayList<Note> notes;
   private ArrayList<Integer> order;
   private HashMap<Colour, Integer> orderColourMap;
+  private String noteSequenceString;
 
   RockBigTaskManager() {
     this.noteSequence = new Note[4];
@@ -77,6 +78,7 @@ public class RockBigTaskManager {
     order.add(3);
     order.add(4);
     Collections.shuffle(order);
+    this.noteSequenceString = "";
   }
 
   public void addToColourLabels1(Label label) {
@@ -187,5 +189,19 @@ public class RockBigTaskManager {
 
   public HashMap<Colour, Integer> getOrderColourMap() {
     return orderColourMap;
+  }
+
+  public void setNoteSequenceLabels(String noteSequence) {
+    noteSequenceString = noteSequenceString.concat(noteSequence);
+    for (Label label : noteSequenceLabels) {
+      label.setText(noteSequenceString);
+    }
+  }
+
+  public void clearNoteSequenceLabels() {
+    noteSequenceString = "";
+    for (Label label : noteSequenceLabels) {
+      label.setText("");
+    }
   }
 }
