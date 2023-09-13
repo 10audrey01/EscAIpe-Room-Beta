@@ -45,10 +45,10 @@ public class ClassicalController {
     gameState.timeManager.addToTimers(timerLabel);
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
-    gameState.colourManager.addToColourLabels1(colourLabel1);
-    gameState.colourManager.addToColourLabels2(colourLabel2);
-    gameState.colourManager.addToColourLabels3(colourLabel3);
-    gameState.colourManager.addToColourLabels4(colourLabel4);
+    gameState.rockBigTaskManager.addToColourLabels1(colourLabel1);
+    gameState.rockBigTaskManager.addToColourLabels2(colourLabel2);
+    gameState.rockBigTaskManager.addToColourLabels3(colourLabel3);
+    gameState.rockBigTaskManager.addToColourLabels4(colourLabel4);
     chatOpened = false;
   }
 

@@ -4,28 +4,44 @@ import java.util.ArrayList;
 import java.util.Collections;
 import javafx.scene.control.Label;
 
-public class ColourManager {
+public class RockBigTaskManager {
+  public enum Colour {
+    YELLOW("#EADE3B"),
+    BLUE("#2E2EB6"),
+    PURPLE("#7D2DB6"),
+    CYAN("#18E5CD");
+
+    private final String hex;
+
+    Colour(String hex) {
+      this.hex = hex;
+    }
+
+    public String getHex() {
+      return hex;
+    }
+  }
 
   private String[] noteSequence;
   private ArrayList<Label> colourLabels1;
   private ArrayList<Label> colourLabels2;
   private ArrayList<Label> colourLabels3;
   private ArrayList<Label> colourLabels4;
-  private ArrayList<String> colours;
+  private ArrayList<Colour> colours;
   private ArrayList<String> notes;
   private ArrayList<Integer> order;
 
-  ColourManager() {
+  RockBigTaskManager() {
     this.noteSequence = new String[4];
     this.colourLabels1 = new ArrayList<Label>();
     this.colourLabels2 = new ArrayList<Label>();
     this.colourLabels3 = new ArrayList<Label>();
     this.colourLabels4 = new ArrayList<Label>();
-    this.colours = new ArrayList<String>();
-    colours.add("#EADE3B");
-    colours.add("#2E2EB6");
-    colours.add("#7D2DB6");
-    colours.add("#18E5CD");
+    this.colours = new ArrayList<Colour>();
+    colours.add(Colour.YELLOW);
+    colours.add(Colour.BLUE);
+    colours.add(Colour.PURPLE);
+    colours.add(Colour.CYAN);
     Collections.shuffle(colours);
     this.notes = new ArrayList<String>();
     notes.add("C");
@@ -65,7 +81,7 @@ public class ColourManager {
       label.setStyle(
           "-fx-background-color: #ffff"
               + "; -fx-border-color:"
-              + colours.get(0)
+              + colours.get(0).getHex()
               + "; -fx-border-width: 7px");
       label.setText(Integer.toString(order.get(0)));
     }
@@ -74,7 +90,7 @@ public class ColourManager {
       label.setStyle(
           "-fx-background-color: #ffff"
               + "; -fx-border-color:"
-              + colours.get(1)
+              + colours.get(1).getHex()
               + "; -fx-border-width: 7px");
       label.setText(Integer.toString(order.get(1)));
     }
@@ -83,7 +99,7 @@ public class ColourManager {
       label.setStyle(
           "-fx-background-color: #ffff"
               + "; -fx-border-color:"
-              + colours.get(2)
+              + colours.get(2).getHex()
               + "; -fx-border-width: 7px");
       label.setText(Integer.toString(order.get(2)));
     }
@@ -92,7 +108,7 @@ public class ColourManager {
       label.setStyle(
           "-fx-background-color: #ffff"
               + "; -fx-border-color:"
-              + colours.get(3)
+              + colours.get(3).getHex()
               + "; -fx-border-width: 7px");
       label.setText(Integer.toString(order.get(3)));
     }

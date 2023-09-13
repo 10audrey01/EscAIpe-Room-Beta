@@ -36,7 +36,7 @@ public class GameState {
   public TimeManager timeManager;
   public TaskManager taskManager;
   public ChatManager chatManager;
-  public ColourManager colourManager;
+  public RockBigTaskManager rockBigTaskManager;
 
   public static GameState getInstance() {
     if (instance == null) {
@@ -44,7 +44,7 @@ public class GameState {
       instance.timeManager = new TimeManager();
       instance.taskManager = new TaskManager();
       instance.chatManager = new ChatManager();
-      instance.colourManager = new ColourManager();
+      instance.rockBigTaskManager = new RockBigTaskManager();
     }
     return instance;
   }
