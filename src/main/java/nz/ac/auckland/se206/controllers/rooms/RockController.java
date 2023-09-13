@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -30,6 +31,7 @@ public class RockController {
   @FXML private Pane purpleGuitarPane;
   @FXML private Pane yellowGuitarPane;
   @FXML private Pane amplifierPane;
+  @FXML private Pane notePane;
   @FXML private Pane chatBoxPane;
   @FXML private Label colourLabel1;
   @FXML private Label colourLabel2;
@@ -38,6 +40,7 @@ public class RockController {
   @FXML private Label timerLabel;
   @FXML private TextArea textArea;
   @FXML private TextField textField;
+  @FXML private ToggleButton toggleNoteBtn;
   @FXML private boolean chatOpened;
 
   private GameState gameState;
@@ -53,6 +56,8 @@ public class RockController {
     gameState.rockBigTaskManager.addToColourLabels2(colourLabel2);
     gameState.rockBigTaskManager.addToColourLabels3(colourLabel3);
     gameState.rockBigTaskManager.addToColourLabels4(colourLabel4);
+    gameState.rockBigTaskManager.addToNotePanes(notePane);
+    gameState.rockBigTaskManager.addToNoteButtons(toggleNoteBtn);
     chatOpened = false;
   }
 
@@ -134,6 +139,15 @@ public class RockController {
       System.out.println("Message Sent");
       gameState = GameState.getInstance();
       gameState.chatManager.onSendMessage(textField);
+    }
+  }
+
+  @FXML
+  private void onToggleNote() {
+    if (toggleNoteBtn.isSelected()) {
+      gameState.rockBigTaskManager.setVisibilityNotePanes(false);
+    } else {
+      gameState.rockBigTaskManager.setVisibilityNotePanes(true);
     }
   }
 

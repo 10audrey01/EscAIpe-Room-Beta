@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.Pane;
 
 public class RockBigTaskManager {
   public enum Note {
@@ -38,6 +40,8 @@ public class RockBigTaskManager {
   private ArrayList<Label> colourLabels2;
   private ArrayList<Label> colourLabels3;
   private ArrayList<Label> colourLabels4;
+  private ArrayList<Pane> notePanes;
+  private ArrayList<ToggleButton> noteButtons;
   private ArrayList<Colour> colours;
   private ArrayList<Note> notes;
   private ArrayList<Integer> order;
@@ -49,6 +53,8 @@ public class RockBigTaskManager {
     this.colourLabels2 = new ArrayList<Label>();
     this.colourLabels3 = new ArrayList<Label>();
     this.colourLabels4 = new ArrayList<Label>();
+    this.notePanes = new ArrayList<Pane>();
+    this.noteButtons = new ArrayList<ToggleButton>();
     this.colours = new ArrayList<Colour>();
     colours.add(Colour.YELLOW);
     colours.add(Colour.BLUE);
@@ -87,13 +93,39 @@ public class RockBigTaskManager {
     colourLabels4.add(label);
   }
 
+  public void addToNotePanes(Pane pane) {
+    notePanes.add(pane);
+  }
+
+  public void addToNoteButtons(ToggleButton button) {
+    noteButtons.add(button);
+  }
+
+  public void setVisibilityNotePanes(boolean visibility) {
+    for (Pane pane : notePanes) {
+      pane.setVisible(visibility);
+    }
+  }
+
+  public void setVisibilityNoteButtons(boolean visibility) {
+    for (ToggleButton button : noteButtons) {
+      button.setVisible(visibility);
+    }
+  }
+
+  public void setDisableNoteButtons(boolean disable) {
+    for (ToggleButton button : noteButtons) {
+      button.setDisable(disable);
+    }
+  }
+
   public void setLabelColours() {
     for (Label label : colourLabels1) {
       label.setStyle(
           "-fx-background-color: #ffff"
               + "; -fx-border-color:"
               + colours.get(0).getHex()
-              + "; -fx-border-width: 7px");
+              + "; -fx-border-width: 5px");
       label.setText(Integer.toString(order.get(0)));
     }
 
@@ -102,7 +134,7 @@ public class RockBigTaskManager {
           "-fx-background-color: #ffff"
               + "; -fx-border-color:"
               + colours.get(1).getHex()
-              + "; -fx-border-width: 7px");
+              + "; -fx-border-width: 5px");
       label.setText(Integer.toString(order.get(1)));
     }
 
@@ -111,7 +143,7 @@ public class RockBigTaskManager {
           "-fx-background-color: #ffff"
               + "; -fx-border-color:"
               + colours.get(2).getHex()
-              + "; -fx-border-width: 7px");
+              + "; -fx-border-width: 5px");
       label.setText(Integer.toString(order.get(2)));
     }
 
@@ -120,7 +152,7 @@ public class RockBigTaskManager {
           "-fx-background-color: #ffff"
               + "; -fx-border-color:"
               + colours.get(3).getHex()
-              + "; -fx-border-width: 7px");
+              + "; -fx-border-width: 5px");
       label.setText(Integer.toString(order.get(3)));
     }
   }

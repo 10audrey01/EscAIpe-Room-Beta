@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -97,25 +98,38 @@
          </children>
       </Pane>
       <Button fx:id="toggleChatButton" layoutX="1150.0" layoutY="465.0" mnemonicParsing="false" onAction="#toggleChat" text="Toggle Chat" />
-      <Label fx:id="colourLabel1" alignment="CENTER" contentDisplay="CENTER" layoutX="981.0" layoutY="32.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: fff;" text="1" textAlignment="CENTER">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Label>
-      <Label fx:id="colourLabel2" alignment="CENTER" contentDisplay="CENTER" layoutX="1022.0" layoutY="32.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: fff;" text="2" textAlignment="CENTER">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Label>
-      <Label fx:id="colourLabel3" alignment="CENTER" contentDisplay="CENTER" layoutX="1063.0" layoutY="32.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: fff;" text="3" textAlignment="CENTER">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Label>
-      <Label fx:id="colourLabel4" alignment="CENTER" contentDisplay="CENTER" layoutX="1104.0" layoutY="32.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: fff;" text="4" textAlignment="CENTER">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Label>
+      <ToggleButton fx:id="toggleNoteBtn" disable="true" layoutX="1058.0" layoutY="7.0" mnemonicParsing="false" onAction="#onToggleNote" prefHeight="79.0" prefWidth="83.0" style="-fx-background-color: transparent;" visible="false">
+         <graphic>
+            <ImageView fx:id="noteImage" fitHeight="79.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/noteIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </ToggleButton>
+      <Pane fx:id="notePane" layoutX="945.0" layoutY="12.0" prefHeight="79.0" prefWidth="186.0" style="-fx-background-color: fff;" visible="false">
+         <children>
+            <Label fx:id="colourLabel1" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="10.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: fff;" text="1" textAlignment="CENTER">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="colourLabel2" alignment="CENTER" contentDisplay="CENTER" layoutX="55.0" layoutY="10.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: fff;" text="2" textAlignment="CENTER">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="colourLabel3" alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="10.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: fff;" text="3" textAlignment="CENTER">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="colourLabel4" alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="10.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: fff;" text="4" textAlignment="CENTER">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </Pane>
