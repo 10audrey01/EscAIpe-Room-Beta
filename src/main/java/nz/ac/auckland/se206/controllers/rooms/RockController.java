@@ -98,28 +98,28 @@ public class RockController {
   private void onClickCyanGuitar(MouseEvent event) throws URISyntaxException {
     System.out.println("cyan guitar clicked");
     playNote(Colour.CYAN);
-    checkNoteSequence(Colour.CYAN);
+    checkGuitarSequence(Colour.CYAN);
   }
 
   @FXML
   private void onClickBlueGuitar(MouseEvent event) throws URISyntaxException {
     System.out.println("blue guitar clicked");
     playNote(Colour.BLUE);
-    checkNoteSequence(Colour.BLUE);
+    checkGuitarSequence(Colour.BLUE);
   }
 
   @FXML
   private void onClickPurpleGuitar(MouseEvent event) throws URISyntaxException {
     System.out.println("purple guitar clicked");
     playNote(Colour.PURPLE);
-    checkNoteSequence(Colour.PURPLE);
+    checkGuitarSequence(Colour.PURPLE);
   }
 
   @FXML
   private void onClickYellowGuitar(MouseEvent event) throws URISyntaxException {
     System.out.println("yellow guitar clicked");
     playNote(Colour.YELLOW);
-    checkNoteSequence(Colour.YELLOW);
+    checkGuitarSequence(Colour.YELLOW);
   }
 
   @FXML
@@ -219,7 +219,7 @@ public class RockController {
     guitarNotePlayer.play();
   }
 
-  public void checkNoteSequence(Colour guitarColour) {
+  public void checkGuitarSequence(Colour guitarColour) {
     if (GameState.isRiddleObjectFound) {
       if (orderColourMap.get(guitarColour) - 1 == numberOfCorrectGuitarClicks) {
         numberOfCorrectGuitarClicks++;
