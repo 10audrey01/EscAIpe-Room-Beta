@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers.rooms;
 
 import java.io.IOException;
+import java.util.HashMap;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -12,6 +13,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.RockBigTaskManager;
+import nz.ac.auckland.se206.RockBigTaskManager.Colour;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
@@ -81,21 +84,25 @@ public class RockController {
   @FXML
   private void onClickCyanGuitar(MouseEvent event) {
     System.out.println("cyan guitar clicked");
+    playNote(Colour.CYAN);
   }
 
   @FXML
   private void onClickBlueGuitar(MouseEvent event) {
     System.out.println("blue guitar clicked");
+    playNote(Colour.BLUE);
   }
 
   @FXML
   private void onClickPurpleGuitar(MouseEvent event) {
     System.out.println("purple guitar clicked");
+    playNote(Colour.PURPLE);
   }
 
   @FXML
   private void onClickYellowGuitar(MouseEvent event) {
     System.out.println("yellow guitar clicked");
+    playNote(Colour.YELLOW);
   }
 
   @FXML
@@ -127,6 +134,39 @@ public class RockController {
       System.out.println("Message Sent");
       gameState = GameState.getInstance();
       gameState.chatManager.onSendMessage(textField);
+    }
+  }
+
+  public void playNote(Colour guitarColour) {
+    if (GameState.isRiddleObjectFound) {
+      RockBigTaskManager.Note[] noteSequence = gameState.rockBigTaskManager.getNoteSequence();
+      HashMap<Colour, Integer> orderColourMap = gameState.rockBigTaskManager.getOrderColourMap();
+
+      RockBigTaskManager.Note noteToPlay = noteSequence[orderColourMap.get(guitarColour) - 1];
+
+      switch (noteToPlay) {
+        case C:
+          System.out.println("C note played");
+          break;
+        case D:
+          System.out.println("D note played");
+          break;
+        case E:
+          System.out.println("E note played");
+          break;
+        case F:
+          System.out.println("F note played");
+          break;
+        case G:
+          System.out.println("G note played");
+          break;
+        case A:
+          System.out.println("A note played");
+          break;
+        case B:
+          System.out.println("B note played");
+          break;
+      }
     }
   }
 }

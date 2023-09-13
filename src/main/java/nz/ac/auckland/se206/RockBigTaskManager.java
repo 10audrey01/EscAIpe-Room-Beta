@@ -63,7 +63,6 @@ public class RockBigTaskManager {
     notes.add(Note.G);
     notes.add(Note.A);
     notes.add(Note.B);
-    setNoteSequence();
     this.order = new ArrayList<Integer>();
     order.add(1);
     order.add(2);
