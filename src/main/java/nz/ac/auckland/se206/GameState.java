@@ -28,6 +28,7 @@ public class GameState {
   private static GameState instance;
   public static boolean isRiddleResolved = false;
   public static boolean isRiddleObjectFound = false;
+  public static boolean isNoteSequenceFound = false;
   public static boolean isKeyFound = false;
   public static Difficulty difficulty;
   public static PlayTime time;

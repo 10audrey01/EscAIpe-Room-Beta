@@ -52,6 +52,7 @@ public class RockController {
   private MediaPlayer guitarNotePlayer;
   private RockBigTaskManager.Note[] noteSequence;
   private HashMap<Colour, Integer> orderColourMap;
+  private ArrayList<String> audioNames;
   private int numberOfCorrectGuitarClicks = 0;
 
   @FXML
@@ -68,6 +69,14 @@ public class RockController {
     gameState.rockBigTaskManager.addToNotePanes(notePane);
     gameState.rockBigTaskManager.addToNoteButtons(toggleNoteBtn);
     gameState.rockBigTaskManager.addToNoteSequenceLabels(noteSequenceLabel);
+    audioNames = new ArrayList<String>();
+    audioNames.add("c2");
+    audioNames.add("d2");
+    audioNames.add("e2");
+    audioNames.add("f2");
+    audioNames.add("g2");
+    audioNames.add("a2");
+    audioNames.add("b2");
     chatOpened = false;
   }
 
@@ -162,7 +171,7 @@ public class RockController {
   }
 
   public void playNote(Colour guitarColour) throws URISyntaxException {
-    if (GameState.isRiddleObjectFound) {
+    if (GameState.isRiddleObjectFound && !GameState.isNoteSequenceFound) {
       noteSequence = gameState.rockBigTaskManager.getNoteSequence();
       orderColourMap = gameState.rockBigTaskManager.getOrderColourMap();
 
@@ -199,15 +208,6 @@ public class RockController {
           break;
       }
     } else {
-      ArrayList<String> audioNames = new ArrayList<String>();
-      audioNames.add("c2");
-      audioNames.add("d2");
-      audioNames.add("e2");
-      audioNames.add("f2");
-      audioNames.add("g2");
-      audioNames.add("a2");
-      audioNames.add("b2");
-
       String randomNote = audioNames.get((int) (Math.random() * 7));
       playGuitarNotePlayer(randomNote);
       System.out.println("Random note " + randomNote + " played");
@@ -222,7 +222,7 @@ public class RockController {
   }
 
   public void checkGuitarSequence(Colour guitarColour) {
-    if (GameState.isRiddleObjectFound) {
+    if (GameState.isRiddleObjectFound && !GameState.isNoteSequenceFound) {
       if (orderColourMap.get(guitarColour) - 1 == numberOfCorrectGuitarClicks) {
         gameState.rockBigTaskManager.setNoteSequenceLabels(
             noteSequence[orderColourMap.get(guitarColour) - 1].toString());
@@ -233,6 +233,7 @@ public class RockController {
       }
 
       if (numberOfCorrectGuitarClicks == 4) {
+        GameState.isNoteSequenceFound = true;
         System.out.println("Correct sequence played");
       }
     }
