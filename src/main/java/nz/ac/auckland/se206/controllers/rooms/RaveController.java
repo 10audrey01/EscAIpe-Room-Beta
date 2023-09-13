@@ -44,6 +44,7 @@ public class RaveController {
   @FXML private Label colourLabel3;
   @FXML private Label colourLabel4;
   @FXML private Label timerLabel;
+  @FXML private Label noteSequenceLabel;
   @FXML private ImageView doorImage;
   @FXML private ImageView greenLock;
   @FXML private ImageView redLock;
@@ -68,6 +69,7 @@ public class RaveController {
     gameState.rockBigTaskManager.addToColourLabels4(colourLabel4);
     gameState.rockBigTaskManager.addToNotePanes(notePane);
     gameState.rockBigTaskManager.addToNoteButtons(toggleNoteBtn);
+    gameState.rockBigTaskManager.addToNoteSequenceLabels(noteSequenceLabel);
     chatOpened = false;
 
     objects = new ArrayList<String>();

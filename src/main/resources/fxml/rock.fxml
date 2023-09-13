@@ -124,7 +124,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ToggleButton>
-      <Pane fx:id="notePane" layoutX="945.0" layoutY="12.0" prefHeight="79.0" prefWidth="186.0" style="-fx-background-color: FFF5D8;" visible="false">
+      <Pane fx:id="notePane" layoutX="945.0" layoutY="12.0" prefHeight="96.0" prefWidth="186.0" style="-fx-background-color: FFF5D8;" visible="false">
          <children>
             <Label fx:id="colourLabel1" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="10.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: transparent;" text="1" textAlignment="CENTER">
                <font>
@@ -144,6 +144,11 @@
             <Label fx:id="colourLabel4" alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="10.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: transparent;" text="4" textAlignment="CENTER">
                <font>
                   <Font size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="noteSequenceLabel" alignment="CENTER" layoutX="10.0" layoutY="54.0" prefHeight="36.0" prefWidth="167.0">
+               <font>
+                  <Font size="20.0" />
                </font>
             </Label>
          </children>

@@ -42,6 +42,7 @@ public class RockBigTaskManager {
   private ArrayList<Label> colourLabels4;
   private ArrayList<Pane> notePanes;
   private ArrayList<ToggleButton> noteButtons;
+  private ArrayList<Label> noteSequenceLabels;
   private ArrayList<Colour> colours;
   private ArrayList<Note> notes;
   private ArrayList<Integer> order;
@@ -55,6 +56,7 @@ public class RockBigTaskManager {
     this.colourLabels4 = new ArrayList<Label>();
     this.notePanes = new ArrayList<Pane>();
     this.noteButtons = new ArrayList<ToggleButton>();
+    this.noteSequenceLabels = new ArrayList<Label>();
     this.colours = new ArrayList<Colour>();
     colours.add(Colour.YELLOW);
     colours.add(Colour.BLUE);
@@ -99,6 +101,10 @@ public class RockBigTaskManager {
 
   public void addToNoteButtons(ToggleButton button) {
     noteButtons.add(button);
+  }
+
+  public void addToNoteSequenceLabels(Label label) {
+    noteSequenceLabels.add(label);
   }
 
   public void setVisibilityNotePanes(boolean visibility) {

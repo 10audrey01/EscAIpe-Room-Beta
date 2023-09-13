@@ -42,6 +42,7 @@ public class RockController {
   @FXML private Label colourLabel3;
   @FXML private Label colourLabel4;
   @FXML private Label timerLabel;
+  @FXML private Label noteSequenceLabel;
   @FXML private TextArea textArea;
   @FXML private TextField textField;
   @FXML private ToggleButton toggleNoteBtn;
@@ -66,6 +67,7 @@ public class RockController {
     gameState.rockBigTaskManager.addToColourLabels4(colourLabel4);
     gameState.rockBigTaskManager.addToNotePanes(notePane);
     gameState.rockBigTaskManager.addToNoteButtons(toggleNoteBtn);
+    gameState.rockBigTaskManager.addToNoteSequenceLabels(noteSequenceLabel);
     chatOpened = false;
   }
 
