@@ -8,7 +8,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Pane;
 
 public class RockBigTaskManager {
-  public enum Note {
+  public enum Note { // all musical notes
     C,
     D,
     E,
@@ -18,7 +18,7 @@ public class RockBigTaskManager {
     B;
   }
 
-  public enum Colour {
+  public enum Colour { // colours of the electric guitars
     YELLOW("#EADE3B"),
     BLUE("#2E2EB6"),
     PURPLE("#7D2DB6"),
@@ -50,7 +50,7 @@ public class RockBigTaskManager {
   private String noteSequenceString;
 
   RockBigTaskManager() {
-    this.noteSequence = new Note[4];
+    this.noteSequence = new Note[4]; // 4 notes in the sequence
     this.colourLabels1 = new ArrayList<Label>();
     this.colourLabels2 = new ArrayList<Label>();
     this.colourLabels3 = new ArrayList<Label>();
@@ -63,7 +63,7 @@ public class RockBigTaskManager {
     colours.add(Colour.BLUE);
     colours.add(Colour.PURPLE);
     colours.add(Colour.CYAN);
-    Collections.shuffle(colours);
+    Collections.shuffle(colours); // randomise the order of the colours
     this.notes = new ArrayList<Note>();
     notes.add(Note.C);
     notes.add(Note.D);
@@ -77,7 +77,7 @@ public class RockBigTaskManager {
     order.add(2);
     order.add(3);
     order.add(4);
-    Collections.shuffle(order);
+    Collections.shuffle(order); // randomise the order of the numbers
     this.noteSequenceString = "";
   }
 
@@ -112,7 +112,10 @@ public class RockBigTaskManager {
   public void setVisibilityNotePanes(boolean visibility) {
     for (Pane pane : notePanes) {
       pane.setStyle(
-          "-fx-background-color: #FFF5D8; -fx-border-color: #000000; -fx-border-width: 2px");
+          "-fx-background-color: #FFF5D8; -fx-border-color:"
+              + " #000000;"
+              + " -fx-border-width:"
+              + " 2px"); // same colour as the note icon
       pane.setVisible(visibility);
     }
   }
@@ -131,43 +134,43 @@ public class RockBigTaskManager {
 
   public void setLabelColours() {
     for (Label label : colourLabels1) {
-      label.setStyle(
+      label.setStyle( // set random colour of the label
           "-fx-background-color: transparent"
               + "; -fx-border-color:"
               + colours.get(0).getHex()
               + "; -fx-border-width: 5px");
-      label.setText(Integer.toString(order.get(0)));
+      label.setText(Integer.toString(order.get(0))); // set random number of the colour
     }
 
     for (Label label : colourLabels2) {
-      label.setStyle(
+      label.setStyle( // set random colour of the label
           "-fx-background-color: transparent"
               + "; -fx-border-color:"
               + colours.get(1).getHex()
               + "; -fx-border-width: 5px");
-      label.setText(Integer.toString(order.get(1)));
+      label.setText(Integer.toString(order.get(1))); // set random number of the colour
     }
 
     for (Label label : colourLabels3) {
-      label.setStyle(
+      label.setStyle( // set random colour of the label
           "-fx-background-color: transparent"
               + "; -fx-border-color:"
               + colours.get(2).getHex()
               + "; -fx-border-width: 5px");
-      label.setText(Integer.toString(order.get(2)));
+      label.setText(Integer.toString(order.get(2))); // set random number of the colour
     }
 
     for (Label label : colourLabels4) {
-      label.setStyle(
+      label.setStyle( // set random colour of the label
           "-fx-background-color: transparent"
               + "; -fx-border-color:"
               + colours.get(3).getHex()
               + "; -fx-border-width: 5px");
-      label.setText(Integer.toString(order.get(3)));
+      label.setText(Integer.toString(order.get(3))); // set random number of the colour
     }
   }
 
-  public void setNoteSequence() {
+  public void setNoteSequence() { // set random note sequence
     for (int i = 0; i < 4; i++) {
       noteSequence[i] = notes.get((int) (Math.random() * notes.size()));
     }
@@ -179,7 +182,7 @@ public class RockBigTaskManager {
     return noteSequence;
   }
 
-  public void setOrderColourMap() {
+  public void setOrderColourMap() { // organise the colours and numbers in a map
     orderColourMap = new HashMap<Colour, Integer>();
     orderColourMap.put(colours.get(0), order.get(0));
     orderColourMap.put(colours.get(1), order.get(1));
@@ -192,6 +195,7 @@ public class RockBigTaskManager {
   }
 
   public void setNoteSequenceLabels(String noteSequence) {
+    // set the note sequence labels, which will update as guitars are clicked
     noteSequenceString = noteSequenceString.concat(noteSequence);
     for (Label label : noteSequenceLabels) {
       label.setText(noteSequenceString);

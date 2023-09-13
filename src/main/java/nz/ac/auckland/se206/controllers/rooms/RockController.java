@@ -175,9 +175,10 @@ public class RockController {
       noteSequence = gameState.rockBigTaskManager.getNoteSequence();
       orderColourMap = gameState.rockBigTaskManager.getOrderColourMap();
 
+      // play the note of the guitar clicked according to the note sequence
       RockBigTaskManager.Note noteToPlay = noteSequence[orderColourMap.get(guitarColour) - 1];
 
-      switch (noteToPlay) {
+      switch (noteToPlay) { // switch statement to play the note
         case C:
           System.out.println("C note played");
           playGuitarNotePlayer("c2");
@@ -207,7 +208,8 @@ public class RockController {
           playGuitarNotePlayer("b2");
           break;
       }
-    } else {
+    } else { // play a random note if the note sequence is not found and the riddle object is not
+      // found
       String randomNote = audioNames.get((int) (Math.random() * 7));
       playGuitarNotePlayer(randomNote);
       System.out.println("Random note " + randomNote + " played");
@@ -223,11 +225,14 @@ public class RockController {
 
   public void checkGuitarSequence(Colour guitarColour) {
     if (GameState.isRiddleObjectFound && !GameState.isNoteSequenceFound) {
+      // check if the guitar clicked is the correct one
       if (orderColourMap.get(guitarColour) - 1 == numberOfCorrectGuitarClicks) {
+        // if it is, set the note sequence label to the note sequence
         gameState.rockBigTaskManager.setNoteSequenceLabels(
             noteSequence[orderColourMap.get(guitarColour) - 1].toString());
         numberOfCorrectGuitarClicks++;
       } else {
+        // otherwise reset the labels
         gameState.rockBigTaskManager.clearNoteSequenceLabels();
         numberOfCorrectGuitarClicks = 0;
       }
