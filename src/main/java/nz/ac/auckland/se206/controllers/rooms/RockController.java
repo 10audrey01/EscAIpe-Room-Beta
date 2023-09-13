@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers.rooms;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -188,6 +189,19 @@ public class RockController {
           playGuitarNotePlayer("b2");
           break;
       }
+    } else {
+      ArrayList<String> audioNames = new ArrayList<String>();
+      audioNames.add("c2");
+      audioNames.add("d2");
+      audioNames.add("e2");
+      audioNames.add("f2");
+      audioNames.add("g2");
+      audioNames.add("a2");
+      audioNames.add("b2");
+
+      String randomNote = audioNames.get((int) (Math.random() * 7));
+      playGuitarNotePlayer(randomNote);
+      System.out.println("Random note " + randomNote + " played");
     }
   }
 
