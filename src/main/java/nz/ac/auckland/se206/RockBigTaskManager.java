@@ -103,6 +103,8 @@ public class RockBigTaskManager {
 
   public void setVisibilityNotePanes(boolean visibility) {
     for (Pane pane : notePanes) {
+      pane.setStyle(
+          "-fx-background-color: #FFF5D8; -fx-border-color: #000000; -fx-border-width: 2px");
       pane.setVisible(visibility);
     }
   }
@@ -122,7 +124,7 @@ public class RockBigTaskManager {
   public void setLabelColours() {
     for (Label label : colourLabels1) {
       label.setStyle(
-          "-fx-background-color: #ffff"
+          "-fx-background-color: transparent"
               + "; -fx-border-color:"
               + colours.get(0).getHex()
               + "; -fx-border-width: 5px");
@@ -131,7 +133,7 @@ public class RockBigTaskManager {
 
     for (Label label : colourLabels2) {
       label.setStyle(
-          "-fx-background-color: #ffff"
+          "-fx-background-color: transparent"
               + "; -fx-border-color:"
               + colours.get(1).getHex()
               + "; -fx-border-width: 5px");
@@ -140,7 +142,7 @@ public class RockBigTaskManager {
 
     for (Label label : colourLabels3) {
       label.setStyle(
-          "-fx-background-color: #ffff"
+          "-fx-background-color: transparent"
               + "; -fx-border-color:"
               + colours.get(2).getHex()
               + "; -fx-border-width: 5px");
@@ -149,7 +151,7 @@ public class RockBigTaskManager {
 
     for (Label label : colourLabels4) {
       label.setStyle(
-          "-fx-background-color: #ffff"
+          "-fx-background-color: transparent"
               + "; -fx-border-color:"
               + colours.get(3).getHex()
               + "; -fx-border-width: 5px");
