@@ -133,40 +133,20 @@ public class RockBigTaskManager {
   }
 
   public void setLabelColours() {
-    for (Label label : colourLabels1) {
-      label.setStyle( // set random colour of the label
-          "-fx-background-color: transparent"
-              + "; -fx-border-color:"
-              + colours.get(0).getHex()
-              + "; -fx-border-width: 5px");
-      label.setText(Integer.toString(order.get(0))); // set random number of the colour
-    }
+    labelStyle(colourLabels1, 0);
+    labelStyle(colourLabels2, 1);
+    labelStyle(colourLabels3, 2);
+    labelStyle(colourLabels4, 3);
+  }
 
-    for (Label label : colourLabels2) {
+  public void labelStyle(ArrayList<Label> labelList, int colourIndex) {
+    for (Label label : labelList) {
       label.setStyle( // set random colour of the label
           "-fx-background-color: transparent"
               + "; -fx-border-color:"
-              + colours.get(1).getHex()
+              + colours.get(colourIndex).getHex()
               + "; -fx-border-width: 5px");
-      label.setText(Integer.toString(order.get(1))); // set random number of the colour
-    }
-
-    for (Label label : colourLabels3) {
-      label.setStyle( // set random colour of the label
-          "-fx-background-color: transparent"
-              + "; -fx-border-color:"
-              + colours.get(2).getHex()
-              + "; -fx-border-width: 5px");
-      label.setText(Integer.toString(order.get(2))); // set random number of the colour
-    }
-
-    for (Label label : colourLabels4) {
-      label.setStyle( // set random colour of the label
-          "-fx-background-color: transparent"
-              + "; -fx-border-color:"
-              + colours.get(3).getHex()
-              + "; -fx-border-width: 5px");
-      label.setText(Integer.toString(order.get(3))); // set random number of the colour
+      label.setText(Integer.toString(order.get(colourIndex))); // set random number of the colour
     }
   }
 
