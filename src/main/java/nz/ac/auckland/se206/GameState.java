@@ -50,6 +50,10 @@ public class GameState {
     return instance;
   }
 
+  public static void setInstance(GameState instance) {
+    GameState.instance = instance;
+  }
+
   public void startGame() {
     // reset task and chat manager
     this.taskManager = new TaskManager();

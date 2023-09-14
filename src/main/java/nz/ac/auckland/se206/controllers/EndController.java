@@ -4,12 +4,10 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
-import nz.ac.auckland.se206.SceneManager;
-import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class EndController {
 
@@ -29,13 +27,14 @@ public class EndController {
 
   @FXML
   private void onBack(ActionEvent event) throws IOException {
+    GameState.setInstance(null);
     GameState.isRiddleResolved = false;
+    GameState.isRiddleObjectFound = false;
+    GameState.isNoteSequenceFound = false;
     GameState.isKeyFound = false;
     GameState.isEscaped = false;
 
-    Button current = (Button) event.getSource();
-    Scene currentScene = current.getScene();
-    currentScene.setRoot(SceneManager.getUiRoot(AppUi.START));
+    App.setRoot("start");
   }
 
   @FXML
