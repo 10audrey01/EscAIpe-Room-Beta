@@ -64,14 +64,15 @@ public class RockController {
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
     gameState.chatManager.generateInitialMessage();
-    gameState.rockBigTaskManager.addToColourLabels1(colourLabel1);
-    gameState.rockBigTaskManager.addToColourLabels2(colourLabel2);
-    gameState.rockBigTaskManager.addToColourLabels3(colourLabel3);
-    gameState.rockBigTaskManager.addToColourLabels4(colourLabel4);
-    gameState.rockBigTaskManager.addToNotePanes(notePane);
-    gameState.rockBigTaskManager.addToNoteButtons(toggleNoteBtn);
-    gameState.rockBigTaskManager.addToNoteSequenceLabels(noteSequenceLabel);
-    gameState.rockBigTaskManager.addToArrows(pointingArrowGif);
+    gameState.rockBigTaskManager.addAllRockTaskElements(
+        colourLabel1,
+        colourLabel2,
+        colourLabel3,
+        colourLabel4,
+        notePane,
+        toggleNoteBtn,
+        noteSequenceLabel,
+        pointingArrowGif);
     audioNames = new ArrayList<String>();
     audioNames.add("c2");
     audioNames.add("d2");

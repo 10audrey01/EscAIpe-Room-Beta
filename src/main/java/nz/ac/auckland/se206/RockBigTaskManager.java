@@ -84,6 +84,25 @@ public class RockBigTaskManager {
     this.noteSequenceString = "";
   }
 
+  public void addAllRockTaskElements(
+      Label label1,
+      Label label2,
+      Label label3,
+      Label label4,
+      Pane pane,
+      ToggleButton button,
+      Label noteSequenceLabel,
+      ImageView arrow) {
+    addToColourLabels1(label1);
+    addToColourLabels2(label2);
+    addToColourLabels3(label3);
+    addToColourLabels4(label4);
+    addToNotePanes(pane);
+    addToNoteButtons(button);
+    addToNoteSequenceLabels(noteSequenceLabel);
+    addToArrows(arrow);
+  }
+
   public void addToColourLabels1(Label label) {
     colourLabels1.add(label);
   }
