@@ -62,6 +62,9 @@ public class RaveController {
   @FXML
   private void onClickBodybuilder(MouseEvent event) {
     System.out.println("bodybuilder clicked");
+    Pane current = (Pane) event.getSource();
+    Scene currentScene = current.getScene();
+    currentScene.setRoot(SceneManager.getUiRoot(AppUi.BODYBUILDER));
   }
 
   @FXML
@@ -118,7 +121,7 @@ public class RaveController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
   }
 
-    @FXML
+  @FXML
   private void toggleChat() {
     if (chatOpened) {
       chatBoxPane.setDisable(true);
