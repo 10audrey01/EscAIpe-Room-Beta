@@ -76,6 +76,9 @@ public class ClassicalController {
   @FXML
   private void doClickedGrandPiano(MouseEvent event) throws IOException {
     System.out.println("Grand Piano Clicked");
+    Pane current = (Pane) event.getSource();
+    Scene currentScene = current.getScene();
+    currentScene.setRoot(SceneManager.getUiRoot(AppUi.PIANO));
   }
 
   @FXML
