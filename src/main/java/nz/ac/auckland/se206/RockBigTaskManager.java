@@ -9,15 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 public class RockBigTaskManager {
-  public enum Note { // all musical notes
-    C,
-    D,
-    E,
-    F,
-    G,
-    A,
-    B;
-  }
 
   public enum Colour { // colours of the electric guitars
     YELLOW("#EADE3B"),
@@ -36,7 +27,7 @@ public class RockBigTaskManager {
     }
   }
 
-  private Note[] noteSequence;
+  private String[] noteSequence;
   private ArrayList<Label> colourLabels1;
   private ArrayList<Label> colourLabels2;
   private ArrayList<Label> colourLabels3;
@@ -46,13 +37,13 @@ public class RockBigTaskManager {
   private ArrayList<Label> noteSequenceLabels;
   private ArrayList<ImageView> arrows;
   private ArrayList<Colour> colours;
-  private ArrayList<Note> notes;
+  private ArrayList<String> notes;
   private ArrayList<Integer> order;
   private HashMap<Colour, Integer> orderColourMap;
   private String noteSequenceString;
 
   RockBigTaskManager() {
-    this.noteSequence = new Note[4]; // 4 notes in the sequence
+    this.noteSequence = new String[4]; // 4 notes in the sequence
     this.colourLabels1 = new ArrayList<Label>();
     this.colourLabels2 = new ArrayList<Label>();
     this.colourLabels3 = new ArrayList<Label>();
@@ -67,14 +58,14 @@ public class RockBigTaskManager {
     colours.add(Colour.PURPLE);
     colours.add(Colour.CYAN);
     Collections.shuffle(colours); // randomise the order of the colours
-    this.notes = new ArrayList<Note>();
-    notes.add(Note.C);
-    notes.add(Note.D);
-    notes.add(Note.E);
-    notes.add(Note.F);
-    notes.add(Note.G);
-    notes.add(Note.A);
-    notes.add(Note.B);
+    this.notes = new ArrayList<String>();
+    notes.add("C");
+    notes.add("D");
+    notes.add("E");
+    notes.add("F");
+    notes.add("G");
+    notes.add("A");
+    notes.add("B");
     this.order = new ArrayList<Integer>();
     order.add(1);
     order.add(2);
@@ -190,7 +181,7 @@ public class RockBigTaskManager {
         "Note sequence: " + noteSequence[0] + noteSequence[1] + noteSequence[2] + noteSequence[3]);
   }
 
-  public Note[] getNoteSequence() {
+  public String[] getNoteSequence() {
     return noteSequence;
   }
 

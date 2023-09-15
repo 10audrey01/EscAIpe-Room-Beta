@@ -19,7 +19,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.GameState;
-import nz.ac.auckland.se206.RockBigTaskManager;
 import nz.ac.auckland.se206.RockBigTaskManager.Colour;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -52,9 +51,9 @@ public class RockController {
 
   private GameState gameState;
   private MediaPlayer guitarNotePlayer;
-  private RockBigTaskManager.Note[] noteSequence;
   private HashMap<Colour, Integer> orderColourMap;
   private ArrayList<String> audioNames;
+  private String[] noteSequence;
   private int numberOfCorrectGuitarClicks = 0;
 
   @FXML
@@ -181,34 +180,34 @@ public class RockController {
       orderColourMap = gameState.rockBigTaskManager.getOrderColourMap();
 
       // play the note of the guitar clicked according to the note sequence
-      RockBigTaskManager.Note noteToPlay = noteSequence[orderColourMap.get(guitarColour) - 1];
+      String noteToPlay = noteSequence[orderColourMap.get(guitarColour) - 1];
 
       switch (noteToPlay) { // switch statement to play the note
-        case C:
+        case "C":
           System.out.println("C note played");
           playGuitarNotePlayer("c2");
           break;
-        case D:
+        case "D":
           System.out.println("D note played");
           playGuitarNotePlayer("d2");
           break;
-        case E:
+        case "E":
           System.out.println("E note played");
           playGuitarNotePlayer("e2");
           break;
-        case F:
+        case "F":
           System.out.println("F note played");
           playGuitarNotePlayer("f2");
           break;
-        case G:
+        case "G":
           System.out.println("G note played");
           playGuitarNotePlayer("g2");
           break;
-        case A:
+        case "A":
           System.out.println("A note played");
           playGuitarNotePlayer("a2");
           break;
-        case B:
+        case "B":
           System.out.println("B note played");
           playGuitarNotePlayer("b2");
           break;
