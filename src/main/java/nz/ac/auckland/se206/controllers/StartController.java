@@ -3,6 +3,7 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,11 +27,11 @@ public class StartController {
   @FXML private ToggleButton sixMinsBtn;
   @FXML private Button startGameBtn;
 
-  private GameState gamestate;
+  private GameState gameState;
 
   @FXML
   private void initialize() {
-    this.gamestate = GameState.getInstance();
+    this.gameState = GameState.getInstance();
   }
 
   @FXML
@@ -102,10 +103,18 @@ public class StartController {
       difficultyDescriptionLabel.setText("Please select a time limit!");
       return;
     }
+    gameState = GameState.getInstance();
+    gameState.startGame(); // including generating tasks
     SceneManager.addUi(AppUi.CLASSICAL, App.loadFxml("classical"));
-    SceneManager.addUi(AppUi.PIANO, App.loadFxml("piano"));
     SceneManager.addUi(AppUi.RAVE, App.loadFxml("rave"));
     SceneManager.addUi(AppUi.ROCK, App.loadFxml("rock"));
+
+    FXMLLoader pianoLoader = new FXMLLoader(App.class.getResource("/fxml/piano.fxml"));
+    SceneManager.addUi(AppUi.PIANO, pianoLoader.load());
+
+    // add reference to piano controller to use methods that are not static
+    SceneManager.addController(AppUi.PIANO, pianoLoader.getController());
+
     Button current = (Button) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
@@ -115,6 +124,5 @@ public class StartController {
             + " and time: "
             + GameState.time
             + " minutes.");
-    gamestate.startGame();
   }
 }

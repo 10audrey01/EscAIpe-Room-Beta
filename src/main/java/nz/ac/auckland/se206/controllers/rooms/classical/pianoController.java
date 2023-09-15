@@ -108,14 +108,17 @@ public class PianoController {
     loadNotes();
 
     gameState = GameState.getInstance();
+    System.out.println(gameState.taskManager.largeTask);
     // gameState.timeManager.addToTimers(timerLabel);
     if (gameState.taskManager.largeTask
         == LargeTask.ROCK) { // execute if the chosen big task is ROCK
+      notesToPlay = "";
       String[] noteSequence = gameState.rockBigTaskManager.getNoteSequence();
       for (int i = 0; i < noteSequence.length; i++) {
         notesToPlay += noteSequence[i];
       }
       notesToPlay += notesToPlay; // repeat the sequence twice for 8 notes
+      System.out.println(notesToPlay);
       loadRockNotes();
     }
   }
@@ -174,6 +177,7 @@ public class PianoController {
         notesLetterList.get(i).setOpacity(0);
       }
     }
+    System.out.println("Rock Notes Loaded");
   }
 
   public String noteLetterUrlGetter(Character letter) {

@@ -98,10 +98,20 @@ public class ClassicalController {
   private void doClickedGrandPiano(MouseEvent event) throws IOException {
     System.out.println("Grand Piano Clicked");
     PianoController.resetNotesPlayed();
+
+    System.out.println("hASLJASLi");
+    // PianoController pianoController = (PianoController) SceneManager.getController(AppUi.PIANO);
+    // pianoController.loadRockNotes();
+    System.out.println("ALKJFALKF");
+
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
-    SceneManager.addUi(AppUi.PIANO, App.loadFxml("piano")); // reset ui to trigger initialize again
-    currentScene.setRoot(SceneManager.getUiRoot(AppUi.PIANO));
+    System.out.println(currentScene);
+
+    App.setRoot("piano");
+
+    // SceneManager.addUi(AppUi.PIANO, SceneManager.getUiRoot(AppUi.PIANO));
+    // currentScene.setRoot(SceneManager.getUiRoot(AppUi.PIANO));
   }
 
   @FXML

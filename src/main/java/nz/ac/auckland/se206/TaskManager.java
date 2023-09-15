@@ -43,6 +43,7 @@ public class TaskManager {
     Random random = new Random();
     int randomNumber = random.nextInt(3);
     largeTask = possibleLargeTasks[randomNumber];
+    largeTask = LargeTask.ROCK;
   }
 
   public void addTask(Task thisTask) {

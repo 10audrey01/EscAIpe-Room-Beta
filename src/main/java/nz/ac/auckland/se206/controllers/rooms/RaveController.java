@@ -193,7 +193,7 @@ public class RaveController {
   }
 
   public void isRiddleObject(String object) {
-    if (riddleObject.equals(object) && GameState.isRiddleResolved) {
+    if (riddleObject.equals(object)) { // } && GameState.isRiddleResolved) {
       GameState.isRiddleObjectFound = true;
       gameState.rockBigTaskManager.setLabelColours();
       gameState.rockBigTaskManager.setNoteSequence();
