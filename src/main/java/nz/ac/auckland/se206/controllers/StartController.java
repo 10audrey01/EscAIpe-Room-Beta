@@ -103,6 +103,7 @@ public class StartController {
       return;
     }
     SceneManager.addUi(AppUi.CLASSICAL, App.loadFxml("classical"));
+    SceneManager.addUi(AppUi.PIANO, App.loadFxml("piano"));
     SceneManager.addUi(AppUi.RAVE, App.loadFxml("rave"));
     SceneManager.addUi(AppUi.ROCK, App.loadFxml("rock"));
     Button current = (Button) event.getSource();

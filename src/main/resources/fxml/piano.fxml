@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.classical.PianoController">
+   <children>
+      <ImageView fitHeight="609.0" fitWidth="1280.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/PianoBackground.png" />
+         </image>
+      </ImageView>
+      <Pane layoutY="-3.0" prefHeight="295.0" prefWidth="1280.0" style="-fx-background-color: gray;" />
+      <ImageView fitWidth="1280.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/Notes/SheetMusic.png" />
+         </image>
+      </ImageView>
+      <ImageView fitWidth="1280.0" layoutX="-1.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/PianoKeys.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="636.0" layoutY="536.0" prefHeight="70.0" prefWidth="330.0">
+         <children>
+            <ImageView fitHeight="48.0" fitWidth="35.0" layoutX="236.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/ANote.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="35.0" layoutX="284.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/BNote.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="35.0" layoutX="6.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/CNote.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="35.0" layoutX="52.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/DNote.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="35.0" layoutX="98.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/ENote.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="35.0" layoutX="146.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/FNote.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="35.0" layoutX="189.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/GNote.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="cKey" layoutX="643.0" layoutY="329.0" onMouseClicked="#onClickedCKey" prefHeight="277.0" prefWidth="41.0" />
+      <Pane fx:id="dKey" layoutX="687.0" layoutY="329.0" onMouseClicked="#onClickedDKey" prefHeight="277.0" prefWidth="41.0" />
+      <Pane fx:id="eKey" layoutX="734.0" layoutY="329.0" onMouseClicked="#onClickedEKey" prefHeight="277.0" prefWidth="41.0" />
+      <Pane fx:id="fKey" layoutX="779.0" layoutY="329.0" onMouseClicked="#onClickedFKey" prefHeight="277.0" prefWidth="41.0" />
+      <Pane fx:id="gKey" layoutX="825.0" layoutY="329.0" onMouseClicked="#onClickedGKey" prefHeight="277.0" prefWidth="41.0" />
+      <Pane fx:id="aKey" layoutX="871.0" layoutY="329.0" onMouseClicked="#onClickedAKey" prefHeight="277.0" prefWidth="41.0" />
+      <Pane fx:id="bKey" layoutX="916.0" layoutY="329.0" onMouseClicked="#onClickedBKey" prefHeight="277.0" prefWidth="41.0" />
+      <ImageView fx:id="note1" fitHeight="40.0" fitWidth="200.0" layoutX="170.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/Notes/Note.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="note2" fitHeight="40.0" fitWidth="200.0" layoutX="250.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/Notes/Note.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="note3" fitHeight="40.0" fitWidth="200.0" layoutX="330.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/Notes/Note.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="note4" fitHeight="40.0" fitWidth="200.0" layoutX="410.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/Notes/Note.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="note5" fitHeight="40.0" fitWidth="200.0" layoutX="490.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/Notes/Note.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="note6" fitHeight="40.0" fitWidth="200.0" layoutX="570.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/Notes/Note.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="note7" fitHeight="40.0" fitWidth="200.0" layoutX="650.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/Notes/Note.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="note8" fitHeight="40.0" fitWidth="200.0" layoutX="730.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/Notes/Note.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="note9" fitHeight="40.0" fitWidth="200.0" layoutX="810.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/Notes/Note.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="note10" fitHeight="40.0" fitWidth="200.0" layoutX="890.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/Notes/Note.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="note11" fitHeight="40.0" fitWidth="200.0" layoutX="970.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/Notes/Note.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="note12" fitHeight="40.0" fitWidth="200.0" layoutX="1050.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/Notes/Note.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="note13" fitHeight="40.0" fitWidth="200.0" layoutX="1130.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/Notes/Note.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="note14" fitHeight="40.0" fitWidth="200.0" layoutX="1210.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/Notes/Note.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="10.0" layoutY="225.0" prefHeight="60.0" prefWidth="1270.0">
+         <children>
+            <ImageView fx:id="note1Letter" fitHeight="150.0" fitWidth="35.0" layoutX="170.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/BNote.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="note2Letter" fitHeight="150.0" fitWidth="35.0" layoutX="250.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/BNote.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="note3Letter" fitHeight="150.0" fitWidth="35.0" layoutX="330.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/BNote.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="note4Letter" fitHeight="150.0" fitWidth="35.0" layoutX="410.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/BNote.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="note5Letter" fitHeight="150.0" fitWidth="35.0" layoutX="490.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/BNote.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="note6Letter" fitHeight="150.0" fitWidth="35.0" layoutX="570.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/BNote.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="note7Letter" fitHeight="150.0" fitWidth="35.0" layoutX="650.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/BNote.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="note8Letter" fitHeight="150.0" fitWidth="35.0" layoutX="730.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/BNote.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="note9Letter" fitHeight="150.0" fitWidth="35.0" layoutX="810.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/BNote.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="note10Letter" fitHeight="150.0" fitWidth="35.0" layoutX="890.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/BNote.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="note11Letter" fitHeight="150.0" fitWidth="35.0" layoutX="970.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/BNote.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="note12Letter" fitHeight="150.0" fitWidth="35.0" layoutX="1050.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/BNote.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="note13Letter" fitHeight="150.0" fitWidth="35.0" layoutX="1130.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/BNote.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="note14Letter" fitHeight="150.0" fitWidth="35.0" layoutX="1210.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Notes/BNote.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="leavePiano" layoutX="529.0" layoutY="641.0" onMouseClicked="#onClickedLeavePiano" prefHeight="84.0" prefWidth="223.0" />
+   </children>
+</Pane>

@@ -3,6 +3,7 @@ package nz.ac.auckland.se206;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class TaskManager {
   public enum Task {
@@ -13,8 +14,16 @@ public class TaskManager {
     MUSICQUIZ
   }
 
+  public enum LargeTask {
+    RAVE,
+    ROCK,
+    CLASSICAL
+  }
+
   public ArrayList<Task> tasks;
   public ArrayList<Task> completedTasks;
+  public LargeTask largeTask;
+  private boolean isLargeTaskSolved;
 
   public TaskManager() {
     this.tasks = new ArrayList<Task>();
@@ -29,6 +38,11 @@ public class TaskManager {
       tasks.add(selectedTask);
       System.out.println(selectedTask);
     }
+
+    LargeTask[] possibleLargeTasks = {LargeTask.RAVE, LargeTask.ROCK, LargeTask.CLASSICAL};
+    Random random = new Random();
+    int randomNumber = random.nextInt(3);
+    largeTask = possibleLargeTasks[randomNumber];
   }
 
   public void addTask(Task thisTask) {
@@ -38,5 +52,9 @@ public class TaskManager {
   public void completeTask(Task thisTask) {
     this.tasks.remove(thisTask);
     this.completedTasks.add(thisTask);
+  }
+
+  public void completeLargeTask() {
+    this.isLargeTaskSolved = true;
   }
 }
