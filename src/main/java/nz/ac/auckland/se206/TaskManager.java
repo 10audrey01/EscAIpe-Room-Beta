@@ -29,6 +29,7 @@ public class TaskManager {
 
   public TaskManager() {
     this.tasks = new ArrayList<Task>();
+    generateTasks();
   }
 
   public LargeTask getCurrentLargeTask() {

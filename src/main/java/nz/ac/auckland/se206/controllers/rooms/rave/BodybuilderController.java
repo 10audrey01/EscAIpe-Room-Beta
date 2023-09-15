@@ -20,6 +20,7 @@ import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 import nz.ac.auckland.se206.puzzles.RavePuzzle;
 
 public class BodybuilderController {
+
   @FXML private TextArea speechBox;
   @FXML private ImageView hintImage;
   @FXML private Button btnOne;
@@ -43,19 +44,25 @@ public class BodybuilderController {
   @FXML private Circle digitFive;
   @FXML private Circle digitSix;
 
-  private GameState gamestate = GameState.getInstance();
+  private GameState gamestate;
   private RavePuzzle puzzleInstance;
   private String code = "";
   private String solution = "";
 
   @FXML
   private void initialize() throws IOException {
+    System.out.println("Start");
+    this.gamestate = GameState.getInstance();
+    this.gamestate.bodybuilderController = this;
     resetSafe();
+  }
+
+  public void initialiseCode() {
     if (gamestate.taskManager.getCurrentLargeTask() == LargeTask.RAVE) {
       RavePuzzle puzzle = (RavePuzzle) gamestate.taskManager.getLargeTaskInstance();
       this.puzzleInstance = puzzle;
       this.solution = puzzleInstance.getSolution();
-      System.out.println("Solution added to controller.");
+      System.out.println("Solution added to controller." + this.solution);
     }
   }
 
@@ -219,8 +226,8 @@ public class BodybuilderController {
   // this way hinting for the player the correctness of the inputs that they
   @FXML
   private void onClickSubmit(ActionEvent action) throws IOException {
-    System.out.println("submitted");
-    if (this.code.length() == 4) {
+    System.out.println("submitted code " + code);
+    if (this.code.length() == 6) {
       for (int i = 0; i < 6; i++) {
         if (code.charAt(i) == (solution.charAt(i))) {
           // switch case for setting correct values to the solution to green.
