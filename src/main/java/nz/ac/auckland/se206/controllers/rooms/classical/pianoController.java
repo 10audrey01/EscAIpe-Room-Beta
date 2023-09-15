@@ -11,8 +11,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.TaskManager.LargeTask;
 
 public class PianoController {
 
@@ -69,15 +71,15 @@ public class PianoController {
   private static final int A_NOTE_LOCATION = 15;
   private static final int B_NOTE_LOCATION = 0;
 
-  public ArrayList<ImageView> notesList;
-
-  public ArrayList<ImageView> notesLetterList;
-
   // winning squence
   public static String notesToPlay = "ABCDEFGABCDEFG";
 
   // sequence of notes played by user
   public static String notesPlayed = "";
+
+  private GameState gameState;
+  public ArrayList<ImageView> notesList;
+  public ArrayList<ImageView> notesLetterList;
 
   @FXML
   private void initialize() throws IOException {
@@ -104,6 +106,18 @@ public class PianoController {
                 note13Letter,
                 note14Letter));
     loadNotes();
+
+    gameState = GameState.getInstance();
+    // gameState.timeManager.addToTimers(timerLabel);
+    if (gameState.taskManager.largeTask
+        == LargeTask.ROCK) { // execute if the chosen big task is ROCK
+      String[] noteSequence = gameState.rockBigTaskManager.getNoteSequence();
+      for (int i = 0; i < noteSequence.length; i++) {
+        notesToPlay += noteSequence[i];
+      }
+      notesToPlay += notesToPlay; // repeat the sequence twice for 8 notes
+      loadRockNotes();
+    }
   }
 
   public static void resetNotesPlayed() {
@@ -148,6 +162,17 @@ public class PianoController {
           () -> {
             current.setImage(currentImage);
           });
+    }
+  }
+
+  public void loadRockNotes() throws IOException {
+    if (GameState.isNoteSequenceFound) {
+      loadNotes();
+    } else {
+      for (int i = 0; i < notesList.size(); i++) {
+        notesList.get(i).setOpacity(0);
+        notesLetterList.get(i).setOpacity(0);
+      }
     }
   }
 
