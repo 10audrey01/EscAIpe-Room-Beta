@@ -118,7 +118,7 @@ public class RaveController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
   }
 
-    @FXML
+  @FXML
   private void toggleChat() {
     if (chatOpened) {
       chatBoxPane.setDisable(true);
