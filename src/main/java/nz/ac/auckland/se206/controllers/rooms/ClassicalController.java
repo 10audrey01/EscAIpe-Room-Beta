@@ -16,6 +16,7 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.TaskManager.LargeTask;
 import nz.ac.auckland.se206.controllers.rooms.classical.PianoController;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
@@ -52,15 +53,17 @@ public class ClassicalController {
     gameState.timeManager.addToTimers(timerLabel);
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
-    gameState.rockBigTaskManager.addAllRockTaskElements(
-        colourLabel1,
-        colourLabel2,
-        colourLabel3,
-        colourLabel4,
-        notePane,
-        toggleNoteBtn,
-        noteSequenceLabel,
-        pointingArrowGif);
+    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
+      gameState.rockBigTaskManager.addAllRockTaskElements(
+          colourLabel1,
+          colourLabel2,
+          colourLabel3,
+          colourLabel4,
+          notePane,
+          toggleNoteBtn,
+          noteSequenceLabel,
+          pointingArrowGif);
+    }
     chatOpened = false;
   }
 

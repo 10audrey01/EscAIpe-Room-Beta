@@ -22,6 +22,7 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.RockBigTaskManager.Colour;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.TaskManager.LargeTask;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
 public class RockController {
@@ -63,15 +64,17 @@ public class RockController {
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
     gameState.chatManager.generateInitialMessage();
-    gameState.rockBigTaskManager.addAllRockTaskElements(
-        colourLabel1,
-        colourLabel2,
-        colourLabel3,
-        colourLabel4,
-        notePane,
-        toggleNoteBtn,
-        noteSequenceLabel,
-        pointingArrowGif);
+    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
+      gameState.rockBigTaskManager.addAllRockTaskElements(
+          colourLabel1,
+          colourLabel2,
+          colourLabel3,
+          colourLabel4,
+          notePane,
+          toggleNoteBtn,
+          noteSequenceLabel,
+          pointingArrowGif);
+    }
     audioNames = new ArrayList<String>();
     audioNames.add("c2");
     audioNames.add("d2");
@@ -111,29 +114,45 @@ public class RockController {
   @FXML
   private void onClickCyanGuitar(MouseEvent event) throws URISyntaxException {
     System.out.println("cyan guitar clicked");
-    playNote(Colour.CYAN);
-    checkGuitarSequence(Colour.CYAN);
+    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
+      playNote(Colour.CYAN);
+      checkGuitarSequence(Colour.CYAN);
+    } else {
+      playRandomNote();
+    }
   }
 
   @FXML
   private void onClickBlueGuitar(MouseEvent event) throws URISyntaxException {
     System.out.println("blue guitar clicked");
-    playNote(Colour.BLUE);
-    checkGuitarSequence(Colour.BLUE);
+    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
+      playNote(Colour.BLUE);
+      checkGuitarSequence(Colour.BLUE);
+    } else {
+      playRandomNote();
+    }
   }
 
   @FXML
   private void onClickPurpleGuitar(MouseEvent event) throws URISyntaxException {
     System.out.println("purple guitar clicked");
-    playNote(Colour.PURPLE);
-    checkGuitarSequence(Colour.PURPLE);
+    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
+      playNote(Colour.PURPLE);
+      checkGuitarSequence(Colour.PURPLE);
+    } else {
+      playRandomNote();
+    }
   }
 
   @FXML
   private void onClickYellowGuitar(MouseEvent event) throws URISyntaxException {
     System.out.println("yellow guitar clicked");
-    playNote(Colour.YELLOW);
-    checkGuitarSequence(Colour.YELLOW);
+    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
+      playNote(Colour.YELLOW);
+      checkGuitarSequence(Colour.YELLOW);
+    } else {
+      playRandomNote();
+    }
   }
 
   @FXML
@@ -175,49 +194,56 @@ public class RockController {
   }
 
   public void playNote(Colour guitarColour) throws URISyntaxException {
-    if (GameState.isRiddleObjectFound && !GameState.isNoteSequenceFound) {
-      noteSequence = gameState.rockBigTaskManager.getNoteSequence();
-      orderColourMap = gameState.rockBigTaskManager.getOrderColourMap();
+    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
 
-      // play the note of the guitar clicked according to the note sequence
-      String noteToPlay = noteSequence[orderColourMap.get(guitarColour) - 1];
+      if (GameState.isRiddleObjectFound && !GameState.isNoteSequenceFound) {
+        noteSequence = gameState.rockBigTaskManager.getNoteSequence();
+        orderColourMap = gameState.rockBigTaskManager.getOrderColourMap();
 
-      switch (noteToPlay) { // switch statement to play the note
-        case "C":
-          System.out.println("C note played");
-          playGuitarNotePlayer("c2");
-          break;
-        case "D":
-          System.out.println("D note played");
-          playGuitarNotePlayer("d2");
-          break;
-        case "E":
-          System.out.println("E note played");
-          playGuitarNotePlayer("e2");
-          break;
-        case "F":
-          System.out.println("F note played");
-          playGuitarNotePlayer("f2");
-          break;
-        case "G":
-          System.out.println("G note played");
-          playGuitarNotePlayer("g2");
-          break;
-        case "A":
-          System.out.println("A note played");
-          playGuitarNotePlayer("a2");
-          break;
-        case "B":
-          System.out.println("B note played");
-          playGuitarNotePlayer("b2");
-          break;
+        // play the note of the guitar clicked according to the note sequence
+        String noteToPlay = noteSequence[orderColourMap.get(guitarColour) - 1];
+
+        switch (noteToPlay) { // switch statement to play the note
+          case "C":
+            System.out.println("C note played");
+            playGuitarNotePlayer("c2");
+            break;
+          case "D":
+            System.out.println("D note played");
+            playGuitarNotePlayer("d2");
+            break;
+          case "E":
+            System.out.println("E note played");
+            playGuitarNotePlayer("e2");
+            break;
+          case "F":
+            System.out.println("F note played");
+            playGuitarNotePlayer("f2");
+            break;
+          case "G":
+            System.out.println("G note played");
+            playGuitarNotePlayer("g2");
+            break;
+          case "A":
+            System.out.println("A note played");
+            playGuitarNotePlayer("a2");
+            break;
+          case "B":
+            System.out.println("B note played");
+            playGuitarNotePlayer("b2");
+            break;
+        }
+      } else { // play a random note if the note sequence is not found and the riddle object is not
+        // found
+        playRandomNote();
       }
-    } else { // play a random note if the note sequence is not found and the riddle object is not
-      // found
-      String randomNote = audioNames.get((int) (Math.random() * 7));
-      playGuitarNotePlayer(randomNote);
-      System.out.println("Random note " + randomNote + " played");
     }
+  }
+
+  public void playRandomNote() throws URISyntaxException {
+    String randomNote = audioNames.get((int) (Math.random() * 7));
+    playGuitarNotePlayer(randomNote);
+    System.out.println("Random note " + randomNote + " played");
   }
 
   public void playGuitarNotePlayer(String audioName) throws URISyntaxException {
