@@ -3,11 +3,14 @@ package nz.ac.auckland.se206.controllers.rooms.classical;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
@@ -50,18 +53,34 @@ public class PianoController {
   @FXML private Pane gKey;
   @FXML private Pane leavePiano;
 
+  // private static final int C_NOTE_LOCATION = 193;
+  // private static final int D_NOTE_LOCATION = 178;
+  // private static final int E_NOTE_LOCATION = 163;
+  // private static final int F_NOTE_LOCATION = 148;
+  // private static final int G_NOTE_LOCATION = 133;
+  // private static final int A_NOTE_LOCATION = 118;
+  // private static final int B_NOTE_LOCATION = 103;
+
+  private static final int C_NOTE_LOCATION = 90;
+  private static final int D_NOTE_LOCATION = 75;
+  private static final int E_NOTE_LOCATION = 60;
+  private static final int F_NOTE_LOCATION = 45;
+  private static final int G_NOTE_LOCATION = 30;
+  private static final int A_NOTE_LOCATION = 15;
+  private static final int B_NOTE_LOCATION = 0;
+
   public ArrayList<ImageView> notesList;
 
   public ArrayList<ImageView> notesLetterList;
 
   // winning squence
-  public static String notesToPlay = "BBBBBBBBBBBBBBB";
+  public static String notesToPlay = "ABCDEFGABCDEFG";
 
   // sequence of notes played by user
   public static String notesPlayed = "";
 
   @FXML
-  private void initialize() {
+  private void initialize() throws IOException {
     notesList =
         new ArrayList<ImageView>(
             List.of(
@@ -84,14 +103,56 @@ public class PianoController {
                 note12Letter,
                 note13Letter,
                 note14Letter));
+    loadNotes();
   }
 
   public static void resetNotesPlayed() {
     notesPlayed = "";
   }
 
-  public String noteLetterUrlGetter(String letter) {
-    String url = "..\\images\\classicalRoom\\Notes\\" + letter.toUpperCase() + "Note.png";
+  public void loadNotes() throws IOException {
+    for (int i = 0; i < notesList.size(); i++) {
+      switch (notesToPlay.charAt(i)) {
+        case 'A':
+          notesList.get(i).setY(A_NOTE_LOCATION);
+          break;
+        case 'B':
+          notesList.get(i).setY(B_NOTE_LOCATION);
+          break;
+        case 'C':
+          notesList.get(i).setY(C_NOTE_LOCATION);
+          break;
+        case 'D':
+          notesList.get(i).setY(D_NOTE_LOCATION);
+          break;
+        case 'E':
+          notesList.get(i).setY(E_NOTE_LOCATION);
+          break;
+        case 'F':
+          notesList.get(i).setY(F_NOTE_LOCATION);
+          break;
+        case 'G':
+          notesList.get(i).setY(G_NOTE_LOCATION);
+          break;
+        default:
+          break;
+      }
+
+      notesList.get(i).setOpacity(100);
+
+      ImageView current = (ImageView) notesLetterList.get(i);
+
+      Image currentImage =
+          new Image(App.class.getResource(noteLetterUrlGetter(notesToPlay.charAt(i))).openStream());
+      Platform.runLater(
+          () -> {
+            current.setImage(currentImage);
+          });
+    }
+  }
+
+  public String noteLetterUrlGetter(Character letter) {
+    String url = "/images/classicalRoom/Notes/" + Character.toUpperCase(letter) + "Note.png";
     return url;
   }
 
