@@ -80,7 +80,7 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="195.0" prefWidth="1232.0">
                <children>
-                  <TextArea fx:id="textArea" editable="false" prefHeight="159.0" prefWidth="1222.0">
+                  <TextArea fx:id="textArea" editable="false" prefHeight="159.0" prefWidth="1222.0" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>

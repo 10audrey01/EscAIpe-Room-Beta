@@ -71,11 +71,11 @@ public class ChatManager {
   }
 
   public void addMessage(ChatMessage msg) {
-    messages = messages.concat(msg.getRole() + ": " + msg.getContent() + "\n\n");
+    messages = msg.getRole() + ": " + msg.getContent() + "\n\n";
     Platform.runLater(
         () -> {
           for (TextArea textArea : TextAreas) {
-            textArea.setText(messages);
+            textArea.appendText(messages);
           }
         });
   }
