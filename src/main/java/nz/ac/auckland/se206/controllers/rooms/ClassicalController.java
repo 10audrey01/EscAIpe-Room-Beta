@@ -102,7 +102,7 @@ public class ClassicalController {
     PianoController.resetNotesPlayed();
 
     PianoController pianoController = (PianoController) SceneManager.getController(AppUi.PIANO);
-    pianoController.loadNotes();
+    pianoController.loadRockNotes();
 
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
