@@ -51,6 +51,7 @@ public class App extends Application {
     SceneManager.addUi(AppUi.RAVE, loadFxml("rave"));
     SceneManager.addUi(AppUi.ROCK, loadFxml("rock"));
     SceneManager.addUi(AppUi.PIANO, loadFxml("piano"));
+    SceneManager.addUi(AppUi.BODYBUILDER, loadFxml("bodybuilder"));
 
     scene = new Scene(SceneManager.getUiRoot(AppUi.START), 1280, 720);
 
