@@ -73,6 +73,7 @@ public class RockBigTaskManager {
     order.add(4);
     Collections.shuffle(order); // randomise the order of the numbers
     this.noteSequenceString = "";
+    setNoteSequence();
   }
 
   public void addAllRockTaskElements(

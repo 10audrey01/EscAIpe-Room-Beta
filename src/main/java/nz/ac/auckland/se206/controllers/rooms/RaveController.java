@@ -196,7 +196,6 @@ public class RaveController {
     if (riddleObject.equals(object)) { // } && GameState.isRiddleResolved) {
       GameState.isRiddleObjectFound = true;
       gameState.rockBigTaskManager.setLabelColours();
-      gameState.rockBigTaskManager.setNoteSequence();
       gameState.rockBigTaskManager.setOrderColourMap();
       gameState.rockBigTaskManager.setDisableNoteButtons(false);
       gameState.rockBigTaskManager.setVisibilityNoteButtons(true);

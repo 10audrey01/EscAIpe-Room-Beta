@@ -13,7 +13,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
-import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -99,19 +98,13 @@ public class ClassicalController {
     System.out.println("Grand Piano Clicked");
     PianoController.resetNotesPlayed();
 
-    System.out.println("hASLJASLi");
-    // PianoController pianoController = (PianoController) SceneManager.getController(AppUi.PIANO);
-    // pianoController.loadRockNotes();
-    System.out.println("ALKJFALKF");
+    PianoController pianoController = (PianoController) SceneManager.getController(AppUi.PIANO);
+    pianoController.loadNotes();
 
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
-    System.out.println(currentScene);
 
-    App.setRoot("piano");
-
-    // SceneManager.addUi(AppUi.PIANO, SceneManager.getUiRoot(AppUi.PIANO));
-    // currentScene.setRoot(SceneManager.getUiRoot(AppUi.PIANO));
+    currentScene.setRoot(SceneManager.getUiRoot(AppUi.PIANO));
   }
 
   @FXML

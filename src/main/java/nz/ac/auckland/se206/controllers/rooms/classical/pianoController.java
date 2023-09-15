@@ -117,9 +117,13 @@ public class PianoController {
       for (int i = 0; i < noteSequence.length; i++) {
         notesToPlay += noteSequence[i];
       }
-      notesToPlay += notesToPlay; // repeat the sequence twice for 8 notes
+      notesToPlay +=
+          notesToPlay
+              + notesToPlay
+              + noteSequence[0]
+              + noteSequence[1]; // repeat the sequence for 14 notes
       System.out.println(notesToPlay);
-      loadRockNotes();
+      loadNotes();
     }
   }
 
@@ -166,18 +170,6 @@ public class PianoController {
             current.setImage(currentImage);
           });
     }
-  }
-
-  public void loadRockNotes() throws IOException {
-    if (GameState.isNoteSequenceFound) {
-      loadNotes();
-    } else {
-      for (int i = 0; i < notesList.size(); i++) {
-        notesList.get(i).setOpacity(0);
-        notesLetterList.get(i).setOpacity(0);
-      }
-    }
-    System.out.println("Rock Notes Loaded");
   }
 
   public String noteLetterUrlGetter(Character letter) {
