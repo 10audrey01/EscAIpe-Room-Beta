@@ -7,8 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
@@ -16,7 +14,6 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.TaskManager.LargeTask;
-import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 import nz.ac.auckland.se206.puzzles.RavePuzzle;
 
 public class BodybuilderController {
@@ -84,70 +81,6 @@ public class BodybuilderController {
     if (this.code.length() < 6) {
       this.code += Integer.toString(number);
       codeInputText.setText(code);
-    }
-  }
-
-  /**
-   * Handles the key pressed event. Uses a switch case from the keyboard key pressed to result in
-   * the respective button function being run. Handles using backspace to delete and enter as
-   * submit. Otherwise, any other key will do nothing.
-   *
-   * @param event the key event
-   * @throws IOException
-   * @throws ApiProxyException
-   */
-  @FXML
-  private void onKeyPressed(KeyEvent event) throws ApiProxyException, IOException {
-    KeyCode keyCode = event.getCode();
-    switch (keyCode) {
-      case BACK_SPACE:
-        onClickRemove(new ActionEvent());
-        break;
-      case ENTER:
-        onClickSubmit(new ActionEvent());
-        break;
-      case DIGIT0:
-      case NUMPAD0:
-        onClickZero(new ActionEvent());
-        break;
-      case DIGIT1:
-      case NUMPAD1:
-        onClickOne(new ActionEvent());
-        break;
-      case DIGIT2:
-      case NUMPAD2:
-        onClickTwo(new ActionEvent());
-        break;
-      case DIGIT3:
-      case NUMPAD3:
-        onClickThree(new ActionEvent());
-        break;
-      case DIGIT4:
-      case NUMPAD4:
-        onClickFour(new ActionEvent());
-        break;
-      case DIGIT5:
-      case NUMPAD5:
-        onClickFive(new ActionEvent());
-        break;
-      case DIGIT6:
-      case NUMPAD6:
-        onClickSix(new ActionEvent());
-        break;
-      case DIGIT7:
-      case NUMPAD7:
-        onClickSeven(new ActionEvent());
-        break;
-      case DIGIT8:
-      case NUMPAD8:
-        onClickEight(new ActionEvent());
-        break;
-      case DIGIT9:
-      case NUMPAD9:
-        onClickNine(new ActionEvent());
-        break;
-      default:
-        break;
     }
   }
 
