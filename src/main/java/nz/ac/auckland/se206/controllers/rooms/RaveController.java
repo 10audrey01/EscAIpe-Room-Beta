@@ -53,6 +53,7 @@ public class RaveController {
   @FXML private TextArea textArea;
   @FXML private TextField textField;
   @FXML private ToggleButton toggleNoteBtn;
+  @FXML private ImageView pointingArrowGif;
   @FXML private boolean chatOpened;
 
   private GameState gameState;
@@ -70,6 +71,7 @@ public class RaveController {
     gameState.rockBigTaskManager.addToNotePanes(notePane);
     gameState.rockBigTaskManager.addToNoteButtons(toggleNoteBtn);
     gameState.rockBigTaskManager.addToNoteSequenceLabels(noteSequenceLabel);
+    gameState.rockBigTaskManager.addToArrows(pointingArrowGif);
     chatOpened = false;
 
     objects = new ArrayList<String>();
@@ -186,6 +188,7 @@ public class RaveController {
   @FXML
   private void onToggleNote() {
     gameState.rockBigTaskManager.setVisibilityNotePanes(true);
+    gameState.rockBigTaskManager.setVisibilityArrows(false);
   }
 
   public void isRiddleObject(String object) {
@@ -196,6 +199,7 @@ public class RaveController {
       gameState.rockBigTaskManager.setOrderColourMap();
       gameState.rockBigTaskManager.setDisableNoteButtons(false);
       gameState.rockBigTaskManager.setVisibilityNoteButtons(true);
+      gameState.rockBigTaskManager.setVisibilityArrows(true);
     }
   }
 }

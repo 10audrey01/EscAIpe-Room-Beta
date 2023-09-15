@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -39,6 +40,7 @@ public class ClassicalController {
   @FXML private TextArea textArea;
   @FXML private TextField textField;
   @FXML private ToggleButton toggleNoteBtn;
+  @FXML private ImageView pointingArrowGif;
   @FXML private boolean chatOpened;
 
   private GameState gameState;
@@ -56,6 +58,7 @@ public class ClassicalController {
     gameState.rockBigTaskManager.addToNotePanes(notePane);
     gameState.rockBigTaskManager.addToNoteButtons(toggleNoteBtn);
     gameState.rockBigTaskManager.addToNoteSequenceLabels(noteSequenceLabel);
+    gameState.rockBigTaskManager.addToArrows(pointingArrowGif);
     chatOpened = false;
   }
 
@@ -138,5 +141,6 @@ public class ClassicalController {
   @FXML
   private void onToggleNote() {
     gameState.rockBigTaskManager.setVisibilityNotePanes(true);
+    gameState.rockBigTaskManager.setVisibilityArrows(false);
   }
 }

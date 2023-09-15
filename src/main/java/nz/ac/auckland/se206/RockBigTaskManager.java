@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 public class RockBigTaskManager {
@@ -43,6 +44,7 @@ public class RockBigTaskManager {
   private ArrayList<Pane> notePanes;
   private ArrayList<ToggleButton> noteButtons;
   private ArrayList<Label> noteSequenceLabels;
+  private ArrayList<ImageView> arrows;
   private ArrayList<Colour> colours;
   private ArrayList<Note> notes;
   private ArrayList<Integer> order;
@@ -58,6 +60,7 @@ public class RockBigTaskManager {
     this.notePanes = new ArrayList<Pane>();
     this.noteButtons = new ArrayList<ToggleButton>();
     this.noteSequenceLabels = new ArrayList<Label>();
+    this.arrows = new ArrayList<ImageView>();
     this.colours = new ArrayList<Colour>();
     colours.add(Colour.YELLOW);
     colours.add(Colour.BLUE);
@@ -109,6 +112,10 @@ public class RockBigTaskManager {
     noteSequenceLabels.add(label);
   }
 
+  public void addToArrows(ImageView arrow) {
+    arrows.add(arrow);
+  }
+
   public void setVisibilityNotePanes(boolean visibility) {
     for (Pane pane : notePanes) {
       pane.setStyle(
@@ -123,6 +130,12 @@ public class RockBigTaskManager {
   public void setVisibilityNoteButtons(boolean visibility) {
     for (ToggleButton button : noteButtons) {
       button.setVisible(visibility);
+    }
+  }
+
+  public void setVisibilityArrows(boolean visibility) {
+    for (ImageView arrow : arrows) {
+      arrow.setVisible(visibility);
     }
   }
 
