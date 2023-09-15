@@ -54,6 +54,12 @@ public class PianoController {
 
   public ArrayList<ImageView> notesLetterList;
 
+  // winning squence
+  public static String notesToPlay = "BBBBBBBBBBBBBBB";
+
+  // sequence of notes played by user
+  public static String notesPlayed = "";
+
   @FXML
   private void initialize() {
     notesList =
@@ -80,8 +86,9 @@ public class PianoController {
                 note14Letter));
   }
 
-  // winning squence
-  public static String notesToPlay = "";
+  public static void resetNotesPlayed() {
+    notesPlayed = "";
+  }
 
   public String noteLetterUrlGetter(String letter) {
     String url = "..\\images\\classicalRoom\\Notes\\" + letter.toUpperCase() + "Note.png";
@@ -91,41 +98,66 @@ public class PianoController {
   @FXML
   public void onClickedAKey(MouseEvent event) throws IOException {
     System.out.println("A Key Pressed");
+    notesPlayed += "A";
+    checkWin();
   }
 
   @FXML
   public void onClickedBKey(MouseEvent event) throws IOException {
     System.out.println("B Key Pressed");
+    notesPlayed += "B";
+    checkWin();
   }
 
   @FXML
   public void onClickedCKey(MouseEvent event) throws IOException {
     System.out.println("C Key Pressed");
+    notesPlayed += "C";
+    checkWin();
   }
 
   @FXML
   public void onClickedDKey(MouseEvent event) throws IOException {
     System.out.println("D Key Pressed");
+    notesPlayed += "D";
+    checkWin();
   }
 
   @FXML
   public void onClickedEKey(MouseEvent event) throws IOException {
     System.out.println("E Key Pressed");
+    notesPlayed += "E";
+    checkWin();
   }
 
   @FXML
   public void onClickedFKey(MouseEvent event) throws IOException {
     System.out.println("F Key Pressed");
+    notesPlayed += "F";
+    checkWin();
   }
 
   @FXML
   public void onClickedGKey(MouseEvent event) throws IOException {
     System.out.println("G Key Pressed");
+    notesPlayed += "G";
+    checkWin();
+  }
+
+  public void checkWin() throws IOException {
+    System.out.println(notesPlayed);
+    if (notesPlayed.contains(notesToPlay)) {
+      System.out.println("You Win");
+      Pane current = (Pane) leavePiano.getParent();
+      Scene currentScene = current.getScene();
+      currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICAL));
+    }
   }
 
   @FXML
   public void onClickedLeavePiano(MouseEvent event) throws IOException {
     System.out.println("Leave Piano Clicked");
+    notesPlayed = "";
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICAL));
