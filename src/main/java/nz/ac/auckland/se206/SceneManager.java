@@ -8,7 +8,8 @@ public class SceneManager {
     START,
     CLASSICAL,
     RAVE,
-    ROCK
+    ROCK,
+    PIANO
   }
 
   private static HashMap<AppUi, Parent> sceneMap = new HashMap<AppUi, Parent>();

@@ -14,6 +14,7 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.controllers.rooms.classical.PianoController;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
 public class ClassicalController {
@@ -76,6 +77,10 @@ public class ClassicalController {
   @FXML
   private void doClickedGrandPiano(MouseEvent event) throws IOException {
     System.out.println("Grand Piano Clicked");
+    PianoController.resetNotesPlayed();
+    Pane current = (Pane) event.getSource();
+    Scene currentScene = current.getScene();
+    currentScene.setRoot(SceneManager.getUiRoot(AppUi.PIANO));
   }
 
   @FXML
