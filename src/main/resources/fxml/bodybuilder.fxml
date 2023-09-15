@@ -37,5 +37,6 @@
       <Circle fx:id="digitFour" fill="DODGERBLUE" layoutX="500.0" layoutY="228.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="digitFive" fill="DODGERBLUE" layoutX="519.0" layoutY="228.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="digitSix" fill="DODGERBLUE" layoutX="537.0" layoutY="228.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Button fx:id="btnReturn" layoutX="524.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickReturn" text="Return" />
    </children>
 </Pane>
