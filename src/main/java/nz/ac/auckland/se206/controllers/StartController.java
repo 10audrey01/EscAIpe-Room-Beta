@@ -104,10 +104,11 @@ public class StartController {
       return;
     }
     gameState = GameState.getInstance();
-    gameState.startGame(); // including generating tasks
+
     SceneManager.addUi(AppUi.CLASSICAL, App.loadFxml("classical"));
     SceneManager.addUi(AppUi.RAVE, App.loadFxml("rave"));
     SceneManager.addUi(AppUi.ROCK, App.loadFxml("rock"));
+    SceneManager.addUi(AppUi.BODYBUILDER, App.loadFxml("bodybuilder"));
 
     FXMLLoader pianoLoader = new FXMLLoader(App.class.getResource("/fxml/piano.fxml"));
     SceneManager.addUi(AppUi.PIANO, pianoLoader.load());
@@ -124,5 +125,6 @@ public class StartController {
             + " and time: "
             + GameState.time
             + " minutes.");
+    gameState.startGame(); // including generating tasks
   }
 }

@@ -103,6 +103,9 @@ public class RaveController {
   private void onClickBodybuilder(MouseEvent event) {
     System.out.println("bodybuilder clicked");
     isRiddleObject("bodybuilder");
+    Pane current = (Pane) event.getSource();
+    Scene currentScene = current.getScene();
+    currentScene.setRoot(SceneManager.getUiRoot(AppUi.BODYBUILDER));
   }
 
   @FXML

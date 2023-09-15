@@ -47,6 +47,7 @@ public class App extends Application {
   public void start(final Stage stage) throws IOException {
 
     SceneManager.addUi(AppUi.START, loadFxml("start"));
+
     scene = new Scene(SceneManager.getUiRoot(AppUi.START), 1280, 720);
 
     String css = App.class.getResource("/css/app.css").toExternalForm();

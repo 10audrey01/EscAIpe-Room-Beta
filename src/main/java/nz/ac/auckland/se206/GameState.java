@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206;
 
+import nz.ac.auckland.se206.controllers.rooms.rave.BodybuilderController;
+
 /** Represents the state of the game. */
 public class GameState {
   public enum Difficulty {
@@ -39,6 +41,8 @@ public class GameState {
   public ChatManager chatManager;
   public RockBigTaskManager rockBigTaskManager;
 
+  public BodybuilderController bodybuilderController;
+
   public static GameState getInstance() {
     if (instance == null) {
       instance = new GameState();
@@ -55,11 +59,9 @@ public class GameState {
   }
 
   public void startGame() {
-    // reset task and chat manager
-    this.taskManager = new TaskManager();
-
     this.taskManager.generateTasks();
     this.timeManager.setTime(time.getTime() * 60);
     this.timeManager.startCountdown();
+    this.bodybuilderController.initialiseCode();
   }
 }

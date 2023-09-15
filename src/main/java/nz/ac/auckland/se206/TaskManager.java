@@ -3,7 +3,8 @@ package nz.ac.auckland.se206;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
+import nz.ac.auckland.se206.puzzles.Puzzle;
+import nz.ac.auckland.se206.puzzles.RavePuzzle;
 
 public class TaskManager {
   public enum Task {
@@ -24,9 +25,19 @@ public class TaskManager {
   public ArrayList<Task> completedTasks;
   public LargeTask largeTask;
   private boolean isLargeTaskSolved;
+  private Puzzle largeTaskInstance;
 
   public TaskManager() {
     this.tasks = new ArrayList<Task>();
+    generateTasks();
+  }
+
+  public LargeTask getCurrentLargeTask() {
+    return this.largeTask;
+  }
+
+  public Puzzle getLargeTaskInstance() {
+    return this.largeTaskInstance;
   }
 
   public void generateTasks() {
@@ -39,10 +50,16 @@ public class TaskManager {
       System.out.println(selectedTask);
     }
 
-    LargeTask[] possibleLargeTasks = {LargeTask.RAVE, LargeTask.ROCK, LargeTask.CLASSICAL};
-    Random random = new Random();
-    int randomNumber = random.nextInt(3);
-    largeTask = possibleLargeTasks[randomNumber];
+    // LargeTask[] possibleLargeTasks = {LargeTask.RAVE, LargeTask.ROCK, LargeTask.CLASSICAL};
+    // Random random = new Random();
+    // int randomNumber = random.nextInt(3);
+    // this.largeTask = possibleLargeTasks[randomNumber];
+
+    this.largeTask = LargeTask.ROCK;
+
+    if (this.largeTask == LargeTask.RAVE) {
+      this.largeTaskInstance = new RavePuzzle();
+    }
   }
 
   public void addTask(Task thisTask) {

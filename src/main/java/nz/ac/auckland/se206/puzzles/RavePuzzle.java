@@ -3,7 +3,7 @@ package nz.ac.auckland.se206.puzzles;
 import java.util.Random;
 import nz.ac.auckland.se206.GameState;
 
-public class RavePuzzle {
+public class RavePuzzle implements Puzzle {
   // rave puzzle - Find the safe, unlock the code through finding respective object in each of rock
   // and classical rooms
   private GameState gamestate;
@@ -24,7 +24,13 @@ public class RavePuzzle {
       solution += Integer.toString(currentNumber);
     }
 
+    System.out.println(solution);
+
     this.safeSolution = solution;
+  }
+
+  public String getSolution() {
+    return this.safeSolution;
   }
 
   // sets the isSafeFound to true
