@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -14,6 +16,7 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.TaskManager.LargeTask;
 import nz.ac.auckland.se206.controllers.rooms.classical.PianoController;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
@@ -29,9 +32,17 @@ public class ClassicalController {
   @FXML private Pane tambourinePane;
   @FXML private Pane trumpetPane;
   @FXML private Pane chatBoxPane;
+  @FXML private Pane notePane;
+  @FXML private Label colourLabel1;
+  @FXML private Label colourLabel2;
+  @FXML private Label colourLabel3;
+  @FXML private Label colourLabel4;
   @FXML private Label timerLabel;
+  @FXML private Label noteSequenceLabel;
   @FXML private TextArea textArea;
   @FXML private TextField textField;
+  @FXML private ToggleButton toggleNoteBtn;
+  @FXML private ImageView pointingArrowGif;
   @FXML private boolean chatOpened;
 
   private GameState gameState;
@@ -42,6 +53,17 @@ public class ClassicalController {
     gameState.timeManager.addToTimers(timerLabel);
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
+    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
+      gameState.rockBigTaskManager.addAllRockTaskElements(
+          colourLabel1,
+          colourLabel2,
+          colourLabel3,
+          colourLabel4,
+          notePane,
+          toggleNoteBtn,
+          noteSequenceLabel,
+          pointingArrowGif);
+    }
     chatOpened = false;
   }
 
@@ -78,8 +100,13 @@ public class ClassicalController {
   private void doClickedGrandPiano(MouseEvent event) throws IOException {
     System.out.println("Grand Piano Clicked");
     PianoController.resetNotesPlayed();
+
+    PianoController pianoController = (PianoController) SceneManager.getController(AppUi.PIANO);
+    pianoController.loadRockNotes();
+
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
+
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.PIANO));
   }
 
@@ -123,5 +150,11 @@ public class ClassicalController {
       gameState = GameState.getInstance();
       gameState.chatManager.onSendMessage(textField);
     }
+  }
+
+  @FXML
+  private void onToggleNote() {
+    gameState.rockBigTaskManager.setVisibilityNotePanes(true);
+    gameState.rockBigTaskManager.setVisibilityArrows(false);
   }
 }

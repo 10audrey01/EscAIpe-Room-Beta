@@ -55,7 +55,7 @@ public class TaskManager {
     // int randomNumber = random.nextInt(3);
     // this.largeTask = possibleLargeTasks[randomNumber];
 
-    this.largeTask = LargeTask.RAVE;
+    this.largeTask = LargeTask.ROCK;
 
     if (this.largeTask == LargeTask.RAVE) {
       this.largeTaskInstance = new RavePuzzle();

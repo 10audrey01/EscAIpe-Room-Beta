@@ -47,11 +47,6 @@ public class App extends Application {
   public void start(final Stage stage) throws IOException {
 
     SceneManager.addUi(AppUi.START, loadFxml("start"));
-    SceneManager.addUi(AppUi.CLASSICAL, loadFxml("classical"));
-    SceneManager.addUi(AppUi.RAVE, loadFxml("rave"));
-    SceneManager.addUi(AppUi.ROCK, loadFxml("rock"));
-    SceneManager.addUi(AppUi.PIANO, loadFxml("piano"));
-    SceneManager.addUi(AppUi.BODYBUILDER, loadFxml("bodybuilder"));
 
     scene = new Scene(SceneManager.getUiRoot(AppUi.START), 1280, 720);
 

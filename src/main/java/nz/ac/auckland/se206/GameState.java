@@ -29,6 +29,8 @@ public class GameState {
   // variables to keep track of the game state
   private static GameState instance;
   public static boolean isRiddleResolved = false;
+  public static boolean isRiddleObjectFound = false;
+  public static boolean isNoteSequenceFound = false;
   public static boolean isKeyFound = false;
   public static Difficulty difficulty;
   public static PlayTime time;
@@ -37,6 +39,7 @@ public class GameState {
   public TimeManager timeManager;
   public TaskManager taskManager;
   public ChatManager chatManager;
+  public RockBigTaskManager rockBigTaskManager;
 
   public BodybuilderController bodybuilderController;
 
@@ -46,8 +49,13 @@ public class GameState {
       instance.timeManager = new TimeManager();
       instance.taskManager = new TaskManager();
       instance.chatManager = new ChatManager();
+      instance.rockBigTaskManager = new RockBigTaskManager();
     }
     return instance;
+  }
+
+  public static void setInstance(GameState instance) {
+    GameState.instance = instance;
   }
 
   public void startGame() {

@@ -218,4 +218,9 @@ public class BodybuilderController {
     Scene currentScene = source.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.RAVE));
   }
+
+  @FXML
+  private void onKeyPressed() {
+    System.out.println("key pressed");
+  }
 }
