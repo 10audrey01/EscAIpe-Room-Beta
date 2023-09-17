@@ -86,6 +86,7 @@ public class ClassicalController {
     }
     chatOpened = false;
     draggableMaker.makeDraggable(celloBowPane);
+    draggableMaker.makeDraggable(tambourinePane);
     celloPlayTimer.start();
   }
 
