@@ -56,7 +56,7 @@ public class BodybuilderController {
 
   public void initialiseCode() {
     if (gamestate.taskManager.getCurrentLargeTask() == LargeTask.RAVE) {
-      RavePuzzle puzzle = (RavePuzzle) gamestate.taskManager.getLargeTaskInstance();
+      RavePuzzle puzzle = gamestate.ravePuzzle;
       this.puzzleInstance = puzzle;
       this.solution = puzzleInstance.getSolution();
       System.out.println("Solution added to controller." + this.solution);

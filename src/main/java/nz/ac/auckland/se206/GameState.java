@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206;
 
 import nz.ac.auckland.se206.controllers.rooms.rave.BodybuilderController;
+import nz.ac.auckland.se206.puzzles.RavePuzzle;
 
 /** Represents the state of the game. */
 public class GameState {
@@ -40,6 +41,7 @@ public class GameState {
   public TaskManager taskManager;
   public ChatManager chatManager;
   public RockBigTaskManager rockBigTaskManager;
+  public RavePuzzle ravePuzzle;
 
   public BodybuilderController bodybuilderController;
 
@@ -50,6 +52,7 @@ public class GameState {
       instance.taskManager = new TaskManager();
       instance.chatManager = new ChatManager();
       instance.rockBigTaskManager = new RockBigTaskManager();
+      instance.ravePuzzle = new RavePuzzle();
     }
     return instance;
   }
@@ -63,5 +66,6 @@ public class GameState {
     this.timeManager.setTime(time.getTime() * 60);
     this.timeManager.startCountdown();
     this.bodybuilderController.initialiseCode();
+    this.ravePuzzle.setHints();
   }
 }

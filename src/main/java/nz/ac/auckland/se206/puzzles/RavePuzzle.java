@@ -1,20 +1,25 @@
 package nz.ac.auckland.se206.puzzles;
 
+import java.util.ArrayList;
 import java.util.Random;
+import javafx.application.Platform;
+import javafx.scene.text.Text;
 import nz.ac.auckland.se206.GameState;
 
-public class RavePuzzle implements Puzzle {
+public class RavePuzzle {
   // rave puzzle - Find the safe, unlock the code through finding respective object in each of rock
   // and classical rooms
   private GameState gamestate;
   private boolean isSafeFound;
   private boolean isSafeSolved;
   private String safeSolution;
+  private ArrayList<Text> notes;
 
   public RavePuzzle() {
     this.gamestate = GameState.getInstance();
     this.isSafeFound = false;
     this.isSafeSolved = false;
+    this.notes = new ArrayList<Text>();
 
     String solution = "";
     // generate random solution
@@ -27,6 +32,10 @@ public class RavePuzzle implements Puzzle {
     System.out.println(solution);
 
     this.safeSolution = solution;
+  }
+
+  public void addNote(Text note) {
+    notes.add(note);
   }
 
   public String getSolution() {
@@ -52,6 +61,25 @@ public class RavePuzzle implements Puzzle {
     String firstHalfOfSolution = this.safeSolution.substring(0, 2);
     String secondHalfOfSolution = this.safeSolution.substring(3, 5);
 
-    // TODO: set first note to first half, set second note to second half.
+    Random random = new Random();
+    int randomNum = random.nextInt(3);
+
+    if (notes.size() == 2) {
+      if (randomNum == 1) {
+        Platform.runLater(
+            () -> {
+              notes.get(0).setText(firstHalfOfSolution);
+              notes.get(1).setText(secondHalfOfSolution);
+            });
+      } else {
+        Platform.runLater(
+            () -> {
+              notes.get(1).setText(firstHalfOfSolution);
+              notes.get(0).setText(secondHalfOfSolution);
+            });
+      }
+    } else {
+      System.out.println("Note size erro");
+    }
   }
 }

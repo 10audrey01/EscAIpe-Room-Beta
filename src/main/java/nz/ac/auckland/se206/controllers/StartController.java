@@ -103,12 +103,14 @@ public class StartController {
       difficultyDescriptionLabel.setText("Please select a time limit!");
       return;
     }
+
     gameState = GameState.getInstance();
 
     SceneManager.addUi(AppUi.CLASSICAL, App.loadFxml("classical"));
     SceneManager.addUi(AppUi.RAVE, App.loadFxml("rave"));
     SceneManager.addUi(AppUi.ROCK, App.loadFxml("rock"));
     SceneManager.addUi(AppUi.BODYBUILDER, App.loadFxml("bodybuilder"));
+
     SceneManager.addUi(AppUi.ROCKNOTE, App.loadFxml("rocknote"));
     SceneManager.addUi(AppUi.CLASSICALNOTE, App.loadFxml("classicalnote"));
 

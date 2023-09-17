@@ -19,6 +19,7 @@ public class ClassicalNoteController {
   @FXML
   private void initialize() throws IOException {
     this.gamestate = GameState.getInstance();
+    this.gamestate.ravePuzzle.addNote(classicalNoteText);
   }
 
   // switches back to the classical room
