@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206;
 
+import java.io.IOException;
 import nz.ac.auckland.se206.controllers.rooms.notes.ClassicalNoteController;
 import nz.ac.auckland.se206.controllers.rooms.notes.RockNoteController;
 import nz.ac.auckland.se206.controllers.rooms.rave.BodybuilderController;
@@ -65,11 +66,11 @@ public class GameState {
     GameState.instance = instance;
   }
 
-  public void startGame() {
+  public void startGame() throws IOException {
     this.taskManager.generateTasks();
     this.timeManager.setTime(time.getTime() * 60);
     this.timeManager.startCountdown();
-    this.bodybuilderController.initialiseCode();
     this.ravePuzzle.setHints(classicalNote, rockNote);
+    this.bodybuilderController.initialiseCode();
   }
 }

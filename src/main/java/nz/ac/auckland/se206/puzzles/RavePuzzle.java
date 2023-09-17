@@ -1,7 +1,11 @@
 package nz.ac.auckland.se206.puzzles;
 
+import java.io.IOException;
 import java.util.Random;
 import javafx.application.Platform;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.controllers.rooms.notes.ClassicalNoteController;
 import nz.ac.auckland.se206.controllers.rooms.notes.RockNoteController;
@@ -81,5 +85,21 @@ public class RavePuzzle {
           });
       System.out.println("Order = classical roc");
     }
+  }
+
+  public void setImages(ImageView first, ImageView second) throws IOException {
+    Image rock = new Image(App.class.getResource("/images/misc/rockicon.png").openStream());
+    Image classical =
+        new Image(App.class.getResource("/images/misc/classicalicon.png").openStream());
+    Platform.runLater(
+        () -> {
+          if (this.firstHalfRoom.equals("rock")) {
+            first.setImage(rock);
+            second.setImage(classical);
+          } else {
+            first.setImage(classical);
+            second.setImage(rock);
+          }
+        });
   }
 }

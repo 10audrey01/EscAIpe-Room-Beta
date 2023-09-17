@@ -18,7 +18,8 @@ import nz.ac.auckland.se206.puzzles.RavePuzzle;
 public class BodybuilderController {
 
   @FXML private TextArea speechBox;
-  @FXML private ImageView hintImage;
+  @FXML private ImageView firstRoomHint;
+  @FXML private ImageView secondRoomHint;
   @FXML private Button btnOne;
   @FXML private Button btnTwo;
   @FXML private Button btnThree;
@@ -54,10 +55,11 @@ public class BodybuilderController {
     resetSafe();
   }
 
-  public void initialiseCode() {
+  public void initialiseCode() throws IOException {
     RavePuzzle puzzle = gamestate.ravePuzzle;
     this.puzzleInstance = puzzle;
     this.solution = puzzleInstance.getSolution();
+    this.puzzleInstance.setImages(firstRoomHint, secondRoomHint);
     System.out.println("Solution added to controller." + this.solution);
   }
 
