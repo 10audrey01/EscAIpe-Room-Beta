@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.controllers.rooms;
 
 import java.io.IOException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -156,8 +155,8 @@ public class ClassicalController {
   }
 
   @FXML
-  public void onClickNote(ActionEvent event) {
-    ImageView current = (ImageView) event.getSource();
+  public void onClickNote(MouseEvent event) {
+    Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICALNOTE));
   }

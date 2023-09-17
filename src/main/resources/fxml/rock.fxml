@@ -164,9 +164,9 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="rockNotePane" layoutX="865.0" layoutY="621.0" prefHeight="103.0" prefWidth="134.0">
+      <Pane fx:id="rockNotePane" layoutX="865.0" layoutY="621.0" prefHeight="103.0" prefWidth="134.0" onMouseClicked="#onClickNote">
          <children>
-            <ImageView fx:id="noteImage" onMouseClicked="#onClickNote" fitHeight="150.0" fitWidth="200.0" layoutX="-12.0" layoutY="-41.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="noteImage" fitHeight="119.0" fitWidth="148.0" layoutX="-12.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children>
