@@ -46,26 +46,25 @@ public class ClassicalController {
   @FXML private TextField textField;
   @FXML private ToggleButton toggleNoteBtn;
   @FXML private ImageView pointingArrowGif;
-  @FXML private boolean chatOpened;
+
+  private boolean chatOpened;
+
+  // put these into gamestate later
+  private boolean isTambourineBreakable;
+  private int numOfTambourinePresses;
+  private int tambourineLimit;
 
   private GameState gameState;
-  private int numOfTabourinePresses;
 
   private DraggableMaker draggableMaker = new DraggableMaker();
 
-  AnimationTimer celloPlayTimer =
+  private AnimationTimer celloPlayTimer =
       new AnimationTimer() {
         @Override
         public void handle(long timestamp) {
           checkCollision(celloBowPane, celloStrings);
         }
       };
-
-  protected void checkCollision(Pane pane1, Pane pane2) {
-    if (pane1.getBoundsInParent().intersects(pane2.getBoundsInParent()) && pane1.isPressed()) {
-      System.out.println("Bow and Strings Collided!!");
-    }
-  }
 
   @FXML
   private void initialize() {
@@ -85,13 +84,24 @@ public class ClassicalController {
           pointingArrowGif);
     }
     chatOpened = false;
+    numOfTambourinePresses = 0;
+  }
+
+  private void makeObjectsDraggable() {
     draggableMaker.makeDraggable(celloBowPane);
     draggableMaker.makeDraggable(tambourinePane);
     celloPlayTimer.start();
   }
 
+  protected void checkCollision(Pane pane1, Pane pane2) {
+    if (pane1.getBoundsInParent().intersects(pane2.getBoundsInParent()) && pane1.isPressed()) {
+      System.out.println("Bow and Strings Collided!!");
+    }
+  }
+
   @FXML
   private void doGoRave(MouseEvent event) throws IOException {
+    numOfTambourinePresses = 0;
     Rectangle current = (Rectangle) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.RAVE));
@@ -99,6 +109,7 @@ public class ClassicalController {
 
   @FXML
   private void doGoRock(MouseEvent event) throws IOException {
+    numOfTambourinePresses = 0;
     Rectangle current = (Rectangle) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
@@ -141,11 +152,16 @@ public class ClassicalController {
   @FXML
   private void doClickedHarp(MouseEvent event) throws IOException {
     System.out.println("Harp Clicked");
+    Pane current = (Pane) event.getSource();
+    Scene currentScene = current.getScene();
+
+    currentScene.setRoot(SceneManager.getUiRoot(AppUi.HARP));
   }
 
   @FXML
   private void doClickedTambourine(MouseEvent event) throws IOException {
     System.out.println("Tambourine Clicked");
+    numOfTambourinePresses++;
   }
 
   @FXML
