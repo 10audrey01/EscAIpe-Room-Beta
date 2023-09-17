@@ -125,51 +125,57 @@
 }
 
 #aKey:hover {
-    -fx-border-color: #bbcce9;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #bbcce9;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #bKey:hover {
-    -fx-border-color: #bbcce9;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #bbcce9;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #cKey:hover {
-    -fx-border-color: #bbcce9;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #bbcce9;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #dKey:hover {
-    -fx-border-color: #bbcce9;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #bbcce9;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #eKey:hover {
-    -fx-border-color: #bbcce9;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #bbcce9;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #fKey:hover {
-    -fx-border-color: #bbcce9;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #bbcce9;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #gKey:hover {
-    -fx-border-color: #bbcce9;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #bbcce9;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #leavePiano:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+}
+
+#leaveHarp:hover {
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #rockNotePane:hover {

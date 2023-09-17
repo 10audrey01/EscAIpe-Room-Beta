@@ -182,7 +182,7 @@ public class RockController {
   @FXML
   public void onKeyReleased(KeyEvent event) throws ApiProxyException, IOException {
     System.out.println("key " + event.getCode() + " released");
-    if (event.getCode() == KeyCode.ENTER) {
+    if (event.getCode() == KeyCode.ENTER && chatOpened) {
       System.out.println("Message Sent");
       gameState = GameState.getInstance();
       gameState.chatManager.onSendMessage(textField);

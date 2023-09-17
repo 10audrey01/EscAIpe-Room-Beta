@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers.rooms;
 
 import java.io.IOException;
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -13,6 +14,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import nz.ac.auckland.se206.DraggableMaker;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -25,6 +27,7 @@ public class ClassicalController {
   @FXML private Rectangle raveDoor;
   @FXML private Rectangle rockDoor;
   @FXML private Pane celloPane;
+  @FXML private Pane celloStrings;
   @FXML private Pane celloBowPane;
   @FXML private Pane grandPianoPane;
   @FXML private Pane clarinetPane;
@@ -45,9 +48,24 @@ public class ClassicalController {
   @FXML private ToggleButton toggleNoteBtn;
   @FXML private ImageView pointingArrowGif;
   @FXML private ImageView noteImage;
-  @FXML private boolean chatOpened;
+  private boolean chatOpened;
+
+  // put these into gamestate later
+  private boolean isTambourineBreakable;
+  private int numOfTambourinePresses;
+  private int tambourineLimit;
 
   private GameState gameState;
+
+  private DraggableMaker draggableMaker = new DraggableMaker();
+
+  private AnimationTimer celloPlayTimer =
+      new AnimationTimer() {
+        @Override
+        public void handle(long timestamp) {
+          checkCollision(celloBowPane, celloStrings);
+        }
+      };
 
   @FXML
   private void initialize() {
@@ -67,10 +85,24 @@ public class ClassicalController {
           pointingArrowGif);
     }
     chatOpened = false;
+    numOfTambourinePresses = 0;
+  }
+
+  private void makeObjectsDraggable() {
+    draggableMaker.makeDraggable(celloBowPane);
+    draggableMaker.makeDraggable(tambourinePane);
+    celloPlayTimer.start();
+  }
+
+  protected void checkCollision(Pane pane1, Pane pane2) {
+    if (pane1.getBoundsInParent().intersects(pane2.getBoundsInParent()) && pane1.isPressed()) {
+      System.out.println("Bow and Strings Collided!!");
+    }
   }
 
   @FXML
   private void doGoRave(MouseEvent event) throws IOException {
+    numOfTambourinePresses = 0;
     Rectangle current = (Rectangle) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.RAVE));
@@ -78,6 +110,7 @@ public class ClassicalController {
 
   @FXML
   private void doGoRock(MouseEvent event) throws IOException {
+    numOfTambourinePresses = 0;
     Rectangle current = (Rectangle) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
@@ -115,16 +148,25 @@ public class ClassicalController {
   @FXML
   private void doClickedTrumpet(MouseEvent event) throws IOException {
     System.out.println("Trumpet Clicked");
+    Pane current = (Pane) event.getSource();
+    Scene currentScene = current.getScene();
+
+    currentScene.setRoot(SceneManager.getUiRoot(AppUi.TRUMPET));
   }
 
   @FXML
   private void doClickedHarp(MouseEvent event) throws IOException {
     System.out.println("Harp Clicked");
+    Pane current = (Pane) event.getSource();
+    Scene currentScene = current.getScene();
+
+    currentScene.setRoot(SceneManager.getUiRoot(AppUi.HARP));
   }
 
   @FXML
   private void doClickedTambourine(MouseEvent event) throws IOException {
     System.out.println("Tambourine Clicked");
+    numOfTambourinePresses++;
   }
 
   @FXML
@@ -147,7 +189,7 @@ public class ClassicalController {
   @FXML
   public void onKeyReleased(KeyEvent event) throws ApiProxyException, IOException {
     System.out.println("key " + event.getCode() + " released");
-    if (event.getCode() == KeyCode.ENTER) {
+    if (event.getCode() == KeyCode.ENTER && chatOpened) {
       System.out.println("Message Sent");
       gameState = GameState.getInstance();
       gameState.chatManager.onSendMessage(textField);

@@ -11,6 +11,8 @@ public class SceneManager {
     ROCK,
     PIANO,
     BODYBUILDER,
+    HARP,
+    TRUMPET,
     CLASSICALNOTE,
     ROCKNOTE,
     MUSICQUIZ
