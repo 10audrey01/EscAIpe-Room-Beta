@@ -38,6 +38,7 @@ public class RockController {
   @FXML private Pane amplifierPane;
   @FXML private Pane notePane;
   @FXML private Pane chatBoxPane;
+  @FXML private Pane rockNotePane;
   @FXML private Label colourLabel1;
   @FXML private Label colourLabel2;
   @FXML private Label colourLabel3;
@@ -48,6 +49,7 @@ public class RockController {
   @FXML private TextField textField;
   @FXML private ToggleButton toggleNoteBtn;
   @FXML private ImageView pointingArrowGif;
+  @FXML private ImageView noteImage;
   @FXML private boolean chatOpened;
 
   private GameState gameState;
@@ -272,5 +274,12 @@ public class RockController {
         System.out.println("Correct sequence played");
       }
     }
+  }
+
+  @FXML
+  public void onClickNote(MouseEvent event) {
+    Pane current = (Pane) event.getSource();
+    Scene currentScene = current.getScene();
+    currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCKNOTE));
   }
 }

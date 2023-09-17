@@ -1,127 +1,127 @@
 #amplifierPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #gameMasterPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #drumsPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #cyanGuitarPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #blueGuitarPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #purpleGuitarPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #yellowGuitarPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #posterPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #djPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #bodybuilderPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #bouncerPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #discoPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #speakerPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #celloPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #celloBowPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #clarinetPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #harpPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #grandPianoPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #tambourinePane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #trumpetPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #doorPane:hover {
-  -fx-border-color: #fff;
-  -fx-border-width: 2px;
-  -fx-border-style: solid;
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }
 
 #aKey:hover {
@@ -129,7 +129,6 @@
   -fx-border-width: 2px;
   -fx-border-style: solid;
 }
-
 
 #bKey:hover {
   -fx-border-color: #bbcce9;
@@ -177,4 +176,16 @@
   -fx-border-color: #fff;
   -fx-border-width: 2px;
   -fx-border-style: solid;
+}
+
+#rockNotePane:hover {
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+}
+
+#classicalNotePane:hover {
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 }

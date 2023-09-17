@@ -155,5 +155,13 @@
             </Label>
          </children>
       </Pane>
+            <Pane fx:id="classicalNotePane" layoutX="331.0" layoutY="618.0" onMouseClicked="#onClickNote" prefHeight="103.0" prefWidth="134.0">
+         <children>
+            <ImageView fx:id="noteImage" fitHeight="150.0" fitWidth="200.0" layoutX="-12.0" layoutY="-41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/misc/note.png" />
+               </image></ImageView>
+         </children>
+      </Pane>
    </children>
 </Pane>
