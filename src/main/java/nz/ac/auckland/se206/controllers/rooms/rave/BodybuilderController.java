@@ -13,7 +13,6 @@ import javafx.scene.text.Text;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.TaskManager.LargeTask;
 import nz.ac.auckland.se206.puzzles.RavePuzzle;
 
 public class BodybuilderController {
@@ -51,16 +50,15 @@ public class BodybuilderController {
     System.out.println("Start");
     this.gamestate = GameState.getInstance();
     this.gamestate.bodybuilderController = this;
+    this.speechBox.setText("Hey bro, I need your help... I need to open this safe.");
     resetSafe();
   }
 
   public void initialiseCode() {
-    if (gamestate.taskManager.getCurrentLargeTask() == LargeTask.RAVE) {
-      RavePuzzle puzzle = gamestate.ravePuzzle;
-      this.puzzleInstance = puzzle;
-      this.solution = puzzleInstance.getSolution();
-      System.out.println("Solution added to controller." + this.solution);
-    }
+    RavePuzzle puzzle = gamestate.ravePuzzle;
+    this.puzzleInstance = puzzle;
+    this.solution = puzzleInstance.getSolution();
+    System.out.println("Solution added to controller." + this.solution);
   }
 
   public void resetSafe() throws IOException {
@@ -208,6 +206,10 @@ public class BodybuilderController {
           }
         }
       }
+    }
+
+    if (this.code.equals(this.solution)) {
+      speechBox.setText("Nice work bro. You can take this key if you want, I guess");
     }
   }
 

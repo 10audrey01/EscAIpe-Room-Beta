@@ -13,6 +13,7 @@ public class RavePuzzle {
   private boolean isSafeFound;
   private boolean isSafeSolved;
   private String safeSolution;
+  private String firstHalfRoom;
 
   public RavePuzzle() {
     this.gamestate = GameState.getInstance();
@@ -51,6 +52,10 @@ public class RavePuzzle {
     return false;
   }
 
+  public String getFirstHalfRoom() {
+    return this.firstHalfRoom;
+  }
+
   public void setHints(ClassicalNoteController classical, RockNoteController rock) {
     System.out.println("Solution-" + safeSolution);
     String firstHalfOfSolution = this.safeSolution.substring(0, 3);
@@ -60,17 +65,21 @@ public class RavePuzzle {
     int randomNum = random.nextInt(2);
 
     if (randomNum == 1) {
+      this.firstHalfRoom = "rock";
       Platform.runLater(
           () -> {
             classical.setText(secondHalfOfSolution);
             rock.setText(firstHalfOfSolution);
           });
+      System.out.println("Order = rock classical");
     } else {
+      this.firstHalfRoom = "classical";
       Platform.runLater(
           () -> {
             classical.setText(firstHalfOfSolution);
             rock.setText(secondHalfOfSolution);
           });
+      System.out.println("Order = classical roc");
     }
   }
 }
