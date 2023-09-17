@@ -147,6 +147,10 @@ public class ClassicalController {
   @FXML
   private void doClickedTrumpet(MouseEvent event) throws IOException {
     System.out.println("Trumpet Clicked");
+    Pane current = (Pane) event.getSource();
+    Scene currentScene = current.getScene();
+
+    currentScene.setRoot(SceneManager.getUiRoot(AppUi.TRUMPET));
   }
 
   @FXML
