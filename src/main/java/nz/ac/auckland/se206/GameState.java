@@ -1,6 +1,10 @@
 package nz.ac.auckland.se206;
 
+import java.io.IOException;
+import nz.ac.auckland.se206.controllers.rooms.notes.ClassicalNoteController;
+import nz.ac.auckland.se206.controllers.rooms.notes.RockNoteController;
 import nz.ac.auckland.se206.controllers.rooms.rave.BodybuilderController;
+import nz.ac.auckland.se206.puzzles.RavePuzzle;
 
 /** Represents the state of the game. */
 public class GameState {
@@ -40,8 +44,11 @@ public class GameState {
   public TaskManager taskManager;
   public ChatManager chatManager;
   public RockBigTaskManager rockBigTaskManager;
+  public RavePuzzle ravePuzzle;
 
   public BodybuilderController bodybuilderController;
+  public ClassicalNoteController classicalNote;
+  public RockNoteController rockNote;
 
   public static GameState getInstance() {
     if (instance == null) {
@@ -50,6 +57,7 @@ public class GameState {
       instance.taskManager = new TaskManager();
       instance.chatManager = new ChatManager();
       instance.rockBigTaskManager = new RockBigTaskManager();
+      instance.ravePuzzle = new RavePuzzle();
     }
     return instance;
   }
@@ -58,10 +66,11 @@ public class GameState {
     GameState.instance = instance;
   }
 
-  public void startGame() {
+  public void startGame() throws IOException {
     this.taskManager.generateTasks();
     this.timeManager.setTime(time.getTime() * 60);
     this.timeManager.startCountdown();
+    this.ravePuzzle.setHints(classicalNote, rockNote);
     this.bodybuilderController.initialiseCode();
   }
 }
