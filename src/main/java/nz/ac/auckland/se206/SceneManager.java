@@ -11,7 +11,8 @@ public class SceneManager {
     ROCK,
     PIANO,
     BODYBUILDER,
-    HARP
+    HARP,
+    TRUMPET
   }
 
   private static HashMap<AppUi, Parent> sceneMap = new HashMap<AppUi, Parent>();
