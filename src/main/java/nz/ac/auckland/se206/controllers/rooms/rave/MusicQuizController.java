@@ -15,6 +15,9 @@ public class MusicQuizController {
   @FXML private Button btnReturn;
 
   private GameState gamestate;
+  private String[] genres = {
+    "techno", "pop", "hip hop", "rnb", "kpop", "funk", "house", "drum and bass"
+  };
 
   @FXML
   private void initialize() throws IOException {
