@@ -61,6 +61,7 @@
             <Image url="@../images/classicalRoom/Trumpet.png" />
          </image>
       </ImageView>
+      <Pane fx:id="celloStrings" layoutX="290.0" layoutY="317.0" prefHeight="251.0" prefWidth="16.0" rotate="-2.0" />
       <Pane fx:id="celloPane" layoutX="234.0" layoutY="293.0" onMouseClicked="#doClickedCello" prefHeight="325.0" prefWidth="132.0" />
       <Pane fx:id="celloBowPane" layoutX="176.0" layoutY="489.0" onMouseClicked="#doClickedCelloBow" prefHeight="27.0" prefWidth="249.0" rotate="-45.0">
          <children>
@@ -69,7 +70,8 @@
                   <Image url="@../images/classicalRoom/CelloBow.png" />
                </image>
             </ImageView>
-         </children></Pane>
+         </children>
+      </Pane>
       <Pane fx:id="trumpetPane" layoutX="241.0" layoutY="141.0" onMouseClicked="#doClickedTrumpet" prefHeight="119.0" prefWidth="346.0" rotate="-4.8" />
       <Pane fx:id="tambourinePane" layoutX="572.0" layoutY="244.0" onMouseClicked="#doClickedTambourine" prefHeight="123.0" prefWidth="123.0" />
       <Pane fx:id="clarinetPane" layoutX="719.0" layoutY="157.0" onMouseClicked="#doClickedClarinet" prefHeight="38.0" prefWidth="290.0" rotate="8.1" />
@@ -151,6 +153,5 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="celloStrings" layoutX="290.0" layoutY="317.0" prefHeight="251.0" prefWidth="16.0" rotate="-2.0" />
    </children>
 </Pane>

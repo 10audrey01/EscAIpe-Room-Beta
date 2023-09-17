@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers.rooms;
 
 import java.io.IOException;
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -52,6 +53,20 @@ public class ClassicalController {
 
   private DraggableMaker draggableMaker = new DraggableMaker();
 
+  AnimationTimer celloPlayTimer =
+      new AnimationTimer() {
+        @Override
+        public void handle(long timestamp) {
+          checkCollision(celloBowPane, celloStrings);
+        }
+      };
+
+  protected void checkCollision(Pane pane1, Pane pane2) {
+    if (pane1.getBoundsInParent().intersects(pane2.getBoundsInParent()) && pane1.isPressed()) {
+      System.out.println("Bow and Strings Collided!!");
+    }
+  }
+
   @FXML
   private void initialize() {
     gameState = GameState.getInstance();
@@ -71,6 +86,7 @@ public class ClassicalController {
     }
     chatOpened = false;
     draggableMaker.makeDraggable(celloBowPane);
+    celloPlayTimer.start();
   }
 
   @FXML
