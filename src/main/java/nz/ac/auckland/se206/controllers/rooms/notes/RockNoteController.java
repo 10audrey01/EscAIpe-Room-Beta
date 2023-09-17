@@ -11,7 +11,7 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class RockNoteController {
-  @FXML private Text rockNoteText;
+  @FXML private Text rockHintText;
   @FXML private Button btnReturn;
 
   private GameState gamestate;
@@ -19,7 +19,11 @@ public class RockNoteController {
   @FXML
   private void initialize() throws IOException {
     this.gamestate = GameState.getInstance();
-    this.gamestate.ravePuzzle.addNote(rockNoteText);
+    this.gamestate.rockNote = this;
+  }
+
+  public void setText(String text) {
+    this.rockHintText.setText(text);
   }
 
   // switches back to the classical room

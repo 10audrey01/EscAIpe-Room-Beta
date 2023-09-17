@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206;
 
+import nz.ac.auckland.se206.controllers.rooms.notes.ClassicalNoteController;
+import nz.ac.auckland.se206.controllers.rooms.notes.RockNoteController;
 import nz.ac.auckland.se206.controllers.rooms.rave.BodybuilderController;
 import nz.ac.auckland.se206.puzzles.RavePuzzle;
 
@@ -44,6 +46,8 @@ public class GameState {
   public RavePuzzle ravePuzzle;
 
   public BodybuilderController bodybuilderController;
+  public ClassicalNoteController classicalNote;
+  public RockNoteController rockNote;
 
   public static GameState getInstance() {
     if (instance == null) {
@@ -66,6 +70,6 @@ public class GameState {
     this.timeManager.setTime(time.getTime() * 60);
     this.timeManager.startCountdown();
     this.bodybuilderController.initialiseCode();
-    this.ravePuzzle.setHints();
+    this.ravePuzzle.setHints(classicalNote, rockNote);
   }
 }

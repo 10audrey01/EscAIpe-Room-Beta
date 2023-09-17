@@ -1,10 +1,10 @@
 package nz.ac.auckland.se206.puzzles;
 
-import java.util.ArrayList;
 import java.util.Random;
 import javafx.application.Platform;
-import javafx.scene.text.Text;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.controllers.rooms.notes.ClassicalNoteController;
+import nz.ac.auckland.se206.controllers.rooms.notes.RockNoteController;
 
 public class RavePuzzle {
   // rave puzzle - Find the safe, unlock the code through finding respective object in each of rock
@@ -13,13 +13,11 @@ public class RavePuzzle {
   private boolean isSafeFound;
   private boolean isSafeSolved;
   private String safeSolution;
-  private ArrayList<Text> notes;
 
   public RavePuzzle() {
     this.gamestate = GameState.getInstance();
     this.isSafeFound = false;
     this.isSafeSolved = false;
-    this.notes = new ArrayList<Text>();
 
     String solution = "";
     // generate random solution
@@ -32,10 +30,6 @@ public class RavePuzzle {
     System.out.println(solution);
 
     this.safeSolution = solution;
-  }
-
-  public void addNote(Text note) {
-    notes.add(note);
   }
 
   public String getSolution() {
@@ -57,29 +51,26 @@ public class RavePuzzle {
     return false;
   }
 
-  public void setHints() {
-    String firstHalfOfSolution = this.safeSolution.substring(0, 2);
-    String secondHalfOfSolution = this.safeSolution.substring(3, 5);
+  public void setHints(ClassicalNoteController classical, RockNoteController rock) {
+    System.out.println("Solution-" + safeSolution);
+    String firstHalfOfSolution = this.safeSolution.substring(0, 3);
+    String secondHalfOfSolution = this.safeSolution.substring(3, 6);
 
     Random random = new Random();
-    int randomNum = random.nextInt(3);
+    int randomNum = random.nextInt(2);
 
-    if (notes.size() == 2) {
-      if (randomNum == 1) {
-        Platform.runLater(
-            () -> {
-              notes.get(0).setText(firstHalfOfSolution);
-              notes.get(1).setText(secondHalfOfSolution);
-            });
-      } else {
-        Platform.runLater(
-            () -> {
-              notes.get(1).setText(firstHalfOfSolution);
-              notes.get(0).setText(secondHalfOfSolution);
-            });
-      }
+    if (randomNum == 1) {
+      Platform.runLater(
+          () -> {
+            classical.setText(secondHalfOfSolution);
+            rock.setText(firstHalfOfSolution);
+          });
     } else {
-      System.out.println("Note size erro");
+      Platform.runLater(
+          () -> {
+            classical.setText(firstHalfOfSolution);
+            rock.setText(secondHalfOfSolution);
+          });
     }
   }
 }

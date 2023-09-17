@@ -11,7 +11,7 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class ClassicalNoteController {
-  @FXML private Text classicalNoteText;
+  @FXML private Text classicalHintText;
   @FXML private Button btnReturn;
 
   private GameState gamestate;
@@ -19,7 +19,11 @@ public class ClassicalNoteController {
   @FXML
   private void initialize() throws IOException {
     this.gamestate = GameState.getInstance();
-    this.gamestate.ravePuzzle.addNote(classicalNoteText);
+    this.gamestate.classicalNote = this;
+  }
+
+  public void setText(String text) {
+    this.classicalHintText.setText(text);
   }
 
   // switches back to the classical room
