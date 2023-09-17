@@ -13,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import nz.ac.auckland.se206.DraggableMaker;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -25,6 +26,7 @@ public class ClassicalController {
   @FXML private Rectangle raveDoor;
   @FXML private Rectangle rockDoor;
   @FXML private Pane celloPane;
+  @FXML private Pane celloStrings;
   @FXML private Pane celloBowPane;
   @FXML private Pane grandPianoPane;
   @FXML private Pane clarinetPane;
@@ -46,6 +48,9 @@ public class ClassicalController {
   @FXML private boolean chatOpened;
 
   private GameState gameState;
+  private int numOfTabourinePresses;
+
+  private DraggableMaker draggableMaker = new DraggableMaker();
 
   @FXML
   private void initialize() {
@@ -65,6 +70,7 @@ public class ClassicalController {
           pointingArrowGif);
     }
     chatOpened = false;
+    draggableMaker.makeDraggable(celloBowPane);
   }
 
   @FXML
