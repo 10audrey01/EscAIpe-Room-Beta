@@ -113,6 +113,7 @@ public class StartController {
 
     SceneManager.addUi(AppUi.ROCKNOTE, App.loadFxml("rocknote"));
     SceneManager.addUi(AppUi.CLASSICALNOTE, App.loadFxml("classicalnote"));
+    SceneManager.addUi(AppUi.MUSICQUIZ, App.loadFxml("musicquiz"));
 
     FXMLLoader pianoLoader = new FXMLLoader(App.class.getResource("/fxml/piano.fxml"));
     SceneManager.addUi(AppUi.PIANO, pianoLoader.load());
