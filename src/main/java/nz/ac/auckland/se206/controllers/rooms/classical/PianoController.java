@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers.rooms.classical;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.application.Platform;
@@ -10,6 +11,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
@@ -80,6 +83,7 @@ public class PianoController {
   private GameState gameState;
   public ArrayList<ImageView> notesList;
   public ArrayList<ImageView> notesLetterList;
+  public MediaPlayer pianoNotePlayer;
 
   @FXML
   private void initialize() throws IOException {
@@ -198,52 +202,66 @@ public class PianoController {
   }
 
   @FXML
-  public void onClickedAKey(MouseEvent event) throws IOException {
+  public void onClickedAKey(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("A Key Pressed");
     notesPlayed += "A";
+    playPianoNotePlayer("a6");
     checkWin();
   }
 
   @FXML
-  public void onClickedBKey(MouseEvent event) throws IOException {
+  public void onClickedBKey(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("B Key Pressed");
     notesPlayed += "B";
+    playPianoNotePlayer("b6");
     checkWin();
   }
 
   @FXML
-  public void onClickedCKey(MouseEvent event) throws IOException {
+  public void onClickedCKey(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("C Key Pressed");
     notesPlayed += "C";
+    playPianoNotePlayer("c6");
     checkWin();
   }
 
   @FXML
-  public void onClickedDKey(MouseEvent event) throws IOException {
+  public void onClickedDKey(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("D Key Pressed");
     notesPlayed += "D";
+    playPianoNotePlayer("d6");
     checkWin();
   }
 
   @FXML
-  public void onClickedEKey(MouseEvent event) throws IOException {
+  public void onClickedEKey(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("E Key Pressed");
     notesPlayed += "E";
+    playPianoNotePlayer("e6");
     checkWin();
   }
 
   @FXML
-  public void onClickedFKey(MouseEvent event) throws IOException {
+  public void onClickedFKey(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("F Key Pressed");
     notesPlayed += "F";
+    playPianoNotePlayer("f6");
     checkWin();
   }
 
   @FXML
-  public void onClickedGKey(MouseEvent event) throws IOException {
+  public void onClickedGKey(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("G Key Pressed");
     notesPlayed += "G";
+    playPianoNotePlayer("g6");
     checkWin();
+  }
+
+  public void playPianoNotePlayer(String audioName) throws URISyntaxException {
+    Media note =
+        new Media(getClass().getResource("/sounds/" + audioName + ".mp3").toURI().toString());
+    pianoNotePlayer = new MediaPlayer(note);
+    pianoNotePlayer.play();
   }
 
   public void checkWin() throws IOException {
