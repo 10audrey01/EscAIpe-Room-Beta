@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers.rooms;
 
 import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -33,6 +34,7 @@ public class ClassicalController {
   @FXML private Pane trumpetPane;
   @FXML private Pane chatBoxPane;
   @FXML private Pane notePane;
+  @FXML private Pane classicalNotePane;
   @FXML private Label colourLabel1;
   @FXML private Label colourLabel2;
   @FXML private Label colourLabel3;
@@ -43,6 +45,7 @@ public class ClassicalController {
   @FXML private TextField textField;
   @FXML private ToggleButton toggleNoteBtn;
   @FXML private ImageView pointingArrowGif;
+  @FXML private ImageView noteImage;
   @FXML private boolean chatOpened;
 
   private GameState gameState;
@@ -150,6 +153,13 @@ public class ClassicalController {
       gameState = GameState.getInstance();
       gameState.chatManager.onSendMessage(textField);
     }
+  }
+
+  @FXML
+  public void onClickNote(ActionEvent event) {
+    ImageView current = (ImageView) event.getSource();
+    Scene currentScene = current.getScene();
+    currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICALNOTE));
   }
 
   @FXML
