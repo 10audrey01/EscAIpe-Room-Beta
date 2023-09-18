@@ -17,6 +17,14 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 public class MusicQuizController {
   @FXML private TextArea speechBox;
   @FXML private Button btnReturn;
+  @FXML private Button hintBtn;
+  @FXML private Button songBtn;
+  @FXML private Button optionOneBtn;
+  @FXML private Button optionTwoBtn;
+  @FXML private Button optionThreeBtn;
+  @FXML private Button optionFourBtn;
+  @FXML private Button optionFiveBtn;
+  @FXML private Button optionSixBtn;
 
   private GameState gamestate;
   private String[] genres = {
@@ -42,11 +50,36 @@ public class MusicQuizController {
                     .toString()));
   }
 
+  @FXML
+  private void onClickSongBtn() {}
+
+  @FXML
+  private void onClickOne() {}
+
+  @FXML
+  private void onClickTwo() {}
+
+  @FXML
+  private void onClickThree() {}
+
+  @FXML
+  private void onClickFour() {}
+
+  @FXML
+  private void onClickFive() {}
+
+  @FXML
+  private void onClickSix() {}
+
+  @FXML
+  private void onClickHint() {}
+
   // switches back to the rave room
   @FXML
   private void onClickReturn(ActionEvent event) {
     Button source = (Button) event.getSource();
     Scene currentScene = source.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.RAVE));
+    musicPlayer.pause();
   }
 }
