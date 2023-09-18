@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -48,31 +49,59 @@ public class MusicQuizController {
                     .getResource("/sounds/songs/" + genreSolution + ".mp3")
                     .toURI()
                     .toString()));
+
+    musicPlayer.setOnEndOfMedia(
+        () -> {
+          musicPlayer.seek(Duration.ZERO);
+        });
   }
 
   @FXML
-  private void onClickSongBtn() {}
+  private void onClickSongBtn() {
+    System.out.println("sb");
+    if (musicPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
+      musicPlayer.pause();
+      songBtn.setText("PLAY SONG");
+    } else {
+      musicPlayer.play();
+      songBtn.setText("PAUSE SONG");
+    }
+  }
 
   @FXML
-  private void onClickOne() {}
+  private void onClickOne() {
+    System.out.println("1");
+  }
 
   @FXML
-  private void onClickTwo() {}
+  private void onClickTwo() {
+    System.out.println("2");
+  }
 
   @FXML
-  private void onClickThree() {}
+  private void onClickThree() {
+    System.out.println("3");
+  }
 
   @FXML
-  private void onClickFour() {}
+  private void onClickFour() {
+    System.out.println("4");
+  }
 
   @FXML
-  private void onClickFive() {}
+  private void onClickFive() {
+    System.out.println("5");
+  }
 
   @FXML
-  private void onClickSix() {}
+  private void onClickSix() {
+    System.out.println("6");
+  }
 
   @FXML
-  private void onClickHint() {}
+  private void onClickHint() {
+    System.out.println("hint");
+  }
 
   // switches back to the rave room
   @FXML
@@ -81,5 +110,6 @@ public class MusicQuizController {
     Scene currentScene = source.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.RAVE));
     musicPlayer.pause();
+    songBtn.setText("PLAY SONG");
   }
 }
