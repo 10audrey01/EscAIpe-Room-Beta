@@ -59,6 +59,7 @@ public class HarpController {
 
   private ArrayList<Line> strings;
   private ArrayList<Line> notesToPlay;
+  private ArrayList<Paint> colours;
   private ArrayList<Paint> noteColours;
   private ArrayList<Boolean> notesToShow;
   private ArrayList<Circle> circles;
@@ -79,6 +80,30 @@ public class HarpController {
                 string26, string27, string28, string29, string30, string31, string32, string33,
                 string34));
     harpSequencePlayable = false;
+    colours =
+        new ArrayList<Paint>(
+            List.of(
+                javafx.scene.paint.Color.RED,
+                javafx.scene.paint.Color.BLUE,
+                javafx.scene.paint.Color.GREEN,
+                javafx.scene.paint.Color.YELLOW,
+                javafx.scene.paint.Color.ORANGE,
+                javafx.scene.paint.Color.PURPLE,
+                javafx.scene.paint.Color.PINK,
+                javafx.scene.paint.Color.CYAN,
+                javafx.scene.paint.Color.BROWN,
+                javafx.scene.paint.Color.GOLD,
+                javafx.scene.paint.Color.DARKBLUE,
+                javafx.scene.paint.Color.DARKGREEN,
+                javafx.scene.paint.Color.DARKRED,
+                javafx.scene.paint.Color.DARKVIOLET,
+                javafx.scene.paint.Color.DARKORANGE,
+                javafx.scene.paint.Color.ALICEBLUE,
+                javafx.scene.paint.Color.MAGENTA,
+                javafx.scene.paint.Color.SALMON,
+                javafx.scene.paint.Color.SLATEBLUE,
+                javafx.scene.paint.Color.AQUAMARINE,
+                javafx.scene.paint.Color.TURQUOISE));
     notesToPlay = new ArrayList<Line>();
     notesToShow = new ArrayList<Boolean>(List.of(false, false, false, false, false));
     circles = new ArrayList<Circle>(List.of(circle1, circle2, circle3, circle4, circle5));
@@ -126,72 +151,7 @@ public class HarpController {
   }
 
   private Paint getColour(int randomNum) {
-    switch (randomNum) {
-      case 0:
-        return javafx.scene.paint.Color.RED;
-
-      case 1:
-        return javafx.scene.paint.Color.BLUE;
-
-      case 2:
-        return javafx.scene.paint.Color.GREEN;
-
-      case 3:
-        return javafx.scene.paint.Color.YELLOW;
-
-      case 4:
-        return javafx.scene.paint.Color.ORANGE;
-
-      case 5:
-        return javafx.scene.paint.Color.PURPLE;
-
-      case 6:
-        return javafx.scene.paint.Color.PINK;
-
-      case 7:
-        return javafx.scene.paint.Color.CYAN;
-
-      case 8:
-        return javafx.scene.paint.Color.BROWN;
-
-      case 9:
-        return javafx.scene.paint.Color.GOLD;
-
-      case 10:
-        return javafx.scene.paint.Color.DARKBLUE;
-
-      case 11:
-        return javafx.scene.paint.Color.DARKGREEN;
-
-      case 12:
-        return javafx.scene.paint.Color.DARKRED;
-
-      case 13:
-        return javafx.scene.paint.Color.DARKVIOLET;
-
-      case 14:
-        return javafx.scene.paint.Color.DARKORANGE;
-
-      case 15:
-        return javafx.scene.paint.Color.ALICEBLUE;
-
-      case 16:
-        return javafx.scene.paint.Color.MAGENTA;
-
-      case 17:
-        return javafx.scene.paint.Color.SALMON;
-
-      case 18:
-        return javafx.scene.paint.Color.SLATEBLUE;
-
-      case 19:
-        return javafx.scene.paint.Color.AQUAMARINE;
-
-      case 20:
-        return javafx.scene.paint.Color.TURQUOISE;
-      default:
-        return null;
-    }
+    return (colours.get(randomNum));
   }
 
   private void setCircleColours() {
