@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers.rooms;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -13,11 +14,13 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.TaskManager.LargeTask;
+import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
 public class RaveController {
@@ -56,6 +59,9 @@ public class RaveController {
   @FXML private ToggleButton toggleNoteBtn;
   @FXML private ImageView pointingArrowGif;
   @FXML private boolean chatOpened;
+  @FXML private Circle circle3, circle4, circle5;
+
+  private ArrayList<Circle> circles;
 
   private GameState gameState;
 
@@ -85,6 +91,8 @@ public class RaveController {
     objects.add("bouncer");
     objects.add("disco");
     objects.add("speaker");
+
+    circles = new ArrayList<Circle>(List.of(circle3, circle4, circle5));
   }
 
   @FXML
@@ -211,6 +219,14 @@ public class RaveController {
         gameState.rockBigTaskManager.setVisibilityNoteButtons(true);
         gameState.rockBigTaskManager.setVisibilityArrows(true);
       }
+    }
+  }
+
+  public void setCircles() {
+    HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
+    for (int i = 0; i < circles.size(); i++) {
+      circles.get(i).setFill(harpController.getColourIndex(i + 2));
+      circles.get(i).opacityProperty().setValue(100);
     }
   }
 }

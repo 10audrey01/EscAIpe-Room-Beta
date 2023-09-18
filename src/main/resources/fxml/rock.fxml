@@ -11,6 +11,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -172,5 +173,7 @@
                </image></ImageView>
          </children>
       </Pane>
+      <Circle fx:id="circle1" fill="WHITE" layoutX="871.0" layoutY="456.0" radius="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="circle2" fill="WHITE" layoutX="1190.0" layoutY="222.0" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
    </children>
 </Pane>
