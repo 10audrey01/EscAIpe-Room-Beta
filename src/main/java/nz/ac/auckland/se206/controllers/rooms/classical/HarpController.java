@@ -1,12 +1,15 @@
 package nz.ac.auckland.se206.controllers.rooms.classical;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
@@ -62,6 +65,7 @@ public class HarpController {
   private Line noteToPlay;
   private boolean harpSequencePlayable;
   private Paint noteOrginalColor;
+  public MediaPlayer harpNotePlayer;
 
   @FXML
   private void initialize() throws IOException {
@@ -209,6 +213,12 @@ public class HarpController {
             noteOrginalColor = string.getStroke();
             string.setStroke(javafx.scene.paint.Color.GRAY);
             System.out.println(string.getId() + " entered");
+            try {
+              playHarpNotePlayer(string.getId());
+            } catch (URISyntaxException e1) {
+              // TODO Auto-generated catch block
+              e1.printStackTrace();
+            }
           });
       string.setOnMouseExited(
           e -> {
@@ -278,5 +288,14 @@ public class HarpController {
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICAL));
+  }
+
+  public void playHarpNotePlayer(String audioName) throws URISyntaxException {
+    Media note =
+        new Media(
+            getClass().getResource("/sounds/harpSounds/" + audioName + ".wav").toURI().toString());
+    harpNotePlayer = new MediaPlayer(note);
+    harpNotePlayer.setVolume(.05);
+    harpNotePlayer.play();
   }
 }
