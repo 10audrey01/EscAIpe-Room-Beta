@@ -3,6 +3,7 @@ package nz.ac.auckland.se206.controllers.rooms.rave;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -73,8 +74,19 @@ public class MusicQuizController {
 
     Collections.shuffle(availableGenres, random);
     int randomIndex = random.nextInt(availableGenres.size() + 1);
+    this.correctGenreIndex = randomIndex + 1;
     availableGenres.add(randomIndex, genreSolution);
-    selectedGenres = availableGenres.subList(0, 5);
+    selectedGenres = availableGenres.subList(0, 6);
+
+    List<Button> optionButtons =
+        Arrays.asList(
+            optionOneBtn, optionTwoBtn, optionThreeBtn, optionFourBtn, optionFiveBtn, optionSixBtn);
+
+    for (int i = 0; i < selectedGenres.size(); i++) {
+      String genre = selectedGenres.get(i);
+      Button button = optionButtons.get(i);
+      button.setText((i + 1) + ". " + genre);
+    }
   }
 
   @FXML
@@ -92,31 +104,49 @@ public class MusicQuizController {
   @FXML
   private void onClickOne() {
     System.out.println("1");
+    if (correctGenreIndex == 1) {
+      System.out.println("correct");
+    }
   }
 
   @FXML
   private void onClickTwo() {
     System.out.println("2");
+    if (correctGenreIndex == 2) {
+      System.out.println("correct");
+    }
   }
 
   @FXML
   private void onClickThree() {
     System.out.println("3");
+    if (correctGenreIndex == 3) {
+      System.out.println("correct");
+    }
   }
 
   @FXML
   private void onClickFour() {
     System.out.println("4");
+    if (correctGenreIndex == 4) {
+      System.out.println("correct");
+    }
   }
 
   @FXML
   private void onClickFive() {
     System.out.println("5");
+    if (correctGenreIndex == 5) {
+      System.out.println("correct");
+    }
   }
 
   @FXML
   private void onClickSix() {
     System.out.println("6");
+    if (correctGenreIndex == 6) {
+      System.out.println("correct");
+    }
   }
 
   @FXML
