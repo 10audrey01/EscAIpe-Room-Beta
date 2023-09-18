@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -17,12 +18,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.RockBigTaskManager.Colour;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.TaskManager.LargeTask;
+import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
 public class RockController {
@@ -51,11 +54,13 @@ public class RockController {
   @FXML private ImageView pointingArrowGif;
   @FXML private ImageView noteImage;
   @FXML private boolean chatOpened;
+  @FXML private Circle circle1, circle2;
 
   private GameState gameState;
   private MediaPlayer guitarNotePlayer;
   private HashMap<Colour, Integer> orderColourMap;
   private ArrayList<String> audioNames;
+  private ArrayList<Circle> circles;
   private String[] noteSequence;
   private int numberOfCorrectGuitarClicks = 0;
 
@@ -86,6 +91,9 @@ public class RockController {
     audioNames.add("a2");
     audioNames.add("b2");
     chatOpened = false;
+
+    circles = new ArrayList<Circle>(List.of(circle1, circle2));
+    setCircles();
   }
 
   @FXML
@@ -281,5 +289,31 @@ public class RockController {
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCKNOTE));
+  }
+
+  public void setCircles() {
+    HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
+    for (int i = 0; i < circles.size(); i++) {
+      circles.get(i).setFill(harpController.getColourIndex(i));
+      circles.get(i).setOpacity(100);
+    }
+  }
+
+  @FXML
+  public void onClickedCircle1(MouseEvent event) {
+    HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
+    System.out.println("circle 1 clicked");
+    harpController.setCirclesFound(0);
+    circle1.setOpacity(0);
+    circle1.setDisable(true);
+  }
+
+  @FXML
+  public void onClickedCircle2(MouseEvent event) {
+    HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
+    System.out.println("circle 2 clicked");
+    harpController.setCirclesFound(1);
+    circle2.setOpacity(0);
+    circle2.setDisable(true);
   }
 }
