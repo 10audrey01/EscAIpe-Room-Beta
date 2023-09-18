@@ -2,6 +2,9 @@ package nz.ac.auckland.se206.controllers.rooms.rave;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,7 +35,9 @@ public class MusicQuizController {
     "techno", "pop", "hip hop", "rnb", "kpop", "funk", "house", "drum and bass"
   };
   private String genreSolution;
+  private int correctGenreIndex;
   private MediaPlayer musicPlayer;
+  private List<String> selectedGenres = new ArrayList<>();
 
   @FXML
   private void initialize() throws IOException, URISyntaxException {
@@ -54,6 +59,22 @@ public class MusicQuizController {
         () -> {
           musicPlayer.seek(Duration.ZERO);
         });
+
+    selectOptions();
+  }
+
+  private void selectOptions() {
+    List<String> availableGenres = new ArrayList<>();
+    Collections.addAll(availableGenres, genres);
+
+    availableGenres.remove(genreSolution);
+
+    Random random = new Random();
+
+    Collections.shuffle(availableGenres, random);
+    int randomIndex = random.nextInt(availableGenres.size() + 1);
+    availableGenres.add(randomIndex, genreSolution);
+    selectedGenres = availableGenres.subList(0, 5);
   }
 
   @FXML
