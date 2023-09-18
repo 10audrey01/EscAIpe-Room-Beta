@@ -106,22 +106,24 @@ public class StartController {
 
     gameState = GameState.getInstance();
 
+    FXMLLoader pianoLoader = new FXMLLoader(App.class.getResource("/fxml/piano.fxml"));
+    FXMLLoader harpLoader = new FXMLLoader(App.class.getResource("/fxml/harp.fxml"));
+    SceneManager.addUi(AppUi.PIANO, pianoLoader.load());
+    SceneManager.addUi(AppUi.HARP, harpLoader.load());
+
+    // add reference to piano controller to use methods that are not static
+    SceneManager.addController(AppUi.PIANO, pianoLoader.getController());
+    SceneManager.addController(AppUi.HARP, harpLoader.getController());
+
     SceneManager.addUi(AppUi.CLASSICAL, App.loadFxml("classical"));
     SceneManager.addUi(AppUi.RAVE, App.loadFxml("rave"));
     SceneManager.addUi(AppUi.ROCK, App.loadFxml("rock"));
     SceneManager.addUi(AppUi.BODYBUILDER, App.loadFxml("bodybuilder"));
-    SceneManager.addUi(AppUi.HARP, App.loadFxml("harp"));
     SceneManager.addUi(AppUi.TRUMPET, App.loadFxml("trumpet"));
 
     SceneManager.addUi(AppUi.ROCKNOTE, App.loadFxml("rocknote"));
     SceneManager.addUi(AppUi.CLASSICALNOTE, App.loadFxml("classicalnote"));
     SceneManager.addUi(AppUi.MUSICQUIZ, App.loadFxml("musicquiz"));
-
-    FXMLLoader pianoLoader = new FXMLLoader(App.class.getResource("/fxml/piano.fxml"));
-    SceneManager.addUi(AppUi.PIANO, pianoLoader.load());
-
-    // add reference to piano controller to use methods that are not static
-    SceneManager.addController(AppUi.PIANO, pianoLoader.getController());
 
     Button current = (Button) event.getSource();
     Scene currentScene = current.getScene();
