@@ -10,7 +10,8 @@ public class TaskManager {
     SAFECODE,
     PLAYPIANO,
     SELECTGUITAR,
-    MUSICQUIZ
+    MUSICQUIZ,
+    PLAYHARP
   }
 
   public enum LargeTask {
@@ -38,7 +39,7 @@ public class TaskManager {
     List<Task> availableTasks = new ArrayList<Task>(List.of(Task.values()));
     Collections.shuffle(availableTasks);
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < availableTasks.size(); i++) {
       Task selectedTask = availableTasks.get(i);
       tasks.add(selectedTask);
       System.out.println(selectedTask);

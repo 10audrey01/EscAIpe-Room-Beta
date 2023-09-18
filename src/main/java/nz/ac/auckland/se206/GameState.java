@@ -38,6 +38,7 @@ public class GameState {
   public static boolean isRiddleObjectFound = false;
   public static boolean isNoteSequenceFound = false;
   public static boolean isKeyFound = false;
+  public static boolean isHarpPlayed = false;
   public static Difficulty difficulty;
   public static PlayTime time;
   public static boolean isEscaped = false;
