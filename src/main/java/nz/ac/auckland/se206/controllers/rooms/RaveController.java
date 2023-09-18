@@ -93,6 +93,7 @@ public class RaveController {
     objects.add("speaker");
 
     circles = new ArrayList<Circle>(List.of(circle3, circle4, circle5));
+    setCircles();
   }
 
   @FXML
@@ -226,7 +227,34 @@ public class RaveController {
     HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
     for (int i = 0; i < circles.size(); i++) {
       circles.get(i).setFill(harpController.getColourIndex(i + 2));
-      circles.get(i).opacityProperty().setValue(100);
+      circles.get(i).setOpacity(100);
     }
+  }
+
+  @FXML
+  public void onClickedCircle3(MouseEvent event) {
+    HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
+    System.out.println("circle 3 clicked");
+    harpController.setCirclesFound(2);
+    circle3.setOpacity(0);
+    circle3.setDisable(true);
+  }
+
+  @FXML
+  public void onClickedCircle4(MouseEvent event) {
+    HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
+    System.out.println("circle 4 clicked");
+    harpController.setCirclesFound(3);
+    circle4.setOpacity(0);
+    circle4.setDisable(true);
+  }
+
+  @FXML
+  public void onClickedCircle5(MouseEvent event) {
+    HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
+    System.out.println("circle 5 clicked");
+    harpController.setCirclesFound(4);
+    circle5.setOpacity(0);
+    circle5.setDisable(true);
   }
 }

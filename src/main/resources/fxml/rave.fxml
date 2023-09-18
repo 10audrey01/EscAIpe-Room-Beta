@@ -200,8 +200,8 @@
             </Label>
          </children>
       </Pane>
-      <Circle fx:id="circle3" fill="WHITE" layoutX="664.0" layoutY="107.0" radius="71.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fx:id="circle4" fill="WHITE" layoutX="1016.0" layoutY="136.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fx:id="circle5" fill="WHITE" layoutX="240.0" layoutY="108.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="circle3" fill="WHITE" layoutX="664.0" layoutY="107.0" onMouseClicked="#onClickedCircle3" radius="71.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="circle4" fill="WHITE" layoutX="1016.0" layoutY="136.0" onMouseClicked="#onClickedCircle4" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="circle5" fill="WHITE" layoutX="240.0" layoutY="108.0" onMouseClicked="#onClickedCircle5" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
    </children>
 </Pane>

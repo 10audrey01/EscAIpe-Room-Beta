@@ -93,6 +93,7 @@ public class RockController {
     chatOpened = false;
 
     circles = new ArrayList<Circle>(List.of(circle1, circle2));
+    setCircles();
   }
 
   @FXML
@@ -290,11 +291,29 @@ public class RockController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCKNOTE));
   }
 
-  public void setCircleColours() {
+  public void setCircles() {
     HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
     for (int i = 0; i < circles.size(); i++) {
       circles.get(i).setFill(harpController.getColourIndex(i));
-      circles.get(i).opacityProperty().setValue(100);
+      circles.get(i).setOpacity(100);
     }
+  }
+
+  @FXML
+  public void onClickedCircle1(MouseEvent event) {
+    HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
+    System.out.println("circle 1 clicked");
+    harpController.setCirclesFound(0);
+    circle1.setOpacity(0);
+    circle1.setDisable(true);
+  }
+
+  @FXML
+  public void onClickedCircle2(MouseEvent event) {
+    HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
+    System.out.println("circle 2 clicked");
+    harpController.setCirclesFound(1);
+    circle2.setOpacity(0);
+    circle2.setDisable(true);
   }
 }
