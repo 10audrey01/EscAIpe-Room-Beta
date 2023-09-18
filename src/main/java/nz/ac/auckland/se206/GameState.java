@@ -1,6 +1,8 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+
+import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
 import nz.ac.auckland.se206.controllers.rooms.notes.ClassicalNoteController;
 import nz.ac.auckland.se206.controllers.rooms.notes.RockNoteController;
 import nz.ac.auckland.se206.controllers.rooms.rave.BodybuilderController;
@@ -49,6 +51,7 @@ public class GameState {
   public BodybuilderController bodybuilderController;
   public ClassicalNoteController classicalNote;
   public RockNoteController rockNote;
+  
 
   public static GameState getInstance() {
     if (instance == null) {
