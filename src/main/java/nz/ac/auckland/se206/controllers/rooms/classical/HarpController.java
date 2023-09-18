@@ -55,6 +55,8 @@ public class HarpController {
   private ArrayList<Line> strings;
   private ArrayList<Line> notesToPlay;
   private ArrayList<Paint> noteColours;
+  private ArrayList<Boolean> notesFound;
+  private ArrayList<Circle> circles;
   private Line noteToPlay;
   private Paint noteOrginalColor;
 
@@ -69,9 +71,13 @@ public class HarpController {
                 string26, string27, string28, string29, string30, string31, string32, string33,
                 string34));
     notesToPlay = new ArrayList<Line>();
+    notesFound = new ArrayList<Boolean>(List.of(false, false, false, false, false));
+    circles = new ArrayList<Circle>(List.of(circle1, circle2, circle3, circle4, circle5));
     setStrings();
     generateRandomHarpNotes();
     generateRandomColours();
+    setNoteColours();
+    setCircleColours();
   }
 
   @FXML
@@ -90,15 +96,22 @@ public class HarpController {
 
   private void generateRandomColours() {
     noteColours = new ArrayList<Paint>();
-    for (Line note : notesToPlay) {
+    for (int i = 0; i < notesToPlay.size(); i++) {
       int randomNum = (int) (Math.random() * 20);
       Paint randomColour = getColour(randomNum);
       while (noteColours.contains(randomColour)) {
         randomNum = (int) (Math.random() * 20);
         randomColour = getColour(randomNum);
       }
-      note.setStroke(randomColour);
       noteColours.add(randomColour);
+    }
+  }
+
+  private void setNoteColours() {
+    for (int i = 0; i < notesToPlay.size(); i++) {
+      if (notesFound.get(i)) {
+        notesToPlay.get(i).setStroke(noteColours.get(i));
+      }
     }
   }
 
@@ -170,13 +183,16 @@ public class HarpController {
         return null;
     }
   }
- 
+
   private void setCircleColours() {
-    circle1.setFill(noteColours.get(0));
-    circle2.setFill(noteColours.get(1));
-    circle3.setFill(noteColours.get(2));
-    circle4.setFill(noteColours.get(3));
-    circle5.setFill(noteColours.get(4));
+    for (int i = 0; i < notesToPlay.size(); i++) {
+      if (notesFound.get(i)) {
+        circles.get(i).setFill(noteColours.get(i));
+        circles.get(i).opacityProperty().setValue(100);
+      } else {
+        circles.get(i).opacityProperty().setValue(0);
+      }
+    }
   }
 
   @FXML
@@ -199,6 +215,16 @@ public class HarpController {
           });
       string.setCursor(javafx.scene.Cursor.CLOSED_HAND);
     }
+  }
+
+  public void setNotesFound(int index) {
+    notesFound.set(index, true);
+    setNoteColours();
+    setCircleColours();
+  }
+
+  public Paint getColourIndex(int index) {
+    return noteColours.get(index);
   }
 
   @FXML
