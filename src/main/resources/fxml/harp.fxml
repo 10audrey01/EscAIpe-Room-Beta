@@ -23,11 +23,11 @@
             <Image url="@../images/classicalRoom/Harp/HarpHiddenKnife%20-%20Copy.png" />
          </image>
       </ImageView>
-      <Circle fx:id="circle1" fill="DODGERBLUE" layoutX="1120.0" layoutY="100.0" radius="53.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fx:id="circle2" fill="DODGERBLUE" layoutX="1120.0" layoutY="230.0" radius="53.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fx:id="circle3" fill="DODGERBLUE" layoutX="1120.0" layoutY="360.0" radius="53.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fx:id="circle4" fill="DODGERBLUE" layoutX="1120.0" layoutY="490.0" radius="53.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fx:id="circle5" fill="DODGERBLUE" layoutX="1120.0" layoutY="620.0" radius="53.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="circle1" fill="#1f93ff00" layoutX="1120.0" layoutY="100.0" radius="53.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circle2" fill="#0084ff00" layoutX="1120.0" layoutY="230.0" radius="53.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circle3" fill="#1f93ff00" layoutX="1120.0" layoutY="360.0" radius="53.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circle4" fill="#1f93ff00" layoutX="1120.0" layoutY="490.0" radius="53.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circle5" fill="#1f93ff00" layoutX="1120.0" layoutY="620.0" radius="53.0" stroke="BLACK" strokeType="INSIDE" />
       <Pane prefHeight="200.0" prefWidth="200.0" />
       <Line fx:id="string1" endX="384.75" endY="136.75" startX="508.25" startY="632.0" strokeLineCap="ROUND" strokeWidth="5.0" />
       <Line fx:id="string2" endX="388.25" endY="122.25" layoutX="9.0" layoutY="10.0" startX="510.5" startY="610.75" strokeLineCap="ROUND" strokeWidth="5.0" />

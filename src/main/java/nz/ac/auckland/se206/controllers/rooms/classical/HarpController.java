@@ -7,9 +7,11 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
@@ -55,13 +57,15 @@ public class HarpController {
   private ArrayList<Line> strings;
   private ArrayList<Line> notesToPlay;
   private ArrayList<Paint> noteColours;
-  private ArrayList<Boolean> notesFound;
+  private ArrayList<Boolean> notesToShow;
   private ArrayList<Circle> circles;
   private Line noteToPlay;
+  private boolean harpSequencePlayable;
   private Paint noteOrginalColor;
 
   @FXML
   private void initialize() throws IOException {
+
     strings =
         new ArrayList<Line>(
             List.of(
@@ -70,14 +74,16 @@ public class HarpController {
                 string18, string19, string20, string21, string22, string23, string24, string25,
                 string26, string27, string28, string29, string30, string31, string32, string33,
                 string34));
+    harpSequencePlayable = false;
     notesToPlay = new ArrayList<Line>();
-    notesFound = new ArrayList<Boolean>(List.of(false, false, false, false, false));
+    notesToShow = new ArrayList<Boolean>(List.of(false, false, false, false, false));
     circles = new ArrayList<Circle>(List.of(circle1, circle2, circle3, circle4, circle5));
     setStrings();
     generateRandomHarpNotes();
     generateRandomColours();
     setNoteColours();
     setCircleColours();
+    noteToPlay = notesToPlay.get(0);
   }
 
   @FXML
@@ -109,7 +115,7 @@ public class HarpController {
 
   private void setNoteColours() {
     for (int i = 0; i < notesToPlay.size(); i++) {
-      if (notesFound.get(i)) {
+      if (notesToShow.get(i)) {
         notesToPlay.get(i).setStroke(noteColours.get(i));
       }
     }
@@ -186,11 +192,11 @@ public class HarpController {
 
   private void setCircleColours() {
     for (int i = 0; i < notesToPlay.size(); i++) {
-      if (notesFound.get(i)) {
+      if (notesToShow.get(i)) {
         circles.get(i).setFill(noteColours.get(i));
-        circles.get(i).opacityProperty().setValue(100);
       } else {
-        circles.get(i).opacityProperty().setValue(0);
+        Color paint = new Color(0.1216, 0.5765, 1.0, 0.0);
+        circles.get(i).setFill(paint);
       }
     }
   }
@@ -212,15 +218,54 @@ public class HarpController {
       string.setOnMouseClicked(
           e -> {
             System.out.println(string.getId() + " clicked");
+            if (!harpSequencePlayable) {
+              return;
+            }
+            if (noteToPlay == string) {
+              System.out.println("Correct note played");
+              noteOrginalColor = javafx.scene.paint.Color.BLACK;
+              correctNotePlayed();
+            } else {
+              System.out.println("Incorrect note played");
+              incorrectNotePlayed();
+            }
           });
       string.setCursor(javafx.scene.Cursor.CLOSED_HAND);
     }
   }
 
-  public void setNotesFound(int index) {
-    notesFound.set(index, true);
+  public void correctNotePlayed() {
+    notesToShow.set(notesToPlay.indexOf(noteToPlay), false);
+    if (notesToPlay.indexOf(noteToPlay) != 4) {
+      noteToPlay = notesToPlay.get(notesToPlay.indexOf(noteToPlay) + 1);
+    } else {
+      System.out.println("Harp completed");
+      harpSequencePlayable = false;
+      GameState.isHarpPlayed = true;
+    }
+    setCircleColours();
+  }
+
+  public void incorrectNotePlayed() {
+    noteToPlay = notesToPlay.get(0);
+    notesToShow = new ArrayList<Boolean>(List.of(true, true, true, true, true));
     setNoteColours();
     setCircleColours();
+  }
+
+  public void setCirclesFound(int index) {
+    notesToShow.set(index, true);
+    setNoteColours();
+    setCircleColours();
+    if (!harpSequencePlayable) {
+      for (boolean note : notesToShow) {
+        if (note == false) {
+          return;
+        }
+      }
+      harpSequencePlayable = true;
+      System.out.println("Harp sequence playable");
+    }
   }
 
   public Paint getColourIndex(int index) {
