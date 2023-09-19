@@ -73,7 +73,7 @@ public class MusicQuizController {
     Random random = new Random();
 
     Collections.shuffle(availableGenres, random);
-    int randomIndex = random.nextInt(availableGenres.size() + 1);
+    int randomIndex = random.nextInt(availableGenres.size() - 1);
     this.correctGenreIndex = randomIndex + 1;
     availableGenres.add(randomIndex, genreSolution);
     selectedGenres = availableGenres.subList(0, 6);
