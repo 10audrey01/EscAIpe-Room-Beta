@@ -36,6 +36,7 @@ public class MusicQuizController {
   @FXML private Button optionFiveBtn;
   @FXML private Button optionSixBtn;
   @FXML private Label timerLabel;
+  @FXML private Label hintLabel;
 
   private GameState gamestate;
   private String[] genres = {
@@ -50,6 +51,7 @@ public class MusicQuizController {
   private void initialize() throws IOException, URISyntaxException, ApiProxyException {
     this.gamestate = GameState.getInstance();
     this.gamestate.timeManager.addToTimers(timerLabel);
+    this.gamestate.hintManager.addHintLabel(hintLabel);
     this.speechBox.setText("Hey man, I need your help identifying this music...");
     Random random = new Random();
     int randomNumber = random.nextInt(8);

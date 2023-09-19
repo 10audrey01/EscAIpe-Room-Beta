@@ -21,13 +21,13 @@
          </image>
       </ImageView>
       <TextArea fx:id="speechBox" editable="false" layoutX="25.0" layoutY="32.0" prefHeight="137.0" prefWidth="469.0" />
-      <Button fx:id="btnReturn" layoutX="1185.0" layoutY="42.0" mnemonicParsing="false" onAction="#onClickReturn" text="Return" />
+      <Button fx:id="btnReturn" layoutX="1185.0" layoutY="65.0" mnemonicParsing="false" onAction="#onClickReturn" text="Return" />
       <Button fx:id="songBtn" layoutX="574.0" layoutY="55.0" mnemonicParsing="false" onAction="#onClickSongBtn" text="PLAY SONG">
          <font>
             <Font size="47.0" />
          </font>
       </Button>
-      <Button fx:id="hintBtn" layoutX="645.0" layoutY="160.0" mnemonicParsing="false" onAction="#onClickHint" prefHeight="65.0" prefWidth="170.0" text="Hint?">
+      <Button fx:id="hintBtn" layoutX="574.0" layoutY="160.0" mnemonicParsing="false" onAction="#onClickHint" prefHeight="65.0" prefWidth="170.0" text="Hint?">
          <font>
             <Font size="33.0" />
          </font>
@@ -42,12 +42,12 @@
             <Button fx:id="optionSixBtn" layoutX="331.0" layoutY="60.0" mnemonicParsing="false" onAction="#onClickSix" text="Option 6" />
          </children>
       </Pane>
-            <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1186.0" layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
+            <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1186.0" layoutY="12.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-            <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="156.0" layoutY="14.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: FFFF;" text="HINTS LEFT:">
+            <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="755.0" layoutY="170.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: FFFF;" text="HINTS LEFT:">
          <font>
             <Font size="17.0" />
          </font>

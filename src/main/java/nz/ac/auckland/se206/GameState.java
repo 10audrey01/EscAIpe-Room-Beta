@@ -52,6 +52,7 @@ public class GameState {
       instance.rockBigTaskManager = new RockBigTaskManager();
       instance.ravePuzzle = new RavePuzzle();
       instance.objectiveListManager = new ObjectiveListManager();
+      instance.hintManager = new HintManager();
     }
     return instance;
   }
@@ -88,8 +89,8 @@ public class GameState {
     this.taskManager.generateTasks();
     this.timeManager.setTime(time.getTime() * 60);
     this.timeManager.startCountdown();
+    this.hintManager.initialiseManager(difficulty);
     this.ravePuzzle.setHints(classicalNote, rockNote);
     this.bodybuilderController.initialiseCode();
-    this.hintManager = new HintManager(difficulty);
   }
 }
