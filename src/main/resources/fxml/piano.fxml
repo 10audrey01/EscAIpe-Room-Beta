@@ -214,7 +214,14 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="leavePiano" layoutX="529.0" layoutY="641.0" onMouseClicked="#onClickedLeavePiano" prefHeight="84.0" prefWidth="223.0" />
+      <Pane fx:id="leavePiano" layoutX="529.0" layoutY="641.0" onMouseClicked="#onClickedLeavePiano" prefHeight="84.0" prefWidth="223.0">
+         <children>
+            <ImageView fitHeight="70.0" fitWidth="64.0" layoutX="72.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/classicalRoom/Exit.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
       <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1186.0" layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
          <font>
             <Font size="30.0" />
