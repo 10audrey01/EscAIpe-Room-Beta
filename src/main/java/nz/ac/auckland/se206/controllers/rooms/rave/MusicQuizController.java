@@ -18,6 +18,9 @@ import javafx.util.Duration;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.gpt.ChatMessage;
+import nz.ac.auckland.se206.gpt.GptPromptEngineering;
+import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
 public class MusicQuizController {
   @FXML private TextArea speechBox;
@@ -41,7 +44,7 @@ public class MusicQuizController {
   private List<String> selectedGenres = new ArrayList<>();
 
   @FXML
-  private void initialize() throws IOException, URISyntaxException {
+  private void initialize() throws IOException, URISyntaxException, ApiProxyException {
     this.gamestate = GameState.getInstance();
     this.speechBox.setText("Hey man, I need your help identifying this music...");
     Random random = new Random();
@@ -64,7 +67,7 @@ public class MusicQuizController {
     selectOptions();
   }
 
-  private void selectOptions() {
+  private void selectOptions() throws ApiProxyException {
     List<String> availableGenres = new ArrayList<>();
     Collections.addAll(availableGenres, genres);
 
@@ -89,6 +92,10 @@ public class MusicQuizController {
     }
 
     System.out.println("Correct genre index: " + correctGenreIndex);
+    String res =
+        this.gamestate.chatManager.getGptResponse(
+            new ChatMessage("user", GptPromptEngineering.getRiddleWithGivenWord(genreSolution)));
+    System.out.println(res);
   }
 
   @FXML

@@ -18,4 +18,9 @@ public class GptPromptEngineering {
         + " reveal the answer even if the player asks for it. Even if player gives up, do not give"
         + " the answer";
   }
+
+  // generate hint for song genre
+  public static String getHintWithMusic(String genre) {
+    return "Generate a 3 line riddle where the answer is the music genre: " + genre;
+  }
 }

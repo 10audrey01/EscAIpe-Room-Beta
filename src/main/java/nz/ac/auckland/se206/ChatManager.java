@@ -109,6 +109,28 @@ public class ChatManager {
     onSendMessageThread.start();
   }
 
+  // runs gpt but just returns the string response.
+  public String getGptResponse(ChatMessage msg) throws ApiProxyException {
+
+    // if the chatcompletion requests have more than 4 items, remove the last one
+    if (chatCompletionRequest.getMessages().size() > 4) {
+      chatCompletionRequest.getMessages().remove(4);
+    }
+
+    chatCompletionRequest.addMessage(msg);
+
+    try {
+      ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
+      Choice result = chatCompletionResult.getChoices().iterator().next();
+      System.out.println(result.getChatMessage().getContent());
+      return result.getChatMessage().getContent();
+    } catch (ApiProxyException e) {
+      // TODO handle exception appropriately
+      e.printStackTrace();
+      return null;
+    }
+  }
+
   /**
    * Runs the GPT model with a given chat message.
    *

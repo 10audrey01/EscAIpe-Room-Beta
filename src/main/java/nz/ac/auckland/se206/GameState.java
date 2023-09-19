@@ -4,7 +4,6 @@ import java.io.IOException;
 import nz.ac.auckland.se206.controllers.rooms.notes.ClassicalNoteController;
 import nz.ac.auckland.se206.controllers.rooms.notes.RockNoteController;
 import nz.ac.auckland.se206.controllers.rooms.rave.BodybuilderController;
-import nz.ac.auckland.se206.puzzles.RavePuzzle;
 
 /** Represents the state of the game. */
 public class GameState {
