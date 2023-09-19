@@ -211,6 +211,7 @@ public class RaveController {
   @FXML
   private void onClickOpenedDoor(MouseEvent event) throws IOException {
     App.setRoot("end");
+    gameState.timeManager.stopCountdown();
     System.out.println("opened door clicked");
   }
 
