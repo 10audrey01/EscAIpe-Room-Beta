@@ -57,6 +57,7 @@ public class HarpController {
   @FXML private Circle circle1, circle2, circle3, circle4, circle5;
   @FXML private Pane leaveHarp;
 
+  private GameState gameState;
   private ArrayList<Line> strings;
   private ArrayList<Line> notesToPlay;
   private ArrayList<Paint> colours;
@@ -70,6 +71,7 @@ public class HarpController {
 
   @FXML
   private void initialize() throws IOException {
+    this.gameState = GameState.getInstance();
 
     strings =
         new ArrayList<Line>(
@@ -212,6 +214,7 @@ public class HarpController {
       System.out.println("Harp completed");
       harpSequencePlayable = false;
       GameState.isHarpPlayed = true;
+      gameState.objectiveListManager.strikeThroughLabel4();
     }
     setCircleColours();
   }

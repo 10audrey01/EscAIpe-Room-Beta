@@ -94,8 +94,6 @@ public class RaveController {
 
     objects = new ArrayList<String>();
     objects.add("poster");
-    objects.add("dj");
-    objects.add("bodybuilder");
     objects.add("bouncer");
     objects.add("disco");
     objects.add("speaker");
@@ -113,7 +111,6 @@ public class RaveController {
   @FXML
   private void onClickDj(MouseEvent event) {
     System.out.println("dj clicked");
-    isRiddleObject("dj");
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.MUSICQUIZ));
@@ -122,7 +119,6 @@ public class RaveController {
   @FXML
   private void onClickBodybuilder(MouseEvent event) {
     System.out.println("bodybuilder clicked");
-    isRiddleObject("bodybuilder");
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.BODYBUILDER));

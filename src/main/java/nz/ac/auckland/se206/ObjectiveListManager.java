@@ -41,15 +41,21 @@ public class ObjectiveListManager {
   }
 
   public void strikeThroughLabel2() {
-    strikeThroughLabels(this.objectiveLabel2);
+    if (GameState.isSafeOpened) {
+      strikeThroughLabels(this.objectiveLabel2);
+    }
   }
 
   public void strikeThroughLabel3() {
-    strikeThroughLabels(this.objectiveLabel3);
+    if (GameState.isRiddleResolved) {
+      strikeThroughLabels(this.objectiveLabel3);
+    }
   }
 
   public void strikeThroughLabel4() {
-    strikeThroughLabels(this.objectiveLabel4);
+    if (GameState.isHarpPlayed) {
+      strikeThroughLabels(this.objectiveLabel4);
+    }
   }
 
   public void strikeThroughLabels(ArrayList<Label> labels) {

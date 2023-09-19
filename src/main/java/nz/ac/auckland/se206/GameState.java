@@ -32,14 +32,16 @@ public class GameState {
 
   // variables to keep track of the game state
   private static GameState instance;
+  public static Difficulty difficulty;
+  public static PlayTime time;
   public static boolean isRiddleResolved = false;
   public static boolean isRiddleObjectFound = false;
   public static boolean isNoteSequenceFound = false;
   public static boolean isKeyFound = false;
   public static boolean isMusicQuizCompleted = false;
+  public static boolean isSafeOpened = false;
+  public static boolean isPianoPlayed = false;
   public static boolean isHarpPlayed = false;
-  public static Difficulty difficulty;
-  public static PlayTime time;
   public static boolean isEscaped = false;
 
   public static GameState getInstance() {
@@ -65,6 +67,8 @@ public class GameState {
     isNoteSequenceFound = false;
     isKeyFound = false;
     isMusicQuizCompleted = false;
+    isSafeOpened = false;
+    isPianoPlayed = false;
     isHarpPlayed = false;
     isEscaped = false;
   }
