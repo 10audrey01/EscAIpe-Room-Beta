@@ -90,7 +90,7 @@
       </Pane>
       <Pane fx:id="guitaristPane" layoutX="491.0" layoutY="171.0" onMouseClicked="#onClickGuitarist" prefHeight="154.0" prefWidth="148.0" />
       <Pane fx:id="purpleGuitarPane" layoutX="457.0" layoutY="345.0" onMouseClicked="#onClickPurpleGuitar" prefHeight="75.0" prefWidth="233.0" rotate="143.1" snapToPixel="false" />
-      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1159.0" layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
+      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1186.0" layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
          <font>
             <Font size="30.0" />
          </font>
@@ -155,42 +155,6 @@
       </Pane>
       <Circle fx:id="circle1" fill="WHITE" layoutX="840.0" layoutY="496.0" onMouseClicked="#onClickedCircle1" radius="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <Circle fx:id="circle2" fill="WHITE" layoutX="1190.0" layoutY="222.0" onMouseClicked="#onClickedCircle2" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <VBox layoutX="939.0" layoutY="5.0" maxWidth="186.0" prefHeight="211.0" prefWidth="186.0" spacing="10.0" style="-fx-background-color: FFF5D8;">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="176.0" text="HOW TO ESCAPE 101" textAlignment="CENTER" underline="true" wrapText="true">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
-            <Label fx:id="step1Label" alignment="CENTER" prefHeight="21.0" prefWidth="193.0" text="- Help the DJ">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
-            <Label fx:id="step2Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="213.0" text="- Help the bodybuilder" textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
-            <Label fx:id="step3Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="184.0" text="- Talk to the guitarist" textAlignment="CENTER">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
-            <Label fx:id="step4Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="172.0" text="- Play the harp">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-         </children>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-      </VBox>
       <Pane fx:id="chatBoxPane" disable="true" layoutX="25.0" layoutY="510.0" opacity="0.0" prefHeight="195.0" prefWidth="1232.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="195.0" prefWidth="1232.0">
@@ -208,6 +172,73 @@
                </children>
                <padding>
                   <Insets left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+         </children>
+      </Pane>
+      <Pane layoutX="935.0" layoutY="5.0" prefHeight="226.0" prefWidth="230.0">
+         <children>
+            <VBox layoutX="7.0" maxWidth="187.0" prefHeight="211.0" prefWidth="187.0" spacing="10.0" style="-fx-background-color: FFF5D8;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="176.0" text="HOW TO ESCAPE 101" textAlignment="CENTER" underline="true" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
+                  <Label fx:id="step1Label" alignment="CENTER" prefHeight="21.0" prefWidth="193.0" text="- Help the DJ">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
+                  <Label fx:id="step2Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="183.0" text="- Help the bodybuilder" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
+                  <Label fx:id="step3Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="184.0" text="- Talk to the guitarist" textAlignment="CENTER">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
+                  <Label fx:id="step4Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="172.0" text="- Play the harp">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox layoutX="198.0" layoutY="41.0" prefHeight="180.0" prefWidth="25.0" spacing="11.0">
+               <children>
+                  <ImageView fx:id="step1BlueKey" fitHeight="32.0" fitWidth="30.0" visible="false">
+                     <image>
+                        <Image url="@../images/keyBlue.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="step2GreenKey" fitHeight="34.0" fitWidth="29.0" visible="false">
+                     <image>
+                        <Image url="@../images/keyGreen.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="step3RedKey" fitHeight="35.0" fitWidth="31.0" visible="false">
+                     <image>
+                        <Image url="@../images/keyRed.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="step4YellowKey" fitHeight="36.0" fitWidth="31.0" visible="false">
+                     <image>
+                        <Image url="@../images/keyYellow.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets bottom="8.0" top="8.0" />
                </padding>
             </VBox>
          </children>
