@@ -32,7 +32,7 @@ public class RockController {
 
   @FXML private Rectangle classicalDoor;
   @FXML private Rectangle raveDoor;
-  @FXML private Pane gameMasterPane;
+  @FXML private Pane guitaristPane;
   @FXML private Pane drumsPane;
   @FXML private Pane cyanGuitarPane;
   @FXML private Pane blueGuitarPane;
@@ -119,8 +119,8 @@ public class RockController {
   }
 
   @FXML
-  private void onClickGameMaster(MouseEvent event) {
-    System.out.println("game master clicked");
+  private void onClickGuitarist(MouseEvent event) {
+    System.out.println("guitarist clicked");
     toggleChat();
   }
 
