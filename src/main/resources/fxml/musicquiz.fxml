@@ -9,6 +9,11 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.rave.MusicQuizController">
    <children>
+      <ImageView fitHeight="740.0" fitWidth="1293.0" layoutY="-20.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/raveRoom/background.png" />
+         </image>
+      </ImageView>
       <ImageView fitHeight="595.0" fitWidth="326.0" layoutX="25.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/raveRoom/dj.png" />
@@ -29,11 +34,11 @@
       <Pane layoutX="419.0" layoutY="289.0" prefHeight="364.0" prefWidth="773.0">
          <children>
             <Button fx:id="optionOneBtn" layoutX="33.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickOne" text="Option 1" />
-            <Button fx:id="optionTwoBtn" layoutX="108.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickTwo" text="Option 2" />
-            <Button fx:id="optionThreeBtn" layoutX="179.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickThree" text="Option 3" />
+            <Button fx:id="optionTwoBtn" layoutX="158.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickTwo" text="Option 2" />
+            <Button fx:id="optionThreeBtn" layoutX="327.0" layoutY="16.0" mnemonicParsing="false" onAction="#onClickThree" text="Option 3" />
             <Button fx:id="optionFourBtn" layoutX="33.0" layoutY="55.0" mnemonicParsing="false" onAction="#onClickFour" text="Option 4" />
-            <Button fx:id="optionFiveBtn" layoutX="108.0" layoutY="55.0" mnemonicParsing="false" onAction="#onClickFive" text="Option 5" />
-            <Button fx:id="optionSixBtn" layoutX="179.0" layoutY="55.0" mnemonicParsing="false" onAction="#onClickSix" text="Option 6" />
+            <Button fx:id="optionFiveBtn" layoutX="165.0" layoutY="62.0" mnemonicParsing="false" onAction="#onClickFive" text="Option 5" />
+            <Button fx:id="optionSixBtn" layoutX="331.0" layoutY="60.0" mnemonicParsing="false" onAction="#onClickSix" text="Option 6" />
          </children>
       </Pane>
    </children>
