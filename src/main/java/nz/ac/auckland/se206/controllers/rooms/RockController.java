@@ -16,6 +16,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Circle;
@@ -63,6 +64,7 @@ public class RockController {
   @FXML private ImageView step4YellowKey;
   @FXML private boolean chatOpened;
   @FXML private Circle circle1, circle2;
+  @FXML private VBox objectiveList;
 
   private GameState gameState;
   private MediaPlayer guitarNotePlayer;

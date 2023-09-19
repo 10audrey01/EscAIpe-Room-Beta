@@ -13,6 +13,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.DraggableMaker;
 import nz.ac.auckland.se206.GameState;
@@ -56,6 +57,7 @@ public class ClassicalController {
   @FXML private ImageView step2GreenKey;
   @FXML private ImageView step3RedKey;
   @FXML private ImageView step4YellowKey;
+  @FXML private VBox objectiveList;
   private boolean chatOpened;
 
   // put these into gamestate later

@@ -14,6 +14,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.GameState;
@@ -68,6 +69,7 @@ public class RaveController {
   @FXML private ImageView pointingArrowGif;
   @FXML private boolean chatOpened;
   @FXML private Circle circle3, circle4, circle5;
+  @FXML private VBox objectiveList;
 
   private ArrayList<Circle> circles;
 
