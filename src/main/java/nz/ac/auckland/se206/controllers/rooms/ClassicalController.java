@@ -42,6 +42,7 @@ public class ClassicalController {
   @FXML private Label colourLabel3;
   @FXML private Label colourLabel4;
   @FXML private Label timerLabel;
+  @FXML private Label hintLabel;
   @FXML private Label noteSequenceLabel;
   @FXML private Label step1Label;
   @FXML private Label step2Label;
@@ -75,6 +76,7 @@ public class ClassicalController {
   private void initialize() {
     gameState = GameState.getInstance();
     gameState.timeManager.addToTimers(timerLabel);
+    gameState.hintManager.addHintLabel(hintLabel);
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
     gameState.objectiveListManager.addObjectiveLabel1(step1Label);

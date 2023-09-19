@@ -5,15 +5,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.RavePuzzle;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.puzzles.RavePuzzle;
 
 public class BodybuilderController {
 
@@ -40,6 +41,8 @@ public class BodybuilderController {
   @FXML private Circle digitFour;
   @FXML private Circle digitFive;
   @FXML private Circle digitSix;
+  @FXML private Label timerLabel;
+  @FXML private Label hintLabel;
 
   private GameState gamestate;
   private RavePuzzle puzzleInstance;
@@ -50,6 +53,8 @@ public class BodybuilderController {
   private void initialize() throws IOException {
     System.out.println("Start");
     this.gamestate = GameState.getInstance();
+    this.gamestate.timeManager.addToTimers(timerLabel);
+    this.gamestate.hintManager.addHintLabel(hintLabel);
     this.gamestate.bodybuilderController = this;
     this.speechBox.setText("Hey bro, I need your help... I need to open this safe.");
     resetSafe();

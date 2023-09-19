@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Font;
 import nz.ac.auckland.se206.controllers.rooms.RaveController;
 import nz.ac.auckland.se206.gpt.ChatMessage;
 import nz.ac.auckland.se206.gpt.GptPromptEngineering;
@@ -109,6 +111,32 @@ public class ChatManager {
     onSendMessageThread.start();
   }
 
+  // get a hint for the music quiz
+  public void getMusicQuizHint(ChatMessage msg, Button btn, TextArea speechArea) {
+    Task<Void> getHintTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            Platform.runLater(
+                () -> {
+                  btn.setText("Loading...");
+                  btn.setFont(Font.font(20));
+                  btn.setDisable(true);
+                });
+            ChatMessage res = runGpt(msg);
+            Platform.runLater(
+                () -> {
+                  speechArea.setText("Hey man, I got a hint for you...\n" + res.getContent());
+                  btn.setVisible(false);
+                });
+            return null;
+          }
+        };
+
+    Thread hintThread = new Thread(getHintTask, "hintThread");
+    hintThread.start();
+  }
+
   /**
    * Runs the GPT model with a given chat message.
    *
@@ -117,6 +145,11 @@ public class ChatManager {
    * @throws ApiProxyException if there is an error communicating with the API proxy
    */
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
+    if (chatCompletionRequest.getMessages().size() > 3) {
+      chatCompletionRequest.getMessages().remove(2);
+    }
+
+    chatCompletionRequest.addMessage(msg);
     chatCompletionRequest.addMessage(msg);
     try {
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
