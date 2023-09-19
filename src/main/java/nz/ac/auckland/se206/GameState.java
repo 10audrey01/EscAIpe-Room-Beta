@@ -42,6 +42,7 @@ public class GameState {
   public static boolean isPianoPlayed = false;
   public static boolean isHarpPlayed = false;
   public static boolean isEscaped = false;
+  public static boolean isTrumpetPlayed = false;
 
   public static GameState getInstance() {
     if (instance == null) {
