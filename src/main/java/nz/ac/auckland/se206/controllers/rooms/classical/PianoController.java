@@ -7,6 +7,7 @@ import java.util.List;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -57,6 +58,7 @@ public class PianoController {
   @FXML private Pane fKey;
   @FXML private Pane gKey;
   @FXML private Pane leavePiano;
+  @FXML private Label timerLabel;
 
   // private static final int C_NOTE_LOCATION = 193;
   // private static final int D_NOTE_LOCATION = 178;
@@ -87,6 +89,8 @@ public class PianoController {
 
   @FXML
   private void initialize() throws IOException {
+    gameState = GameState.getInstance();
+    gameState.timeManager.addToTimers(timerLabel);
     notesList =
         new ArrayList<ImageView>(
             List.of(

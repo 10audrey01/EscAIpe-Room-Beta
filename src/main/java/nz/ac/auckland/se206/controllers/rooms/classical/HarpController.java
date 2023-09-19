@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
@@ -56,6 +57,7 @@ public class HarpController {
       string34;
   @FXML private Circle circle1, circle2, circle3, circle4, circle5;
   @FXML private Pane leaveHarp;
+  @FXML private Label timerLabel;
 
   private GameState gameState;
   private ArrayList<Line> strings;
@@ -72,6 +74,7 @@ public class HarpController {
   @FXML
   private void initialize() throws IOException {
     this.gameState = GameState.getInstance();
+    gameState.timeManager.addToTimers(timerLabel);
 
     strings =
         new ArrayList<Line>(

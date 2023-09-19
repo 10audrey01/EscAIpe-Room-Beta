@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -19,16 +20,22 @@ public class TrumpetController {
   @FXML private ImageView trumpetButton1, trumpetButton2, trumpetButton3;
   @FXML private ImageView note1Symbol, note2Symbol, note3Symbol;
   @FXML private Pane leaveTrumpet, playTrumpet;
+  @FXML private Label timerLabel;
   private boolean isButton1Down;
   private boolean isButton2Down;
   private boolean isButton3Down;
+
 
   private ArrayList<Integer> noteSequence;
   private Integer noteToPlay;
   private int currentNoteIndex = 0;
 
+  private GameState gameState;
+
   @FXML
   private void initialize() throws IOException {
+    gameState = GameState.getInstance();
+    gameState.timeManager.addToTimers(timerLabel);
     isButton1Down = false;
     isButton2Down = false;
     isButton3Down = false;
