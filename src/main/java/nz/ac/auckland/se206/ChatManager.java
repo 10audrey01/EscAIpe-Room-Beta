@@ -111,6 +111,7 @@ public class ChatManager {
     onSendMessageThread.start();
   }
 
+  // get a hint for the music quiz
   public void getMusicQuizHint(ChatMessage msg, Button btn, TextArea speechArea) {
     Task<Void> getHintTask =
         new Task<Void>() {
@@ -126,7 +127,7 @@ public class ChatManager {
             Platform.runLater(
                 () -> {
                   speechArea.setText("Hey man, I got a hint for you...\n" + res.getContent());
-                  btn.setOpacity(0);
+                  btn.setVisible(false);
                 });
             return null;
           }

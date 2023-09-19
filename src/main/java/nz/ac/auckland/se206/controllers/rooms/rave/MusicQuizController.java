@@ -16,6 +16,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.GameState.Difficulty;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.gpt.ChatMessage;
@@ -65,6 +66,9 @@ public class MusicQuizController {
         });
 
     selectOptions();
+    if (GameState.difficulty == Difficulty.HARD) {
+      hintBtn.setVisible(false);
+    }
   }
 
   private void selectOptions() throws ApiProxyException {
