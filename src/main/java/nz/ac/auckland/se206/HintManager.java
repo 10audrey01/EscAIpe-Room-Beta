@@ -34,6 +34,14 @@ public class HintManager {
     hintLabels.add(label);
   }
 
+  public void useHint() {
+    this.hintsRemaining--;
+    Platform.runLater(
+        () -> {
+          for (Label label : hintLabels) label.setText(("Hints Left: " + hintsRemaining));
+        });
+  }
+
   public int getHintsRemaining() {
     return this.hintsRemaining;
   }
