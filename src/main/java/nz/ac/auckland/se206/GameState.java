@@ -1,8 +1,6 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
-
-import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
 import nz.ac.auckland.se206.controllers.rooms.notes.ClassicalNoteController;
 import nz.ac.auckland.se206.controllers.rooms.notes.RockNoteController;
 import nz.ac.auckland.se206.controllers.rooms.rave.BodybuilderController;
@@ -34,25 +32,17 @@ public class GameState {
 
   // variables to keep track of the game state
   private static GameState instance;
+  public static Difficulty difficulty;
+  public static PlayTime time;
   public static boolean isRiddleResolved = false;
   public static boolean isRiddleObjectFound = false;
   public static boolean isNoteSequenceFound = false;
   public static boolean isKeyFound = false;
+  public static boolean isMusicQuizCompleted = false;
+  public static boolean isSafeOpened = false;
+  public static boolean isPianoPlayed = false;
   public static boolean isHarpPlayed = false;
-  public static Difficulty difficulty;
-  public static PlayTime time;
   public static boolean isEscaped = false;
-
-  public TimeManager timeManager;
-  public TaskManager taskManager;
-  public ChatManager chatManager;
-  public RockBigTaskManager rockBigTaskManager;
-  public RavePuzzle ravePuzzle;
-
-  public BodybuilderController bodybuilderController;
-  public ClassicalNoteController classicalNote;
-  public RockNoteController rockNote;
-  
 
   public static GameState getInstance() {
     if (instance == null) {
@@ -62,6 +52,7 @@ public class GameState {
       instance.chatManager = new ChatManager();
       instance.rockBigTaskManager = new RockBigTaskManager();
       instance.ravePuzzle = new RavePuzzle();
+      instance.objectiveListManager = new ObjectiveListManager();
     }
     return instance;
   }
@@ -69,6 +60,29 @@ public class GameState {
   public static void setInstance(GameState instance) {
     GameState.instance = instance;
   }
+
+  public static void resetVariables() {
+    isRiddleResolved = false;
+    isRiddleObjectFound = false;
+    isNoteSequenceFound = false;
+    isKeyFound = false;
+    isMusicQuizCompleted = false;
+    isSafeOpened = false;
+    isPianoPlayed = false;
+    isHarpPlayed = false;
+    isEscaped = false;
+  }
+
+  public TimeManager timeManager;
+  public TaskManager taskManager;
+  public ChatManager chatManager;
+  public RockBigTaskManager rockBigTaskManager;
+  public RavePuzzle ravePuzzle;
+  public ObjectiveListManager objectiveListManager;
+
+  public BodybuilderController bodybuilderController;
+  public ClassicalNoteController classicalNote;
+  public RockNoteController rockNote;
 
   public void startGame() throws IOException {
     this.taskManager.generateTasks();

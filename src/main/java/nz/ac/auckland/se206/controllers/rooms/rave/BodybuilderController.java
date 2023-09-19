@@ -212,6 +212,8 @@ public class BodybuilderController {
 
     if (this.code.equals(this.solution)) {
       speechBox.setText("Nice work bro. You can take this key if you want, I guess");
+      GameState.isSafeOpened = true;
+      gamestate.objectiveListManager.strikeThroughLabel2();
     }
   }
 

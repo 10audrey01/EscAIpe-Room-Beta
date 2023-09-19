@@ -47,8 +47,12 @@ public class RaveController {
   @FXML private Label colourLabel2;
   @FXML private Label colourLabel3;
   @FXML private Label colourLabel4;
-  @FXML private Label timerLabel;
   @FXML private Label noteSequenceLabel;
+  @FXML private Label timerLabel;
+  @FXML private Label step1Label;
+  @FXML private Label step2Label;
+  @FXML private Label step3Label;
+  @FXML private Label step4Label;
   @FXML private ImageView doorImage;
   @FXML private ImageView greenLock;
   @FXML private ImageView redLock;
@@ -71,6 +75,10 @@ public class RaveController {
     gameState.timeManager.addToTimers(timerLabel);
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
+    gameState.objectiveListManager.addObjectiveLabel1(step1Label);
+    gameState.objectiveListManager.addObjectiveLabel2(step2Label);
+    gameState.objectiveListManager.addObjectiveLabel3(step3Label);
+    gameState.objectiveListManager.addObjectiveLabel4(step4Label);
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
       gameState.rockBigTaskManager.addAllRockTaskElements(
           colourLabel1,
@@ -86,8 +94,6 @@ public class RaveController {
 
     objects = new ArrayList<String>();
     objects.add("poster");
-    objects.add("dj");
-    objects.add("bodybuilder");
     objects.add("bouncer");
     objects.add("disco");
     objects.add("speaker");
@@ -105,7 +111,6 @@ public class RaveController {
   @FXML
   private void onClickDj(MouseEvent event) {
     System.out.println("dj clicked");
-    isRiddleObject("dj");
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.MUSICQUIZ));
@@ -114,7 +119,6 @@ public class RaveController {
   @FXML
   private void onClickBodybuilder(MouseEvent event) {
     System.out.println("bodybuilder clicked");
-    isRiddleObject("bodybuilder");
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.BODYBUILDER));

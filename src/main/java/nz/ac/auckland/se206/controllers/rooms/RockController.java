@@ -32,7 +32,7 @@ public class RockController {
 
   @FXML private Rectangle classicalDoor;
   @FXML private Rectangle raveDoor;
-  @FXML private Pane gameMasterPane;
+  @FXML private Pane guitaristPane;
   @FXML private Pane drumsPane;
   @FXML private Pane cyanGuitarPane;
   @FXML private Pane blueGuitarPane;
@@ -46,8 +46,12 @@ public class RockController {
   @FXML private Label colourLabel2;
   @FXML private Label colourLabel3;
   @FXML private Label colourLabel4;
-  @FXML private Label timerLabel;
   @FXML private Label noteSequenceLabel;
+  @FXML private Label timerLabel;
+  @FXML private Label step1Label;
+  @FXML private Label step2Label;
+  @FXML private Label step3Label;
+  @FXML private Label step4Label;
   @FXML private TextArea textArea;
   @FXML private TextField textField;
   @FXML private ToggleButton toggleNoteBtn;
@@ -71,6 +75,10 @@ public class RockController {
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
     gameState.chatManager.generateInitialMessage();
+    gameState.objectiveListManager.addObjectiveLabel1(step1Label);
+    gameState.objectiveListManager.addObjectiveLabel2(step2Label);
+    gameState.objectiveListManager.addObjectiveLabel3(step3Label);
+    gameState.objectiveListManager.addObjectiveLabel4(step4Label);
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
       gameState.rockBigTaskManager.addAllRockTaskElements(
           colourLabel1,
@@ -111,8 +119,8 @@ public class RockController {
   }
 
   @FXML
-  private void onClickGameMaster(MouseEvent event) {
-    System.out.println("game master clicked");
+  private void onClickGuitarist(MouseEvent event) {
+    System.out.println("guitarist clicked");
     toggleChat();
   }
 

@@ -13,11 +13,15 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.RaveController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+   onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="720.0" prefWidth="1280.0"
+   xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="nz.ac.auckland.se206.controllers.rooms.RaveController">
    <children>
       <Text layoutX="232.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="rav" />
       <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true">
@@ -25,12 +29,16 @@
             <Image url="@../images/raveRoom/background.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="rockDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="444.0" layoutX="23.0" layoutY="261.0" onMouseClicked="#doGoRock" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="141.0">
+      <Rectangle fx:id="rockDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="444.0"
+         layoutX="23.0" layoutY="261.0" onMouseClicked="#doGoRock" opacity="0.0" stroke="BLACK"
+         strokeType="INSIDE" width="141.0">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </Rectangle>
-      <Rectangle fx:id="classicalDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="396.0" layoutX="1132.0" layoutY="310.0" onMouseClicked="#doGoClassical" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
+      <Rectangle fx:id="classicalDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE"
+         height="396.0" layoutX="1132.0" layoutY="310.0" onMouseClicked="#doGoClassical"
+         opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
@@ -38,9 +46,11 @@
             <Glow level="0.83" />
          </effect>
       </Rectangle>
-      <Pane fx:id="djPane" layoutX="339.0" layoutY="401.0" onMouseClicked="#onClickDj" prefHeight="136.0" prefWidth="139.0">
+      <Pane fx:id="djPane" layoutX="339.0" layoutY="401.0" onMouseClicked="#onClickDj"
+         prefHeight="136.0" prefWidth="139.0">
          <children>
-            <ImageView fitHeight="208.0" fitWidth="131.0" layoutX="4.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="208.0" fitWidth="131.0" layoutX="4.0" layoutY="3.0"
+               pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/raveRoom/dj.png" />
                </image>
@@ -49,54 +59,67 @@
       </Pane>
       <Pane fx:id="doorPane" layoutX="506.0" layoutY="225.0" prefHeight="266.0" prefWidth="272.0">
          <children>
-            <ImageView fx:id="doorImage" fitHeight="294.0" fitWidth="261.0" layoutX="14.0" layoutY="-8.0" onMouseClicked="#onClickDoor" pickOnBounds="true">
+            <ImageView fx:id="doorImage" fitHeight="294.0" fitWidth="261.0" layoutX="14.0"
+               layoutY="-8.0" onMouseClicked="#onClickDoor" pickOnBounds="true">
                <image>
                   <Image url="@../images/doorClosed.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="blueLock" fitHeight="89.0" fitWidth="62.0" layoutX="25.0" layoutY="159.0" onMouseClicked="#onClickBlue" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="blueLock" fitHeight="89.0" fitWidth="62.0" layoutX="25.0"
+               layoutY="159.0" onMouseClicked="#onClickBlue" pickOnBounds="true"
+               preserveRatio="true">
                <image>
                   <Image url="@../images/lockBlue.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="greenLock" fitHeight="78.0" fitWidth="86.0" layoutX="186.0" layoutY="72.0" onMouseClicked="#onClickGreen" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="greenLock" fitHeight="78.0" fitWidth="86.0" layoutX="186.0"
+               layoutY="72.0" onMouseClicked="#onClickGreen" pickOnBounds="true"
+               preserveRatio="true">
                <image>
                   <Image url="@../images/lockGreen.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="redLock" fitHeight="92.0" fitWidth="77.0" layoutX="39.0" layoutY="20.0" onMouseClicked="#onClickRed" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="redLock" fitHeight="92.0" fitWidth="77.0" layoutX="39.0"
+               layoutY="20.0" onMouseClicked="#onClickRed" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/lockRed.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="yellowLock" fitHeight="108.0" fitWidth="90.0" layoutX="119.0" layoutY="161.0" onMouseClicked="#onClickYellow" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="yellowLock" fitHeight="108.0" fitWidth="90.0" layoutX="119.0"
+               layoutY="161.0" onMouseClicked="#onClickYellow" pickOnBounds="true"
+               preserveRatio="true">
                <image>
                   <Image url="@../images/lockYellow.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="discoPane" layoutX="556.0" onMouseClicked="#onClickDisco" prefHeight="208.0" prefWidth="213.0">
+      <Pane fx:id="discoPane" layoutX="533.0" layoutY="-4.0" onMouseClicked="#onClickDisco"
+         prefHeight="200.0" prefWidth="201.0">
          <children>
-            <ImageView fitHeight="228.0" fitWidth="274.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="208.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/raveRoom/discoball.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="bodybuilderPane" layoutX="769.0" layoutY="433.0" onMouseClicked="#onClickBodybuilder" prefHeight="256.0" prefWidth="161.0">
+      <Pane fx:id="bodybuilderPane" layoutX="769.0" layoutY="433.0"
+         onMouseClicked="#onClickBodybuilder" prefHeight="256.0" prefWidth="161.0">
          <children>
-            <ImageView fitHeight="287.0" fitWidth="179.0" layoutX="-6.0" layoutY="-25.0" pickOnBounds="true">
+            <ImageView fitHeight="287.0" fitWidth="179.0" layoutX="-6.0" layoutY="-25.0"
+               pickOnBounds="true">
                <image>
                   <Image url="@../images/raveRoom/bodybuilder.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="bouncerPane" layoutX="931.0" layoutY="320.0" onMouseClicked="#onClickBouncer" prefHeight="312.0" prefWidth="201.0">
+      <Pane fx:id="bouncerPane" layoutX="931.0" layoutY="320.0" onMouseClicked="#onClickBouncer"
+         prefHeight="312.0" prefWidth="201.0">
          <children>
-            <ImageView fitHeight="359.0" fitWidth="191.0" layoutX="5.0" layoutY="-14.0" pickOnBounds="true">
+            <ImageView fitHeight="359.0" fitWidth="191.0" layoutX="5.0" layoutY="-14.0"
+               pickOnBounds="true">
                <image>
                   <Image url="@../images/raveRoom/bouncer.png" />
                </image>
@@ -106,38 +129,48 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="speakerPane" layoutX="323.0" layoutY="517.0" onMouseClicked="#onClickSpeaker" prefHeight="188.0" prefWidth="149.0">
+      <Pane fx:id="speakerPane" layoutX="323.0" layoutY="517.0" onMouseClicked="#onClickSpeaker"
+         prefHeight="188.0" prefWidth="149.0">
          <children>
-            <ImageView fitHeight="195.0" fitWidth="152.0" layoutX="-1.0" layoutY="-7.0" pickOnBounds="true">
+            <ImageView fitHeight="195.0" fitWidth="152.0" layoutX="-1.0" layoutY="-7.0"
+               pickOnBounds="true">
                <image>
                   <Image url="@../images/raveRoom/speaker.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="posterPane" layoutX="191.0" layoutY="310.0" onMouseClicked="#onClickPoster" prefHeight="219.0" prefWidth="122.0">
+      <Pane fx:id="posterPane" layoutX="201.0" layoutY="310.0" onMouseClicked="#onClickPoster"
+         prefHeight="219.0" prefWidth="122.0">
          <children>
-            <ImageView fitHeight="236.0" fitWidth="150.0" layoutX="-14.0" layoutY="-8.0" pickOnBounds="true">
+            <ImageView fitHeight="236.0" fitWidth="150.0" layoutX="-14.0" layoutY="-8.0"
+               pickOnBounds="true">
                <image>
                   <Image url="@../images/raveRoom/poster.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1159.0" layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
+      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1186.0"
+         layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Button fx:id="toggleChatButton" layoutX="1150.0" layoutY="465.0" mnemonicParsing="false" onAction="#toggleChat" text="Toggle Chat" />
-      <ImageView fx:id="pointingArrowGif" fitHeight="208.0" fitWidth="231.0" layoutX="932.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="45.0" visible="false">
+      <Button fx:id="toggleChatButton" layoutX="1150.0" layoutY="465.0" mnemonicParsing="false"
+         onAction="#toggleChat" text="Toggle Chat" />
+      <ImageView fx:id="pointingArrowGif" fitHeight="208.0" fitWidth="231.0" layoutX="667.0"
+         layoutY="-10.0" pickOnBounds="true" preserveRatio="true" rotate="45.0" visible="false">
          <image>
             <Image url="@../images/pointingArrow.gif" />
          </image>
       </ImageView>
-      <ToggleButton fx:id="toggleNoteBtn" disable="true" layoutX="1058.0" layoutY="7.0" mnemonicParsing="false" onAction="#onToggleNote" prefHeight="79.0" prefWidth="83.0" style="-fx-background-color: transparent;" visible="false">
+      <ToggleButton fx:id="toggleNoteBtn" disable="true" layoutX="781.0" layoutY="5.0"
+         mnemonicParsing="false" onAction="#onToggleNote" prefHeight="79.0" prefWidth="83.0"
+         style="-fx-background-color: transparent;" visible="false">
          <graphic>
-            <ImageView fx:id="noteImage" fitHeight="79.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="noteImage" fitHeight="79.0" fitWidth="64.0" pickOnBounds="true"
+               preserveRatio="true">
                <image>
                   <Image url="@../images/noteIcon.png" />
                </image>
@@ -150,43 +183,63 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ToggleButton>
-      <Pane fx:id="notePane" layoutX="945.0" layoutY="12.0" prefHeight="96.0" prefWidth="186.0" style="-fx-background-color: FFF5D8;" visible="false">
+      <Pane fx:id="notePane" layoutX="745.0" layoutY="12.0" prefHeight="96.0" prefWidth="186.0"
+         style="-fx-background-color: FFF5D8;" visible="false">
          <children>
-            <Label fx:id="colourLabel1" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="10.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: transparent;" text="1" textAlignment="CENTER">
+            <Label fx:id="colourLabel1" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0"
+               layoutY="10.0" prefHeight="35.0" prefWidth="35.0"
+               style="-fx-background-color: transparent;" text="1" textAlignment="CENTER">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
-            <Label fx:id="colourLabel2" alignment="CENTER" contentDisplay="CENTER" layoutX="55.0" layoutY="10.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: transparent;" text="2" textAlignment="CENTER">
+            <Label fx:id="colourLabel2" alignment="CENTER" contentDisplay="CENTER" layoutX="55.0"
+               layoutY="10.0" prefHeight="35.0" prefWidth="35.0"
+               style="-fx-background-color: transparent;" text="2" textAlignment="CENTER">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
-            <Label fx:id="colourLabel3" alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="10.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: transparent;" text="3" textAlignment="CENTER">
+            <Label fx:id="colourLabel3" alignment="CENTER" contentDisplay="CENTER" layoutX="95.0"
+               layoutY="10.0" prefHeight="35.0" prefWidth="35.0"
+               style="-fx-background-color: transparent;" text="3" textAlignment="CENTER">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
-            <Label fx:id="colourLabel4" alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="10.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: transparent;" text="4" textAlignment="CENTER">
+            <Label fx:id="colourLabel4" alignment="CENTER" contentDisplay="CENTER" layoutX="135.0"
+               layoutY="10.0" prefHeight="35.0" prefWidth="35.0"
+               style="-fx-background-color: transparent;" text="4" textAlignment="CENTER">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
-            <Label fx:id="noteSequenceLabel" alignment="CENTER" layoutX="10.0" layoutY="54.0" prefHeight="36.0" prefWidth="167.0">
+            <Label fx:id="noteSequenceLabel" alignment="CENTER" layoutX="10.0" layoutY="54.0"
+               prefHeight="36.0" prefWidth="167.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Circle fx:id="circle3" fill="WHITE" layoutX="664.0" layoutY="107.0" onMouseClicked="#onClickedCircle3" radius="71.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fx:id="circle4" fill="WHITE" layoutX="1016.0" layoutY="136.0" onMouseClicked="#onClickedCircle4" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fx:id="circle5" fill="WHITE" layoutX="240.0" layoutY="108.0" onMouseClicked="#onClickedCircle5" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Pane fx:id="chatBoxPane" disable="true" layoutX="25.0" layoutY="510.0" opacity="0.0" prefHeight="195.0" prefWidth="1232.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
+      <Circle fx:id="circle3" fill="WHITE" layoutX="627.0" layoutY="86.0"
+         onMouseClicked="#onClickedCircle3" radius="59.0" stroke="BLACK" strokeType="INSIDE"
+         strokeWidth="0.0" />
+      <Circle fx:id="circle4" fill="WHITE" layoutX="252.0" layoutY="408.0"
+         onMouseClicked="#onClickedCircle4" radius="32.0" stroke="BLACK" strokeType="INSIDE"
+         strokeWidth="0.0" />
+      <Circle fx:id="circle5" fill="WHITE" layoutX="240.0" layoutY="108.0"
+         onMouseClicked="#onClickedCircle5" radius="32.0" stroke="BLACK" strokeType="INSIDE"
+         strokeWidth="0.0" />
+      <VBox layoutX="7.0" layoutY="8.0" prefHeight="200.0" prefWidth="141.0" />
+      <Pane fx:id="chatBoxPane" disable="true" layoutX="25.0" layoutY="510.0" opacity="0.0"
+         prefHeight="195.0" prefWidth="1232.0"
+         style="-fx-background-color: white; -fx-background-radius: 5px;">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="195.0" prefWidth="1232.0">
                <children>
-                  <TextArea fx:id="textArea" editable="false" prefHeight="159.0" prefWidth="1222.0" wrapText="true">
+                  <TextArea fx:id="textArea" editable="false" prefHeight="159.0" prefWidth="1222.0"
+                     wrapText="true">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
@@ -199,6 +252,82 @@
                </children>
                <padding>
                   <Insets left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+         </children>
+      </Pane>
+      <Pane layoutX="935.0" layoutY="5.0" prefHeight="226.0" prefWidth="230.0">
+         <children>
+            <VBox layoutX="7.0" maxWidth="187.0" prefHeight="211.0" prefWidth="187.0" spacing="10.0"
+               style="-fx-background-color: FFF5D8;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0"
+                     prefWidth="176.0" text="HOW TO ESCAPE 101" textAlignment="CENTER"
+                     underline="true" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
+                  <Label fx:id="step1Label" alignment="CENTER" prefHeight="21.0" prefWidth="193.0"
+                     text="- Help the DJ">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
+                  <Label fx:id="step2Label" alignment="CENTER" contentDisplay="CENTER"
+                     prefHeight="25.0" prefWidth="183.0" text="- Help the bodybuilder"
+                     textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
+                  <Label fx:id="step3Label" alignment="CENTER" contentDisplay="CENTER"
+                     prefHeight="27.0" prefWidth="184.0" text="- Talk to the guitarist"
+                     textAlignment="CENTER">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
+                  <Label fx:id="step4Label" alignment="CENTER" contentDisplay="CENTER"
+                     prefHeight="27.0" prefWidth="172.0" text="- Play the harp">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox layoutX="198.0" layoutY="41.0" prefHeight="180.0" prefWidth="25.0" spacing="11.0">
+               <children>
+                  <ImageView fx:id="step1BlueKey" fitHeight="32.0" fitWidth="30.0" visible="false">
+                     <image>
+                        <Image url="@../images/keyBlue.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="step2GreenKey" fitHeight="34.0" fitWidth="29.0" visible="false">
+                     <image>
+                        <Image url="@../images/keyGreen.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="step3RedKey" fitHeight="35.0" fitWidth="31.0" visible="false">
+                     <image>
+                        <Image url="@../images/keyRed.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="step4YellowKey" fitHeight="36.0" fitWidth="31.0" visible="false">
+                     <image>
+                        <Image url="@../images/keyYellow.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets bottom="8.0" top="8.0" />
                </padding>
             </VBox>
          </children>
