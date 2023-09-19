@@ -11,13 +11,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.GameState.Difficulty;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.gpt.ChatMessage;
+import nz.ac.auckland.se206.gpt.GptPromptEngineering;
+import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
 public class MusicQuizController {
   @FXML private TextArea speechBox;
@@ -30,6 +35,8 @@ public class MusicQuizController {
   @FXML private Button optionFourBtn;
   @FXML private Button optionFiveBtn;
   @FXML private Button optionSixBtn;
+  @FXML private Label timerLabel;
+  @FXML private Label hintLabel;
 
   private GameState gamestate;
   private String[] genres = {
@@ -41,8 +48,10 @@ public class MusicQuizController {
   private List<String> selectedGenres = new ArrayList<>();
 
   @FXML
-  private void initialize() throws IOException, URISyntaxException {
+  private void initialize() throws IOException, URISyntaxException, ApiProxyException {
     this.gamestate = GameState.getInstance();
+    this.gamestate.timeManager.addToTimers(timerLabel);
+    this.gamestate.hintManager.addHintLabel(hintLabel);
     this.speechBox.setText("Hey man, I need your help identifying this music...");
     Random random = new Random();
     int randomNumber = random.nextInt(8);
@@ -62,9 +71,12 @@ public class MusicQuizController {
         });
 
     selectOptions();
+    if (GameState.difficulty == Difficulty.HARD) {
+      hintBtn.setVisible(false);
+    }
   }
 
-  private void selectOptions() {
+  private void selectOptions() throws ApiProxyException {
     List<String> availableGenres = new ArrayList<>();
     Collections.addAll(availableGenres, genres);
 
@@ -166,6 +178,11 @@ public class MusicQuizController {
   @FXML
   private void onClickHint() {
     System.out.println("hint");
+    // decrement hint here
+    this.gamestate.chatManager.getMusicQuizHint(
+        new ChatMessage("user", GptPromptEngineering.getHintWithMusic(genreSolution)),
+        hintBtn,
+        speechBox);
   }
 
   // switches back to the rave room

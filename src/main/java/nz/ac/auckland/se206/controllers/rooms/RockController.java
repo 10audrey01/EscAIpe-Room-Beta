@@ -49,6 +49,7 @@ public class RockController {
   @FXML private Label colourLabel4;
   @FXML private Label noteSequenceLabel;
   @FXML private Label timerLabel;
+  @FXML private Label hintLabel;
   @FXML private Label step1Label;
   @FXML private Label step2Label;
   @FXML private Label step3Label;
@@ -78,6 +79,7 @@ public class RockController {
   private void initialize() throws ApiProxyException {
     gameState = GameState.getInstance();
     gameState.timeManager.addToTimers(timerLabel);
+    gameState.hintManager.addHintLabel(hintLabel);
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
     gameState.chatManager.generateInitialMessage();

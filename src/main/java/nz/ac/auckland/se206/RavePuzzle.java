@@ -1,12 +1,10 @@
-package nz.ac.auckland.se206.puzzles;
+package nz.ac.auckland.se206;
 
 import java.io.IOException;
 import java.util.Random;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.controllers.rooms.notes.ClassicalNoteController;
 import nz.ac.auckland.se206.controllers.rooms.notes.RockNoteController;
 
@@ -14,14 +12,12 @@ public class RavePuzzle {
   // rave puzzle - Find the safe, unlock the code through finding respective object in each of rock
   // and classical rooms
   private GameState gamestate;
-  private boolean isSafeFound;
   private boolean isSafeSolved;
   private String safeSolution;
   private String firstHalfRoom;
 
   public RavePuzzle() {
     this.gamestate = GameState.getInstance();
-    this.isSafeFound = false;
     this.isSafeSolved = false;
 
     String solution = "";
@@ -39,11 +35,6 @@ public class RavePuzzle {
 
   public String getSolution() {
     return this.safeSolution;
-  }
-
-  // sets the isSafeFound to true
-  public void setFoundSafe() {
-    this.isSafeFound = true;
   }
 
   // attempts to solve the safe
