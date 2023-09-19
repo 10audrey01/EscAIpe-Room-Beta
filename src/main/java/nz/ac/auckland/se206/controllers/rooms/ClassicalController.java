@@ -77,6 +77,10 @@ public class ClassicalController {
     gameState.timeManager.addToTimers(timerLabel);
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
+    gameState.objectiveListManager.addObjectiveLabel1(step1Label);
+    gameState.objectiveListManager.addObjectiveLabel2(step2Label);
+    gameState.objectiveListManager.addObjectiveLabel3(step3Label);
+    gameState.objectiveListManager.addObjectiveLabel4(step4Label);
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
       gameState.rockBigTaskManager.addAllRockTaskElements(
           colourLabel1,
