@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -34,6 +35,7 @@ public class MusicQuizController {
   @FXML private Button optionFourBtn;
   @FXML private Button optionFiveBtn;
   @FXML private Button optionSixBtn;
+  @FXML private Label timerLabel;
 
   private GameState gamestate;
   private String[] genres = {
@@ -47,6 +49,7 @@ public class MusicQuizController {
   @FXML
   private void initialize() throws IOException, URISyntaxException, ApiProxyException {
     this.gamestate = GameState.getInstance();
+    this.gamestate.timeManager.addToTimers(timerLabel);
     this.speechBox.setText("Hey man, I need your help identifying this music...");
     Random random = new Random();
     int randomNumber = random.nextInt(8);

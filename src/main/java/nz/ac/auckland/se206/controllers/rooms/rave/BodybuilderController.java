@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -40,6 +41,7 @@ public class BodybuilderController {
   @FXML private Circle digitFour;
   @FXML private Circle digitFive;
   @FXML private Circle digitSix;
+  @FXML private Label timerLabel;
 
   private GameState gamestate;
   private RavePuzzle puzzleInstance;
@@ -50,6 +52,7 @@ public class BodybuilderController {
   private void initialize() throws IOException {
     System.out.println("Start");
     this.gamestate = GameState.getInstance();
+    this.gamestate.timeManager.addToTimers(timerLabel);
     this.gamestate.bodybuilderController = this;
     this.speechBox.setText("Hey bro, I need your help... I need to open this safe.");
     resetSafe();
