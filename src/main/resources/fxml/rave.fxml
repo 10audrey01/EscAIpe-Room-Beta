@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -76,9 +77,9 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="discoPane" layoutX="556.0" onMouseClicked="#onClickDisco" prefHeight="208.0" prefWidth="213.0">
+      <Pane fx:id="discoPane" layoutX="533.0" layoutY="-4.0" onMouseClicked="#onClickDisco" prefHeight="200.0" prefWidth="201.0">
          <children>
-            <ImageView fitHeight="228.0" fitWidth="274.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="208.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/raveRoom/discoball.png" />
                </image>
@@ -115,7 +116,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="posterPane" layoutX="191.0" layoutY="310.0" onMouseClicked="#onClickPoster" prefHeight="219.0" prefWidth="122.0">
+      <Pane fx:id="posterPane" layoutX="201.0" layoutY="310.0" onMouseClicked="#onClickPoster" prefHeight="219.0" prefWidth="122.0">
          <children>
             <ImageView fitHeight="236.0" fitWidth="150.0" layoutX="-14.0" layoutY="-8.0" pickOnBounds="true">
                <image>
@@ -151,12 +152,12 @@
          </children>
       </Pane>
       <Button fx:id="toggleChatButton" layoutX="1150.0" layoutY="465.0" mnemonicParsing="false" onAction="#toggleChat" text="Toggle Chat" />
-      <ImageView fx:id="pointingArrowGif" fitHeight="208.0" fitWidth="231.0" layoutX="932.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="45.0" visible="false">
+      <ImageView fx:id="pointingArrowGif" fitHeight="208.0" fitWidth="231.0" layoutX="667.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true" rotate="45.0" visible="false">
          <image>
             <Image url="@../images/pointingArrow.gif" />
          </image>
       </ImageView>
-      <ToggleButton fx:id="toggleNoteBtn" disable="true" layoutX="1058.0" layoutY="7.0" mnemonicParsing="false" onAction="#onToggleNote" prefHeight="79.0" prefWidth="83.0" style="-fx-background-color: transparent;" visible="false">
+      <ToggleButton fx:id="toggleNoteBtn" disable="true" layoutX="781.0" layoutY="5.0" mnemonicParsing="false" onAction="#onToggleNote" prefHeight="79.0" prefWidth="83.0" style="-fx-background-color: transparent;" visible="false">
          <graphic>
             <ImageView fx:id="noteImage" fitHeight="79.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -171,7 +172,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ToggleButton>
-      <Pane fx:id="notePane" layoutX="945.0" layoutY="12.0" prefHeight="96.0" prefWidth="186.0" style="-fx-background-color: FFF5D8;" visible="false">
+      <Pane fx:id="notePane" layoutX="745.0" layoutY="12.0" prefHeight="96.0" prefWidth="186.0" style="-fx-background-color: FFF5D8;" visible="false">
          <children>
             <Label fx:id="colourLabel1" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="10.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: transparent;" text="1" textAlignment="CENTER">
                <font>
@@ -200,8 +201,45 @@
             </Label>
          </children>
       </Pane>
-      <Circle fx:id="circle3" fill="WHITE" layoutX="664.0" layoutY="107.0" onMouseClicked="#onClickedCircle3" radius="71.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fx:id="circle4" fill="WHITE" layoutX="1016.0" layoutY="136.0" onMouseClicked="#onClickedCircle4" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="circle3" fill="WHITE" layoutX="627.0" layoutY="86.0" onMouseClicked="#onClickedCircle3" radius="59.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="circle4" fill="WHITE" layoutX="252.0" layoutY="408.0" onMouseClicked="#onClickedCircle4" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <Circle fx:id="circle5" fill="WHITE" layoutX="240.0" layoutY="108.0" onMouseClicked="#onClickedCircle5" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <VBox layoutX="7.0" layoutY="8.0" prefHeight="200.0" prefWidth="141.0" />
+      <VBox layoutX="939.0" layoutY="5.0" maxWidth="186.0" prefHeight="211.0" prefWidth="186.0" spacing="10.0" style="-fx-background-color: FFF5D8;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="176.0" text="HOW TO ESCAPE 101" textAlignment="CENTER" underline="true" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
+            <Label fx:id="step1Label" alignment="CENTER" prefHeight="21.0" prefWidth="193.0" text="- Talk to the DJ">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
+            <Label fx:id="step2Label" alignment="CENTER" contentDisplay="CENTER" text="- Talk to the bodybuilder" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
+            <Label fx:id="step3Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="184.0" text="- Talk to the guitarist" textAlignment="CENTER">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
+            <Label fx:id="step4Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="172.0" text="- Play the harp">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
    </children>
 </Pane>
