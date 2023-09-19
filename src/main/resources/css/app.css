@@ -189,3 +189,15 @@
   -fx-border-width: 2px;
   -fx-border-style: solid;
 }
+
+#playTrumpetPane:hover {
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+}
+
+#leaveTrumpet:hover {
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+}
