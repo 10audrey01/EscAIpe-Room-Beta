@@ -129,27 +129,6 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <Pane fx:id="chatBoxPane" disable="true" layoutX="25.0" layoutY="510.0" opacity="0.0" prefHeight="195.0" prefWidth="1232.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
-         <children>
-            <VBox alignment="TOP_CENTER" prefHeight="195.0" prefWidth="1232.0">
-               <children>
-                  <TextArea fx:id="textArea" editable="false" prefHeight="159.0" prefWidth="1222.0" wrapText="true">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
-                  </TextArea>
-                  <TextField fx:id="textField" promptText="Enter Response Here">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                  </TextField>
-               </children>
-               <padding>
-                  <Insets left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </VBox>
-         </children>
-      </Pane>
       <Button fx:id="toggleChatButton" layoutX="1150.0" layoutY="465.0" mnemonicParsing="false" onAction="#toggleChat" text="Toggle Chat" />
       <ImageView fx:id="pointingArrowGif" fitHeight="208.0" fitWidth="231.0" layoutX="932.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="45.0" visible="false">
          <image>
@@ -203,5 +182,26 @@
       <Circle fx:id="circle3" fill="WHITE" layoutX="664.0" layoutY="107.0" onMouseClicked="#onClickedCircle3" radius="71.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <Circle fx:id="circle4" fill="WHITE" layoutX="1016.0" layoutY="136.0" onMouseClicked="#onClickedCircle4" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <Circle fx:id="circle5" fill="WHITE" layoutX="240.0" layoutY="108.0" onMouseClicked="#onClickedCircle5" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Pane fx:id="chatBoxPane" disable="true" layoutX="25.0" layoutY="510.0" opacity="0.0" prefHeight="195.0" prefWidth="1232.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="195.0" prefWidth="1232.0">
+               <children>
+                  <TextArea fx:id="textArea" editable="false" prefHeight="159.0" prefWidth="1222.0" wrapText="true">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextArea>
+                  <TextField fx:id="textField" promptText="Enter Response Here">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+         </children>
+      </Pane>
    </children>
 </Pane>
