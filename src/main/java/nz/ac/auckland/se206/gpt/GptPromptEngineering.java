@@ -21,6 +21,6 @@ public class GptPromptEngineering {
 
   // generate hint for song genre
   public static String getHintWithMusic(String genre) {
-    return "Generate a 3 line riddle where the answer is the music genre: " + genre;
+    return "Generate a 2 line riddle where the answer is the music genre " + genre;
   }
 }

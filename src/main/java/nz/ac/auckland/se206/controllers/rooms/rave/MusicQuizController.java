@@ -92,10 +92,6 @@ public class MusicQuizController {
     }
 
     System.out.println("Correct genre index: " + correctGenreIndex);
-    String res =
-        this.gamestate.chatManager.getGptResponse(
-            new ChatMessage("user", GptPromptEngineering.getRiddleWithGivenWord(genreSolution)));
-    System.out.println(res);
   }
 
   @FXML
@@ -173,6 +169,11 @@ public class MusicQuizController {
   @FXML
   private void onClickHint() {
     System.out.println("hint");
+    // decrement hint here
+    this.gamestate.chatManager.getMusicQuizHint(
+        new ChatMessage("user", GptPromptEngineering.getHintWithMusic(genreSolution)),
+        hintBtn,
+        speechBox);
   }
 
   // switches back to the rave room
