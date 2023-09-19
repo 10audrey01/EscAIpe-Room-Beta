@@ -153,8 +153,14 @@
                </image></ImageView>
          </children>
       </Pane>
-      <Circle fx:id="circle1" fill="WHITE" layoutX="840.0" layoutY="496.0" onMouseClicked="#onClickedCircle1" radius="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fx:id="circle2" fill="WHITE" layoutX="1190.0" layoutY="222.0" onMouseClicked="#onClickedCircle2" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="circle1" fill="WHITE" layoutX="840.0" layoutY="496.0" onMouseClicked="#onClickedCircle1" radius="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor></Circle>
+      <Circle fx:id="circle2" fill="WHITE" layoutX="1190.0" layoutY="222.0" onMouseClicked="#onClickedCircle2" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor></Circle>
       <Pane fx:id="chatBoxPane" disable="true" layoutX="25.0" layoutY="510.0" opacity="0.0" prefHeight="195.0" prefWidth="1232.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="195.0" prefWidth="1232.0">

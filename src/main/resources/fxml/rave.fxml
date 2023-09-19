@@ -54,26 +54,41 @@
                <image>
                   <Image url="@../images/doorClosed.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </ImageView>
             <ImageView fx:id="blueLock" fitHeight="89.0" fitWidth="62.0" layoutX="25.0" layoutY="159.0" onMouseClicked="#onClickBlue" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/lockBlue.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </ImageView>
             <ImageView fx:id="greenLock" fitHeight="78.0" fitWidth="86.0" layoutX="186.0" layoutY="72.0" onMouseClicked="#onClickGreen" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/lockGreen.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </ImageView>
             <ImageView fx:id="redLock" fitHeight="92.0" fitWidth="77.0" layoutX="39.0" layoutY="20.0" onMouseClicked="#onClickRed" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/lockRed.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </ImageView>
             <ImageView fx:id="yellowLock" fitHeight="108.0" fitWidth="90.0" layoutX="119.0" layoutY="161.0" onMouseClicked="#onClickYellow" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/lockYellow.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </ImageView>
          </children>
       </Pane>
@@ -180,9 +195,18 @@
             </Label>
          </children>
       </Pane>
-      <Circle fx:id="circle3" fill="WHITE" layoutX="627.0" layoutY="86.0" onMouseClicked="#onClickedCircle3" radius="59.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fx:id="circle4" fill="WHITE" layoutX="252.0" layoutY="408.0" onMouseClicked="#onClickedCircle4" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fx:id="circle5" fill="WHITE" layoutX="240.0" layoutY="108.0" onMouseClicked="#onClickedCircle5" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="circle3" fill="WHITE" layoutX="627.0" layoutY="86.0" onMouseClicked="#onClickedCircle3" radius="59.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor></Circle>
+      <Circle fx:id="circle4" fill="WHITE" layoutX="252.0" layoutY="408.0" onMouseClicked="#onClickedCircle4" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor></Circle>
+      <Circle fx:id="circle5" fill="WHITE" layoutX="240.0" layoutY="108.0" onMouseClicked="#onClickedCircle5" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor></Circle>
       <VBox layoutX="7.0" layoutY="8.0" prefHeight="200.0" prefWidth="141.0" />
       <Pane fx:id="chatBoxPane" disable="true" layoutX="25.0" layoutY="510.0" opacity="0.0" prefHeight="195.0" prefWidth="1232.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
          <children>
@@ -276,6 +300,9 @@
          <image>
             <Image url="@../images/doorOpen.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
       </ImageView>
    </children>
 </Pane>
