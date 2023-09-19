@@ -36,21 +36,11 @@ public class GameState {
   public static boolean isRiddleObjectFound = false;
   public static boolean isNoteSequenceFound = false;
   public static boolean isKeyFound = false;
+  public static boolean isMusicQuizCompleted = false;
   public static boolean isHarpPlayed = false;
   public static Difficulty difficulty;
   public static PlayTime time;
   public static boolean isEscaped = false;
-
-  public TimeManager timeManager;
-  public TaskManager taskManager;
-  public ChatManager chatManager;
-  public RockBigTaskManager rockBigTaskManager;
-  public RavePuzzle ravePuzzle;
-  public ObjectiveListManager objectiveListManager;
-
-  public BodybuilderController bodybuilderController;
-  public ClassicalNoteController classicalNote;
-  public RockNoteController rockNote;
 
   public static GameState getInstance() {
     if (instance == null) {
@@ -68,6 +58,27 @@ public class GameState {
   public static void setInstance(GameState instance) {
     GameState.instance = instance;
   }
+
+  public static void resetVariables() {
+    isRiddleResolved = false;
+    isRiddleObjectFound = false;
+    isNoteSequenceFound = false;
+    isKeyFound = false;
+    isMusicQuizCompleted = false;
+    isHarpPlayed = false;
+    isEscaped = false;
+  }
+
+  public TimeManager timeManager;
+  public TaskManager taskManager;
+  public ChatManager chatManager;
+  public RockBigTaskManager rockBigTaskManager;
+  public RavePuzzle ravePuzzle;
+  public ObjectiveListManager objectiveListManager;
+
+  public BodybuilderController bodybuilderController;
+  public ClassicalNoteController classicalNote;
+  public RockNoteController rockNote;
 
   public void startGame() throws IOException {
     this.taskManager.generateTasks();

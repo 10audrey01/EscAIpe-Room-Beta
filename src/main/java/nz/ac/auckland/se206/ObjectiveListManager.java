@@ -2,6 +2,7 @@ package nz.ac.auckland.se206;
 
 import java.util.ArrayList;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 
 public class ObjectiveListManager {
 
@@ -31,5 +32,34 @@ public class ObjectiveListManager {
 
   public void addObjectiveLabel4(Label objectiveLabel) {
     this.objectiveLabel4.add(objectiveLabel);
+  }
+
+  public void strikeThroughLabel1() {
+    if (GameState.isMusicQuizCompleted) {
+      strikeThroughLabels(this.objectiveLabel1);
+    }
+  }
+
+  public void strikeThroughLabel2() {
+    strikeThroughLabels(this.objectiveLabel2);
+  }
+
+  public void strikeThroughLabel3() {
+    strikeThroughLabels(this.objectiveLabel3);
+  }
+
+  public void strikeThroughLabel4() {
+    strikeThroughLabels(this.objectiveLabel4);
+  }
+
+  public void strikeThroughLabels(ArrayList<Label> labels) {
+    for (Label label : labels) {
+      Text text = new Text(label.getText());
+      text.setStyle(
+          "-fx-stroke: black; -fx-stroke-width: 0px; -fx-font-size: 16px; -fx-strikethrough: true;"
+              + " -fx-fill: black;");
+      label.setText("");
+      label.setGraphic(text);
+    }
   }
 }

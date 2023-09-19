@@ -87,6 +87,8 @@ public class MusicQuizController {
       Button button = optionButtons.get(i);
       button.setText((i + 1) + ". " + genre);
     }
+
+    System.out.println("Correct genre index: " + correctGenreIndex);
   }
 
   @FXML
@@ -105,6 +107,8 @@ public class MusicQuizController {
   private void onClickOne() {
     System.out.println("1");
     if (correctGenreIndex == 1) {
+      GameState.isMusicQuizCompleted = true;
+      gamestate.objectiveListManager.strikeThroughLabel1();
       System.out.println("correct");
     }
   }
@@ -113,6 +117,8 @@ public class MusicQuizController {
   private void onClickTwo() {
     System.out.println("2");
     if (correctGenreIndex == 2) {
+      GameState.isMusicQuizCompleted = true;
+      gamestate.objectiveListManager.strikeThroughLabel1();
       System.out.println("correct");
     }
   }
@@ -121,6 +127,8 @@ public class MusicQuizController {
   private void onClickThree() {
     System.out.println("3");
     if (correctGenreIndex == 3) {
+      GameState.isMusicQuizCompleted = true;
+      gamestate.objectiveListManager.strikeThroughLabel1();
       System.out.println("correct");
     }
   }
@@ -129,6 +137,8 @@ public class MusicQuizController {
   private void onClickFour() {
     System.out.println("4");
     if (correctGenreIndex == 4) {
+      GameState.isMusicQuizCompleted = true;
+      gamestate.objectiveListManager.strikeThroughLabel1();
       System.out.println("correct");
     }
   }
@@ -137,6 +147,8 @@ public class MusicQuizController {
   private void onClickFive() {
     System.out.println("5");
     if (correctGenreIndex == 5) {
+      GameState.isMusicQuizCompleted = true;
+      gamestate.objectiveListManager.strikeThroughLabel1();
       System.out.println("correct");
     }
   }
@@ -145,6 +157,8 @@ public class MusicQuizController {
   private void onClickSix() {
     System.out.println("6");
     if (correctGenreIndex == 6) {
+      GameState.isMusicQuizCompleted = true;
+      gamestate.objectiveListManager.strikeThroughLabel1();
       System.out.println("correct");
     }
   }

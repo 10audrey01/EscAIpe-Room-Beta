@@ -173,13 +173,13 @@
                </font>
             </Label>
             <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
-            <Label fx:id="step1Label" alignment="CENTER" prefHeight="21.0" prefWidth="193.0" text="- Talk to the DJ">
+            <Label fx:id="step1Label" alignment="CENTER" prefHeight="21.0" prefWidth="193.0" text="- Help the DJ">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
             <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
-            <Label fx:id="step2Label" alignment="CENTER" contentDisplay="CENTER" text="- Talk to the bodybuilder" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="step2Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="183.0" text="- Help the bodybuilder" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="16.0" />
                </font>
