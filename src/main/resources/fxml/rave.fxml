@@ -272,5 +272,10 @@
             </VBox>
          </children>
       </Pane>
+      <ImageView fx:id="openedDoor" disable="true" fitHeight="303.0" fitWidth="222.0" layoutX="533.0" layoutY="215.0" onMouseClicked="#onClickOpenedDoor" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/doorOpen.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

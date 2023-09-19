@@ -17,6 +17,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -63,6 +64,7 @@ public class RaveController {
   @FXML private ImageView step2GreenKey;
   @FXML private ImageView step3RedKey;
   @FXML private ImageView step4YellowKey;
+  @FXML private ImageView openedDoor;
   @FXML private TextArea textArea;
   @FXML private TextField textField;
   @FXML private ToggleButton toggleNoteBtn;
@@ -199,9 +201,17 @@ public class RaveController {
   @FXML
   private void onClickDoor(MouseEvent event) {
     if (isRedLockUnlocked && isGreenLockUnlocked && isBlueLockUnlocked && isYellowLockUnlocked) {
+      openedDoor.setDisable(false);
+      openedDoor.setVisible(true);
       System.out.println("door unlocked");
     }
     System.out.println("door clicked");
+  }
+
+  @FXML
+  private void onClickOpenedDoor(MouseEvent event) throws IOException {
+    App.setRoot("end");
+    System.out.println("opened door clicked");
   }
 
   @FXML
