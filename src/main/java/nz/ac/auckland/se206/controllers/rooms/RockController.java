@@ -46,8 +46,12 @@ public class RockController {
   @FXML private Label colourLabel2;
   @FXML private Label colourLabel3;
   @FXML private Label colourLabel4;
-  @FXML private Label timerLabel;
   @FXML private Label noteSequenceLabel;
+  @FXML private Label timerLabel;
+  @FXML private Label step1Label;
+  @FXML private Label step2Label;
+  @FXML private Label step3Label;
+  @FXML private Label step4Label;
   @FXML private TextArea textArea;
   @FXML private TextField textField;
   @FXML private ToggleButton toggleNoteBtn;

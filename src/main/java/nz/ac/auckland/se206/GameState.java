@@ -1,8 +1,6 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
-
-import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
 import nz.ac.auckland.se206.controllers.rooms.notes.ClassicalNoteController;
 import nz.ac.auckland.se206.controllers.rooms.notes.RockNoteController;
 import nz.ac.auckland.se206.controllers.rooms.rave.BodybuilderController;
@@ -48,11 +46,11 @@ public class GameState {
   public ChatManager chatManager;
   public RockBigTaskManager rockBigTaskManager;
   public RavePuzzle ravePuzzle;
+  public ObjectiveListManager objectiveListManager;
 
   public BodybuilderController bodybuilderController;
   public ClassicalNoteController classicalNote;
   public RockNoteController rockNote;
-  
 
   public static GameState getInstance() {
     if (instance == null) {
@@ -62,6 +60,7 @@ public class GameState {
       instance.chatManager = new ChatManager();
       instance.rockBigTaskManager = new RockBigTaskManager();
       instance.ravePuzzle = new RavePuzzle();
+      instance.objectiveListManager = new ObjectiveListManager();
     }
     return instance;
   }
