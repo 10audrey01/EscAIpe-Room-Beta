@@ -24,6 +24,7 @@ public class ObjectiveListManager {
     this.step1Key = new ArrayList<ImageView>();
     this.step2Key = new ArrayList<ImageView>();
     this.step3Key = new ArrayList<ImageView>();
+    this.step4Key = new ArrayList<ImageView>();
   }
 
   public void addObjectiveLabel1(Label objectiveLabel) {
@@ -61,28 +62,27 @@ public class ObjectiveListManager {
   public void completeObjective1() {
     if (GameState.isMusicQuizCompleted) {
       strikeThroughLabels(this.objectiveLabel1);
-      setVisibilityKey1(true);
+      setVisibilityKeyBlue1(true);
     }
   }
 
   public void completeObjective2() {
     if (GameState.isSafeOpened) {
       strikeThroughLabels(this.objectiveLabel2);
-      setVisibilityKey2(true);
+      setVisibilityKeyGreen2(true);
     }
   }
 
   public void completeObjective3() {
     if (GameState.isRiddleResolved) {
       strikeThroughLabels(this.objectiveLabel3);
-      setVisibilityKey3(true);
     }
   }
 
   public void completeObjective4() {
     if (GameState.isHarpPlayed) {
       strikeThroughLabels(this.objectiveLabel4);
-      setVisibilityKey4(true);
+      setVisibilityKeyYellow4(true);
     }
   }
 
@@ -97,25 +97,25 @@ public class ObjectiveListManager {
     }
   }
 
-  public void setVisibilityKey1(boolean visibility) {
+  public void setVisibilityKeyBlue1(boolean visibility) {
     for (ImageView key : step1Key) {
       key.setVisible(visibility);
     }
   }
 
-  public void setVisibilityKey2(boolean visibility) {
+  public void setVisibilityKeyGreen2(boolean visibility) {
     for (ImageView key : step2Key) {
       key.setVisible(visibility);
     }
   }
 
-  public void setVisibilityKey3(boolean visibility) {
+  public void setVisibilityKeyRed3(boolean visibility) {
     for (ImageView key : step3Key) {
       key.setVisible(visibility);
     }
   }
 
-  public void setVisibilityKey4(boolean visibility) {
+  public void setVisibilityKeyYellow4(boolean visibility) {
     for (ImageView key : step4Key) {
       key.setVisible(visibility);
     }

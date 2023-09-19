@@ -72,6 +72,10 @@ public class RaveController {
   private ArrayList<Circle> circles;
 
   private GameState gameState;
+  private boolean isRedLockUnlocked = false;
+  private boolean isGreenLockUnlocked = false;
+  private boolean isBlueLockUnlocked = false;
+  private boolean isYellowLockUnlocked = false;
 
   @FXML
   private void initialize() {
@@ -152,26 +156,49 @@ public class RaveController {
 
   @FXML
   private void onClickRed(MouseEvent event) {
+    if (GameState.isPianoPlayed) {
+      gameState.objectiveListManager.setVisibilityKeyRed3(false);
+      redLock.setVisible(false);
+      isRedLockUnlocked = true;
+    }
     System.out.println("red clicked");
   }
 
   @FXML
   private void onClickGreen(MouseEvent event) {
+    if (GameState.isSafeOpened) {
+      gameState.objectiveListManager.setVisibilityKeyGreen2(false);
+      greenLock.setVisible(false);
+      isGreenLockUnlocked = true;
+    }
     System.out.println("green clicked");
   }
 
   @FXML
   private void onClickBlue(MouseEvent event) {
+    if (GameState.isMusicQuizCompleted) {
+      gameState.objectiveListManager.setVisibilityKeyBlue1(false);
+      blueLock.setVisible(false);
+      isBlueLockUnlocked = true;
+    }
     System.out.println("blue clicked");
   }
 
   @FXML
   private void onClickYellow(MouseEvent event) {
+    if (GameState.isHarpPlayed) {
+      gameState.objectiveListManager.setVisibilityKeyYellow4(false);
+      yellowLock.setVisible(false);
+      isYellowLockUnlocked = true;
+    }
     System.out.println("yellow clicked");
   }
 
   @FXML
   private void onClickDoor(MouseEvent event) {
+    if (isRedLockUnlocked && isGreenLockUnlocked && isBlueLockUnlocked && isYellowLockUnlocked) {
+      System.out.println("door unlocked");
+    }
     System.out.println("door clicked");
   }
 

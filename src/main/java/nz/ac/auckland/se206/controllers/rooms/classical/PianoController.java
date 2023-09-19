@@ -270,6 +270,7 @@ public class PianoController {
       System.out.println("You Win");
       GameState.isPianoPlayed = true;
       gameState.objectiveListManager.completeObjective3();
+      gameState.objectiveListManager.setVisibilityKeyRed3(true);
       Pane current = (Pane) leavePiano.getParent();
       Scene currentScene = current.getScene();
       currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICAL));
