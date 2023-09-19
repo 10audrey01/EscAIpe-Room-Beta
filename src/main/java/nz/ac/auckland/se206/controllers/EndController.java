@@ -28,11 +28,7 @@ public class EndController {
   @FXML
   private void onBack(ActionEvent event) throws IOException {
     GameState.setInstance(null);
-    GameState.isRiddleResolved = false;
-    GameState.isRiddleObjectFound = false;
-    GameState.isNoteSequenceFound = false;
-    GameState.isKeyFound = false;
-    GameState.isEscaped = false;
+    GameState.resetVariables();
 
     App.setRoot("start");
   }
