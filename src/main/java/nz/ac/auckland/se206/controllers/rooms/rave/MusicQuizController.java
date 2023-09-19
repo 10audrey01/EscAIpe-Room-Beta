@@ -108,7 +108,7 @@ public class MusicQuizController {
     System.out.println("1");
     if (correctGenreIndex == 1) {
       GameState.isMusicQuizCompleted = true;
-      gamestate.objectiveListManager.strikeThroughLabel1();
+      gamestate.objectiveListManager.completeObjective1();
       System.out.println("correct");
     }
   }
@@ -118,7 +118,7 @@ public class MusicQuizController {
     System.out.println("2");
     if (correctGenreIndex == 2) {
       GameState.isMusicQuizCompleted = true;
-      gamestate.objectiveListManager.strikeThroughLabel1();
+      gamestate.objectiveListManager.completeObjective1();
       System.out.println("correct");
     }
   }
@@ -128,7 +128,7 @@ public class MusicQuizController {
     System.out.println("3");
     if (correctGenreIndex == 3) {
       GameState.isMusicQuizCompleted = true;
-      gamestate.objectiveListManager.strikeThroughLabel1();
+      gamestate.objectiveListManager.completeObjective1();
       System.out.println("correct");
     }
   }
@@ -138,7 +138,7 @@ public class MusicQuizController {
     System.out.println("4");
     if (correctGenreIndex == 4) {
       GameState.isMusicQuizCompleted = true;
-      gamestate.objectiveListManager.strikeThroughLabel1();
+      gamestate.objectiveListManager.completeObjective1();
       System.out.println("correct");
     }
   }
@@ -148,7 +148,7 @@ public class MusicQuizController {
     System.out.println("5");
     if (correctGenreIndex == 5) {
       GameState.isMusicQuizCompleted = true;
-      gamestate.objectiveListManager.strikeThroughLabel1();
+      gamestate.objectiveListManager.completeObjective1();
       System.out.println("correct");
     }
   }
@@ -158,7 +158,7 @@ public class MusicQuizController {
     System.out.println("6");
     if (correctGenreIndex == 6) {
       GameState.isMusicQuizCompleted = true;
-      gamestate.objectiveListManager.strikeThroughLabel1();
+      gamestate.objectiveListManager.completeObjective1();
       System.out.println("correct");
     }
   }

@@ -57,6 +57,10 @@ public class RockController {
   @FXML private ToggleButton toggleNoteBtn;
   @FXML private ImageView pointingArrowGif;
   @FXML private ImageView noteImage;
+  @FXML private ImageView step1BlueKey;
+  @FXML private ImageView step2GreenKey;
+  @FXML private ImageView step3RedKey;
+  @FXML private ImageView step4YellowKey;
   @FXML private boolean chatOpened;
   @FXML private Circle circle1, circle2;
 
@@ -79,6 +83,10 @@ public class RockController {
     gameState.objectiveListManager.addObjectiveLabel2(step2Label);
     gameState.objectiveListManager.addObjectiveLabel3(step3Label);
     gameState.objectiveListManager.addObjectiveLabel4(step4Label);
+    gameState.objectiveListManager.addStep1Key(step1BlueKey);
+    gameState.objectiveListManager.addStep2Key(step2GreenKey);
+    gameState.objectiveListManager.addStep3Key(step3RedKey);
+    gameState.objectiveListManager.addStep4Key(step4YellowKey);
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
       gameState.rockBigTaskManager.addAllRockTaskElements(
           colourLabel1,
