@@ -214,7 +214,7 @@ public class HarpController {
       System.out.println("Harp completed");
       harpSequencePlayable = false;
       GameState.isHarpPlayed = true;
-      gameState.objectiveListManager.strikeThroughLabel4();
+      gameState.objectiveListManager.completeObjective4();
     }
     setCircleColours();
   }

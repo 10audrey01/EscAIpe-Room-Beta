@@ -153,8 +153,14 @@
                </image></ImageView>
          </children>
       </Pane>
-      <Circle fx:id="circle1" fill="WHITE" layoutX="840.0" layoutY="496.0" onMouseClicked="#onClickedCircle1" radius="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fx:id="circle2" fill="WHITE" layoutX="1190.0" layoutY="222.0" onMouseClicked="#onClickedCircle2" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="circle1" fill="WHITE" layoutX="840.0" layoutY="496.0" onMouseClicked="#onClickedCircle1" radius="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor></Circle>
+      <Circle fx:id="circle2" fill="WHITE" layoutX="1190.0" layoutY="222.0" onMouseClicked="#onClickedCircle2" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor></Circle>
       <Pane fx:id="chatBoxPane" disable="true" layoutX="25.0" layoutY="510.0" opacity="0.0" prefHeight="195.0" prefWidth="1232.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="195.0" prefWidth="1232.0">
@@ -183,7 +189,7 @@
    </Label>
       <Pane layoutX="935.0" layoutY="5.0" prefHeight="226.0" prefWidth="230.0">
          <children>
-            <VBox layoutX="7.0" maxWidth="187.0" prefHeight="211.0" prefWidth="187.0" spacing="10.0" style="-fx-background-color: FFF5D8;">
+            <VBox fx:id="objectiveList" layoutX="7.0" maxWidth="187.0" prefHeight="211.0" prefWidth="187.0" spacing="10.0" style="-fx-background-color: FFF5D8;">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="176.0" text="HOW TO ESCAPE 101" textAlignment="CENTER" underline="true" wrapText="true">
                      <font>

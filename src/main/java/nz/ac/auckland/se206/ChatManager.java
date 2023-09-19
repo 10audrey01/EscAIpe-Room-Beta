@@ -19,12 +19,14 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 
 public class ChatManager {
 
+  private GameState gameState;
   private ChatCompletionRequest chatCompletionRequest;
   private ArrayList<TextArea> TextAreas;
   private ArrayList<TextField> TextFields;
   private String messages;
 
   public ChatManager() {
+    this.gameState = GameState.getInstance();
     this.messages = "";
     TextAreas = new ArrayList<TextArea>();
     TextFields = new ArrayList<TextField>();
@@ -102,6 +104,7 @@ public class ChatManager {
             if (response.getRole().equals("assistant")) {
               if (response.getContent().startsWith("Correct")) {
                 GameState.isRiddleResolved = true;
+                gameState.objectiveListManager.completeObjective3();
               }
             }
             return null;

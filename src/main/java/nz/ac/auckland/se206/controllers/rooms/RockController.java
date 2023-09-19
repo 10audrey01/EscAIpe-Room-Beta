@@ -16,6 +16,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Circle;
@@ -58,8 +59,13 @@ public class RockController {
   @FXML private ToggleButton toggleNoteBtn;
   @FXML private ImageView pointingArrowGif;
   @FXML private ImageView noteImage;
+  @FXML private ImageView step1BlueKey;
+  @FXML private ImageView step2GreenKey;
+  @FXML private ImageView step3RedKey;
+  @FXML private ImageView step4YellowKey;
   @FXML private boolean chatOpened;
   @FXML private Circle circle1, circle2;
+  @FXML private VBox objectiveList;
 
   private GameState gameState;
   private MediaPlayer guitarNotePlayer;
@@ -81,6 +87,10 @@ public class RockController {
     gameState.objectiveListManager.addObjectiveLabel2(step2Label);
     gameState.objectiveListManager.addObjectiveLabel3(step3Label);
     gameState.objectiveListManager.addObjectiveLabel4(step4Label);
+    gameState.objectiveListManager.addStep1Key(step1BlueKey);
+    gameState.objectiveListManager.addStep2Key(step2GreenKey);
+    gameState.objectiveListManager.addStep3Key(step3RedKey);
+    gameState.objectiveListManager.addStep4Key(step4YellowKey);
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
       gameState.rockBigTaskManager.addAllRockTaskElements(
           colourLabel1,

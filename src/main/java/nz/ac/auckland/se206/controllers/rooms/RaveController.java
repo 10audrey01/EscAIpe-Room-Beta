@@ -14,8 +14,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -59,16 +61,26 @@ public class RaveController {
   @FXML private ImageView redLock;
   @FXML private ImageView blueLock;
   @FXML private ImageView yellowLock;
+  @FXML private ImageView step1BlueKey;
+  @FXML private ImageView step2GreenKey;
+  @FXML private ImageView step3RedKey;
+  @FXML private ImageView step4YellowKey;
+  @FXML private ImageView openedDoor;
   @FXML private TextArea textArea;
   @FXML private TextField textField;
   @FXML private ToggleButton toggleNoteBtn;
   @FXML private ImageView pointingArrowGif;
   @FXML private boolean chatOpened;
   @FXML private Circle circle3, circle4, circle5;
+  @FXML private VBox objectiveList;
 
   private ArrayList<Circle> circles;
 
   private GameState gameState;
+  private boolean isRedLockUnlocked = false;
+  private boolean isGreenLockUnlocked = false;
+  private boolean isBlueLockUnlocked = false;
+  private boolean isYellowLockUnlocked = false;
 
   @FXML
   private void initialize() {
@@ -81,6 +93,10 @@ public class RaveController {
     gameState.objectiveListManager.addObjectiveLabel2(step2Label);
     gameState.objectiveListManager.addObjectiveLabel3(step3Label);
     gameState.objectiveListManager.addObjectiveLabel4(step4Label);
+    gameState.objectiveListManager.addStep1Key(step1BlueKey);
+    gameState.objectiveListManager.addStep2Key(step2GreenKey);
+    gameState.objectiveListManager.addStep3Key(step3RedKey);
+    gameState.objectiveListManager.addStep4Key(step4YellowKey);
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
       gameState.rockBigTaskManager.addAllRockTaskElements(
           colourLabel1,
@@ -146,27 +162,60 @@ public class RaveController {
 
   @FXML
   private void onClickRed(MouseEvent event) {
+    if (GameState.isPianoPlayed) {
+      gameState.objectiveListManager.setVisibilityKeyRed3(false);
+      redLock.setVisible(false);
+      isRedLockUnlocked = true;
+    }
     System.out.println("red clicked");
   }
 
   @FXML
   private void onClickGreen(MouseEvent event) {
+    if (GameState.isSafeOpened) {
+      gameState.objectiveListManager.setVisibilityKeyGreen2(false);
+      greenLock.setVisible(false);
+      isGreenLockUnlocked = true;
+    }
     System.out.println("green clicked");
   }
 
   @FXML
   private void onClickBlue(MouseEvent event) {
+    if (GameState.isMusicQuizCompleted) {
+      gameState.objectiveListManager.setVisibilityKeyBlue1(false);
+      blueLock.setVisible(false);
+      isBlueLockUnlocked = true;
+    }
     System.out.println("blue clicked");
   }
 
   @FXML
   private void onClickYellow(MouseEvent event) {
+    if (GameState.isHarpPlayed) {
+      gameState.objectiveListManager.setVisibilityKeyYellow4(false);
+      yellowLock.setVisible(false);
+      isYellowLockUnlocked = true;
+    }
     System.out.println("yellow clicked");
   }
 
   @FXML
   private void onClickDoor(MouseEvent event) {
+    if (isRedLockUnlocked && isGreenLockUnlocked && isBlueLockUnlocked && isYellowLockUnlocked) {
+      openedDoor.setDisable(false);
+      openedDoor.setVisible(true);
+      System.out.println("door unlocked");
+    }
     System.out.println("door clicked");
+  }
+
+  @FXML
+  private void onClickOpenedDoor(MouseEvent event) throws IOException {
+    GameState.isEscaped = true;
+    App.setRoot("end");
+    gameState.timeManager.stopCountdown();
+    System.out.println("opened door clicked");
   }
 
   @FXML

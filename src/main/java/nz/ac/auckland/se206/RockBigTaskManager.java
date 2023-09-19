@@ -133,7 +133,7 @@ public class RockBigTaskManager {
           "-fx-background-color: #FFF5D8; -fx-border-color:"
               + " #000000;"
               + " -fx-border-width:"
-              + " 2px"); // same colour as the note icon
+              + " 1px"); // same colour as the note icon
       pane.setVisible(visibility);
     }
   }
