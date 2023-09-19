@@ -242,6 +242,11 @@
                </padding>
             </VBox>
          </children>
+               <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="156.0" layoutY="14.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: FFFF;" text="HINTS LEFT:">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
       </Pane>
    </children>
 </Pane>
