@@ -73,6 +73,7 @@ public class GameState {
   }
 
   public TimeManager timeManager;
+  public HintManager hintManager;
   public TaskManager taskManager;
   public ChatManager chatManager;
   public RockBigTaskManager rockBigTaskManager;
@@ -89,5 +90,6 @@ public class GameState {
     this.timeManager.startCountdown();
     this.ravePuzzle.setHints(classicalNote, rockNote);
     this.bodybuilderController.initialiseCode();
+    this.hintManager = new HintManager(difficulty);
   }
 }
