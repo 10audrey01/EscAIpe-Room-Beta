@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 import nz.ac.auckland.se206.controllers.rooms.RaveController;
 import nz.ac.auckland.se206.gpt.ChatMessage;
@@ -23,6 +25,7 @@ public class ChatManager {
   private ChatCompletionRequest chatCompletionRequest;
   private ArrayList<TextArea> TextAreas;
   private ArrayList<TextField> TextFields;
+  private ArrayList<ImageView> gmSprites;
   private String messages;
 
   public ChatManager() {
@@ -30,6 +33,7 @@ public class ChatManager {
     this.messages = "";
     TextAreas = new ArrayList<TextArea>();
     TextFields = new ArrayList<TextField>();
+    gmSprites = new ArrayList<ImageView>();
   }
 
   public void addTextArea(TextArea textArea) {
@@ -38,6 +42,10 @@ public class ChatManager {
 
   public void addTextField(TextField textField) {
     TextFields.add(textField);
+  }
+
+  public void addSprite(ImageView image) {
+    gmSprites.add(image);
   }
 
   public void clearAllTextFields() {
@@ -49,12 +57,33 @@ public class ChatManager {
         });
   }
 
+  private void setToLoading() throws IOException {
+    Image image = new Image(App.class.getResource("/images/gm/gmloading.gif").openStream());
+    Platform.runLater(
+        () -> {
+          for (ImageView sprite : gmSprites) {
+            sprite.setImage(image);
+          }
+        });
+  }
+
+  private void setToDefault() throws IOException {
+    Image image = new Image(App.class.getResource("/images/gm/gmdefault.png").openStream());
+    Platform.runLater(
+        () -> {
+          for (ImageView sprite : gmSprites) {
+            sprite.setImage(image);
+          }
+        });
+  }
+
   public void generateInitialMessage() throws ApiProxyException {
 
     Task<Void> initializeRiddleTask =
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
+            setToLoading();
             chatCompletionRequest =
                 new ChatCompletionRequest()
                     .setN(1)
@@ -65,6 +94,7 @@ public class ChatManager {
                 new ChatMessage(
                     "user",
                     GptPromptEngineering.getRiddleWithGivenWord(RaveController.getRiddleObject())));
+            setToDefault();
             return null;
           }
         };
@@ -97,6 +127,7 @@ public class ChatManager {
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
+            setToLoading();
             clearAllTextFields();
             ChatMessage msg = new ChatMessage("user", message);
             addMessage(msg);
@@ -107,6 +138,7 @@ public class ChatManager {
                 gameState.objectiveListManager.completeObjective3();
               }
             }
+            setToDefault();
             return null;
           }
         };

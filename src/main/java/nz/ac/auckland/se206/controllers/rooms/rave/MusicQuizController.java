@@ -178,11 +178,13 @@ public class MusicQuizController {
   @FXML
   private void onClickHint() {
     System.out.println("hint");
-    // decrement hint here
-    this.gamestate.chatManager.getMusicQuizHint(
-        new ChatMessage("user", GptPromptEngineering.getHintWithMusic(genreSolution)),
-        hintBtn,
-        speechBox);
+    if (this.gamestate.hintManager.getHintsRemaining() > 0) {
+      this.gamestate.hintManager.useHint();
+      this.gamestate.chatManager.getMusicQuizHint(
+          new ChatMessage("user", GptPromptEngineering.getHintWithMusic(genreSolution)),
+          hintBtn,
+          speechBox);
+    }
   }
 
   // switches back to the rave room

@@ -56,6 +56,7 @@ public class RaveController {
   @FXML private Label step2Label;
   @FXML private Label step3Label;
   @FXML private Label step4Label;
+  @FXML private ImageView gmSprite;
   @FXML private ImageView doorImage;
   @FXML private ImageView greenLock;
   @FXML private ImageView redLock;
@@ -89,6 +90,7 @@ public class RaveController {
     gameState.hintManager.addHintLabel(hintLabel);
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
+    gameState.chatManager.addSprite(gmSprite);
     gameState.objectiveListManager.addObjectiveLabel1(step1Label);
     gameState.objectiveListManager.addObjectiveLabel2(step2Label);
     gameState.objectiveListManager.addObjectiveLabel3(step3Label);
