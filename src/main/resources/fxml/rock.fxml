@@ -159,16 +159,16 @@
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Circle>
-      <Pane fx:id="chatBoxPane" disable="true" layoutX="25.0" layoutY="510.0" opacity="0.0" prefHeight="195.0" prefWidth="1232.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
+            <Pane fx:id="chatBoxPane" disable="true" layoutX="25.0" layoutY="510.0" opacity="0.0" prefHeight="195.0" prefWidth="1232.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="195.0" prefWidth="1232.0">
+            <VBox alignment="TOP_CENTER" layoutX="186.0" prefHeight="195.0" prefWidth="1046.0">
                <children>
-                  <TextArea fx:id="textArea" editable="false" prefHeight="159.0" prefWidth="1222.0" wrapText="true">
+                  <TextArea fx:id="textArea" editable="false" prefHeight="149.0" prefWidth="1123.0" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </TextArea>
-                  <TextField fx:id="textField" promptText="Enter Response Here">
+                  <TextField fx:id="textField" prefHeight="26.0" prefWidth="1156.0" promptText="Enter Response Here">
                      <VBox.margin>
                         <Insets bottom="5.0" />
                      </VBox.margin>
@@ -178,6 +178,11 @@
                   <Insets left="5.0" right="5.0" top="5.0" />
                </padding>
             </VBox>
+            <ImageView fitHeight="186.0" fitWidth="200.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/gm/gmdefault.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="7.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: FFFF;" text="HINTS LEFT:">
