@@ -84,7 +84,7 @@ public class RockController {
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
     gameState.chatManager.addSprite(gmSprite);
-    gameState.chatManager.generateInitialMessage();
+    // gameState.chatManager.generateInitialMessage();
     gameState.objectiveListManager.addObjectiveLabel1(step1Label);
     gameState.objectiveListManager.addObjectiveLabel2(step2Label);
     gameState.objectiveListManager.addObjectiveLabel3(step3Label);

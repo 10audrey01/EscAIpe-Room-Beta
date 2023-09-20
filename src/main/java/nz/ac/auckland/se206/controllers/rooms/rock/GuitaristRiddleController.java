@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -27,9 +28,17 @@ public class GuitaristRiddleController {
   @FXML private TextField textField;
   @FXML private TextArea textArea;
   @FXML private Button btnReturn;
+  @FXML private Label timerLabel;
 
   private GameState gameState;
   private ChatCompletionRequest chatCompletionRequest;
+
+  @FXML
+  private void initialize() throws IOException, ApiProxyException {
+    this.gameState = GameState.getInstance();
+    gameState.timeManager.addToTimers(timerLabel);
+    generateInitialMessage();
+  }
 
   @FXML
   public void onKeyPressed(KeyEvent event) {

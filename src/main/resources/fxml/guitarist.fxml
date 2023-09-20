@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.rock.GuitaristRiddleController">
@@ -31,6 +33,11 @@
             <TextField fx:id="textField" layoutX="4.0" layoutY="318.0" prefHeight="32.0" prefWidth="619.0" promptText="Enter Response Here" />
          </children>
       </Pane>
-      <Button fx:id="btnReturn" layoutX="1200.0" layoutY="85.0" mnemonicParsing="false" onAction="#onClickReturn" text="Return" />
+      <Button fx:id="btnReturn" layoutX="1190.0" layoutY="75.0" mnemonicParsing="false" onAction="#onClickReturn" text="Return" />
+      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1185.0" layoutY="23.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
