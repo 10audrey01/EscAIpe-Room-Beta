@@ -75,7 +75,7 @@ public class PianoController {
   private static final int B_NOTE_LOCATION = 0;
 
   // winning squence
-  public static String notesToPlay = "ABCDEFGABCDEFG";
+  public static String notesToPlay = "ABCDEFGA";
 
   // sequence of notes played by user
   public static String notesPlayed = "";
@@ -88,10 +88,7 @@ public class PianoController {
   @FXML
   private void initialize() throws IOException {
     notesList =
-        new ArrayList<ImageView>(
-            List.of(
-                note1, note2, note3, note4, note5, note6, note7, note8, note9, note10, note11,
-                note12, note13, note14));
+        new ArrayList<ImageView>(List.of(note1, note2, note3, note4, note5, note6, note7, note8));
     notesLetterList =
         new ArrayList<ImageView>(
             List.of(
@@ -102,13 +99,7 @@ public class PianoController {
                 note5Letter,
                 note6Letter,
                 note7Letter,
-                note8Letter,
-                note9Letter,
-                note10Letter,
-                note11Letter,
-                note12Letter,
-                note13Letter,
-                note14Letter));
+                note8Letter));
     loadNotes();
 
     gameState = GameState.getInstance();
@@ -123,11 +114,7 @@ public class PianoController {
       for (int i = 0; i < noteSequence.length; i++) {
         notesToPlay += noteSequence[i];
       }
-      notesToPlay +=
-          notesToPlay
-              + notesToPlay
-              + noteSequence[0]
-              + noteSequence[1]; // repeat the sequence for 14 notes
+      notesToPlay += notesToPlay; // repeat the sequence for 8 notes
       System.out.println(notesToPlay);
       loadRockNotes();
     }
