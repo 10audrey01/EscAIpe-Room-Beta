@@ -95,5 +95,30 @@
             <Font size="30.0" />
          </font>
       </Label>
+      <ImageView fx:id="beamNote1" fitHeight="82.0" fitWidth="84.0" layoutX="347.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/BeamNote.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="beamNote2" fitHeight="82.0" fitWidth="84.0" layoutX="467.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/BeamNote.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="beamNote3" fitHeight="82.0" fitWidth="84.0" layoutX="587.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/BeamNote.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="beamNote4" fitHeight="82.0" fitWidth="84.0" layoutX="707.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/BeamNote.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="beamNote5" fitHeight="82.0" fitWidth="84.0" layoutX="827.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/classicalRoom/BeamNote.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
