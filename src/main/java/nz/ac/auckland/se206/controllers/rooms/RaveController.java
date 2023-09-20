@@ -113,10 +113,10 @@ public class RaveController {
     chatOpened = false;
 
     objects = new ArrayList<String>();
-    objects.add("poster");
+    objects.add("band poster");
     objects.add("bouncer");
-    objects.add("disco");
-    objects.add("speaker");
+    objects.add("disco ball");
+    objects.add("speakers");
 
     circles = new ArrayList<Circle>(List.of(circle3, circle4, circle5));
     setCircles();

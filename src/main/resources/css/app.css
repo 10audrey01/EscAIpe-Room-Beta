@@ -190,6 +190,17 @@
   -fx-border-style: solid;
 }
 
+#playTrumpetPane:hover {
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+}
+
+#leaveTrumpet:hover {
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+
 #objectiveList {
   -fx-border-color: #000;
   -fx-border-width: 1px;
