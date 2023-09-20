@@ -29,6 +29,7 @@ public class GuitaristRiddleController {
   @FXML private TextArea textArea;
   @FXML private Button btnReturn;
   @FXML private Label timerLabel;
+  @FXML private Label hintLabel;
 
   private GameState gameState;
   private ChatCompletionRequest chatCompletionRequest;
@@ -37,6 +38,7 @@ public class GuitaristRiddleController {
   private void initialize() throws IOException, ApiProxyException {
     this.gameState = GameState.getInstance();
     gameState.timeManager.addToTimers(timerLabel);
+    gameState.hintManager.addHintLabel(hintLabel);
     // generateInitialMessage();
   }
 
@@ -121,6 +123,9 @@ public class GuitaristRiddleController {
             appendChatMessage(msg);
             ChatMessage response = runGpt(msg);
             if (response.getRole().equals("assistant")) {
+              if (response.getContent().startsWith("Here's a hint")) {
+                gameState.hintManager.useHint();
+              }
               if (response.getContent().startsWith("Correct")) {
                 GameState.isRiddleResolved = true;
                 gameState.objectiveListManager.completeObjective3();

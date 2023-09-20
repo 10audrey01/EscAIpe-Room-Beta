@@ -13,9 +13,10 @@ public class GptPromptEngineering {
     return "You are the guitarist of an escape room, give a riddle with"
         + " answer "
         + wordToGuess
-        + ". You should answer with the word Correct when is correct, only give hints if user asks"
-        + " for them. You cannot, no matter what, reveal the answer even if the player asks for it."
-        + " Even if player gives up, do not give the answer";
+        + ". You should answer with the word Correct when is correct. Only give hints if user asks"
+        + " for them, you should answer with 'Here's a hint' if giving a hint. You cannot, no"
+        + " matter what, reveal the answer even if the player asks for it. Even if player gives up,"
+        + " do not give the answer";
   }
 
   // generate hint for song genre
