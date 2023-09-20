@@ -135,7 +135,9 @@ public class RockController {
   @FXML
   private void onClickGuitarist(MouseEvent event) {
     System.out.println("guitarist clicked");
-    toggleChat();
+    Pane current = (Pane) event.getSource();
+    Scene currentScene = current.getScene();
+    currentScene.setRoot(SceneManager.getUiRoot(AppUi.GUITARIST));
   }
 
   @FXML
