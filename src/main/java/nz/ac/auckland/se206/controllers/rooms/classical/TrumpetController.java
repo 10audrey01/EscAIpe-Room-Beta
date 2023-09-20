@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers.rooms.classical;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -19,16 +20,17 @@ public class TrumpetController {
 
   @FXML private ImageView trumpetButton1, trumpetButton2, trumpetButton3;
   @FXML private ImageView note1Symbol, note2Symbol, note3Symbol;
+  @FXML private ImageView beamNote1, beamNote2, beamNote3, beamNote4, beamNote5;
   @FXML private Pane leaveTrumpet, playTrumpet;
   @FXML private Label timerLabel;
   private boolean isButton1Down;
   private boolean isButton2Down;
   private boolean isButton3Down;
 
-
+  private ArrayList<ImageView> beamNotes;
   private ArrayList<Integer> noteSequence;
   private Integer noteToPlay;
-  private int currentNoteIndex = 0;
+  private int currentNoteIndex;
 
   private GameState gameState;
 
@@ -39,17 +41,31 @@ public class TrumpetController {
     isButton1Down = false;
     isButton2Down = false;
     isButton3Down = false;
+    beamNotes =
+        new ArrayList<ImageView>(List.of(beamNote1, beamNote2, beamNote3, beamNote4, beamNote5));
+
     generateNoteSequence();
     noteToPlay = noteSequence.get(0);
+    currentNoteIndex = 0;
     setSymbols();
-    System.out.println(noteToPlay);
+    setBeamNotes();
   }
 
   private void generateNoteSequence() {
+    int numberToAdd;
     noteSequence = new ArrayList<Integer>();
     for (int i = 0; i < 5; i++) {
-      noteSequence.add(
-          (int) (Math.random()*2) + 10 * (int) (Math.random()*2) + 100 * (int) (Math.random()*2));
+      numberToAdd =
+          (int) (Math.random() * 2)
+              + 10 * (int) (Math.random() * 2)
+              + 100 * (int) (Math.random() * 2);
+      while (noteSequence.contains(numberToAdd)) {
+        numberToAdd =
+            (int) (Math.random() * 2)
+                + 10 * (int) (Math.random() * 2)
+                + 100 * (int) (Math.random() * 2);
+      }
+      noteSequence.add(numberToAdd);
     }
   }
 
@@ -232,14 +248,16 @@ public class TrumpetController {
   }
 
   public void correctNotePlayed() {
-    if (currentNoteIndex != 5) {
-      noteToPlay = noteSequence.get(currentNoteIndex++);
+    currentNoteIndex++;
+    if (currentNoteIndex <= 4) {
+      noteToPlay = noteSequence.get(currentNoteIndex);
     } else {
       System.out.println("Trumpet completed");
       GameState.isTrumpetPlayed = true;
     }
     try {
       setSymbols();
+      setBeamNotes();
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -248,7 +266,18 @@ public class TrumpetController {
   public void incorrectNotePlayed() {
     System.out.println(noteToPlay);
   }
-  
+
+  private void setBeamNotes() {
+    for (int i = 0; i < beamNotes.size(); i++) {
+      if (currentNoteIndex > i) {
+        beamNotes.get(i).setOpacity(1);
+        System.out.println("Show");
+      } else {
+        beamNotes.get(i).setOpacity(0);
+        System.out.println("Hide");
+      }
+    }
+  }
 
   @FXML
   public void onClickedLeaveTrumpet(MouseEvent event) throws IOException {
