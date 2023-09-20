@@ -59,6 +59,7 @@ public class RockController {
   @FXML private ToggleButton toggleNoteBtn;
   @FXML private ImageView pointingArrowGif;
   @FXML private ImageView noteImage;
+  @FXML private ImageView gamemaster;
   @FXML private ImageView step1BlueKey;
   @FXML private ImageView step2GreenKey;
   @FXML private ImageView step3RedKey;
@@ -82,6 +83,7 @@ public class RockController {
     gameState.hintManager.addHintLabel(hintLabel);
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
+    gameState.chatManager.addSprite(gamemaster);
     gameState.chatManager.generateInitialMessage();
     gameState.objectiveListManager.addObjectiveLabel1(step1Label);
     gameState.objectiveListManager.addObjectiveLabel2(step2Label);

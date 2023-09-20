@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 import nz.ac.auckland.se206.controllers.rooms.RaveController;
 import nz.ac.auckland.se206.gpt.ChatMessage;
@@ -23,6 +24,7 @@ public class ChatManager {
   private ChatCompletionRequest chatCompletionRequest;
   private ArrayList<TextArea> TextAreas;
   private ArrayList<TextField> TextFields;
+  private ArrayList<ImageView> gmSprites;
   private String messages;
 
   public ChatManager() {
@@ -30,6 +32,7 @@ public class ChatManager {
     this.messages = "";
     TextAreas = new ArrayList<TextArea>();
     TextFields = new ArrayList<TextField>();
+    gmSprites = new ArrayList<ImageView>();
   }
 
   public void addTextArea(TextArea textArea) {
@@ -40,12 +43,30 @@ public class ChatManager {
     TextFields.add(textField);
   }
 
+  public void addSprite(ImageView image) {
+    gmSprites.add(image);
+  }
+
   public void clearAllTextFields() {
     Platform.runLater(
         () -> {
           for (TextField textField : TextFields) {
             textField.setText("");
           }
+        });
+  }
+
+  private void setToLoading() {
+    Platform.runLater(
+        () -> {
+          for (ImageView sprite : gmSprites) {}
+        });
+  }
+
+  private void setToDefault() {
+    Platform.runLater(
+        () -> {
+          for (ImageView sprite : gmSprites) {}
         });
   }
 
