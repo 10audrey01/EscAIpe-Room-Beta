@@ -200,6 +200,7 @@
     -fx-border-color: #fff;
     -fx-border-width: 2px;
     -fx-border-style: solid;
+}
 
 #objectiveList {
   -fx-border-color: #000;
