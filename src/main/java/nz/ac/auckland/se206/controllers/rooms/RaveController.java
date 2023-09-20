@@ -116,7 +116,7 @@ public class RaveController {
     objects.add("band poster");
     objects.add("bouncer");
     objects.add("disco ball");
-    objects.add("speaker");
+    objects.add("speakers");
 
     circles = new ArrayList<Circle>(List.of(circle3, circle4, circle5));
     setCircles();

@@ -37,7 +37,7 @@ public class GuitaristRiddleController {
   private void initialize() throws IOException, ApiProxyException {
     this.gameState = GameState.getInstance();
     gameState.timeManager.addToTimers(timerLabel);
-    generateInitialMessage();
+    // generateInitialMessage();
   }
 
   @FXML
@@ -87,7 +87,7 @@ public class GuitaristRiddleController {
     initializeRiddleThread.start();
   }
 
-  public void clearAllTextFields() {
+  public void clearTextField() {
     Platform.runLater(
         () -> {
           textField.setText("");
@@ -116,7 +116,7 @@ public class GuitaristRiddleController {
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-            clearAllTextFields();
+            clearTextField();
             ChatMessage msg = new ChatMessage("user", message);
             appendChatMessage(msg);
             ChatMessage response = runGpt(msg);

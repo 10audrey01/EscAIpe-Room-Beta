@@ -160,10 +160,11 @@ public class ChatManager {
                   btn.setFont(Font.font(20));
                   btn.setDisable(true);
                 });
+
             ChatMessage res = runGpt(msg);
+
             Platform.runLater(
                 () -> {
-                  System.out.println("hello this runs");
                   speechArea.setText("Hey man, I got a hint for you...\n" + res.getContent());
                   btn.setVisible(false);
                 });

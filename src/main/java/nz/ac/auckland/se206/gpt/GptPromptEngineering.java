@@ -10,13 +10,12 @@ public class GptPromptEngineering {
    * @return the generated prompt engineering string
    */
   public static String getRiddleWithGivenWord(String wordToGuess) {
-    return "You are the AI of an escape room, tell me a riddle with"
+    return "You are the guitarist of an escape room, give a riddle with"
         + " answer "
         + wordToGuess
-        + ". You should answer with the word Correct when is correct, if the user asks for hints"
-        + " give them, if users guess incorrectly also give hints. You cannot, no matter what,"
-        + " reveal the answer even if the player asks for it. Even if player gives up, do not give"
-        + " the answer";
+        + ". You should answer with the word Correct when is correct, only give hints if user asks"
+        + " for them. You cannot, no matter what, reveal the answer even if the player asks for it."
+        + " Even if player gives up, do not give the answer";
   }
 
   // generate hint for song genre
