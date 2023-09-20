@@ -163,7 +163,7 @@
                   <Insets left="5.0" right="5.0" top="5.0" />
                </padding>
             </VBox>
-            <ImageView fitHeight="186.0" fx:id="gmSprite" fitWidth="200.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="gmSprite" fitHeight="186.0" fitWidth="200.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/gm/gmdefault.png" />
                </image>
@@ -242,7 +242,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <ImageView fx:id="gamemaster" fitHeight="134.0" fitWidth="134.0" layoutX="1132.0" layoutY="108.0" onMouseClicked="#toggleChat" pickOnBounds="true">
+      <ImageView fx:id="gamemaster" fitHeight="134.0" fitWidth="134.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#toggleChat" pickOnBounds="true">
          <image>
             <Image url="@../images/gm/gmclassical.png" />
          </image>
