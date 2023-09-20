@@ -58,7 +58,7 @@ public class ClassicalController {
   @FXML private ImageView step2GreenKey;
   @FXML private ImageView step3RedKey;
   @FXML private ImageView step4YellowKey;
-  @FXML private ImageView gamemaster;
+  @FXML private ImageView gmSprite;
   @FXML private VBox objectiveList;
   private boolean chatOpened;
 
@@ -86,7 +86,7 @@ public class ClassicalController {
     gameState.hintManager.addHintLabel(hintLabel);
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
-    gameState.chatManager.addSprite(gamemaster);
+    gameState.chatManager.addSprite(gmSprite);
     gameState.objectiveListManager.addObjectiveLabel1(step1Label);
     gameState.objectiveListManager.addObjectiveLabel2(step2Label);
     gameState.objectiveListManager.addObjectiveLabel3(step3Label);
