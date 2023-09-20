@@ -254,6 +254,7 @@ public class TrumpetController {
     } else {
       System.out.println("Trumpet completed");
       GameState.isTrumpetPlayed = true;
+      hideAllSymbols();
     }
     try {
       setSymbols();
@@ -277,6 +278,15 @@ public class TrumpetController {
         System.out.println("Hide");
       }
     }
+  }
+
+  private void hideAllSymbols() {
+    Platform.runLater(
+        () -> {
+          note1Symbol.setOpacity(0);
+          note2Symbol.setOpacity(0);
+          note3Symbol.setOpacity(0);
+        });
   }
 
   @FXML
