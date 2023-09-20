@@ -23,4 +23,12 @@ public class GptPromptEngineering {
   public static String getHintWithMusic(String genre) {
     return "Generate a 2 line riddle where the answer is the music genre " + genre;
   }
+
+  // game master's introduction
+  public static String getGmGreeting() {
+    return "You are the friendly Game Master that must help the player escape the musically themed"
+        + " rooms. Introduce yourself and tell the player that you will be helping them."
+        + " Tell the player to click on you to open/close the chat. Give a response with max"
+        + " 80 words";
+  }
 }

@@ -11,7 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
-import nz.ac.auckland.se206.controllers.rooms.RaveController;
 import nz.ac.auckland.se206.gpt.ChatMessage;
 import nz.ac.auckland.se206.gpt.GptPromptEngineering;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
@@ -87,13 +86,10 @@ public class ChatManager {
             chatCompletionRequest =
                 new ChatCompletionRequest()
                     .setN(1)
-                    .setTemperature(0.2)
+                    .setTemperature(0.8)
                     .setTopP(0.5)
-                    .setMaxTokens(100);
-            runGpt(
-                new ChatMessage(
-                    "user",
-                    GptPromptEngineering.getRiddleWithGivenWord(RaveController.getRiddleObject())));
+                    .setMaxTokens(70);
+            runGpt(new ChatMessage("user", GptPromptEngineering.getGmGreeting()));
             setToDefault();
             return null;
           }
