@@ -37,7 +37,7 @@ public class GptPromptEngineering {
   public static String getGmInteraction(String msg) {
     return "The player's message is"
         + msg
-        + "respond to the player as the Game Master. If they are asking for help, "
+        + ". Only give hints if players asks for help. If the player asked for help,"
         + getGmHint()
         + ". Otherwise respond normally";
   }
