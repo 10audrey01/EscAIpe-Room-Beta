@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206.gpt;
 
+import nz.ac.auckland.se206.GameState;
+
 /** Utility class for generating GPT prompt engineering strings. */
 public class GptPromptEngineering {
 
@@ -30,5 +32,35 @@ public class GptPromptEngineering {
         + " rooms. Introduce yourself and tell the player that you will be helping them."
         + " Tell the player to click on you to open/close the chat. Give a response with max"
         + " 80 words";
+  }
+
+  public static String getGmInteraction(String msg) {
+    return "The player's message is"
+        + msg
+        + "respond to the player as the Game Master. If they are asking for help, "
+        + getGmHint()
+        + ". Otherwise respond normally";
+  }
+
+  public static String getGmHint() {
+    if (!GameState.isRiddleResolved) {
+      return "tell the player that maybe the guitarist can help them.  Start your answer with"
+          + " 'Here's a hint: '";
+    } else if (!GameState.isRiddleObjectFound) {
+      return "tell the player that they should find the riddle object.  Start your answer with"
+          + " 'Here's a hint: '";
+    } else if (!GameState.isNoteSequenceFound) {
+      return "tell the player that the colours on the note might relate to some objects in a room. "
+          + " Start your answer with 'Here's a hint: '";
+    } else if (!GameState.isPianoPlayed) {
+      return "tell the player that the note sequence they found could be played on an instrument. "
+          + " Start your answer with 'Here's a hint: '";
+    } else if (!GameState.isHarpPlayed) {
+      return "tell the player that they should look for hidden circles in each room.  Start your"
+          + " answer with 'Here's a hint: '";
+    } else { // if all the objectives are completed
+      return "tell the player that they should unlock the door and escape. Start your answer with"
+          + " 'Here's a hint: '";
+    }
   }
 }

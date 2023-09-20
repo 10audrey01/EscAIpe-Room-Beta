@@ -35,6 +35,9 @@ public class HintManager {
   }
 
   public void useHint() {
+    if (this.hintsRemaining == 0) {
+      return;
+    }
     this.hintsRemaining--;
     Platform.runLater(
         () -> {
