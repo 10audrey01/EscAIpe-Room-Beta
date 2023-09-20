@@ -1,16 +1,20 @@
-package nz.ac.auckland.se206;
+package nz.ac.auckland.se206.controllers.rooms.rock;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.text.Font;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.rooms.RaveController;
 import nz.ac.auckland.se206.gpt.ChatMessage;
 import nz.ac.auckland.se206.gpt.GptPromptEngineering;
@@ -19,62 +23,45 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionRequest;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 
-public class ChatManager {
+public class GuitaristRiddleController {
+
+  @FXML private TextField textField;
+  @FXML private TextArea textArea;
+  @FXML private Button btnReturn;
+  @FXML private Label timerLabel;
+  @FXML private Label hintLabel;
 
   private GameState gameState;
   private ChatCompletionRequest chatCompletionRequest;
-  private ArrayList<TextArea> TextAreas;
-  private ArrayList<TextField> TextFields;
-  private ArrayList<ImageView> gmSprites;
-  private String messages;
 
-  public ChatManager() {
+  @FXML
+  private void initialize() throws IOException, ApiProxyException {
     this.gameState = GameState.getInstance();
-    this.messages = "";
-    TextAreas = new ArrayList<TextArea>();
-    TextFields = new ArrayList<TextField>();
-    gmSprites = new ArrayList<ImageView>();
+    gameState.timeManager.addToTimers(timerLabel);
+    gameState.hintManager.addHintLabel(hintLabel);
+    // generateInitialMessage();
   }
 
-  public void addTextArea(TextArea textArea) {
-    TextAreas.add(textArea);
+  @FXML
+  public void onKeyPressed(KeyEvent event) {
+    System.out.println("key " + event.getCode() + " pressed");
   }
 
-  public void addTextField(TextField textField) {
-    TextFields.add(textField);
+  @FXML
+  public void onKeyReleased(KeyEvent event) throws ApiProxyException, IOException {
+    System.out.println("key " + event.getCode() + " released");
+    if (event.getCode() == KeyCode.ENTER) {
+      System.out.println("Message Sent");
+      onSendMessage(textField);
+    }
   }
 
-  public void addSprite(ImageView image) {
-    gmSprites.add(image);
-  }
-
-  public void clearAllTextFields() {
-    Platform.runLater(
-        () -> {
-          for (TextField textField : TextFields) {
-            textField.setText("");
-          }
-        });
-  }
-
-  private void setToLoading() throws IOException {
-    Image image = new Image(App.class.getResource("/images/gm/gmloading.gif").openStream());
-    Platform.runLater(
-        () -> {
-          for (ImageView sprite : gmSprites) {
-            sprite.setImage(image);
-          }
-        });
-  }
-
-  private void setToDefault() throws IOException {
-    Image image = new Image(App.class.getResource("/images/gm/gmdefault.png").openStream());
-    Platform.runLater(
-        () -> {
-          for (ImageView sprite : gmSprites) {
-            sprite.setImage(image);
-          }
-        });
+  // switches back to the rock room
+  @FXML
+  private void onClickReturn(ActionEvent event) {
+    Button source = (Button) event.getSource();
+    Scene currentScene = source.getScene();
+    currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
   }
 
   public void generateInitialMessage() throws ApiProxyException {
@@ -83,7 +70,6 @@ public class ChatManager {
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-            setToLoading();
             chatCompletionRequest =
                 new ChatCompletionRequest()
                     .setN(1)
@@ -93,10 +79,7 @@ public class ChatManager {
             runGpt(
                 new ChatMessage(
                     "user",
-                    GptPromptEngineering.getRiddleWithGivenWord(
-                        RaveController
-                            .getRiddleObject()))); // TODO: change this to be a greeting from gm
-            setToDefault();
+                    GptPromptEngineering.getRiddleWithGivenWord(RaveController.getRiddleObject())));
             return null;
           }
         };
@@ -106,14 +89,20 @@ public class ChatManager {
     initializeRiddleThread.start();
   }
 
-  public void addMessage(ChatMessage msg) {
-    messages = msg.getRole() + ": " + msg.getContent() + "\n\n";
+  public void clearTextField() {
     Platform.runLater(
         () -> {
-          for (TextArea textArea : TextAreas) {
-            textArea.appendText(messages);
-          }
+          textField.setText("");
         });
+  }
+
+  /**
+   * Appends a chat message to the chat text area.
+   *
+   * @param msg the chat message to append
+   */
+  private void appendChatMessage(ChatMessage msg) {
+    textArea.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
   }
 
   @FXML
@@ -129,51 +118,24 @@ public class ChatManager {
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-            setToLoading();
-            clearAllTextFields();
+            clearTextField();
             ChatMessage msg = new ChatMessage("user", message);
-            addMessage(msg);
+            appendChatMessage(msg);
             ChatMessage response = runGpt(msg);
             if (response.getRole().equals("assistant")) {
+              if (response.getContent().startsWith("Here's a hint")) {
+                gameState.hintManager.useHint();
+              }
               if (response.getContent().startsWith("Correct")) {
                 GameState.isRiddleResolved = true;
                 gameState.objectiveListManager.completeObjective3();
               }
             }
-            setToDefault();
             return null;
           }
         };
     Thread onSendMessageThread = new Thread(onSendMessageTask, "onSendMessageThread");
     onSendMessageThread.start();
-  }
-
-  // get a hint for the music quiz
-  public void getMusicQuizHint(ChatMessage msg, Button btn, TextArea speechArea) {
-    Task<Void> getHintTask =
-        new Task<Void>() {
-          @Override
-          protected Void call() throws Exception {
-            Platform.runLater(
-                () -> {
-                  btn.setText("Loading...");
-                  btn.setFont(Font.font(20));
-                  btn.setDisable(true);
-                });
-
-            ChatMessage res = runGpt(msg);
-
-            Platform.runLater(
-                () -> {
-                  speechArea.setText("Hey man, I got a hint for you...\n" + res.getContent());
-                  btn.setVisible(false);
-                });
-            return null;
-          }
-        };
-
-    Thread hintThread = new Thread(getHintTask, "hintThread");
-    hintThread.start();
   }
 
   /**
@@ -194,7 +156,7 @@ public class ChatManager {
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
-      addMessage(result.getChatMessage());
+      appendChatMessage(result.getChatMessage());
       return result.getChatMessage();
     } catch (ApiProxyException e) {
       // TODO handle exception appropriately

@@ -84,7 +84,7 @@ public class RockController {
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
     gameState.chatManager.addSprite(gmSprite);
-    gameState.chatManager.generateInitialMessage();
+    // gameState.chatManager.generateInitialMessage();
     gameState.objectiveListManager.addObjectiveLabel1(step1Label);
     gameState.objectiveListManager.addObjectiveLabel2(step2Label);
     gameState.objectiveListManager.addObjectiveLabel3(step3Label);
@@ -135,7 +135,9 @@ public class RockController {
   @FXML
   private void onClickGuitarist(MouseEvent event) {
     System.out.println("guitarist clicked");
-    toggleChat();
+    Pane current = (Pane) event.getSource();
+    Scene currentScene = current.getScene();
+    currentScene.setRoot(SceneManager.getUiRoot(AppUi.GUITARIST));
   }
 
   @FXML
