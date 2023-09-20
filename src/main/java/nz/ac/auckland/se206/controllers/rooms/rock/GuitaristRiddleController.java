@@ -3,12 +3,17 @@ package nz.ac.auckland.se206.controllers.rooms.rock;
 import java.io.IOException;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.rooms.RaveController;
 import nz.ac.auckland.se206.gpt.ChatMessage;
 import nz.ac.auckland.se206.gpt.GptPromptEngineering;
@@ -21,6 +26,7 @@ public class GuitaristRiddleController {
 
   @FXML private TextField textField;
   @FXML private TextArea textArea;
+  @FXML private Button btnReturn;
 
   private GameState gameState;
   private ChatCompletionRequest chatCompletionRequest;
@@ -37,6 +43,14 @@ public class GuitaristRiddleController {
       System.out.println("Message Sent");
       onSendMessage(textField);
     }
+  }
+
+  // switches back to the rock room
+  @FXML
+  private void onClickReturn(ActionEvent event) {
+    Button source = (Button) event.getSource();
+    Scene currentScene = source.getScene();
+    currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
   }
 
   public void generateInitialMessage() throws ApiProxyException {
