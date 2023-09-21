@@ -83,14 +83,14 @@ public class RockController {
     gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite);
     gameState.getChatManager().generateInitialMessage();
     // adding labels for objective list to the objective list manager
-    gameState.objectiveListManager.addObjectiveLabel1(step1Label);
-    gameState.objectiveListManager.addObjectiveLabel2(step2Label);
-    gameState.objectiveListManager.addObjectiveLabel3(step3Label);
-    gameState.objectiveListManager.addObjectiveLabel4(step4Label);
-    gameState.objectiveListManager.addStep1Key(step1BlueKey);
-    gameState.objectiveListManager.addStep2Key(step2GreenKey);
-    gameState.objectiveListManager.addStep3Key(step3RedKey);
-    gameState.objectiveListManager.addStep4Key(step4YellowKey);
+    gameState.getObjectiveListManager().addObjectiveLabel1(step1Label);
+    gameState.getObjectiveListManager().addObjectiveLabel2(step2Label);
+    gameState.getObjectiveListManager().addObjectiveLabel3(step3Label);
+    gameState.getObjectiveListManager().addObjectiveLabel4(step4Label);
+    gameState.getObjectiveListManager().addStep1Key(step1BlueKey);
+    gameState.getObjectiveListManager().addStep2Key(step2GreenKey);
+    gameState.getObjectiveListManager().addStep3Key(step3RedKey);
+    gameState.getObjectiveListManager().addStep4Key(step4YellowKey);
     // add elements needed for the rock room task
     gameState.getRockBigTaskManager().addAllRockTaskElements(
         colourLabel1,
