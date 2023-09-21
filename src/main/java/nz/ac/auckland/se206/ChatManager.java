@@ -127,15 +127,27 @@ public class ChatManager {
             clearAllTextFields();
             ChatMessage msg = new ChatMessage("user", message);
             addMessage(msg);
-            ChatMessage response =
-                runGpt(new ChatMessage("user", GptPromptEngineering.getGmInteraction(message)));
-            if (response.getRole().equals("assistant")) {
-              if (response.getContent().startsWith("Here's a hint")) {
-                gameState.hintManager.useHint();
-                // GameState.isRiddleResolved = true; // TODO: add this to GuitaristRiddleController
-                // gameState.objectiveListManager.completeObjective3();
-              }
+            // ChatMessage response = runGpt(msg);
+
+            chatCompletionRequest =
+                new ChatCompletionRequest()
+                    .setN(1)
+                    .setTemperature(0.8)
+                    .setTopP(0.5)
+                    .setMaxTokens(70);
+
+            if (message.toLowerCase().contains("help")
+                || message.toLowerCase().contains("hint")
+                || message
+                    .toLowerCase()
+                    .contains("clue")) { // (response.getContent().startsWith("Here's a hint")) {
+              System.out.println("hint used");
+              gameState.hintManager.useHint();
+              runGpt(new ChatMessage("user", GptPromptEngineering.getGmHint()));
+            } else {
+              runGpt(msg);
             }
+
             setToDefault();
             return null;
           }

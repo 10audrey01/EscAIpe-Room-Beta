@@ -30,8 +30,7 @@ public class GptPromptEngineering {
   public static String getGmGreeting() {
     return "You are the friendly Game Master that must help the player escape the musically themed"
         + " rooms. Introduce yourself and tell the player that you will be helping them."
-        + " Tell the player to click on you to open/close the chat. Give a response with max"
-        + " 80 words";
+        + " Tell the player to click on you to open/close the chat once only.";
   }
 
   public static String getGmInteraction(String msg) {
@@ -39,27 +38,27 @@ public class GptPromptEngineering {
         + msg
         + ". Only give hints if players asks for help. If the player asked for help,"
         + getGmHint()
-        + ". Otherwise respond normally";
+        + ". Otherwise respond without giving any hints";
   }
 
   public static String getGmHint() {
     if (!GameState.isRiddleResolved) {
-      return "tell the player that maybe the guitarist can help them.  Start your answer with"
+      return "Tell the player that maybe the guitarist can help them.  Start your answer with"
           + " 'Here's a hint: '";
     } else if (!GameState.isRiddleObjectFound) {
-      return "tell the player that they should find the riddle object.  Start your answer with"
+      return "Tell the player that they should find the riddle object.  Start your answer with"
           + " 'Here's a hint: '";
     } else if (!GameState.isNoteSequenceFound) {
-      return "tell the player that the colours on the note might relate to some objects in a room. "
+      return "Tell the player that the colours on the note might relate to some objects in a room. "
           + " Start your answer with 'Here's a hint: '";
     } else if (!GameState.isPianoPlayed) {
-      return "tell the player that the note sequence they found could be played on an instrument. "
+      return "Tell the player that the note sequence they found could be played on an instrument. "
           + " Start your answer with 'Here's a hint: '";
     } else if (!GameState.isHarpPlayed) {
-      return "tell the player that they should look for hidden circles in each room.  Start your"
+      return "Tell the player that they should look for hidden circles in each room.  Start your"
           + " answer with 'Here's a hint: '";
     } else { // if all the objectives are completed
-      return "tell the player that they should unlock the door and escape. Start your answer with"
+      return "Tell the player that they should unlock the door and escape. Start your answer with"
           + " 'Here's a hint: '";
     }
   }
