@@ -119,6 +119,7 @@ public class StartController {
     SceneManager.addUi(AppUi.RAVE, App.loadFxml("rave"));
     SceneManager.addUi(AppUi.ROCK, App.loadFxml("rock"));
     SceneManager.addUi(AppUi.BODYBUILDER, App.loadFxml("bodybuilder"));
+    SceneManager.addUi(AppUi.GUITARIST, App.loadFxml("guitarist"));
     SceneManager.addUi(AppUi.TRUMPET, App.loadFxml("trumpet"));
 
     SceneManager.addUi(AppUi.ROCKNOTE, App.loadFxml("rocknote"));
