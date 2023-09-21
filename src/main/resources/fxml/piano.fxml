@@ -63,13 +63,13 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="cKey" layoutX="643.0" layoutY="329.0" onMouseClicked="#onClickedCKey" prefHeight="277.0" prefWidth="41.0" />
-      <Pane fx:id="dKey" layoutX="687.0" layoutY="329.0" onMouseClicked="#onClickedDKey" prefHeight="277.0" prefWidth="41.0" />
-      <Pane fx:id="eKey" layoutX="734.0" layoutY="329.0" onMouseClicked="#onClickedEKey" prefHeight="277.0" prefWidth="41.0" />
-      <Pane fx:id="fKey" layoutX="779.0" layoutY="329.0" onMouseClicked="#onClickedFKey" prefHeight="277.0" prefWidth="41.0" />
-      <Pane fx:id="gKey" layoutX="825.0" layoutY="329.0" onMouseClicked="#onClickedGKey" prefHeight="277.0" prefWidth="41.0" />
-      <Pane fx:id="aKey" layoutX="871.0" layoutY="329.0" onMouseClicked="#onClickedAKey" prefHeight="277.0" prefWidth="41.0" />
-      <Pane fx:id="bKey" layoutX="916.0" layoutY="329.0" onMouseClicked="#onClickedBKey" prefHeight="277.0" prefWidth="41.0" />
+      <Pane fx:id="keyC" layoutX="643.0" layoutY="329.0" onMouseClicked="#onClickedKeyC" prefHeight="277.0" prefWidth="41.0" />
+      <Pane fx:id="keyD" layoutX="687.0" layoutY="329.0" onMouseClicked="#onClickedKeyD" prefHeight="277.0" prefWidth="41.0" />
+      <Pane fx:id="keyE" layoutX="734.0" layoutY="329.0" onMouseClicked="#onClickedKeyE" prefHeight="277.0" prefWidth="41.0" />
+      <Pane fx:id="keyF" layoutX="779.0" layoutY="329.0" onMouseClicked="#onClickedKeyF" prefHeight="277.0" prefWidth="41.0" />
+      <Pane fx:id="keyG" layoutX="825.0" layoutY="329.0" onMouseClicked="#onClickedKeyG" prefHeight="277.0" prefWidth="41.0" />
+      <Pane fx:id="keyA" layoutX="871.0" layoutY="329.0" onMouseClicked="#onClickedKeyA" prefHeight="277.0" prefWidth="41.0" />
+      <Pane fx:id="keyB" layoutX="916.0" layoutY="329.0" onMouseClicked="#onClickedKeyB" prefHeight="277.0" prefWidth="41.0" />
       <ImageView fx:id="note1" fitHeight="40.0" fitWidth="200.0" layoutX="190.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/classicalRoom/Notes/Note.png" />
