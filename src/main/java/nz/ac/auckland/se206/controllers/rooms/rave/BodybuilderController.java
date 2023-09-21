@@ -98,7 +98,9 @@ public class BodybuilderController {
   // handles the player clicking any keyboard keys for inputting into the safe
   @FXML
   private void onKeyPressed(KeyEvent event) throws ApiProxyException, IOException {
+    // gets the current value of the key pressed
     KeyCode keyCode = event.getCode();
+    // switch case which runs the respective event based on the key pressed.
     switch (keyCode) {
       case BACK_SPACE:
         onClickRemove(new ActionEvent());
@@ -151,17 +153,21 @@ public class BodybuilderController {
     }
   }
 
+  // function which reveals the extra hint images when the player decides to use the hint
   @FXML
   private void onClickHint(ActionEvent action) {
+    // hide the hint button and show the hint images
     btnHint.setVisible(false);
     hintImage1.setOpacity(1);
     hintImage2.setOpacity(1);
+    // decrement hint
     this.gamestate.hintManager.useHint();
   }
 
   // Handles the event where any number is pressed.
   @FXML
   private void pressNumber(int number) {
+    // only adds the number if the code length is less than 6
     if (this.code.length() < 6) {
       this.code += Integer.toString(number);
       codeInputText.setText(code);
@@ -294,6 +300,8 @@ public class BodybuilderController {
       }
     }
 
+    // if the code is correct, send the correct message and notify gamestate of completion of the
+    // task.
     if (this.code.equals(this.solution)) {
       speechBox.setText("Nice work bro. You can take this key if you want, I guess");
       GameState.isSafeOpened = true;
@@ -308,10 +316,5 @@ public class BodybuilderController {
     Button source = (Button) event.getSource();
     Scene currentScene = source.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.RAVE));
-  }
-
-  @FXML
-  private void onKeyPressed() {
-    System.out.println("key pressed");
   }
 }
