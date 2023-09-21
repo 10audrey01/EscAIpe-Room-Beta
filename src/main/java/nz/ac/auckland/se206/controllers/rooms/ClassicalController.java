@@ -97,8 +97,8 @@ public class ClassicalController {
         step4YellowKey);
 
     // if the  gamestate is the rock large task, add the elements to the rock task manager
-    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
-      gameState.rockBigTaskManager.addAllRockTaskElements(
+    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
+      gameState.getRockBigTaskManager().addAllRockTaskElements(
           colourLabel1,
           colourLabel2,
           colourLabel3,
@@ -238,7 +238,7 @@ public class ClassicalController {
     if (event.getCode() == KeyCode.ENTER && chatOpened) {
       System.out.println("Message Sent");
       gameState = GameState.getInstance();
-      gameState.chatManager.onSendMessage(textField);
+      gameState.getChatManager().onSendMessage(textField);
     }
   }
 
@@ -254,7 +254,7 @@ public class ClassicalController {
   // function for handling the note toggling event
   @FXML
   private void onClickNote1() {
-    gameState.rockBigTaskManager.setVisibilityNotePanes(true);
-    gameState.rockBigTaskManager.setVisibilityArrows(false);
+    gameState.getRockBigTaskManager().setVisibilityNotePanes(true);
+    gameState.getRockBigTaskManager().setVisibilityArrows(false);
   }
 }

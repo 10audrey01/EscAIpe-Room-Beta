@@ -37,7 +37,7 @@ public class TrumpetController {
   @FXML
   private void initialize() throws IOException {
     gameState = GameState.getInstance();
-    gameState.timeManager.addToTimers(timerLabel);
+    gameState.getTimeManager().addToTimers(timerLabel);
     isButton1Down = false;
     isButton2Down = false;
     isButton3Down = false;

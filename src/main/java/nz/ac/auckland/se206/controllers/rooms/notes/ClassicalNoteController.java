@@ -22,8 +22,8 @@ public class ClassicalNoteController {
   @FXML
   private void initialize() throws IOException {
     this.gamestate = GameState.getInstance();
-    this.gamestate.timeManager.addToTimers(timerLabel);
-    this.gamestate.classicalNote = this;
+    this.gamestate.getTimeManager().addToTimers(timerLabel);
+    this.gamestate.setClassicalNote(this);
   }
 
   // set the current hint text

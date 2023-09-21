@@ -22,8 +22,8 @@ public class RockNoteController {
   @FXML
   private void initialize() throws IOException {
     this.gamestate = GameState.getInstance();
-    this.gamestate.timeManager.addToTimers(timerLabel);
-    this.gamestate.rockNote = this;
+    this.gamestate.getTimeManager().addToTimers(timerLabel);
+    this.gamestate.setRockNote(this);
   }
 
   // set the current hint text

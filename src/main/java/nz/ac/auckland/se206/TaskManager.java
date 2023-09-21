@@ -22,8 +22,8 @@ public class TaskManager {
     CLASSICAL
   }
 
-  public ArrayList<Task> tasks; // List to store individual tasks
-  public ArrayList<Task> completedTasks; // List to store completed individual tasks
+  private ArrayList<Task> tasks; // List to store individual tasks
+  private ArrayList<Task> completedTasks; // List to store completed individual tasks
   public LargeTask largeTask; // The current large task
 
   public TaskManager() {

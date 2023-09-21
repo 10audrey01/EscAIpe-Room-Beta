@@ -69,12 +69,12 @@ public class HarpController {
   private Line noteToPlay;
   private boolean harpSequencePlayable;
   private Paint noteOrginalColor;
-  public MediaPlayer harpNotePlayer;
+  private MediaPlayer harpNotePlayer;
 
   @FXML
   private void initialize() throws IOException {
     this.gameState = GameState.getInstance();
-    gameState.timeManager.addToTimers(timerLabel);
+    gameState.getTimeManager().addToTimers(timerLabel);
 
     strings =
         new ArrayList<Line>(
@@ -217,7 +217,7 @@ public class HarpController {
       System.out.println("Harp completed");
       harpSequencePlayable = false;
       GameState.isHarpPlayed = true;
-      gameState.objectiveListManager.completeObjective4();
+      gameState.getObjectiveListManager().completeObjective4();
     }
     setCircleColours();
   }
