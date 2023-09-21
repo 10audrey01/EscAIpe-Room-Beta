@@ -36,17 +36,20 @@ public class GuitaristRiddleController {
 
   @FXML
   private void initialize() throws IOException, ApiProxyException {
+    // gets the gamestate instance, adding the labels for hints/timers to the gamestate
     this.gameState = GameState.getInstance();
     gameState.getTimeManager().addToTimers(timerLabel);
     gameState.getHintManager().addHintLabel(hintLabel);
     generateInitialMessage();
   }
 
+  // function for handling key presses
   @FXML
   public void onKeyPressed(KeyEvent event) {
     System.out.println("key " + event.getCode() + " pressed");
   }
 
+  // function for handling key releases
   @FXML
   public void onKeyReleased(KeyEvent event) throws ApiProxyException, IOException {
     System.out.println("key " + event.getCode() + " released");
@@ -64,8 +67,8 @@ public class GuitaristRiddleController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
   }
 
+  // generates the initial message from the guitarist, which is the riddle
   public void generateInitialMessage() throws ApiProxyException {
-
     Task<Void> initializeRiddleTask =
         new Task<Void>() {
           @Override
@@ -109,7 +112,13 @@ public class GuitaristRiddleController {
     }
   }
 
-  @FXML
+  /**
+   * Sends a message to the GPT model.
+   *
+   * @param event the action event triggered by the send button
+   * @throws ApiProxyException if there is an error communicating with the API proxy
+   * @throws IOException if there is an I/O error
+   */
   public void onSendMessage(TextField inputText) throws ApiProxyException, IOException {
     String message = inputText.getText();
     System.out.println(message);
@@ -131,7 +140,7 @@ public class GuitaristRiddleController {
             Platform.runLater(
                 () -> {
                   textField.setText("Loading . . .");
-                  textField.setEditable(false);
+                  textField.setEditable(false); // user cannot type while loading
                 });
 
             if (message.toLowerCase().contains("help")
@@ -142,6 +151,7 @@ public class GuitaristRiddleController {
               if (gameState.getHintManager().getHintsRemaining() > 0) {
                 response = runGpt(msg);
               } else {
+                // gpt will tell user they are out of hints
                 runGpt(new ChatMessage("user", GptPromptEngineering.getGmNoHint()));
               }
             } else {
@@ -155,12 +165,16 @@ public class GuitaristRiddleController {
                 });
 
             if (response.getRole().equals("assistant")) {
-              if (response.getContent().startsWith("Here's a hint")) {
+              if (response
+                  .getContent()
+                  .startsWith("Here's a hint")) { // way to recognise whether response is a hint
                 gameState.getHintManager().useHint();
               }
               if (response.getContent().startsWith("Correct")) {
                 GameState.isRiddleResolved = true;
-                gameState.getObjectiveListManager().completeObjective3();
+                gameState
+                    .getObjectiveListManager()
+                    .completeObjective3(); // objective 3 is to talk to guitarist
               }
             }
             return null;

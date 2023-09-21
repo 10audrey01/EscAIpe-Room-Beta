@@ -261,7 +261,7 @@ public class RockController {
         // play the note of the guitar clicked according to the note sequence
         String noteToPlay = noteSequence[orderColourMap.get(guitarColour) - 1];
 
-        switch (noteToPlay) { // switch statement to play the note
+        switch (noteToPlay) { // switch statement to play any note
           case "C":
             System.out.println("C note played");
             playGuitarNotePlayer("c2");

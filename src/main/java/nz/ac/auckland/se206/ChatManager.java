@@ -90,6 +90,7 @@ public class ChatManager {
           @Override
           protected Void call() throws Exception {
             setToLoading();
+            // create a new chat completion request to reduce token usage
             chatCompletionRequest =
                 new ChatCompletionRequest()
                     .setN(1)
@@ -98,7 +99,9 @@ public class ChatManager {
                     .setMaxTokens(70);
             ChatMessage intro =
                 runGpt(new ChatMessage("user", GptPromptEngineering.getGmGreeting()));
+
             if (intro.getRole().equals("assistant")) {
+              // run the gm greeting with text to speech
               Task<Void> textToSpeechTask =
                   new Task<Void>() {
 
@@ -156,6 +159,7 @@ public class ChatManager {
             ChatMessage msg = new ChatMessage("user", message);
             addMessage(msg);
 
+            // create a new chat completion request to reduce token usage
             chatCompletionRequest =
                 new ChatCompletionRequest()
                     .setN(1)
@@ -163,6 +167,7 @@ public class ChatManager {
                     .setTopP(0.5)
                     .setMaxTokens(70);
 
+            // If the user asks for a hint or similar
             if (message.toLowerCase().contains("help")
                 || message.toLowerCase().contains("hint")
                 || message.toLowerCase().contains("clue")) {
@@ -173,7 +178,7 @@ public class ChatManager {
                 gameState.getHintManager().useHint();
                 lastMsg = runGpt(new ChatMessage("user", GptPromptEngineering.getGmHint()));
               } else {
-                // otherwise run the gpt without the hint prompt
+                // gpt will tell user they are out of hints
                 lastMsg = runGpt(new ChatMessage("user", GptPromptEngineering.getGmNoHint()));
               }
             } else {
@@ -181,6 +186,7 @@ public class ChatManager {
             }
 
             if (lastMsg.getRole().equals("assistant")) {
+              // run every gpt response with text to speech
               Task<Void> textToSpeechTask =
                   new Task<Void>() {
 
