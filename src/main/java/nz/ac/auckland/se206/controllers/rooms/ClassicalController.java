@@ -18,7 +18,6 @@ import nz.ac.auckland.se206.DraggableMaker;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.TaskManager.LargeTask;
 import nz.ac.auckland.se206.controllers.rooms.classical.PianoController;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
@@ -96,18 +95,16 @@ public class ClassicalController {
         step3RedKey,
         step4YellowKey);
 
-    // if the  gamestate is the rock large task, add the elements to the rock task manager
-    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
-      gameState.getRockBigTaskManager().addAllRockTaskElements(
-          colourLabel1,
-          colourLabel2,
-          colourLabel3,
-          colourLabel4,
-          notePane,
-          noteImage1,
-          noteSequenceLabel,
-          pointingArrowGif);
-    }
+    // add elements needed for the rock room task
+    gameState.getRockBigTaskManager().addAllRockTaskElements(
+        colourLabel1,
+        colourLabel2,
+        colourLabel3,
+        colourLabel4,
+        notePane,
+        noteImage1,
+        noteSequenceLabel,
+        pointingArrowGif);
 
     // initial states for fields
     chatOpened = false;

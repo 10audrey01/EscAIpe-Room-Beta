@@ -83,27 +83,24 @@ public class RockController {
     gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite);
     gameState.getChatManager().generateInitialMessage();
     // adding labels for objective list to the objective list manager
-    gameState.addObjectiveListLabels(
-        step1Label,
-        step2Label,
-        step3Label,
-        step4Label,
-        step1BlueKey,
-        step2GreenKey,
-        step3RedKey,
-        step4YellowKey);
-    // if the task is the rock room task, add the relevant fields to the task manager
-    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
-      gameState.getRockBigTaskManager().addAllRockTaskElements(
-          colourLabel1,
-          colourLabel2,
-          colourLabel3,
-          colourLabel4,
-          notePane,
-          noteImage1,
-          noteSequenceLabel,
-          pointingArrowGif);
-    }
+    gameState.objectiveListManager.addObjectiveLabel1(step1Label);
+    gameState.objectiveListManager.addObjectiveLabel2(step2Label);
+    gameState.objectiveListManager.addObjectiveLabel3(step3Label);
+    gameState.objectiveListManager.addObjectiveLabel4(step4Label);
+    gameState.objectiveListManager.addStep1Key(step1BlueKey);
+    gameState.objectiveListManager.addStep2Key(step2GreenKey);
+    gameState.objectiveListManager.addStep3Key(step3RedKey);
+    gameState.objectiveListManager.addStep4Key(step4YellowKey);
+    // add elements needed for the rock room task
+    gameState.getRockBigTaskManager().addAllRockTaskElements(
+        colourLabel1,
+        colourLabel2,
+        colourLabel3,
+        colourLabel4,
+        notePane,
+        noteImage1,
+        noteSequenceLabel,
+        pointingArrowGif);
 
     // create an array list of the notes
     audioNames = new ArrayList<String>();

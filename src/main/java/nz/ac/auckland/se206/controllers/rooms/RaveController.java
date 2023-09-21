@@ -20,7 +20,6 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.TaskManager.LargeTask;
 import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
@@ -90,27 +89,25 @@ public class RaveController {
     gameState = GameState.getInstance();
     gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite);
     // add objectives / steps labels to the objective list manager
-    gameState.addObjectiveListLabels(
-        step1Label,
-        step2Label,
-        step3Label,
-        step4Label,
-        step1BlueKey,
-        step2GreenKey,
-        step3RedKey,
-        step4YellowKey);
-    // if the largetask this game is rock - add all elements relevant to the task to the manager.
-    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
-      gameState.getRockBigTaskManager().addAllRockTaskElements(
-          colourLabel1,
-          colourLabel2,
-          colourLabel3,
-          colourLabel4,
-          notePane,
-          noteImage1,
-          noteSequenceLabel,
-          pointingArrowGif);
-    }
+    gameState.objectiveListManager.addObjectiveLabel1(step1Label);
+    gameState.objectiveListManager.addObjectiveLabel2(step2Label);
+    gameState.objectiveListManager.addObjectiveLabel3(step3Label);
+    gameState.objectiveListManager.addObjectiveLabel4(step4Label);
+    gameState.objectiveListManager.addStep1Key(step1BlueKey);
+    gameState.objectiveListManager.addStep2Key(step2GreenKey);
+    gameState.objectiveListManager.addStep3Key(step3RedKey);
+    gameState.objectiveListManager.addStep4Key(step4YellowKey);
+    // add elements needed for the rock room task
+    gameState.getRockBigTaskManager().addAllRockTaskElements(
+        colourLabel1,
+        colourLabel2,
+        colourLabel3,
+        colourLabel4,
+        notePane,
+        noteImage1,
+        noteSequenceLabel,
+        pointingArrowGif);
+
     chatOpened = true;
 
     // create an array list of objects in the room
@@ -170,7 +167,7 @@ public class RaveController {
   @FXML
   private void onClickSpeaker(MouseEvent event) {
     System.out.println("speaker clicked");
-    isRiddleObject("speaker");
+    isRiddleObject("speakers");
   }
 
   // function for handing clicking the red lock
@@ -303,15 +300,13 @@ public class RaveController {
 
   // helper function to check for if the riddle object selected is the clicked on object
   public void isRiddleObject(String object) {
-    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
-      if (riddleObject.equals(object)) { // } && GameState.isRiddleResolved) {
-        // if the object is the correct one, set relevant labels to notify the user
-        GameState.isRiddleObjectFound = true;
-        gameState.getRockBigTaskManager().setLabelColours();
-        gameState.getRockBigTaskManager().setOrderColourMap();
-        gameState.getRockBigTaskManager().setVisibilityNoteImages(true);
-        gameState.getRockBigTaskManager().setVisibilityArrows(true);
-      }
+    if (riddleObject.equals(object) && GameState.isRiddleResolved) {
+      // if the object is the correct one, set relevant labels to notify the user
+      GameState.isRiddleObjectFound = true;
+      gameState.getRockBigTaskManager().setLabelColours();
+      gameState.getRockBigTaskManager().setOrderColourMap();
+      gameState.getRockBigTaskManager().setVisibilityNoteImages(true);
+      gameState.getRockBigTaskManager().setVisibilityArrows(true);
     }
   }
 
