@@ -15,6 +15,7 @@ import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionRequest;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 public class ChatManager {
 
@@ -24,6 +25,7 @@ public class ChatManager {
   private ArrayList<TextField> TextFields;
   private ArrayList<ImageView> gmSprites;
   private String messages;
+  private ChatMessage lastMsg;
 
   public ChatManager() {
     this.gameState = GameState.getInstance();
@@ -83,7 +85,7 @@ public class ChatManager {
   // Generate the initial chat message to start the conversation
   public void generateInitialMessage() throws ApiProxyException {
 
-    Task<Void> initializeRiddleTask =
+    Task<Void> initializeMsgTask =
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
@@ -94,14 +96,28 @@ public class ChatManager {
                     .setTemperature(0.8)
                     .setTopP(0.5)
                     .setMaxTokens(70);
-            runGpt(new ChatMessage("user", GptPromptEngineering.getGmGreeting()));
+            ChatMessage intro =
+                runGpt(new ChatMessage("user", GptPromptEngineering.getGmGreeting()));
+            if (intro.getRole().equals("assistant")) {
+              Task<Void> textToSpeechTask =
+                  new Task<Void>() {
+
+                    @Override
+                    protected Void call() throws Exception {
+                      TextToSpeech.main(new String[] {intro.getContent()});
+                      return null;
+                    }
+                  };
+              Thread textToSpeechThread = new Thread(textToSpeechTask, "textToSpeechThread");
+              textToSpeechThread.start();
+            }
             setToDefault();
             return null;
           }
         };
 
     System.out.println("Generating initial message");
-    Thread initializeRiddleThread = new Thread(initializeRiddleTask, "initializeRiddleThread");
+    Thread initializeRiddleThread = new Thread(initializeMsgTask, "initializeMsgThread");
     initializeRiddleThread.start();
   }
 
@@ -155,13 +171,27 @@ public class ChatManager {
                 // run gpt with the hint prompt
                 System.out.println("hint used");
                 gameState.hintManager.useHint();
-                runGpt(new ChatMessage("user", GptPromptEngineering.getGmHint()));
+                lastMsg = runGpt(new ChatMessage("user", GptPromptEngineering.getGmHint()));
               } else {
                 // otherwise run the gpt without the hint prompt
-                runGpt(new ChatMessage("user", GptPromptEngineering.getGmNoHint()));
+                lastMsg = runGpt(new ChatMessage("user", GptPromptEngineering.getGmNoHint()));
               }
             } else {
-              runGpt(msg);
+              lastMsg = runGpt(msg);
+            }
+
+            if (lastMsg.getRole().equals("assistant")) {
+              Task<Void> textToSpeechTask =
+                  new Task<Void>() {
+
+                    @Override
+                    protected Void call() throws Exception {
+                      TextToSpeech.main(new String[] {lastMsg.getContent()});
+                      return null;
+                    }
+                  };
+              Thread textToSpeechThread = new Thread(textToSpeechTask, "textToSpeechThread");
+              textToSpeechThread.start();
             }
 
             setToDefault();

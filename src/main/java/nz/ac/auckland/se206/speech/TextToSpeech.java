@@ -29,7 +29,7 @@ public class TextToSpeech {
     final TextToSpeech textToSpeech = new TextToSpeech();
 
     textToSpeech.speak(args);
-    textToSpeech.terminate();
+    // terminate does not allow continuous speaking
   }
 
   private final Synthesizer synthesizer;
@@ -94,7 +94,7 @@ public class TextToSpeech {
   /** Sleeps a while to add some pause between sentences. */
   private void sleep() {
     try {
-      Thread.sleep(100);
+      Thread.sleep(35);
     } catch (final InterruptedException e) {
       e.printStackTrace();
     }
