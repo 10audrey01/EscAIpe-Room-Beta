@@ -85,10 +85,14 @@ public class BodybuilderController {
 
   @FXML
   private void onClickHint(ActionEvent action) {
-    btnHint.setVisible(false);
-    hintImage1.setOpacity(1);
-    hintImage2.setOpacity(1);
-    this.gamestate.hintManager.useHint();
+    if (gamestate.hintManager.getHintsRemaining() > 0) {
+      btnHint.setVisible(false);
+      hintImage1.setOpacity(1);
+      hintImage2.setOpacity(1);
+      this.gamestate.hintManager.useHint();
+    } else {
+      speechBox.setText("Sorry bro, I don't have any hints for you man.");
+    }
   }
 
   // Handles the event where any number is pressed.
