@@ -79,14 +79,18 @@ public class ClassicalController {
         }
       };
 
+  // function for initialising room FXML
   @FXML
   private void initialize() {
+    // add all relevant labels to gamestate instance
     gameState = GameState.getInstance();
     gameState.timeManager.addToTimers(timerLabel);
     gameState.hintManager.addHintLabel(hintLabel);
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
     gameState.chatManager.addSprite(gmSprite);
+
+    // add objective labels and steps to the objective list manager
     gameState.objectiveListManager.addObjectiveLabel1(step1Label);
     gameState.objectiveListManager.addObjectiveLabel2(step2Label);
     gameState.objectiveListManager.addObjectiveLabel3(step3Label);
@@ -95,6 +99,8 @@ public class ClassicalController {
     gameState.objectiveListManager.addStep2Key(step2GreenKey);
     gameState.objectiveListManager.addStep3Key(step3RedKey);
     gameState.objectiveListManager.addStep4Key(step4YellowKey);
+
+    // if the  gamestate is the rock large task, add the elements to the rock task manager
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
       gameState.rockBigTaskManager.addAllRockTaskElements(
           colourLabel1,
@@ -106,22 +112,27 @@ public class ClassicalController {
           noteSequenceLabel,
           pointingArrowGif);
     }
+
+    // initial states for fields
     chatOpened = false;
     numOfTambourinePresses = 0;
   }
 
+  // function which makes the cello bow and tambourine pane draggable
   private void makeObjectsDraggable() {
     draggableMaker.makeDraggable(celloBowPane);
     draggableMaker.makeDraggable(tambourinePane);
     celloPlayTimer.start();
   }
 
+  // function which checks if the panes for the bow and string collide
   protected void checkCollision(Pane pane1, Pane pane2) {
     if (pane1.getBoundsInParent().intersects(pane2.getBoundsInParent()) && pane1.isPressed()) {
       System.out.println("Bow and Strings Collided!!");
     }
   }
 
+  // function which resets the puzzle state and switches to the rave room
   @FXML
   private void doGoRave(MouseEvent event) throws IOException {
     numOfTambourinePresses = 0;
@@ -130,6 +141,7 @@ public class ClassicalController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.RAVE));
   }
 
+  // function which resets the puzzle state and switches to the rock room
   @FXML
   private void doGoRock(MouseEvent event) throws IOException {
     numOfTambourinePresses = 0;
@@ -138,23 +150,28 @@ public class ClassicalController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
   }
 
+  // function for handling cello clicked
   @FXML
   private void doClickedCello(MouseEvent event) throws IOException {
     System.out.println("Cello Clicked");
   }
 
+  // function for handling cello bow clicked
   @FXML
   private void doClickedCelloBow(MouseEvent event) throws IOException {
     System.out.println("Cello Bow Clicked");
   }
 
+  // function for handling clarinet being clicked
   @FXML
   private void doClickedClarinet(MouseEvent event) throws IOException {
     System.out.println("Clarinet Clicked");
   }
 
+  // function for handling grand piano clicked
   @FXML
   private void doClickedGrandPiano(MouseEvent event) throws IOException {
+    // changes the scene to the piano scene controller.
     System.out.println("Grand Piano Clicked");
     PianoController.resetNotesPlayed();
 
@@ -167,8 +184,10 @@ public class ClassicalController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.PIANO));
   }
 
+  // function for handling trumpet clicked
   @FXML
   private void doClickedTrumpet(MouseEvent event) throws IOException {
+    // changes the scene to the trumpet scene controller.
     System.out.println("Trumpet Clicked");
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
@@ -176,8 +195,10 @@ public class ClassicalController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.TRUMPET));
   }
 
+  // function for handling harp clicked
   @FXML
   private void doClickedHarp(MouseEvent event) throws IOException {
+    // changes the scene to the harp controller scene
     System.out.println("Harp Clicked");
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
@@ -185,29 +206,36 @@ public class ClassicalController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.HARP));
   }
 
+  // function for handling tambourine clicked
   @FXML
   private void doClickedTambourine(MouseEvent event) throws IOException {
+    // increments the times tambourine has been clicked
     System.out.println("Tambourine Clicked");
     numOfTambourinePresses++;
   }
 
+  // function which toggles the visibility of the chatbox
   @FXML
   private void toggleChat() {
     if (chatOpened) {
+      // if the chat is opened already, close it
       chatBoxPane.setDisable(true);
       chatBoxPane.setOpacity(0);
     } else {
+      // otherwise show the chat
       chatBoxPane.setDisable(false);
       chatBoxPane.setOpacity(0.95);
     }
     chatOpened = !chatOpened;
   }
 
+  // function for handling key presses
   @FXML
   public void onKeyPressed(KeyEvent event) {
     System.out.println("key " + event.getCode() + " pressed");
   }
 
+  // function for handling if the player presses enter - for sending messages to the gm
   @FXML
   public void onKeyReleased(KeyEvent event) throws ApiProxyException, IOException {
     System.out.println("key " + event.getCode() + " released");
@@ -218,13 +246,16 @@ public class ClassicalController {
     }
   }
 
+  // function for handling clicking the note
   @FXML
   public void onClickNote(MouseEvent event) {
+    // changes the scene to the scene for the note
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICALNOTE));
   }
 
+  // function for handling the note toggling event
   @FXML
   private void onToggleNote() {
     gameState.rockBigTaskManager.setVisibilityNotePanes(true);

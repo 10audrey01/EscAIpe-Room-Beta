@@ -68,6 +68,7 @@ public class RockController {
   @FXML private Circle circle1, circle2;
   @FXML private VBox objectiveList;
 
+  // fields for handling the rock room event
   private GameState gameState;
   private MediaPlayer guitarNotePlayer;
   private HashMap<Colour, Integer> orderColourMap;
@@ -78,6 +79,7 @@ public class RockController {
 
   @FXML
   private void initialize() throws ApiProxyException {
+    // intialising game state and adding relevant labels
     gameState = GameState.getInstance();
     gameState.timeManager.addToTimers(timerLabel);
     gameState.hintManager.addHintLabel(hintLabel);
@@ -85,6 +87,7 @@ public class RockController {
     gameState.chatManager.addTextField(textField);
     gameState.chatManager.addSprite(gmSprite);
     gameState.chatManager.generateInitialMessage();
+    // adding labels for objective list to the objective list manager
     gameState.objectiveListManager.addObjectiveLabel1(step1Label);
     gameState.objectiveListManager.addObjectiveLabel2(step2Label);
     gameState.objectiveListManager.addObjectiveLabel3(step3Label);
@@ -93,6 +96,7 @@ public class RockController {
     gameState.objectiveListManager.addStep2Key(step2GreenKey);
     gameState.objectiveListManager.addStep3Key(step3RedKey);
     gameState.objectiveListManager.addStep4Key(step4YellowKey);
+    // if the task is the rock room task, add the relevant fields to the task manager
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
       gameState.rockBigTaskManager.addAllRockTaskElements(
           colourLabel1,
@@ -104,6 +108,8 @@ public class RockController {
           noteSequenceLabel,
           pointingArrowGif);
     }
+
+    // create an array list of the notes
     audioNames = new ArrayList<String>();
     audioNames.add("c2");
     audioNames.add("d2");
@@ -114,39 +120,49 @@ public class RockController {
     audioNames.add("b2");
     chatOpened = false;
 
+    // create and set circles for the harp event
     circles = new ArrayList<Circle>(List.of(circle1, circle2));
     setCircles();
   }
 
+  // function for handing clicking the rave door
   @FXML
   private void doGoRave(MouseEvent event) throws IOException {
+    // switches the scene to the rave room scene
     Rectangle current = (Rectangle) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.RAVE));
   }
 
+  // function for handing clicking the classical door
   @FXML
   private void doGoClassical(MouseEvent event) throws IOException {
+    // switches the scene to the classical room scene
     Rectangle current = (Rectangle) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICAL));
   }
 
+  // function for handing clicking the guitarist
   @FXML
   private void onClickGuitarist(MouseEvent event) {
+    // switches the scene to the guitarist scene
     System.out.println("guitarist clicked");
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.GUITARIST));
   }
 
+  // function for handing clicking the drums
   @FXML
   private void onClickDrums(MouseEvent event) {
     System.out.println("drums clicked");
   }
 
+  // function for handing clicking the cyan guitar
   @FXML
   private void onClickCyanGuitar(MouseEvent event) throws URISyntaxException {
+    // checks the correctness of the guitar sequence for the rock room task
     System.out.println("cyan guitar clicked");
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
       playNote(Colour.CYAN);
@@ -156,8 +172,10 @@ public class RockController {
     }
   }
 
+  // function for handing clicking the blue guitar
   @FXML
   private void onClickBlueGuitar(MouseEvent event) throws URISyntaxException {
+    // checks the correctness of the guitar sequence for the rock room task
     System.out.println("blue guitar clicked");
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
       playNote(Colour.BLUE);
@@ -167,8 +185,10 @@ public class RockController {
     }
   }
 
+  // function for handing clicking the purple guitar
   @FXML
   private void onClickPurpleGuitar(MouseEvent event) throws URISyntaxException {
+    // checks the correctness of the guitar sequence for the rock room task
     System.out.println("purple guitar clicked");
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
       playNote(Colour.PURPLE);
@@ -178,8 +198,10 @@ public class RockController {
     }
   }
 
+  // function for handing clicking the yellow guitar
   @FXML
   private void onClickYellowGuitar(MouseEvent event) throws URISyntaxException {
+    // checks the correctness of the guitar sequence for the rock room task
     System.out.println("yellow guitar clicked");
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
       playNote(Colour.YELLOW);
@@ -189,30 +211,37 @@ public class RockController {
     }
   }
 
+  // function for handing clicking the amplifier
   @FXML
   private void onClickAmplifier(MouseEvent event) {
     System.out.println("amplifier clicked");
   }
 
+  // function to handle the †oggling of the chat
   @FXML
   private void toggleChat() {
     if (chatOpened) {
+      // if the chat is opened, close it
       chatBoxPane.setDisable(true);
       chatBoxPane.setOpacity(0);
     } else {
+      // otherwise open the chat
       chatBoxPane.setDisable(false);
       chatBoxPane.setOpacity(0.95);
     }
     chatOpened = !chatOpened;
   }
 
+  // function for handling key presses
   @FXML
   public void onKeyPressed(KeyEvent event) {
     System.out.println("key " + event.getCode() + " pressed");
   }
 
+  // function for handling key release
   @FXML
   public void onKeyReleased(KeyEvent event) throws ApiProxyException, IOException {
+    // if the key is enter, send the player's message to the chat
     System.out.println("key " + event.getCode() + " released");
     if (event.getCode() == KeyCode.ENTER && chatOpened) {
       System.out.println("Message Sent");
@@ -221,12 +250,14 @@ public class RockController {
     }
   }
 
+  // function for handling the toggling of the note
   @FXML
   private void onToggleNote() {
     gameState.rockBigTaskManager.setVisibilityNotePanes(true);
     gameState.rockBigTaskManager.setVisibilityArrows(false);
   }
 
+  // function for handling playing of a note
   public void playNote(Colour guitarColour) throws URISyntaxException {
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
 
@@ -274,12 +305,14 @@ public class RockController {
     }
   }
 
+  // function which plays a random note
   public void playRandomNote() throws URISyntaxException {
     String randomNote = audioNames.get((int) (Math.random() * 7));
     playGuitarNotePlayer(randomNote);
     System.out.println("Random note " + randomNote + " played");
   }
 
+  // function which plays the media for the note
   public void playGuitarNotePlayer(String audioName) throws URISyntaxException {
     Media note =
         new Media(getClass().getResource("/sounds/" + audioName + ".mp3").toURI().toString());
@@ -287,6 +320,7 @@ public class RockController {
     guitarNotePlayer.play();
   }
 
+  // function for checking the guitar sequence
   public void checkGuitarSequence(Colour guitarColour) {
     if (GameState.isRiddleObjectFound && !GameState.isNoteSequenceFound) {
       // check if the guitar clicked is the correct one
@@ -308,13 +342,16 @@ public class RockController {
     }
   }
 
+  // function for handling the clicking of the note
   @FXML
   public void onClickNote(MouseEvent event) {
+    // switches the scene to the note scene
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCKNOTE));
   }
 
+  // function for handling the setting of the circles for the harp event
   public void setCircles() {
     HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
     for (int i = 0; i < circles.size(); i++) {
@@ -323,6 +360,7 @@ public class RockController {
     }
   }
 
+  // function for handling clicking circle 1
   @FXML
   public void onClickedCircle1(MouseEvent event) {
     HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
@@ -332,6 +370,7 @@ public class RockController {
     circle1.setDisable(true);
   }
 
+  // function for handling clicking circle 2
   @FXML
   public void onClickedCircle2(MouseEvent event) {
     HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);

@@ -18,6 +18,7 @@ public class ClassicalNoteController {
 
   private GameState gamestate;
 
+  // initialise FXML file
   @FXML
   private void initialize() throws IOException {
     this.gamestate = GameState.getInstance();
@@ -25,6 +26,7 @@ public class ClassicalNoteController {
     this.gamestate.classicalNote = this;
   }
 
+  // set the current hint text
   public void setText(String text) {
     this.classicalHintText.setText(text);
   }

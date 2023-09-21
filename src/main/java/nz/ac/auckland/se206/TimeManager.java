@@ -20,14 +20,17 @@ public class TimeManager {
     this.timerStarted = false;
   }
 
+  // sets the current time
   public void setTime(int time) {
     this.time = time;
   }
 
+  // add a label to list of timers
   public void addToTimers(Label label) {
     timers.add(label);
   }
 
+  // function that starts the countdown of the timer
   public void startCountdown() {
     // will not start the countdown if it has already started.
     if (this.timerStarted) {
@@ -76,6 +79,7 @@ public class TimeManager {
     timerThread.start();
   }
 
+  // function that updates all the timer labels for displaying time
   private void updateTime() {
     int minutes = time / 60;
     int seconds = time % 60;
@@ -85,6 +89,7 @@ public class TimeManager {
         });
   }
 
+  // function that stops the timer and the thread.
   public void stopCountdown() {
     if (timer != null) {
       timer.cancel();

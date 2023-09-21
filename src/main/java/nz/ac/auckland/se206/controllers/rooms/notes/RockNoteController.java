@@ -18,6 +18,7 @@ public class RockNoteController {
 
   private GameState gamestate;
 
+  // intialise the FXML file
   @FXML
   private void initialize() throws IOException {
     this.gamestate = GameState.getInstance();
@@ -25,6 +26,7 @@ public class RockNoteController {
     this.gamestate.rockNote = this;
   }
 
+  // set the current hint text
   public void setText(String text) {
     this.rockHintText.setText(text);
   }

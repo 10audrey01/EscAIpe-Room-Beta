@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
@@ -15,7 +17,9 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.RavePuzzle;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
+// Controller class for the bodybuilder event
 public class BodybuilderController {
 
   @FXML private TextArea speechBox;
@@ -38,6 +42,7 @@ public class BodybuilderController {
   @FXML private Button btnReturn;
   @FXML private Button btnHint;
   @FXML private Text codeInputText;
+  @FXML private Text resultText;
   @FXML private Circle digitOne;
   @FXML private Circle digitTwo;
   @FXML private Circle digitThree;
@@ -47,22 +52,27 @@ public class BodybuilderController {
   @FXML private Label timerLabel;
   @FXML private Label hintLabel;
 
+  // instance of gamestate, puzzle, the code and required solution for finishing the game
   private GameState gamestate;
   private RavePuzzle puzzleInstance;
   private String code = "";
   private String solution = "";
 
+  // initializes the controller
   @FXML
   private void initialize() throws IOException {
-    System.out.println("Start");
+    // gets the gamestate instance, adding the labels for hints/timers to the gamestate
     this.gamestate = GameState.getInstance();
     this.gamestate.timeManager.addToTimers(timerLabel);
     this.gamestate.hintManager.addHintLabel(hintLabel);
     this.gamestate.bodybuilderController = this;
     this.speechBox.setText("Hey bro, I need your help... I need to open this safe.");
+    //
     resetSafe();
   }
 
+  // initialises the code for the puzzle, getting the solution and updating ui based off the the
+  // instance of the puzzle
   public void initialiseCode() throws IOException {
     RavePuzzle puzzle = gamestate.ravePuzzle;
     this.puzzleInstance = puzzle;
@@ -71,10 +81,13 @@ public class BodybuilderController {
     System.out.println("Solution added to controller." + this.solution);
   }
 
+  // resets the status of the safe to the default
   public void resetSafe() throws IOException {
+    // resets the current solution and code.
     this.code = "";
     this.solution = "";
 
+    // sets the fill of all the indicating lights to red.
     digitOne.setFill(Color.RED);
     digitTwo.setFill(Color.RED);
     digitThree.setFill(Color.RED);
@@ -83,8 +96,74 @@ public class BodybuilderController {
     digitSix.setFill(Color.RED);
   }
 
+  // handles the player clicking any keyboard keys for inputting into the safe
+  @FXML
+  private void onKeyPressed(KeyEvent event) throws ApiProxyException, IOException {
+    // gets the current value of the key pressed
+    KeyCode keyCode = event.getCode();
+    // switch case which runs the respective event based on the key pressed.
+    switch (keyCode) {
+      case BACK_SPACE:
+        onClickRemove(new ActionEvent());
+        break;
+      case ENTER:
+        onClickSubmit(new ActionEvent());
+        break;
+      case DIGIT0:
+      case NUMPAD0:
+        onClickZero(new ActionEvent());
+        break;
+      case DIGIT1:
+      case NUMPAD1:
+        onClickOne(new ActionEvent());
+        break;
+      case DIGIT2:
+      case NUMPAD2:
+        onClickTwo(new ActionEvent());
+        break;
+      case DIGIT3:
+      case NUMPAD3:
+        onClickThree(new ActionEvent());
+        break;
+      case DIGIT4:
+      case NUMPAD4:
+        onClickFour(new ActionEvent());
+        break;
+      case DIGIT5:
+      case NUMPAD5:
+        onClickFive(new ActionEvent());
+        break;
+      case DIGIT6:
+      case NUMPAD6:
+        onClickSix(new ActionEvent());
+        break;
+      case DIGIT7:
+      case NUMPAD7:
+        onClickSeven(new ActionEvent());
+        break;
+      case DIGIT8:
+      case NUMPAD8:
+        onClickEight(new ActionEvent());
+        break;
+      case DIGIT9:
+      case NUMPAD9:
+        onClickNine(new ActionEvent());
+        break;
+      default:
+        break;
+    }
+  }
+
+  // function which reveals the extra hint images when the player decides to use the hint
   @FXML
   private void onClickHint(ActionEvent action) {
+    // hide the hint button and show the hint images
+    btnHint.setVisible(false);
+    hintImage1.setOpacity(1);
+    hintImage2.setOpacity(1);
+    // decrement hint
+    this.gamestate.hintManager.useHint();
+    //if the player doesnt have hints left, notify them through the bodybuilder
     if (gamestate.hintManager.getHintsRemaining() > 0) {
       btnHint.setVisible(false);
       hintImage1.setOpacity(1);
@@ -98,6 +177,7 @@ public class BodybuilderController {
   // Handles the event where any number is pressed.
   @FXML
   private void pressNumber(int number) {
+    // only adds the number if the code length is less than 6
     if (this.code.length() < 6) {
       this.code += Integer.toString(number);
       codeInputText.setText(code);
@@ -230,12 +310,21 @@ public class BodybuilderController {
       }
     }
 
+    // if the code is correct, send the correct message and notify gamestate of completion of the
+    // task.
     if (this.code.equals(this.solution)) {
       speechBox.setText("Nice work bro. You can take this key if you want, I guess");
+      resultText.setText("CORRECT (" + code + ")");
+      resultText.setFill(Color.GREEN);
       GameState.isSafeOpened = true;
       gamestate.objectiveListManager.completeObjective2();
       btnHint.setVisible(false);
+      return;
     }
+
+    // if the code is incorrect, notify the user through the result text
+    resultText.setText("INCORRECT (" + code + ")");
+    resultText.setFill(Color.RED);
   }
 
   // switches back to the rave room
@@ -244,10 +333,5 @@ public class BodybuilderController {
     Button source = (Button) event.getSource();
     Scene currentScene = source.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.RAVE));
-  }
-
-  @FXML
-  private void onKeyPressed() {
-    System.out.println("key pressed");
   }
 }
