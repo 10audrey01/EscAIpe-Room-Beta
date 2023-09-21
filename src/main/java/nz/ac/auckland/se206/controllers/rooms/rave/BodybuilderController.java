@@ -21,6 +21,8 @@ public class BodybuilderController {
   @FXML private TextArea speechBox;
   @FXML private ImageView firstRoomHint;
   @FXML private ImageView secondRoomHint;
+  @FXML private ImageView hintImage1;
+  @FXML private ImageView hintImage2;
   @FXML private Button btnOne;
   @FXML private Button btnTwo;
   @FXML private Button btnThree;
@@ -34,6 +36,7 @@ public class BodybuilderController {
   @FXML private Button btnRemove;
   @FXML private Button btnSub;
   @FXML private Button btnReturn;
+  @FXML private Button btnHint;
   @FXML private Text codeInputText;
   @FXML private Circle digitOne;
   @FXML private Circle digitTwo;
@@ -79,6 +82,9 @@ public class BodybuilderController {
     digitFive.setFill(Color.RED);
     digitSix.setFill(Color.RED);
   }
+
+  @FXML
+  private void onClickHint(ActionEvent action) {}
 
   // Handles the event where any number is pressed.
   @FXML

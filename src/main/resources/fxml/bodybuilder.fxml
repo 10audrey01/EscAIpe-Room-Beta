@@ -22,12 +22,12 @@
             <Image url="@../images/raveRoom/bodybuilder.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="speechBox" editable="false" layoutX="25.0" layoutY="32.0" prefHeight="137.0" prefWidth="469.0" />
+      <TextArea fx:id="speechBox" editable="false" layoutX="25.0" layoutY="32.0" prefHeight="137.0" prefWidth="351.0" />
       <ImageView fx:id="safeImage" fitHeight="473.0" fitWidth="843.0" layoutX="386.0" layoutY="227.0" pickOnBounds="true">
          <image>
             <Image url="@../images/misc/safeClosed.png" />
          </image></ImageView>
-      <ImageView fx:id="firstRoomHint" fitHeight="150.0" fitWidth="176.0" layoutX="575.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="firstRoomHint" fitHeight="128.0" fitWidth="151.0" layoutX="626.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="btnReturn" layoutX="1190.0" layoutY="75.0" mnemonicParsing="false" onAction="#onClickReturn" text="Return" />
       <Pane layoutX="961.0" layoutY="255.0" prefHeight="443.0" prefWidth="319.0">
          <children>
@@ -96,7 +96,7 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <ImageView fx:id="secondRoomHint" fitHeight="150.0" fitWidth="176.0" layoutX="873.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="secondRoomHint" fitHeight="128.0" fitWidth="151.0" layoutX="874.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
       <Text layoutX="801.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
          <font>
             <Font size="73.0" />
@@ -107,5 +107,16 @@
             <Font size="17.0" />
          </font>
       </Label>
+      <Button fx:id="btnHint" layoutX="386.0" layoutY="183.0" mnemonicParsing="false" onAction="#onClickHint" text="Use Hint" />
+      <ImageView fx:id="hintImage1" fitHeight="86.0" fitWidth="93.0" layoutX="669.0" layoutY="140.0" opacity="0.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/misc/note.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hintImage2" fitHeight="86.0" fitWidth="93.0" layoutX="903.0" layoutY="140.0" opacity="0.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/misc/note.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
