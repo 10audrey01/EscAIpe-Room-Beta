@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -15,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.GameState.Difficulty;
@@ -23,6 +26,9 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.gpt.ChatMessage;
 import nz.ac.auckland.se206.gpt.GptPromptEngineering;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
+import nz.ac.auckland.se206.gpt.openai.ChatCompletionRequest;
+import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
+import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 
 public class MusicQuizController {
   @FXML private TextArea speechBox;
@@ -46,6 +52,7 @@ public class MusicQuizController {
   private int correctGenreIndex;
   private MediaPlayer musicPlayer;
   private List<String> selectedGenres = new ArrayList<>();
+  private ChatCompletionRequest chatCompletionRequest;
 
   @FXML
   private void initialize() throws IOException, URISyntaxException, ApiProxyException {
@@ -186,10 +193,8 @@ public class MusicQuizController {
     System.out.println("hint");
     if (this.gamestate.hintManager.getHintsRemaining() > 0) {
       this.gamestate.hintManager.useHint();
-      this.gamestate.chatManager.getMusicQuizHint(
-          new ChatMessage("user", GptPromptEngineering.getHintWithMusic(genreSolution)),
-          hintBtn,
-          speechBox);
+      getMusicQuizHint(
+          new ChatMessage("user", GptPromptEngineering.getHintWithMusic(genreSolution)));
     }
   }
 
@@ -201,5 +206,66 @@ public class MusicQuizController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.RAVE));
     musicPlayer.pause();
     songBtn.setText("PLAY SONG");
+  }
+
+  // get a hint for the music quiz
+  public void getMusicQuizHint(ChatMessage msg) {
+    Task<Void> getHintTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            Platform.runLater(
+                () -> {
+                  hintBtn.setText("Loading...");
+                  hintBtn.setFont(Font.font(20));
+                  hintBtn.setDisable(true);
+                });
+
+            chatCompletionRequest =
+                new ChatCompletionRequest()
+                    .setN(1)
+                    .setTemperature(0.8)
+                    .setTopP(0.5)
+                    .setMaxTokens(70);
+
+            ChatMessage res = runGpt(msg);
+
+            Platform.runLater(
+                () -> {
+                  speechBox.setText("Hey man, I got a hint for you...\n" + res.getContent());
+                  hintBtn.setVisible(false);
+                });
+            return null;
+          }
+        };
+
+    Thread hintThread = new Thread(getHintTask, "hintThread");
+    hintThread.start();
+  }
+
+  /**
+   * Runs the GPT model with a given chat message.
+   *
+   * @param msg the chat message to process
+   * @return the response chat message
+   * @throws ApiProxyException if there is an error communicating with the API proxy
+   */
+  private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
+    if (chatCompletionRequest.getMessages().size() > 3) {
+      chatCompletionRequest.getMessages().remove(2);
+    }
+
+    chatCompletionRequest.addMessage(msg);
+    chatCompletionRequest.addMessage(msg);
+    try {
+      ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
+      Choice result = chatCompletionResult.getChoices().iterator().next();
+      chatCompletionRequest.addMessage(result.getChatMessage());
+      return result.getChatMessage();
+    } catch (ApiProxyException e) {
+      // TODO handle exception appropriately
+      e.printStackTrace();
+      return null;
+    }
   }
 }

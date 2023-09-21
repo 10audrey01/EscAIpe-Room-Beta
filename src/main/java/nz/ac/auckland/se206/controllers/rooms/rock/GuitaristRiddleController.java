@@ -39,7 +39,7 @@ public class GuitaristRiddleController {
     this.gameState = GameState.getInstance();
     gameState.timeManager.addToTimers(timerLabel);
     gameState.hintManager.addHintLabel(hintLabel);
-    generateInitialMessage();
+    // generateInitialMessage();
   }
 
   @FXML

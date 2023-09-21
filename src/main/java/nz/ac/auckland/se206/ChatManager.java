@@ -5,12 +5,10 @@ import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Font;
 import nz.ac.auckland.se206.gpt.ChatMessage;
 import nz.ac.auckland.se206.gpt.GptPromptEngineering;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
@@ -154,34 +152,6 @@ public class ChatManager {
         };
     Thread onSendMessageThread = new Thread(onSendMessageTask, "onSendMessageThread");
     onSendMessageThread.start();
-  }
-
-  // get a hint for the music quiz
-  public void getMusicQuizHint(ChatMessage msg, Button btn, TextArea speechArea) {
-    Task<Void> getHintTask =
-        new Task<Void>() {
-          @Override
-          protected Void call() throws Exception {
-            Platform.runLater(
-                () -> {
-                  btn.setText("Loading...");
-                  btn.setFont(Font.font(20));
-                  btn.setDisable(true);
-                });
-
-            ChatMessage res = runGpt(msg);
-
-            Platform.runLater(
-                () -> {
-                  speechArea.setText("Hey man, I got a hint for you...\n" + res.getContent());
-                  btn.setVisible(false);
-                });
-            return null;
-          }
-        };
-
-    Thread hintThread = new Thread(getHintTask, "hintThread");
-    hintThread.start();
   }
 
   /**
