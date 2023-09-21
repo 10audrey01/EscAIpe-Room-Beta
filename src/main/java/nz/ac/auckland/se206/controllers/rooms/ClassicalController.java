@@ -8,8 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -19,9 +17,8 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.rooms.classical.PianoController;
-import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
-public class ClassicalController {
+public class ClassicalController extends AbstractController {
 
   @FXML private Rectangle raveDoor;
   @FXML private Rectangle rockDoor;
@@ -58,7 +55,6 @@ public class ClassicalController {
   @FXML private ImageView step4YellowKey;
   @FXML private ImageView gmSprite;
   @FXML private VBox objectiveList;
-  private boolean chatOpened;
 
   // put these into gamestate later
   private boolean isTambourineBreakable;
@@ -85,29 +81,29 @@ public class ClassicalController {
     gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite);
 
     // add objective labels and steps to the objective list manager
-    gameState.addObjectiveListLabels(
-        step1Label,
-        step2Label,
-        step3Label,
-        step4Label,
-        step1BlueKey,
-        step2GreenKey,
-        step3RedKey,
-        step4YellowKey);
+    gameState.getObjectiveListManager().addObjectiveLabel1(step1Label);
+    gameState.getObjectiveListManager().addObjectiveLabel2(step2Label);
+    gameState.getObjectiveListManager().addObjectiveLabel3(step3Label);
+    gameState.getObjectiveListManager().addObjectiveLabel4(step4Label);
+    gameState.getObjectiveListManager().addStep1Key(step1BlueKey);
+    gameState.getObjectiveListManager().addStep2Key(step2GreenKey);
+    gameState.getObjectiveListManager().addStep3Key(step3RedKey);
+    gameState.getObjectiveListManager().addStep4Key(step4YellowKey);
 
     // add elements needed for the rock room task
-    gameState.getRockBigTaskManager().addAllRockTaskElements(
-        colourLabel1,
-        colourLabel2,
-        colourLabel3,
-        colourLabel4,
-        notePane,
-        noteImage1,
-        noteSequenceLabel,
-        pointingArrowGif);
+    gameState
+        .getRockBigTaskManager()
+        .addAllRockTaskElements(
+            colourLabel1,
+            colourLabel2,
+            colourLabel3,
+            colourLabel4,
+            notePane,
+            noteImage1,
+            noteSequenceLabel,
+            pointingArrowGif);
 
     // initial states for fields
-    chatOpened = false;
     numOfTambourinePresses = 0;
   }
 
@@ -205,38 +201,6 @@ public class ClassicalController {
     // increments the times tambourine has been clicked
     System.out.println("Tambourine Clicked");
     numOfTambourinePresses++;
-  }
-
-  // function which toggles the visibility of the chatbox
-  @FXML
-  private void toggleChat() {
-    if (chatOpened) {
-      // if the chat is opened already, close it
-      chatBoxPane.setDisable(true);
-      chatBoxPane.setOpacity(0);
-    } else {
-      // otherwise show the chat
-      chatBoxPane.setDisable(false);
-      chatBoxPane.setOpacity(0.95);
-    }
-    chatOpened = !chatOpened;
-  }
-
-  // function for handling key presses
-  @FXML
-  public void onKeyPressed(KeyEvent event) {
-    System.out.println("key " + event.getCode() + " pressed");
-  }
-
-  // function for handling if the player presses enter - for sending messages to the gm
-  @FXML
-  public void onKeyReleased(KeyEvent event) throws ApiProxyException, IOException {
-    System.out.println("key " + event.getCode() + " released");
-    if (event.getCode() == KeyCode.ENTER && chatOpened) {
-      System.out.println("Message Sent");
-      gameState = GameState.getInstance();
-      gameState.getChatManager().onSendMessage(textField);
-    }
   }
 
   // function for handling clicking the note

@@ -11,8 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -28,7 +26,7 @@ import nz.ac.auckland.se206.TaskManager.LargeTask;
 import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
-public class RockController {
+public class RockController extends AbstractController {
 
   @FXML private Rectangle classicalDoor;
   @FXML private Rectangle raveDoor;
@@ -92,15 +90,17 @@ public class RockController {
     gameState.getObjectiveListManager().addStep3Key(step3RedKey);
     gameState.getObjectiveListManager().addStep4Key(step4YellowKey);
     // add elements needed for the rock room task
-    gameState.getRockBigTaskManager().addAllRockTaskElements(
-        colourLabel1,
-        colourLabel2,
-        colourLabel3,
-        colourLabel4,
-        notePane,
-        noteImage1,
-        noteSequenceLabel,
-        pointingArrowGif);
+    gameState
+        .getRockBigTaskManager()
+        .addAllRockTaskElements(
+            colourLabel1,
+            colourLabel2,
+            colourLabel3,
+            colourLabel4,
+            notePane,
+            noteImage1,
+            noteSequenceLabel,
+            pointingArrowGif);
 
     // create an array list of the notes
     audioNames = new ArrayList<String>();
@@ -111,7 +111,6 @@ public class RockController {
     audioNames.add("g2");
     audioNames.add("a2");
     audioNames.add("b2");
-    chatOpened = false;
 
     // create and set circles for the harp event
     circles = new ArrayList<Circle>(List.of(circle1, circle2));
@@ -210,39 +209,6 @@ public class RockController {
     System.out.println("amplifier clicked");
   }
 
-  // function to handle the †oggling of the chat
-  @FXML
-  private void toggleChat() {
-    if (chatOpened) {
-      // if the chat is opened, close it
-      chatBoxPane.setDisable(true);
-      chatBoxPane.setOpacity(0);
-    } else {
-      // otherwise open the chat
-      chatBoxPane.setDisable(false);
-      chatBoxPane.setOpacity(0.95);
-    }
-    chatOpened = !chatOpened;
-  }
-
-  // function for handling key presses
-  @FXML
-  public void onKeyPressed(KeyEvent event) {
-    System.out.println("key " + event.getCode() + " pressed");
-  }
-
-  // function for handling key release
-  @FXML
-  public void onKeyReleased(KeyEvent event) throws ApiProxyException, IOException {
-    // if the key is enter, send the player's message to the chat
-    System.out.println("key " + event.getCode() + " released");
-    if (event.getCode() == KeyCode.ENTER && chatOpened) {
-      System.out.println("Message Sent");
-      gameState = GameState.getInstance();
-      gameState.getChatManager().onSendMessage(textField);
-    }
-  }
-
   // function for handling the toggling of the note
   @FXML
   private void onClickNote1() {
@@ -319,8 +285,9 @@ public class RockController {
       // check if the guitar clicked is the correct one
       if (orderColourMap.get(guitarColour) - 1 == numberOfCorrectGuitarClicks) {
         // if it is, set the note sequence label to the note sequence
-        gameState.getRockBigTaskManager().setNoteSequenceLabels(
-            noteSequence[orderColourMap.get(guitarColour) - 1].toString());
+        gameState
+            .getRockBigTaskManager()
+            .setNoteSequenceLabels(noteSequence[orderColourMap.get(guitarColour) - 1].toString());
         numberOfCorrectGuitarClicks++;
       } else {
         // otherwise reset the labels

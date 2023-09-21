@@ -9,8 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -21,9 +19,8 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
-import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
-public class RaveController {
+public class RaveController extends AbstractController{
   private static ArrayList<String> objects;
   private static String riddleObject;
 
@@ -258,39 +255,6 @@ public class RaveController {
     Rectangle current = (Rectangle) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
-  }
-
-  // function for handing the toggling of the chat
-  @FXML
-  private void toggleChat() {
-    if (chatOpened) {
-      // closes the chat if it is opened
-      chatBoxPane.setDisable(true);
-      chatBoxPane.setOpacity(0);
-    } else {
-      // else open the chat
-      chatBoxPane.setDisable(false);
-      chatBoxPane.setOpacity(0.95);
-    }
-    chatOpened = !chatOpened;
-  }
-
-  // function for handing key presses
-  @FXML
-  public void onKeyPressed(KeyEvent event) {
-    System.out.println("key " + event.getCode() + " pressed");
-  }
-
-  // function for handing releasing the enter key
-  @FXML
-  public void onKeyReleased(KeyEvent event) throws ApiProxyException, IOException {
-    // sends message to chat if the player releases enter, allowing them to chat with enter.
-    System.out.println("key " + event.getCode() + " released");
-    if (event.getCode() == KeyCode.ENTER && chatOpened) {
-      System.out.println("Message Sent");
-      gameState = GameState.getInstance();
-      gameState.getChatManager().onSendMessage(textField);
-    }
   }
 
   // function for toggling note visibility
