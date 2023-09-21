@@ -80,21 +80,18 @@ public class RockController {
   private void initialize() throws ApiProxyException {
     // intialising game state and adding relevant labels
     gameState = GameState.getInstance();
-    gameState.timeManager.addToTimers(timerLabel);
-    gameState.hintManager.addHintLabel(hintLabel);
-    gameState.chatManager.addTextArea(textArea);
-    gameState.chatManager.addTextField(textField);
-    gameState.chatManager.addSprite(gmSprite);
+    gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite);
     gameState.chatManager.generateInitialMessage();
     // adding labels for objective list to the objective list manager
-    gameState.objectiveListManager.addObjectiveLabel1(step1Label);
-    gameState.objectiveListManager.addObjectiveLabel2(step2Label);
-    gameState.objectiveListManager.addObjectiveLabel3(step3Label);
-    gameState.objectiveListManager.addObjectiveLabel4(step4Label);
-    gameState.objectiveListManager.addStep1Key(step1BlueKey);
-    gameState.objectiveListManager.addStep2Key(step2GreenKey);
-    gameState.objectiveListManager.addStep3Key(step3RedKey);
-    gameState.objectiveListManager.addStep4Key(step4YellowKey);
+    gameState.addObjectiveListLabels(
+        step1Label,
+        step2Label,
+        step3Label,
+        step4Label,
+        step1BlueKey,
+        step2GreenKey,
+        step3RedKey,
+        step4YellowKey);
     // if the task is the rock room task, add the relevant fields to the task manager
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
       gameState.rockBigTaskManager.addAllRockTaskElements(

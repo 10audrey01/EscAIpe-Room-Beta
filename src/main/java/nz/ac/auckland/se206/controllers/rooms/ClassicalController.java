@@ -83,21 +83,18 @@ public class ClassicalController {
   private void initialize() {
     // add all relevant labels to gamestate instance
     gameState = GameState.getInstance();
-    gameState.timeManager.addToTimers(timerLabel);
-    gameState.hintManager.addHintLabel(hintLabel);
-    gameState.chatManager.addTextArea(textArea);
-    gameState.chatManager.addTextField(textField);
-    gameState.chatManager.addSprite(gmSprite);
+    gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite);
 
     // add objective labels and steps to the objective list manager
-    gameState.objectiveListManager.addObjectiveLabel1(step1Label);
-    gameState.objectiveListManager.addObjectiveLabel2(step2Label);
-    gameState.objectiveListManager.addObjectiveLabel3(step3Label);
-    gameState.objectiveListManager.addObjectiveLabel4(step4Label);
-    gameState.objectiveListManager.addStep1Key(step1BlueKey);
-    gameState.objectiveListManager.addStep2Key(step2GreenKey);
-    gameState.objectiveListManager.addStep3Key(step3RedKey);
-    gameState.objectiveListManager.addStep4Key(step4YellowKey);
+    gameState.addObjectiveListLabels(
+        step1Label,
+        step2Label,
+        step3Label,
+        step4Label,
+        step1BlueKey,
+        step2GreenKey,
+        step3RedKey,
+        step4YellowKey);
 
     // if the  gamestate is the rock large task, add the elements to the rock task manager
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
