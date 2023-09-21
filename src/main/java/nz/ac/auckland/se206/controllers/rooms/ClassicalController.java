@@ -4,10 +4,6 @@ import java.io.IOException;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -18,7 +14,7 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.rooms.classical.PianoController;
 
-public class ClassicalController extends AbstractController {
+public class ClassicalController extends AbstractRoomController {
 
   @FXML private Rectangle raveDoor;
   @FXML private Rectangle rockDoor;
@@ -31,29 +27,8 @@ public class ClassicalController extends AbstractController {
   @FXML private Pane tambourinePane;
   @FXML private Pane trumpetPane;
   @FXML private Pane chatBoxPane;
-  @FXML private Pane notePane;
+
   @FXML private Pane classicalNotePane;
-  @FXML private Label colourLabel1;
-  @FXML private Label colourLabel2;
-  @FXML private Label colourLabel3;
-  @FXML private Label colourLabel4;
-  @FXML private Label timerLabel;
-  @FXML private Label hintLabel;
-  @FXML private Label noteSequenceLabel;
-  @FXML private Label step1Label;
-  @FXML private Label step2Label;
-  @FXML private Label step3Label;
-  @FXML private Label step4Label;
-  @FXML private TextArea textArea;
-  @FXML private TextField textField;
-  @FXML private ImageView pointingArrowGif;
-  @FXML private ImageView noteImage;
-  @FXML private ImageView noteImage1;
-  @FXML private ImageView step1BlueKey;
-  @FXML private ImageView step2GreenKey;
-  @FXML private ImageView step3RedKey;
-  @FXML private ImageView step4YellowKey;
-  @FXML private ImageView gmSprite;
   @FXML private VBox objectiveList;
 
   // put these into gamestate later
@@ -76,33 +51,7 @@ public class ClassicalController extends AbstractController {
   // function for initialising room FXML
   @FXML
   private void initialize() {
-    // add all relevant labels to gamestate instance
-    gameState = GameState.getInstance();
-    gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite);
-
-    // add objective labels and steps to the objective list manager
-    gameState.getObjectiveListManager().addObjectiveLabel1(step1Label);
-    gameState.getObjectiveListManager().addObjectiveLabel2(step2Label);
-    gameState.getObjectiveListManager().addObjectiveLabel3(step3Label);
-    gameState.getObjectiveListManager().addObjectiveLabel4(step4Label);
-    gameState.getObjectiveListManager().addStep1Key(step1BlueKey);
-    gameState.getObjectiveListManager().addStep2Key(step2GreenKey);
-    gameState.getObjectiveListManager().addStep3Key(step3RedKey);
-    gameState.getObjectiveListManager().addStep4Key(step4YellowKey);
-
-    // add elements needed for the rock room task
-    gameState
-        .getRockBigTaskManager()
-        .addAllRockTaskElements(
-            colourLabel1,
-            colourLabel2,
-            colourLabel3,
-            colourLabel4,
-            notePane,
-            noteImage1,
-            noteSequenceLabel,
-            pointingArrowGif);
-
+    initialiseAllGameStateVariables();
     // initial states for fields
     numOfTambourinePresses = 0;
   }
