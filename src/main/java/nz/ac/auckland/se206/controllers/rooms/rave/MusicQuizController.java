@@ -274,37 +274,31 @@ public class MusicQuizController {
 
   private void deleteWrongOption() {
     Collections.shuffle(availableWrongButtons);
-    int firstToRemove = availableWrongButtons.remove(0);
-    int secondToRemove = availableWrongButtons.remove(0);
-    hideIncorrectButton(firstToRemove);
-    hideIncorrectButton(secondToRemove);
-    if (availableWrongButtons.size() <= 2) {
-      hintBtn.setVisible(false);
-    }
-  }
-
-  private void hideIncorrectButton(int number) {
-    switch (number) {
-      case 0:
+    int toRemove = availableWrongButtons.remove(0);
+    switch (toRemove) {
+      case 1:
         optionOneBtn.setVisible(false);
         break;
-      case 1:
+      case 2:
         optionTwoBtn.setVisible(false);
         break;
-      case 2:
+      case 3:
         optionThreeBtn.setVisible(false);
         break;
-      case 3:
+      case 4:
         optionFourBtn.setVisible(false);
         break;
-      case 4:
+      case 5:
         optionFiveBtn.setVisible(false);
         break;
-      case 5:
+      case 6:
         optionSixBtn.setVisible(false);
         break;
       default:
         break;
+    }
+    if (availableWrongButtons.size() <= 1) {
+      hintBtn.setVisible(false);
     }
   }
 
