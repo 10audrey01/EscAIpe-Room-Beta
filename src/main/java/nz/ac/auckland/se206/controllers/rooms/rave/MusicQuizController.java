@@ -115,70 +115,49 @@ public class MusicQuizController {
     }
   }
 
-  @FXML
-  private void onClickOne() {
-    System.out.println("1");
-    if (correctGenreIndex == 1) {
+  private void attemptSolve(int index) {
+    if (correctGenreIndex == index) {
       GameState.isMusicQuizCompleted = true;
       speechBox.setText("Nice work bro. You can take this key if you want, I guess");
       gamestate.objectiveListManager.completeObjective1();
       System.out.println("correct");
     }
+  }
+
+  @FXML
+  private void onClickOne() {
+    System.out.println("1");
+    attemptSolve(1);
   }
 
   @FXML
   private void onClickTwo() {
     System.out.println("2");
-    if (correctGenreIndex == 2) {
-      GameState.isMusicQuizCompleted = true;
-      speechBox.setText("Nice work bro. You can take this key if you want, I guess");
-      gamestate.objectiveListManager.completeObjective1();
-      System.out.println("correct");
-    }
+    attemptSolve(2);
   }
 
   @FXML
   private void onClickThree() {
     System.out.println("3");
-    if (correctGenreIndex == 3) {
-      GameState.isMusicQuizCompleted = true;
-      speechBox.setText("Nice work bro. You can take this key if you want, I guess");
-      gamestate.objectiveListManager.completeObjective1();
-      System.out.println("correct");
-    }
+    attemptSolve(3);
   }
 
   @FXML
   private void onClickFour() {
     System.out.println("4");
-    if (correctGenreIndex == 4) {
-      GameState.isMusicQuizCompleted = true;
-      speechBox.setText("Nice work bro. You can take this key if you want, I guess");
-      gamestate.objectiveListManager.completeObjective1();
-      System.out.println("correct");
-    }
+    attemptSolve(4);
   }
 
   @FXML
   private void onClickFive() {
     System.out.println("5");
-    if (correctGenreIndex == 5) {
-      GameState.isMusicQuizCompleted = true;
-      speechBox.setText("Nice work bro. You can take this key if you want, I guess");
-      gamestate.objectiveListManager.completeObjective1();
-      System.out.println("correct");
-    }
+    attemptSolve(5);
   }
 
   @FXML
   private void onClickSix() {
     System.out.println("6");
-    if (correctGenreIndex == 6) {
-      GameState.isMusicQuizCompleted = true;
-      speechBox.setText("Nice work bro. You can take this key if you want, I guess");
-      gamestate.objectiveListManager.completeObjective1();
-      System.out.println("correct");
-    }
+    attemptSolve(6);
   }
 
   @FXML
