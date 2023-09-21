@@ -11,14 +11,11 @@ import nz.ac.auckland.se206.controllers.rooms.notes.RockNoteController;
 public class RavePuzzle {
   // rave puzzle - Find the safe, unlock the code through finding respective object in each of rock
   // and classical rooms
-  private GameState gamestate;
-  private boolean isSafeSolved;
+
   private String safeSolution;
   private String firstHalfRoom;
 
   public RavePuzzle() {
-    this.gamestate = GameState.getInstance();
-    this.isSafeSolved = false;
 
     String solution = "";
     // generate random solution
@@ -35,15 +32,6 @@ public class RavePuzzle {
 
   public String getSolution() {
     return this.safeSolution;
-  }
-
-  // attempts to solve the safe
-  public boolean attemptSolveSafe(String input) {
-    if (input.equals(safeSolution)) {
-      this.isSafeSolved = true;
-      return true;
-    }
-    return false;
   }
 
   public String getFirstHalfRoom() {

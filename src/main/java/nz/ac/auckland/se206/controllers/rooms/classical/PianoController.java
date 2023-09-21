@@ -147,7 +147,7 @@ public class PianoController {
 
       notesList.get(i).setOpacity(100);
 
-      ImageView current = (ImageView) notesLetterList.get(i);
+      ImageView current = notesLetterList.get(i);
 
       Image currentImage =
           new Image(App.class.getResource(noteLetterUrlGetter(notesToPlay.charAt(i))).openStream());

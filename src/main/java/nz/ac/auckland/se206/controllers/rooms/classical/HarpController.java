@@ -91,27 +91,27 @@ public class HarpController {
     colours =
         new ArrayList<Paint>(
             List.of(
-                javafx.scene.paint.Color.RED,
-                javafx.scene.paint.Color.BLUE,
-                javafx.scene.paint.Color.GREEN,
-                javafx.scene.paint.Color.YELLOW,
-                javafx.scene.paint.Color.ORANGE,
-                javafx.scene.paint.Color.PURPLE,
-                javafx.scene.paint.Color.PINK,
-                javafx.scene.paint.Color.CYAN,
-                javafx.scene.paint.Color.BROWN,
-                javafx.scene.paint.Color.GOLD,
-                javafx.scene.paint.Color.DARKBLUE,
-                javafx.scene.paint.Color.DARKGREEN,
-                javafx.scene.paint.Color.DARKRED,
-                javafx.scene.paint.Color.DARKVIOLET,
-                javafx.scene.paint.Color.DARKORANGE,
-                javafx.scene.paint.Color.ALICEBLUE,
-                javafx.scene.paint.Color.MAGENTA,
-                javafx.scene.paint.Color.SALMON,
-                javafx.scene.paint.Color.SLATEBLUE,
-                javafx.scene.paint.Color.AQUAMARINE,
-                javafx.scene.paint.Color.TURQUOISE));
+                Color.RED,
+                Color.BLUE,
+                Color.GREEN,
+                Color.YELLOW,
+                Color.ORANGE,
+                Color.PURPLE,
+                Color.PINK,
+                Color.CYAN,
+                Color.BROWN,
+                Color.GOLD,
+                Color.DARKBLUE,
+                Color.DARKGREEN,
+                Color.DARKRED,
+                Color.DARKVIOLET,
+                Color.DARKORANGE,
+                Color.ALICEBLUE,
+                Color.MAGENTA,
+                Color.SALMON,
+                Color.SLATEBLUE,
+                Color.AQUAMARINE,
+                Color.TURQUOISE));
     notesToPlay = new ArrayList<Line>();
     notesToShow = new ArrayList<Boolean>(List.of(false, false, false, false, false));
     circles = new ArrayList<Circle>(List.of(circle1, circle2, circle3, circle4, circle5));
