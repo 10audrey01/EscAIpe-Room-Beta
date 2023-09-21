@@ -2,11 +2,13 @@ package nz.ac.auckland.se206.controllers.rooms;
 
 import java.io.IOException;
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -14,10 +16,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.DraggableMaker;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.TaskManager.LargeTask;
 import nz.ac.auckland.se206.controllers.rooms.classical.PianoController;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
@@ -49,6 +53,7 @@ public class ClassicalController {
   @FXML private Label step4Label;
   @FXML private TextArea textArea;
   @FXML private TextField textField;
+  @FXML private ImageView tambourineImage;
   @FXML private ImageView pointingArrowGif;
   @FXML private ImageView noteImage;
   @FXML private ImageView noteImage1;
@@ -61,7 +66,8 @@ public class ClassicalController {
   private boolean chatOpened;
 
   // put these into gamestate later
-  private boolean isTambourineBreakable;
+  private boolean isTambourineBroken;
+  private boolean isDraggable;
   private int numOfTambourinePresses;
   private int tambourineLimit;
 
@@ -95,20 +101,27 @@ public class ClassicalController {
         step3RedKey,
         step4YellowKey);
 
-    // add elements needed for the rock room task
-    gameState.getRockBigTaskManager().addAllRockTaskElements(
-        colourLabel1,
-        colourLabel2,
-        colourLabel3,
-        colourLabel4,
-        notePane,
-        noteImage1,
-        noteSequenceLabel,
-        pointingArrowGif);
+    // if the  gamestate is the rock large task, add the elements to the rock task manager
+    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
+      gameState
+          .getRockBigTaskManager()
+          .addAllRockTaskElements(
+              colourLabel1,
+              colourLabel2,
+              colourLabel3,
+              colourLabel4,
+              notePane,
+              noteImage1,
+              noteSequenceLabel,
+              pointingArrowGif);
+    }
 
     // initial states for fields
     chatOpened = false;
     numOfTambourinePresses = 0;
+    isTambourineBroken = false;
+    isDraggable = false;
+    tambourineLimit = 100;
   }
 
   // function which makes the cello bow and tambourine pane draggable
@@ -204,6 +217,21 @@ public class ClassicalController {
   private void doClickedTambourine(MouseEvent event) throws IOException {
     // increments the times tambourine has been clicked
     System.out.println("Tambourine Clicked");
+    if (GameState.isHarpPlayed && !isDraggable) {
+      makeObjectsDraggable();
+    }
+    if (numOfTambourinePresses >= tambourineLimit && !isTambourineBroken) {
+      // if the tambourine has been clicked enough times, break it
+      System.out.println("Tambourine Broken");
+      Image currentImage =
+          new Image(
+              App.class.getResource("/images/classicalRoom/BrokenTambourine.png").openStream());
+      Platform.runLater(
+          () -> {
+            tambourineImage.setImage(currentImage);
+          });
+      isTambourineBroken = true;
+    }
     numOfTambourinePresses++;
   }
 

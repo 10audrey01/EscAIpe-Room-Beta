@@ -63,7 +63,7 @@
       <Pane fx:id="grandPianoPane" layoutX="703.0" layoutY="244.0" onMouseClicked="#doClickedGrandPiano" prefHeight="470.0" prefWidth="354.0" />
       <Pane fx:id="tambourinePane" layoutX="572.0" layoutY="244.0" onMouseClicked="#doClickedTambourine" prefHeight="123.0" prefWidth="123.0">
          <children>
-            <ImageView fx:id="tambourine" fitHeight="142.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="tambourineImage" fitHeight="142.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/classicalRoom/Tambourine.png" />
                </image>
