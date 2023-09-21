@@ -107,9 +107,6 @@ public class PianoController {
     loadNotes();
 
     gameState = GameState.getInstance();
-    System.out.println(gameState.taskManager.largeTask);
-
-    // TODO: gameState.timeManager.addToTimers(timerLabel);
 
     if (gameState.taskManager.largeTask
         == LargeTask.ROCK) { // execute if the chosen big task is ROCK

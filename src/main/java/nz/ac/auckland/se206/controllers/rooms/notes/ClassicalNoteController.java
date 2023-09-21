@@ -16,14 +16,14 @@ public class ClassicalNoteController {
   @FXML private Label timerLabel;
   @FXML private Button btnReturn;
 
-  private GameState gamestate;
+  private GameState gameState;
 
   // initialise FXML file
   @FXML
   private void initialize() throws IOException {
-    this.gamestate = GameState.getInstance();
-    this.gamestate.timeManager.addToTimers(timerLabel);
-    this.gamestate.classicalNote = this;
+    this.gameState = GameState.getInstance();
+    this.gameState.timeManager.addToTimers(timerLabel);
+    this.gameState.classicalNote = this;
   }
 
   // set the current hint text

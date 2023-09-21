@@ -27,6 +27,7 @@ public class EndController {
 
   @FXML
   private void onBack(ActionEvent event) throws IOException {
+    // Reset game state to allow for replay
     GameState.setInstance(null);
     GameState.resetVariables();
 

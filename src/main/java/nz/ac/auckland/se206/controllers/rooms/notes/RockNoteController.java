@@ -16,14 +16,14 @@ public class RockNoteController {
   @FXML private Button btnReturn;
   @FXML private Label timerLabel;
 
-  private GameState gamestate;
+  private GameState gameState;
 
   // intialise the FXML file
   @FXML
   private void initialize() throws IOException {
-    this.gamestate = GameState.getInstance();
-    this.gamestate.timeManager.addToTimers(timerLabel);
-    this.gamestate.rockNote = this;
+    this.gameState = GameState.getInstance();
+    this.gameState.timeManager.addToTimers(timerLabel);
+    this.gameState.rockNote = this;
   }
 
   // set the current hint text

@@ -53,7 +53,7 @@ public class BodybuilderController {
   @FXML private Label hintLabel;
 
   // instance of gamestate, puzzle, the code and required solution for finishing the game
-  private GameState gamestate;
+  private GameState gameState;
   private RavePuzzle puzzleInstance;
   private String code = "";
   private String solution = "";
@@ -62,10 +62,10 @@ public class BodybuilderController {
   @FXML
   private void initialize() throws IOException {
     // gets the gamestate instance, adding the labels for hints/timers to the gamestate
-    this.gamestate = GameState.getInstance();
-    this.gamestate.timeManager.addToTimers(timerLabel);
-    this.gamestate.hintManager.addHintLabel(hintLabel);
-    this.gamestate.bodybuilderController = this;
+    this.gameState = GameState.getInstance();
+    this.gameState.timeManager.addToTimers(timerLabel);
+    this.gameState.hintManager.addHintLabel(hintLabel);
+    this.gameState.bodybuilderController = this;
     this.speechBox.setText("Hey bro, I need your help... I need to open this safe.");
     //
     resetSafe();
@@ -74,7 +74,7 @@ public class BodybuilderController {
   // initialises the code for the puzzle, getting the solution and updating ui based off the the
   // instance of the puzzle
   public void initialiseCode() throws IOException {
-    RavePuzzle puzzle = gamestate.ravePuzzle;
+    RavePuzzle puzzle = gameState.ravePuzzle;
     this.puzzleInstance = puzzle;
     this.solution = puzzleInstance.getSolution();
     this.puzzleInstance.setImages(firstRoomHint, secondRoomHint);
@@ -162,13 +162,13 @@ public class BodybuilderController {
     hintImage1.setOpacity(1);
     hintImage2.setOpacity(1);
     // decrement hint
-    this.gamestate.hintManager.useHint();
-    //if the player doesnt have hints left, notify them through the bodybuilder
-    if (gamestate.hintManager.getHintsRemaining() > 0) {
+    this.gameState.hintManager.useHint();
+    // if the player doesnt have hints left, notify them through the bodybuilder
+    if (gameState.hintManager.getHintsRemaining() > 0) {
       btnHint.setVisible(false);
       hintImage1.setOpacity(1);
       hintImage2.setOpacity(1);
-      this.gamestate.hintManager.useHint();
+      this.gameState.hintManager.useHint();
     } else {
       speechBox.setText("Sorry bro, I don't have any hints for you man.");
     }
@@ -317,7 +317,7 @@ public class BodybuilderController {
       resultText.setText("CORRECT (" + code + ")");
       resultText.setFill(Color.GREEN);
       GameState.isSafeOpened = true;
-      gamestate.objectiveListManager.completeObjective2();
+      gameState.objectiveListManager.completeObjective2();
       btnHint.setVisible(false);
       return;
     }
