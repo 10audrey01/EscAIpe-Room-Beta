@@ -77,20 +77,24 @@ public class RaveController {
 
   private ArrayList<Circle> circles;
 
+  // gamestate instance and the state of the exit locks
   private GameState gameState;
   private boolean isRedLockUnlocked = false;
   private boolean isGreenLockUnlocked = false;
   private boolean isBlueLockUnlocked = false;
   private boolean isYellowLockUnlocked = false;
 
+  // initialises the fxml file
   @FXML
   private void initialize() {
+    // add the gamestate instance and relevant components to the gamestate/managers
     gameState = GameState.getInstance();
     gameState.timeManager.addToTimers(timerLabel);
     gameState.hintManager.addHintLabel(hintLabel);
     gameState.chatManager.addTextArea(textArea);
     gameState.chatManager.addTextField(textField);
     gameState.chatManager.addSprite(gmSprite);
+    // add objectives / steps labels to the objective list manager
     gameState.objectiveListManager.addObjectiveLabel1(step1Label);
     gameState.objectiveListManager.addObjectiveLabel2(step2Label);
     gameState.objectiveListManager.addObjectiveLabel3(step3Label);
@@ -99,6 +103,7 @@ public class RaveController {
     gameState.objectiveListManager.addStep2Key(step2GreenKey);
     gameState.objectiveListManager.addStep3Key(step3RedKey);
     gameState.objectiveListManager.addStep4Key(step4YellowKey);
+    // if the largetask this game is rock - add all elements relevant to the task to the manager.
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
       gameState.rockBigTaskManager.addAllRockTaskElements(
           colourLabel1,
@@ -112,58 +117,70 @@ public class RaveController {
     }
     chatOpened = false;
 
+    // create an array list of objects in the room
     objects = new ArrayList<String>();
     objects.add("band poster");
     objects.add("bouncer");
     objects.add("disco ball");
     objects.add("speakers");
 
+    // set circles for classical room task
     circles = new ArrayList<Circle>(List.of(circle3, circle4, circle5));
     setCircles();
   }
 
+  // function for handling clicking the poster event
   @FXML
   private void onClickPoster(MouseEvent event) {
     System.out.println("poster clicked");
     isRiddleObject("band poster");
   }
 
+  // function for handing clicking the dj
   @FXML
   private void onClickDj(MouseEvent event) {
     System.out.println("dj clicked");
+    // switches the scene to the music quiz scene
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.MUSICQUIZ));
   }
 
+  // function for handing clicking the bodybuilder
   @FXML
   private void onClickBodybuilder(MouseEvent event) {
     System.out.println("bodybuilder clicked");
+    // switches the scene to the bodybuilder safe minigame scene
     Pane current = (Pane) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.BODYBUILDER));
   }
 
+  // function for handing clicking the bouncer
   @FXML
   private void onClickBouncer(MouseEvent event) {
     System.out.println("bouncer clicked");
     isRiddleObject("bouncer");
   }
 
+  // function for handing clicking the disco ball
   @FXML
   private void onClickDisco(MouseEvent event) {
     System.out.println("disco clicked");
     isRiddleObject("disco ball");
   }
 
+  // function for handing clicking the speaker
   @FXML
   private void onClickSpeaker(MouseEvent event) {
     System.out.println("speaker clicked");
     isRiddleObject("speaker");
   }
 
+  // function for handing clicking the red lock
   @FXML
   private void onClickRed(MouseEvent event) {
+    // removes the lock if the player has completed the piano task
     if (GameState.isPianoPlayed) {
       gameState.objectiveListManager.setVisibilityKeyRed3(false);
       redLock.setVisible(false);
@@ -172,8 +189,10 @@ public class RaveController {
     System.out.println("red clicked");
   }
 
+  // function for handing clicking the green lock
   @FXML
   private void onClickGreen(MouseEvent event) {
+    // removes the lock if the player has completed the safe task
     if (GameState.isSafeOpened) {
       gameState.objectiveListManager.setVisibilityKeyGreen2(false);
       greenLock.setVisible(false);
@@ -182,8 +201,10 @@ public class RaveController {
     System.out.println("green clicked");
   }
 
+  // function for handing clicking the blue lock
   @FXML
   private void onClickBlue(MouseEvent event) {
+    // removes the lock if the player has completed the music quiz
     if (GameState.isMusicQuizCompleted) {
       gameState.objectiveListManager.setVisibilityKeyBlue1(false);
       blueLock.setVisible(false);
@@ -192,8 +213,10 @@ public class RaveController {
     System.out.println("blue clicked");
   }
 
+  // function for handing clicking the yellow lock
   @FXML
   private void onClickYellow(MouseEvent event) {
+    // removes the lock if player has completed the harp event
     if (GameState.isHarpPlayed) {
       gameState.objectiveListManager.setVisibilityKeyYellow4(false);
       yellowLock.setVisible(false);
@@ -202,8 +225,10 @@ public class RaveController {
     System.out.println("yellow clicked");
   }
 
+  // function for handing clicking the door
   @FXML
   private void onClickDoor(MouseEvent event) {
+    // unlocks the door if the player has unlocked all the locks
     if (isRedLockUnlocked && isGreenLockUnlocked && isBlueLockUnlocked && isYellowLockUnlocked) {
       openedDoor.setDisable(false);
       openedDoor.setVisible(true);
@@ -212,47 +237,59 @@ public class RaveController {
     System.out.println("door clicked");
   }
 
+  // function for handing clicking the opened door
   @FXML
   private void onClickOpenedDoor(MouseEvent event) throws IOException {
+    // sets the game won state to true, changing the scene to the end game scene
     GameState.isEscaped = true;
     App.setRoot("end");
     gameState.timeManager.stopCountdown();
     System.out.println("opened door clicked");
   }
 
+  // function for handing clicking the classical door
   @FXML
   private void doGoClassical(MouseEvent event) throws IOException {
+    // changes the scene to the classical room
     Rectangle current = (Rectangle) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICAL));
   }
 
+  // function for handing clicking the rock door
   @FXML
   private void doGoRock(MouseEvent event) throws IOException {
+    // changes the scene to the rock room
     Rectangle current = (Rectangle) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
   }
 
+  // function for handing the toggling of the chat
   @FXML
   private void toggleChat() {
     if (chatOpened) {
+      // closes the chat if it is opened
       chatBoxPane.setDisable(true);
       chatBoxPane.setOpacity(0);
     } else {
+      // else open the chat
       chatBoxPane.setDisable(false);
       chatBoxPane.setOpacity(0.95);
     }
     chatOpened = !chatOpened;
   }
 
+  // function for handing key presses
   @FXML
   public void onKeyPressed(KeyEvent event) {
     System.out.println("key " + event.getCode() + " pressed");
   }
 
+  // function for handing releasing the enter key
   @FXML
   public void onKeyReleased(KeyEvent event) throws ApiProxyException, IOException {
+    // sends message to chat if the player releases enter, allowing them to chat with enter.
     System.out.println("key " + event.getCode() + " released");
     if (event.getCode() == KeyCode.ENTER && chatOpened) {
       System.out.println("Message Sent");
@@ -261,15 +298,18 @@ public class RaveController {
     }
   }
 
+  // function for toggling note visibility
   @FXML
   private void onToggleNote() {
     gameState.rockBigTaskManager.setVisibilityNotePanes(true);
     gameState.rockBigTaskManager.setVisibilityArrows(false);
   }
 
+  // helper function to check for if the riddle object selected is the clicked on object
   public void isRiddleObject(String object) {
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
       if (riddleObject.equals(object)) { // } && GameState.isRiddleResolved) {
+        // if the object is the correct one, set relevant labels to notify the user
         GameState.isRiddleObjectFound = true;
         gameState.rockBigTaskManager.setLabelColours();
         gameState.rockBigTaskManager.setOrderColourMap();
@@ -280,7 +320,9 @@ public class RaveController {
     }
   }
 
+  // function for setting the circles to set up the harp game
   public void setCircles() {
+    // select random colours for each circle and fills them
     HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
     for (int i = 0; i < circles.size(); i++) {
       circles.get(i).setFill(harpController.getColourIndex(i + 2));
@@ -288,6 +330,7 @@ public class RaveController {
     }
   }
 
+  // function for handing clicking the third circle
   @FXML
   public void onClickedCircle3(MouseEvent event) {
     HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
@@ -297,6 +340,7 @@ public class RaveController {
     circle3.setDisable(true);
   }
 
+  // function for handing clicking the fourth circle
   @FXML
   public void onClickedCircle4(MouseEvent event) {
     HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
@@ -306,6 +350,7 @@ public class RaveController {
     circle4.setDisable(true);
   }
 
+  // function for handing clicking the fifth circle
   @FXML
   public void onClickedCircle5(MouseEvent event) {
     HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
