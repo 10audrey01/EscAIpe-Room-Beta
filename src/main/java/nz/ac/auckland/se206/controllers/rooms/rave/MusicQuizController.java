@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.GameState.Difficulty;
@@ -37,6 +38,8 @@ public class MusicQuizController {
   @FXML private Button optionSixBtn;
   @FXML private Label timerLabel;
   @FXML private Label hintLabel;
+  @FXML private Label cooldownLabel;
+  @FXML private Label answerLabel;
 
   private GameState gamestate;
   private String[] genres = {
@@ -115,12 +118,31 @@ public class MusicQuizController {
     }
   }
 
+  private void setButtonCooldowns() {
+    optionOneBtn.setDisable(true);
+    optionTwoBtn.setDisable(true);
+    optionThreeBtn.setDisable(true);
+    optionFourBtn.setDisable(true);
+    optionFiveBtn.setDisable(true);
+    optionSixBtn.setDisable(true);
+  }
+
   private void attemptSolve(int index) {
+    setButtonCooldowns();
+
     if (correctGenreIndex == index) {
+      hintBtn.setVisible(false);
       GameState.isMusicQuizCompleted = true;
       speechBox.setText("Nice work bro. You can take this key if you want, I guess");
       gamestate.objectiveListManager.completeObjective1();
-      System.out.println("correct");
+      answerLabel.setText("CORRECT");
+      answerLabel.setTextFill(Color.RED);
+      return;
+    }
+
+    if (correctGenreIndex != index) {
+      answerLabel.setText("INCORRECT");
+      answerLabel.setTextFill(Color.RED);
     }
   }
 
