@@ -20,26 +20,52 @@
             <Image url="@../images/raveRoom/dj.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="speechBox" editable="false" layoutX="25.0" layoutY="32.0" prefHeight="137.0" prefWidth="469.0" />
+      <TextArea fx:id="speechBox" editable="false" layoutX="25.0" layoutY="32.0" prefHeight="137.0" prefWidth="469.0" wrapText="true">
+         <font>
+            <Font size="19.0" />
+         </font></TextArea>
       <Button fx:id="btnReturn" layoutX="1185.0" layoutY="65.0" mnemonicParsing="false" onAction="#onClickReturn" text="Return" />
       <Button fx:id="songBtn" layoutX="574.0" layoutY="55.0" mnemonicParsing="false" onAction="#onClickSongBtn" text="PLAY SONG">
          <font>
             <Font size="47.0" />
          </font>
       </Button>
-      <Button fx:id="hintBtn" layoutX="574.0" layoutY="160.0" mnemonicParsing="false" onAction="#onClickHint" prefHeight="65.0" prefWidth="170.0" text="Hint?">
+      <Button fx:id="hintBtn" layoutX="407.0" layoutY="181.0" mnemonicParsing="false" onAction="#onClickHint" prefHeight="44.0" prefWidth="99.0" text="Use hint">
          <font>
-            <Font size="33.0" />
+            <Font size="18.0" />
          </font>
       </Button>
       <Pane layoutX="419.0" layoutY="289.0" prefHeight="364.0" prefWidth="773.0">
          <children>
-            <Button fx:id="optionOneBtn" layoutX="33.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickOne" text="Option 1" />
-            <Button fx:id="optionTwoBtn" layoutX="158.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickTwo" text="Option 2" />
-            <Button fx:id="optionThreeBtn" layoutX="327.0" layoutY="16.0" mnemonicParsing="false" onAction="#onClickThree" text="Option 3" />
-            <Button fx:id="optionFourBtn" layoutX="33.0" layoutY="55.0" mnemonicParsing="false" onAction="#onClickFour" text="Option 4" />
-            <Button fx:id="optionFiveBtn" layoutX="165.0" layoutY="62.0" mnemonicParsing="false" onAction="#onClickFive" text="Option 5" />
-            <Button fx:id="optionSixBtn" layoutX="331.0" layoutY="60.0" mnemonicParsing="false" onAction="#onClickSix" text="Option 6" />
+            <Button fx:id="optionOneBtn" layoutX="33.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickOne" text="Option 1">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+            <Button fx:id="optionTwoBtn" layoutX="185.0" layoutY="16.0" mnemonicParsing="false" onAction="#onClickTwo" text="Option 2">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+            <Button fx:id="optionThreeBtn" layoutX="347.0" layoutY="16.0" mnemonicParsing="false" onAction="#onClickThree" text="Option 3">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+            <Button fx:id="optionFourBtn" layoutX="33.0" layoutY="55.0" mnemonicParsing="false" onAction="#onClickFour" text="Option 4">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+            <Button fx:id="optionFiveBtn" layoutX="185.0" layoutY="55.0" mnemonicParsing="false" onAction="#onClickFive" text="Option 5">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+            <Button fx:id="optionSixBtn" layoutX="347.0" layoutY="55.0" mnemonicParsing="false" onAction="#onClickSix" text="Option 6">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+            <Label fx:id="answerLabel" layoutX="170.0" layoutY="152.0" style="-fx-background-color: FFFF;">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
             <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1186.0" layoutY="12.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
@@ -47,9 +73,14 @@
             <Font size="30.0" />
          </font>
       </Label>
-            <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="755.0" layoutY="170.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: FFFF;" text="HINTS LEFT:">
+            <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="180.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: FFFF;" text="HINTS LEFT:">
          <font>
             <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="cooldownLabel" alignment="CENTER" layoutX="574.0" layoutY="169.0" prefHeight="73.0" prefWidth="295.0" style="-fx-background-color: FFFF;" text="You can choose an answer!" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="21.0" />
          </font>
       </Label>
    </children>
