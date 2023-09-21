@@ -22,6 +22,20 @@ import nz.ac.auckland.se206.TaskManager.LargeTask;
 
 public class PianoController {
 
+  private static final int C_NOTE_LOCATION = 90;
+  private static final int D_NOTE_LOCATION = 75;
+  private static final int E_NOTE_LOCATION = 60;
+  private static final int F_NOTE_LOCATION = 45;
+  private static final int G_NOTE_LOCATION = 30;
+  private static final int A_NOTE_LOCATION = 15;
+  private static final int B_NOTE_LOCATION = 0;
+
+  // winning squence
+  public static String notesToPlay = "ABCDEFGA";
+
+  // sequence of notes played by user
+  public static String notesPlayed = "";
+
   @FXML private ImageView note1;
   @FXML private ImageView note2;
   @FXML private ImageView note3;
@@ -50,47 +64,25 @@ public class PianoController {
   @FXML private ImageView note12Letter;
   @FXML private ImageView note13Letter;
   @FXML private ImageView note14Letter;
-  @FXML private Pane aKey;
-  @FXML private Pane bKey;
-  @FXML private Pane cKey;
-  @FXML private Pane dKey;
-  @FXML private Pane eKey;
-  @FXML private Pane fKey;
-  @FXML private Pane gKey;
+  @FXML private Pane keyA;
+  @FXML private Pane keyB;
+  @FXML private Pane keyC;
+  @FXML private Pane keyD;
+  @FXML private Pane keyE;
+  @FXML private Pane keyF;
+  @FXML private Pane keyG;
   @FXML private Pane leavePiano;
   @FXML private Label timerLabel;
 
-  // private static final int C_NOTE_LOCATION = 193;
-  // private static final int D_NOTE_LOCATION = 178;
-  // private static final int E_NOTE_LOCATION = 163;
-  // private static final int F_NOTE_LOCATION = 148;
-  // private static final int G_NOTE_LOCATION = 133;
-  // private static final int A_NOTE_LOCATION = 118;
-  // private static final int B_NOTE_LOCATION = 103;
-
-  private static final int C_NOTE_LOCATION = 90;
-  private static final int D_NOTE_LOCATION = 75;
-  private static final int E_NOTE_LOCATION = 60;
-  private static final int F_NOTE_LOCATION = 45;
-  private static final int G_NOTE_LOCATION = 30;
-  private static final int A_NOTE_LOCATION = 15;
-  private static final int B_NOTE_LOCATION = 0;
-
-  // winning squence
-  public static String notesToPlay = "ABCDEFGA";
-
-  // sequence of notes played by user
-  public static String notesPlayed = "";
-
   private GameState gameState;
-  public ArrayList<ImageView> notesList;
-  public ArrayList<ImageView> notesLetterList;
-  public MediaPlayer pianoNotePlayer;
+  private ArrayList<ImageView> notesList;
+  private ArrayList<ImageView> notesLetterList;
+  private MediaPlayer pianoNotePlayer;
 
   @FXML
   private void initialize() throws IOException {
     gameState = GameState.getInstance();
-    gameState.timeManager.addToTimers(timerLabel);
+    gameState.getTimeManager().addToTimers(timerLabel);
     notesList =
         new ArrayList<ImageView>(List.of(note1, note2, note3, note4, note5, note6, note7, note8));
     notesLetterList =
@@ -108,10 +100,10 @@ public class PianoController {
 
     gameState = GameState.getInstance();
 
-    if (gameState.taskManager.largeTask
+    if (gameState.getTaskManager().largeTask
         == LargeTask.ROCK) { // execute if the chosen big task is ROCK
       notesToPlay = "";
-      String[] noteSequence = gameState.rockBigTaskManager.getNoteSequence();
+      String[] noteSequence = gameState.getRockBigTaskManager().getNoteSequence();
       for (int i = 0; i < noteSequence.length; i++) {
         notesToPlay += noteSequence[i];
       }
@@ -167,7 +159,7 @@ public class PianoController {
   }
 
   public void loadRockNotes() throws IOException {
-    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
+    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
       if (GameState.isNoteSequenceFound) {
         loadNotes();
         for (int i = 0; i < notesLetterList.size(); i++) {
@@ -190,7 +182,7 @@ public class PianoController {
   }
 
   @FXML
-  public void onClickedAKey(MouseEvent event) throws IOException, URISyntaxException {
+  public void onClickedKeyA(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("A Key Pressed");
     notesPlayed += "A";
     playPianoNotePlayer("a6");
@@ -198,7 +190,7 @@ public class PianoController {
   }
 
   @FXML
-  public void onClickedBKey(MouseEvent event) throws IOException, URISyntaxException {
+  public void onClickedKeyB(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("B Key Pressed");
     notesPlayed += "B";
     playPianoNotePlayer("b6");
@@ -206,7 +198,7 @@ public class PianoController {
   }
 
   @FXML
-  public void onClickedCKey(MouseEvent event) throws IOException, URISyntaxException {
+  public void onClickedKeyC(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("C Key Pressed");
     notesPlayed += "C";
     playPianoNotePlayer("c6");
@@ -214,7 +206,7 @@ public class PianoController {
   }
 
   @FXML
-  public void onClickedDKey(MouseEvent event) throws IOException, URISyntaxException {
+  public void onClickedKeyD(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("D Key Pressed");
     notesPlayed += "D";
     playPianoNotePlayer("d6");
@@ -222,7 +214,7 @@ public class PianoController {
   }
 
   @FXML
-  public void onClickedEKey(MouseEvent event) throws IOException, URISyntaxException {
+  public void onClickedKeyE(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("E Key Pressed");
     notesPlayed += "E";
     playPianoNotePlayer("e6");
@@ -230,7 +222,7 @@ public class PianoController {
   }
 
   @FXML
-  public void onClickedFKey(MouseEvent event) throws IOException, URISyntaxException {
+  public void onClickedKeyF(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("F Key Pressed");
     notesPlayed += "F";
     playPianoNotePlayer("f6");
@@ -238,7 +230,7 @@ public class PianoController {
   }
 
   @FXML
-  public void onClickedGKey(MouseEvent event) throws IOException, URISyntaxException {
+  public void onClickedKeyG(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("G Key Pressed");
     notesPlayed += "G";
     playPianoNotePlayer("g6");
@@ -257,7 +249,7 @@ public class PianoController {
     if (notesPlayed.contains(notesToPlay)) {
       System.out.println("You Win");
       GameState.isPianoPlayed = true;
-      gameState.objectiveListManager.setVisibilityKeyRed3(true);
+      gameState.getObjectiveListManager().setVisibilityKeyRed3(true);
       Pane current = (Pane) leavePiano.getParent();
       Scene currentScene = current.getScene();
       currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICAL));

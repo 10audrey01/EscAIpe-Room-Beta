@@ -1,6 +1,10 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import nz.ac.auckland.se206.controllers.rooms.notes.ClassicalNoteController;
 import nz.ac.auckland.se206.controllers.rooms.notes.RockNoteController;
 import nz.ac.auckland.se206.controllers.rooms.rave.BodybuilderController;
@@ -81,16 +85,68 @@ public class GameState {
   }
 
   // Managers and controllers to handle game components
-  public TimeManager timeManager;
-  public HintManager hintManager;
-  public TaskManager taskManager;
-  public ChatManager chatManager;
-  public RockBigTaskManager rockBigTaskManager;
-  public RavePuzzle ravePuzzle;
-  public ObjectiveListManager objectiveListManager;
-  public BodybuilderController bodybuilderController;
-  public ClassicalNoteController classicalNote;
-  public RockNoteController rockNote;
+  private TimeManager timeManager;
+  private HintManager hintManager;
+  private TaskManager taskManager;
+  private ChatManager chatManager;
+  private RockBigTaskManager rockBigTaskManager;
+  private RavePuzzle ravePuzzle;
+  private ObjectiveListManager objectiveListManager;
+  private BodybuilderController bodybuilderController;
+  private ClassicalNoteController classicalNote;
+  private RockNoteController rockNote;
+
+  public TimeManager getTimeManager() {
+    return timeManager;
+  }
+
+  public HintManager getHintManager() {
+    return hintManager;
+  }
+
+  public TaskManager getTaskManager() {
+    return taskManager;
+  }
+
+  public ChatManager getChatManager() {
+    return chatManager;
+  }
+
+  public RockBigTaskManager getRockBigTaskManager() {
+    return rockBigTaskManager;
+  }
+
+  public RavePuzzle getRavePuzzle() {
+    return ravePuzzle;
+  }
+
+  public ObjectiveListManager getObjectiveListManager() {
+    return objectiveListManager;
+  }
+
+  public BodybuilderController getBodybuilderController() {
+    return bodybuilderController;
+  }
+
+  public void setBodybuilderController(BodybuilderController bodybuilderController) {
+    this.bodybuilderController = bodybuilderController;
+  }
+
+  public ClassicalNoteController getClassicalNote() {
+    return classicalNote;
+  }
+
+  public void setClassicalNote(ClassicalNoteController classicalNote) {
+    this.classicalNote = classicalNote;
+  }
+
+  public RockNoteController getRockNote() {
+    return rockNote;
+  }
+
+  public void setRockNote(RockNoteController rockNote) {
+    this.rockNote = rockNote;
+  }
 
   // Method to start the game and initialize various components
   public void startGame() throws IOException {
@@ -100,5 +156,39 @@ public class GameState {
     this.hintManager.initialiseManager(difficulty); // Initialize hint manager based on difficulty
     this.ravePuzzle.setHints(classicalNote, rockNote); // Set hints for the Rave puzzle
     this.bodybuilderController.initialiseCode(); // Initialize code for the Bodybuilder puzzle
+  }
+
+  // method for adding all initial labels needed for each room
+  public void addInitialLabels(
+      Label timerLabel,
+      Label hintLabel,
+      TextArea textArea,
+      TextField textField,
+      ImageView gmSprite) {
+    instance.timeManager.addToTimers(timerLabel);
+    instance.hintManager.addHintLabel(hintLabel);
+    instance.chatManager.addTextArea(textArea);
+    instance.chatManager.addTextField(textField);
+    instance.chatManager.addSprite(gmSprite);
+  }
+
+  // method for adding all objective list labels
+  public void addObjectiveListLabels(
+      Label step1Label,
+      Label step2Label,
+      Label step3Label,
+      Label step4Label,
+      ImageView step1BlueKey,
+      ImageView step2GreenKey,
+      ImageView step3RedKey,
+      ImageView step4YellowKey) {
+    instance.objectiveListManager.addObjectiveLabel1(step1Label);
+    instance.objectiveListManager.addObjectiveLabel2(step2Label);
+    instance.objectiveListManager.addObjectiveLabel3(step3Label);
+    instance.objectiveListManager.addObjectiveLabel4(step4Label);
+    instance.objectiveListManager.addStep1Key(step1BlueKey);
+    instance.objectiveListManager.addStep2Key(step2GreenKey);
+    instance.objectiveListManager.addStep3Key(step3RedKey);
+    instance.objectiveListManager.addStep4Key(step4YellowKey);
   }
 }

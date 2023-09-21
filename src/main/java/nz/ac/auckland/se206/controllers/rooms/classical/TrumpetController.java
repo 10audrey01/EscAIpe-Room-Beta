@@ -18,10 +18,19 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class TrumpetController {
 
-  @FXML private ImageView trumpetButton1, trumpetButton2, trumpetButton3;
-  @FXML private ImageView note1Symbol, note2Symbol, note3Symbol;
-  @FXML private ImageView beamNote1, beamNote2, beamNote3, beamNote4, beamNote5;
-  @FXML private Pane leaveTrumpet, playTrumpet;
+  @FXML private ImageView trumpetButton1;
+  @FXML private ImageView trumpetButton2;
+  @FXML private ImageView trumpetButton3;
+  @FXML private ImageView note1Symbol;
+  @FXML private ImageView note2Symbol;
+  @FXML private ImageView note3Symbol;
+  @FXML private ImageView beamNote1;
+  @FXML private ImageView beamNote2;
+  @FXML private ImageView beamNote3;
+  @FXML private ImageView beamNote4;
+  @FXML private ImageView beamNote5;
+  @FXML private Pane leaveTrumpet;
+  @FXML private Pane playTrumpet;
   @FXML private Label timerLabel;
   private boolean isButton1Down;
   private boolean isButton2Down;
@@ -37,7 +46,7 @@ public class TrumpetController {
   @FXML
   private void initialize() throws IOException {
     gameState = GameState.getInstance();
-    gameState.timeManager.addToTimers(timerLabel);
+    gameState.getTimeManager().addToTimers(timerLabel);
     isButton1Down = false;
     isButton2Down = false;
     isButton3Down = false;

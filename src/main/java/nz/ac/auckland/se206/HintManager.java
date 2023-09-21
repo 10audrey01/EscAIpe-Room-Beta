@@ -28,7 +28,9 @@ public class HintManager {
     // Update the hint labels to display the initial hint count
     Platform.runLater(
         () -> {
-          for (Label label : hintLabels) label.setText(("Hints Left: " + hintsRemaining));
+          for (Label label : hintLabels) {
+            label.setText(("Hints Left: " + hintsRemaining));
+          }
         });
   }
 
@@ -46,7 +48,9 @@ public class HintManager {
     // Update the hint labels to display the updated hint count
     Platform.runLater(
         () -> {
-          for (Label label : hintLabels) label.setText(("Hints Left: " + hintsRemaining));
+          for (Label label : hintLabels) {
+            label.setText(("Hints Left: " + hintsRemaining));
+          }
         });
   }
 

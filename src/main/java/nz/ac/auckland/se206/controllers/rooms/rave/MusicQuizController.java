@@ -68,8 +68,8 @@ public class MusicQuizController {
   private void initialize() throws IOException, URISyntaxException, ApiProxyException {
     // gets the gamestate and adds the relevant labels to the gamestate
     this.gamestate = GameState.getInstance();
-    this.gamestate.timeManager.addToTimers(timerLabel);
-    this.gamestate.hintManager.addHintLabel(hintLabel);
+    this.gamestate.getTimeManager().addToTimers(timerLabel);
+    this.gamestate.getHintManager().addHintLabel(hintLabel);
 
     // initial values for managing the game
     this.timeToAnswer = 0;
@@ -261,7 +261,7 @@ public class MusicQuizController {
       hintBtn.setVisible(false);
       GameState.isMusicQuizCompleted = true;
       speechBox.setText("Nice work bro. For you, I got this key for you man.");
-      gamestate.objectiveListManager.completeObjective1();
+      gamestate.getObjectiveListManager().completeObjective1();
       answerLabel.setText("CORRECT");
       answerLabel.setTextFill(Color.GREEN);
       cooldownLabel.setVisible(false);
@@ -357,8 +357,8 @@ public class MusicQuizController {
   @FXML
   private void onClickHint() {
     System.out.println("hint");
-    if (this.gamestate.hintManager.getHintsRemaining() > 0) {
-      this.gamestate.hintManager.useHint();
+    if (this.gamestate.getHintManager().getHintsRemaining() > 0) {
+      this.gamestate.getHintManager().useHint();
       deleteWrongOption();
     } else {
       speechBox.setText("Sorry bro, I don't have any hints for you man.");

@@ -87,11 +87,7 @@ public class RaveController {
   private void initialize() {
     // add the gamestate instance and relevant components to the gamestate/managers
     gameState = GameState.getInstance();
-    gameState.timeManager.addToTimers(timerLabel);
-    gameState.hintManager.addHintLabel(hintLabel);
-    gameState.chatManager.addTextArea(textArea);
-    gameState.chatManager.addTextField(textField);
-    gameState.chatManager.addSprite(gmSprite);
+    gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite);
     // add objectives / steps labels to the objective list manager
     gameState.objectiveListManager.addObjectiveLabel1(step1Label);
     gameState.objectiveListManager.addObjectiveLabel2(step2Label);
@@ -102,7 +98,7 @@ public class RaveController {
     gameState.objectiveListManager.addStep3Key(step3RedKey);
     gameState.objectiveListManager.addStep4Key(step4YellowKey);
     // add elements needed for the rock room task
-    gameState.rockBigTaskManager.addAllRockTaskElements(
+    gameState.getRockBigTaskManager().addAllRockTaskElements(
         colourLabel1,
         colourLabel2,
         colourLabel3,
@@ -111,6 +107,7 @@ public class RaveController {
         noteImage1,
         noteSequenceLabel,
         pointingArrowGif);
+
     chatOpened = true;
 
     // create an array list of objects in the room
@@ -178,7 +175,7 @@ public class RaveController {
   private void onClickRed(MouseEvent event) {
     // removes the lock if the player has completed the piano task
     if (GameState.isPianoPlayed) {
-      gameState.objectiveListManager.setVisibilityKeyRed3(false);
+      gameState.getObjectiveListManager().setVisibilityKeyRed3(false);
       redLock.setVisible(false);
       isRedLockUnlocked = true;
     }
@@ -190,7 +187,7 @@ public class RaveController {
   private void onClickGreen(MouseEvent event) {
     // removes the lock if the player has completed the safe task
     if (GameState.isSafeOpened) {
-      gameState.objectiveListManager.setVisibilityKeyGreen2(false);
+      gameState.getObjectiveListManager().setVisibilityKeyGreen2(false);
       greenLock.setVisible(false);
       isGreenLockUnlocked = true;
     }
@@ -202,7 +199,7 @@ public class RaveController {
   private void onClickBlue(MouseEvent event) {
     // removes the lock if the player has completed the music quiz
     if (GameState.isMusicQuizCompleted) {
-      gameState.objectiveListManager.setVisibilityKeyBlue1(false);
+      gameState.getObjectiveListManager().setVisibilityKeyBlue1(false);
       blueLock.setVisible(false);
       isBlueLockUnlocked = true;
     }
@@ -214,7 +211,7 @@ public class RaveController {
   private void onClickYellow(MouseEvent event) {
     // removes the lock if player has completed the harp event
     if (GameState.isHarpPlayed) {
-      gameState.objectiveListManager.setVisibilityKeyYellow4(false);
+      gameState.getObjectiveListManager().setVisibilityKeyYellow4(false);
       yellowLock.setVisible(false);
       isYellowLockUnlocked = true;
     }
@@ -239,7 +236,7 @@ public class RaveController {
     // sets the game won state to true, changing the scene to the end game scene
     GameState.isEscaped = true;
     App.setRoot("end");
-    gameState.timeManager.stopCountdown();
+    gameState.getTimeManager().stopCountdown();
     System.out.println("opened door clicked");
   }
 
@@ -290,15 +287,15 @@ public class RaveController {
     if (event.getCode() == KeyCode.ENTER && chatOpened) {
       System.out.println("Message Sent");
       gameState = GameState.getInstance();
-      gameState.chatManager.onSendMessage(textField);
+      gameState.getChatManager().onSendMessage(textField);
     }
   }
 
   // function for toggling note visibility
   @FXML
   private void onClickNote1() {
-    gameState.rockBigTaskManager.setVisibilityNotePanes(true);
-    gameState.rockBigTaskManager.setVisibilityArrows(false);
+    gameState.getRockBigTaskManager().setVisibilityNotePanes(true);
+    gameState.getRockBigTaskManager().setVisibilityArrows(false);
   }
 
   // helper function to check for if the riddle object selected is the clicked on object
@@ -306,10 +303,10 @@ public class RaveController {
     if (riddleObject.equals(object) && GameState.isRiddleResolved) {
       // if the object is the correct one, set relevant labels to notify the user
       GameState.isRiddleObjectFound = true;
-      gameState.rockBigTaskManager.setLabelColours();
-      gameState.rockBigTaskManager.setOrderColourMap();
-      gameState.rockBigTaskManager.setVisibilityNoteImages(true);
-      gameState.rockBigTaskManager.setVisibilityArrows(true);
+      gameState.getRockBigTaskManager().setLabelColours();
+      gameState.getRockBigTaskManager().setOrderColourMap();
+      gameState.getRockBigTaskManager().setVisibilityNoteImages(true);
+      gameState.getRockBigTaskManager().setVisibilityArrows(true);
     }
   }
 

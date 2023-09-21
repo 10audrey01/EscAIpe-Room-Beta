@@ -169,7 +169,8 @@ public class RockBigTaskManager {
 
   public void labelStyle(ArrayList<Label> labelList, int colourIndex) {
     for (Label label : labelList) {
-      label.setStyle( // Set background color and border color
+      // Set background color and border color
+      label.setStyle(
           "-fx-background-color: transparent"
               + "; -fx-border-color:"
               + colours.get(colourIndex).getHex()

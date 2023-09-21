@@ -80,12 +80,8 @@ public class RockController {
   private void initialize() throws ApiProxyException {
     // intialising game state and adding relevant labels
     gameState = GameState.getInstance();
-    gameState.timeManager.addToTimers(timerLabel);
-    gameState.hintManager.addHintLabel(hintLabel);
-    gameState.chatManager.addTextArea(textArea);
-    gameState.chatManager.addTextField(textField);
-    gameState.chatManager.addSprite(gmSprite);
-    gameState.chatManager.generateInitialMessage();
+    gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite);
+    gameState.getChatManager().generateInitialMessage();
     // adding labels for objective list to the objective list manager
     gameState.objectiveListManager.addObjectiveLabel1(step1Label);
     gameState.objectiveListManager.addObjectiveLabel2(step2Label);
@@ -96,7 +92,7 @@ public class RockController {
     gameState.objectiveListManager.addStep3Key(step3RedKey);
     gameState.objectiveListManager.addStep4Key(step4YellowKey);
     // add elements needed for the rock room task
-    gameState.rockBigTaskManager.addAllRockTaskElements(
+    gameState.getRockBigTaskManager().addAllRockTaskElements(
         colourLabel1,
         colourLabel2,
         colourLabel3,
@@ -161,7 +157,7 @@ public class RockController {
   private void onClickCyanGuitar(MouseEvent event) throws URISyntaxException {
     // checks the correctness of the guitar sequence for the rock room task
     System.out.println("cyan guitar clicked");
-    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
+    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
       playNote(Colour.CYAN);
       checkGuitarSequence(Colour.CYAN);
     } else {
@@ -174,7 +170,7 @@ public class RockController {
   private void onClickBlueGuitar(MouseEvent event) throws URISyntaxException {
     // checks the correctness of the guitar sequence for the rock room task
     System.out.println("blue guitar clicked");
-    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
+    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
       playNote(Colour.BLUE);
       checkGuitarSequence(Colour.BLUE);
     } else {
@@ -187,7 +183,7 @@ public class RockController {
   private void onClickPurpleGuitar(MouseEvent event) throws URISyntaxException {
     // checks the correctness of the guitar sequence for the rock room task
     System.out.println("purple guitar clicked");
-    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
+    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
       playNote(Colour.PURPLE);
       checkGuitarSequence(Colour.PURPLE);
     } else {
@@ -200,7 +196,7 @@ public class RockController {
   private void onClickYellowGuitar(MouseEvent event) throws URISyntaxException {
     // checks the correctness of the guitar sequence for the rock room task
     System.out.println("yellow guitar clicked");
-    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
+    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
       playNote(Colour.YELLOW);
       checkGuitarSequence(Colour.YELLOW);
     } else {
@@ -243,24 +239,24 @@ public class RockController {
     if (event.getCode() == KeyCode.ENTER && chatOpened) {
       System.out.println("Message Sent");
       gameState = GameState.getInstance();
-      gameState.chatManager.onSendMessage(textField);
+      gameState.getChatManager().onSendMessage(textField);
     }
   }
 
   // function for handling the toggling of the note
   @FXML
   private void onClickNote1() {
-    gameState.rockBigTaskManager.setVisibilityNotePanes(true);
-    gameState.rockBigTaskManager.setVisibilityArrows(false);
+    gameState.getRockBigTaskManager().setVisibilityNotePanes(true);
+    gameState.getRockBigTaskManager().setVisibilityArrows(false);
   }
 
   // function for handling playing of a note
   public void playNote(Colour guitarColour) throws URISyntaxException {
-    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
+    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
 
       if (GameState.isRiddleObjectFound && !GameState.isNoteSequenceFound) {
-        noteSequence = gameState.rockBigTaskManager.getNoteSequence();
-        orderColourMap = gameState.rockBigTaskManager.getOrderColourMap();
+        noteSequence = gameState.getRockBigTaskManager().getNoteSequence();
+        orderColourMap = gameState.getRockBigTaskManager().getOrderColourMap();
 
         // play the note of the guitar clicked according to the note sequence
         String noteToPlay = noteSequence[orderColourMap.get(guitarColour) - 1];
@@ -323,12 +319,12 @@ public class RockController {
       // check if the guitar clicked is the correct one
       if (orderColourMap.get(guitarColour) - 1 == numberOfCorrectGuitarClicks) {
         // if it is, set the note sequence label to the note sequence
-        gameState.rockBigTaskManager.setNoteSequenceLabels(
+        gameState.getRockBigTaskManager().setNoteSequenceLabels(
             noteSequence[orderColourMap.get(guitarColour) - 1].toString());
         numberOfCorrectGuitarClicks++;
       } else {
         // otherwise reset the labels
-        gameState.rockBigTaskManager.clearNoteSequenceLabels();
+        gameState.getRockBigTaskManager().clearNoteSequenceLabels();
         numberOfCorrectGuitarClicks = 0;
       }
 
