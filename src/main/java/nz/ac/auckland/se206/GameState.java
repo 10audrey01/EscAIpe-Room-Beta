@@ -159,6 +159,8 @@ public class GameState {
   }
 
   // method for adding all initial labels needed for each room
+  // adds the labels for global timer, aswell as hints.
+  // adds the text areas and sprites for the chatmanager to update for all rooms.
   public void addInitialLabels(
       Label timerLabel,
       Label hintLabel,

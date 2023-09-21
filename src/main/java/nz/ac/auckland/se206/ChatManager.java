@@ -124,13 +124,15 @@ public class ChatManager {
     initializeRiddleThread.start();
   }
 
-  // Add a user or AI chat message to the display
+  // Add a user or AI chat message to the chat boxes
   public void addMessage(ChatMessage msg) {
+    // check if the role of the message is the user or the gamemaster
     if (msg.getRole().equals("assistant")) {
       messages = "Game Master: " + msg.getContent() + "\n\n";
     } else {
       messages = "You: " + msg.getContent() + "\n\n";
     }
+    // append the message to the GUI of all chatboxes in the game.
     Platform.runLater(
         () -> {
           for (TextArea textArea : textAreas) {
