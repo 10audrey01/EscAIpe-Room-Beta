@@ -2,16 +2,19 @@ package nz.ac.auckland.se206.controllers.rooms;
 
 import java.io.IOException;
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.DraggableMaker;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.TaskManager.LargeTask;
 import nz.ac.auckland.se206.controllers.rooms.classical.PianoController;
 
 public class ClassicalController extends AbstractRoomController {
@@ -32,7 +35,8 @@ public class ClassicalController extends AbstractRoomController {
   @FXML private VBox objectiveList;
 
   // put these into gamestate later
-  private boolean isTambourineBreakable;
+  private boolean isTambourineBroken;
+  private boolean isDraggable;
   private int numOfTambourinePresses;
   private int tambourineLimit;
 
@@ -51,9 +55,14 @@ public class ClassicalController extends AbstractRoomController {
   // function for initialising room FXML
   @FXML
   private void initialize() {
+
     initialiseAllGameStateVariables();
+
     // initial states for fields
     numOfTambourinePresses = 0;
+    isTambourineBroken = false;
+    isDraggable = false;
+    tambourineLimit = 100;
   }
 
   // function which makes the cello bow and tambourine pane draggable
@@ -149,6 +158,21 @@ public class ClassicalController extends AbstractRoomController {
   private void doClickedTambourine(MouseEvent event) throws IOException {
     // increments the times tambourine has been clicked
     System.out.println("Tambourine Clicked");
+    if (GameState.isHarpPlayed && !isDraggable) {
+      makeObjectsDraggable();
+    }
+    if (numOfTambourinePresses >= tambourineLimit && !isTambourineBroken) {
+      // if the tambourine has been clicked enough times, break it
+      System.out.println("Tambourine Broken");
+      Image currentImage =
+          new Image(
+              App.class.getResource("/images/classicalRoom/BrokenTambourine.png").openStream());
+      Platform.runLater(
+          () -> {
+            tambourineImage.setImage(currentImage);
+          });
+      isTambourineBroken = true;
+    }
     numOfTambourinePresses++;
   }
 
