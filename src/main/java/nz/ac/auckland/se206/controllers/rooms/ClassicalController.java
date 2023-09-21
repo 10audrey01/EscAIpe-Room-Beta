@@ -5,6 +5,8 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -14,7 +16,6 @@ import nz.ac.auckland.se206.DraggableMaker;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.TaskManager.LargeTask;
 import nz.ac.auckland.se206.controllers.rooms.classical.PianoController;
 
 public class ClassicalController extends AbstractRoomController {
@@ -30,6 +31,7 @@ public class ClassicalController extends AbstractRoomController {
   @FXML private Pane tambourinePane;
   @FXML private Pane trumpetPane;
   @FXML private Pane chatBoxPane;
+  @FXML private ImageView tambourineImage;
 
   @FXML private Pane classicalNotePane;
   @FXML private VBox objectiveList;
