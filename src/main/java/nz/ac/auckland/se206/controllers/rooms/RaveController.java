@@ -91,14 +91,15 @@ public class RaveController {
     gameState = GameState.getInstance();
     gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite);
     // add objectives / steps labels to the objective list manager
-    gameState.objectiveListManager.addObjectiveLabel1(step1Label);
-    gameState.objectiveListManager.addObjectiveLabel2(step2Label);
-    gameState.objectiveListManager.addObjectiveLabel3(step3Label);
-    gameState.objectiveListManager.addObjectiveLabel4(step4Label);
-    gameState.objectiveListManager.addStep1Key(step1BlueKey);
-    gameState.objectiveListManager.addStep2Key(step2GreenKey);
-    gameState.objectiveListManager.addStep3Key(step3RedKey);
-    gameState.objectiveListManager.addStep4Key(step4YellowKey);
+    gameState.addObjectiveListLabels(
+        step1Label,
+        step2Label,
+        step3Label,
+        step4Label,
+        step1BlueKey,
+        step2GreenKey,
+        step3RedKey,
+        step4YellowKey);
     // if the largetask this game is rock - add all elements relevant to the task to the manager.
     if (gameState.taskManager.largeTask == LargeTask.ROCK) {
       gameState.rockBigTaskManager.addAllRockTaskElements(
