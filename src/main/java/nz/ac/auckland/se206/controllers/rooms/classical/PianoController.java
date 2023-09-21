@@ -83,14 +83,14 @@ public class PianoController {
   public static String notesPlayed = "";
 
   private GameState gameState;
-  public ArrayList<ImageView> notesList;
-  public ArrayList<ImageView> notesLetterList;
-  public MediaPlayer pianoNotePlayer;
+  private ArrayList<ImageView> notesList;
+  private ArrayList<ImageView> notesLetterList;
+  private MediaPlayer pianoNotePlayer;
 
   @FXML
   private void initialize() throws IOException {
     gameState = GameState.getInstance();
-    gameState.timeManager.addToTimers(timerLabel);
+    gameState.getTimeManager().addToTimers(timerLabel);
     notesList =
         new ArrayList<ImageView>(List.of(note1, note2, note3, note4, note5, note6, note7, note8));
     notesLetterList =
@@ -107,14 +107,14 @@ public class PianoController {
     loadNotes();
 
     gameState = GameState.getInstance();
-    System.out.println(gameState.taskManager.largeTask);
+    System.out.println(gameState.getTaskManager().largeTask);
 
     // TODO: gameState.timeManager.addToTimers(timerLabel);
 
-    if (gameState.taskManager.largeTask
+    if (gameState.getTaskManager().largeTask
         == LargeTask.ROCK) { // execute if the chosen big task is ROCK
       notesToPlay = "";
-      String[] noteSequence = gameState.rockBigTaskManager.getNoteSequence();
+      String[] noteSequence = gameState.getRockBigTaskManager().getNoteSequence();
       for (int i = 0; i < noteSequence.length; i++) {
         notesToPlay += noteSequence[i];
       }
@@ -170,7 +170,7 @@ public class PianoController {
   }
 
   public void loadRockNotes() throws IOException {
-    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
+    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
       if (GameState.isNoteSequenceFound) {
         loadNotes();
         for (int i = 0; i < notesLetterList.size(); i++) {
@@ -260,7 +260,7 @@ public class PianoController {
     if (notesPlayed.contains(notesToPlay)) {
       System.out.println("You Win");
       GameState.isPianoPlayed = true;
-      gameState.objectiveListManager.setVisibilityKeyRed3(true);
+      gameState.getObjectiveListManager().setVisibilityKeyRed3(true);
       Pane current = (Pane) leavePiano.getParent();
       Scene currentScene = current.getScene();
       currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICAL));

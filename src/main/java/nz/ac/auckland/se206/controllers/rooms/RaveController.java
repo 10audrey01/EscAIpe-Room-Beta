@@ -100,8 +100,8 @@ public class RaveController {
         step3RedKey,
         step4YellowKey);
     // if the largetask this game is rock - add all elements relevant to the task to the manager.
-    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
-      gameState.rockBigTaskManager.addAllRockTaskElements(
+    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
+      gameState.getRockBigTaskManager().addAllRockTaskElements(
           colourLabel1,
           colourLabel2,
           colourLabel3,
@@ -178,7 +178,7 @@ public class RaveController {
   private void onClickRed(MouseEvent event) {
     // removes the lock if the player has completed the piano task
     if (GameState.isPianoPlayed) {
-      gameState.objectiveListManager.setVisibilityKeyRed3(false);
+      gameState.getObjectiveListManager().setVisibilityKeyRed3(false);
       redLock.setVisible(false);
       isRedLockUnlocked = true;
     }
@@ -190,7 +190,7 @@ public class RaveController {
   private void onClickGreen(MouseEvent event) {
     // removes the lock if the player has completed the safe task
     if (GameState.isSafeOpened) {
-      gameState.objectiveListManager.setVisibilityKeyGreen2(false);
+      gameState.getObjectiveListManager().setVisibilityKeyGreen2(false);
       greenLock.setVisible(false);
       isGreenLockUnlocked = true;
     }
@@ -202,7 +202,7 @@ public class RaveController {
   private void onClickBlue(MouseEvent event) {
     // removes the lock if the player has completed the music quiz
     if (GameState.isMusicQuizCompleted) {
-      gameState.objectiveListManager.setVisibilityKeyBlue1(false);
+      gameState.getObjectiveListManager().setVisibilityKeyBlue1(false);
       blueLock.setVisible(false);
       isBlueLockUnlocked = true;
     }
@@ -214,7 +214,7 @@ public class RaveController {
   private void onClickYellow(MouseEvent event) {
     // removes the lock if player has completed the harp event
     if (GameState.isHarpPlayed) {
-      gameState.objectiveListManager.setVisibilityKeyYellow4(false);
+      gameState.getObjectiveListManager().setVisibilityKeyYellow4(false);
       yellowLock.setVisible(false);
       isYellowLockUnlocked = true;
     }
@@ -239,7 +239,7 @@ public class RaveController {
     // sets the game won state to true, changing the scene to the end game scene
     GameState.isEscaped = true;
     App.setRoot("end");
-    gameState.timeManager.stopCountdown();
+    gameState.getTimeManager().stopCountdown();
     System.out.println("opened door clicked");
   }
 
@@ -290,27 +290,27 @@ public class RaveController {
     if (event.getCode() == KeyCode.ENTER && chatOpened) {
       System.out.println("Message Sent");
       gameState = GameState.getInstance();
-      gameState.chatManager.onSendMessage(textField);
+      gameState.getChatManager().onSendMessage(textField);
     }
   }
 
   // function for toggling note visibility
   @FXML
   private void onClickNote1() {
-    gameState.rockBigTaskManager.setVisibilityNotePanes(true);
-    gameState.rockBigTaskManager.setVisibilityArrows(false);
+    gameState.getRockBigTaskManager().setVisibilityNotePanes(true);
+    gameState.getRockBigTaskManager().setVisibilityArrows(false);
   }
 
   // helper function to check for if the riddle object selected is the clicked on object
   public void isRiddleObject(String object) {
-    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
+    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
       if (riddleObject.equals(object)) { // } && GameState.isRiddleResolved) {
         // if the object is the correct one, set relevant labels to notify the user
         GameState.isRiddleObjectFound = true;
-        gameState.rockBigTaskManager.setLabelColours();
-        gameState.rockBigTaskManager.setOrderColourMap();
-        gameState.rockBigTaskManager.setVisibilityNoteImages(true);
-        gameState.rockBigTaskManager.setVisibilityArrows(true);
+        gameState.getRockBigTaskManager().setLabelColours();
+        gameState.getRockBigTaskManager().setOrderColourMap();
+        gameState.getRockBigTaskManager().setVisibilityNoteImages(true);
+        gameState.getRockBigTaskManager().setVisibilityArrows(true);
       }
     }
   }

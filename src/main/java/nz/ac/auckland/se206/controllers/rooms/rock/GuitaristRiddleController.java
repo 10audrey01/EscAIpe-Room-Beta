@@ -37,8 +37,8 @@ public class GuitaristRiddleController {
   @FXML
   private void initialize() throws IOException, ApiProxyException {
     this.gameState = GameState.getInstance();
-    gameState.timeManager.addToTimers(timerLabel);
-    gameState.hintManager.addHintLabel(hintLabel);
+    gameState.getTimeManager().addToTimers(timerLabel);
+    gameState.getHintManager().addHintLabel(hintLabel);
     generateInitialMessage();
   }
 
@@ -139,7 +139,7 @@ public class GuitaristRiddleController {
                 || message
                     .toLowerCase()
                     .contains("clue")) { // if the user asks for a hint or similar
-              if (gameState.hintManager.getHintsRemaining() > 0) {
+              if (gameState.getHintManager().getHintsRemaining() > 0) {
                 response = runGpt(msg);
               } else {
                 runGpt(new ChatMessage("user", GptPromptEngineering.getGmNoHint()));
@@ -156,11 +156,11 @@ public class GuitaristRiddleController {
 
             if (response.getRole().equals("assistant")) {
               if (response.getContent().startsWith("Here's a hint")) {
-                gameState.hintManager.useHint();
+                gameState.getHintManager().useHint();
               }
               if (response.getContent().startsWith("Correct")) {
                 GameState.isRiddleResolved = true;
-                gameState.objectiveListManager.completeObjective3();
+                gameState.getObjectiveListManager().completeObjective3();
               }
             }
             return null;
