@@ -81,8 +81,10 @@ public class TimeManager {
 
   // function that updates all the timer labels for displaying time
   private void updateTime() {
+    // get the time in minutes / seconds
     int minutes = time / 60;
     int seconds = time % 60;
+    // update all the timer labels in the UI to have the correct time
     Platform.runLater(
         () -> {
           for (Label label : timers) {

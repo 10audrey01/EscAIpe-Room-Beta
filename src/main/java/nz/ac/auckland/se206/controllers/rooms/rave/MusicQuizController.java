@@ -357,11 +357,13 @@ public class MusicQuizController {
   @FXML
   private void onClickHint() {
     System.out.println("hint");
+    // check if the player has hints available
     if (this.gameState.getHintManager().getHintsRemaining() > 0) {
       this.gameState.getHintManager().useHint();
+      // delete a wrong option upon using a hint
       deleteWrongOption();
     } else {
-      speechBox.setText("Sorry bro, I don't have any hints for you man.");
+      speechBox.setText("Sorry bro, I don't have any more hints for you.");
     }
   }
 

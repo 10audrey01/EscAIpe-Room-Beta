@@ -60,15 +60,18 @@ public class TrumpetController {
     setBeamNotes();
   }
 
+  // helper function to generate the note sequence for the task
   private void generateNoteSequence() {
     int numberToAdd;
     noteSequence = new ArrayList<Integer>();
+    // randomly select 5 unique notes to add to sequence
     for (int i = 0; i < 5; i++) {
       numberToAdd =
           (int) (Math.random() * 2)
               + 10 * (int) (Math.random() * 2)
               + 100 * (int) (Math.random() * 2);
       while (noteSequence.contains(numberToAdd)) {
+        // ensure notes are unique
         numberToAdd =
             (int) (Math.random() * 2)
                 + 10 * (int) (Math.random() * 2)
@@ -79,10 +82,13 @@ public class TrumpetController {
   }
 
   private void setSymbols() throws IOException {
+    // Load images for the musical notes (on and off)
     Image onNoteImage =
         new Image(App.class.getResource("/images/classicalRoom/Note.png").openStream());
     Image offNoteImage =
         new Image(App.class.getResource("/images/classicalRoom/RestNote.png").openStream());
+
+    // Check the value of each noteToPlay digit and update the corresponding note symbol
     if (noteToPlay / 100 == 1) {
       Platform.runLater(
           () -> {
@@ -120,6 +126,7 @@ public class TrumpetController {
 
   @FXML
   private void onClickedTrumpetButton1(MouseEvent event) throws IOException {
+    // Toggle the state of trumpet button 1 (down/up)
     if (!isButton1Down) {
       ImageView current = (ImageView) event.getSource();
       Image currentImage =
@@ -149,6 +156,7 @@ public class TrumpetController {
 
   @FXML
   private void onClickedTrumpetButton2(MouseEvent event) throws IOException {
+    // Toggle the state of trumpet button 2 (down/up)
     if (!isButton2Down) {
       ImageView current = (ImageView) event.getSource();
       Image currentImage =
@@ -178,6 +186,7 @@ public class TrumpetController {
 
   @FXML
   private void onClickedTrumpetButton3(MouseEvent event) throws IOException {
+    // Toggle the state of trumpet button 3 (down/up)
     if (!isButton3Down) {
       ImageView current = (ImageView) event.getSource();
       Image currentImage =
@@ -205,6 +214,7 @@ public class TrumpetController {
     }
   }
 
+  // check if the note is the correct note, returning a boolean depending on the current game
   private boolean checkNote1() {
     if (noteToPlay / 100 == 1) {
       if (isButton1Down) {
@@ -218,6 +228,7 @@ public class TrumpetController {
     return false;
   }
 
+  // check if the note is the correct note, returning a boolean depending on the current game
   private boolean checkNote2() {
     if (noteToPlay / 10 % 10 == 1) {
       if (isButton2Down) {
@@ -231,6 +242,7 @@ public class TrumpetController {
     return false;
   }
 
+  // check if the note is the correct note, returning a boolean depending on the current game
   private boolean checkNote3() {
     if (noteToPlay % 10 == 1) {
       if (isButton3Down) {

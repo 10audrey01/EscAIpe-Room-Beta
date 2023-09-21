@@ -175,6 +175,8 @@ public class GameState {
   }
 
   // method for adding all objective list labels
+  // adds all the respective labels needed for the objective list UI to the gamestate, allowing for
+  // them all to be updated at once for every room.
   public void addObjectiveListLabels(
       Label step1Label,
       Label step2Label,
@@ -184,10 +186,12 @@ public class GameState {
       ImageView step2GreenKey,
       ImageView step3RedKey,
       ImageView step4YellowKey) {
+    // add all the task labels
     instance.objectiveListManager.addObjectiveLabel1(step1Label);
     instance.objectiveListManager.addObjectiveLabel2(step2Label);
     instance.objectiveListManager.addObjectiveLabel3(step3Label);
     instance.objectiveListManager.addObjectiveLabel4(step4Label);
+    // add all the key images
     instance.objectiveListManager.addStep1Key(step1BlueKey);
     instance.objectiveListManager.addStep2Key(step2GreenKey);
     instance.objectiveListManager.addStep3Key(step3RedKey);

@@ -73,12 +73,15 @@ public class GuitaristRiddleController {
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
+            // task which creates a completion request from gpt for the initial message
+            // create a new completion request with respective prompt values
             chatCompletionRequest =
                 new ChatCompletionRequest()
                     .setN(1)
                     .setTemperature(0.2)
                     .setTopP(0.5)
                     .setMaxTokens(100);
+            // run gpt with the desired prompt for a riddle with the desired object
             runGpt(
                 new ChatMessage(
                     "user",
@@ -87,11 +90,12 @@ public class GuitaristRiddleController {
           }
         };
 
-    System.out.println("Generating initial message");
+    // run thread for concurrency
     Thread initializeRiddleThread = new Thread(initializeRiddleTask, "initializeRiddleThread");
     initializeRiddleThread.start();
   }
 
+  // clears the text field of the chat.
   public void clearTextField() {
     Platform.runLater(
         () -> {
