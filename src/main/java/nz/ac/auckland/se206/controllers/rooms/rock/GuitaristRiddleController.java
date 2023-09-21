@@ -38,8 +38,8 @@ public class GuitaristRiddleController {
   private void initialize() throws IOException, ApiProxyException {
     // gets the gamestate instance, adding the labels for hints/timers to the gamestate
     this.gameState = GameState.getInstance();
-    gameState.timeManager.addToTimers(timerLabel);
-    gameState.hintManager.addHintLabel(hintLabel);
+    gameState.getTimeManager().addToTimers(timerLabel);
+    gameState.getHintManager().addHintLabel(hintLabel);
     generateInitialMessage();
   }
 
@@ -148,7 +148,7 @@ public class GuitaristRiddleController {
                 || message
                     .toLowerCase()
                     .contains("clue")) { // if the user asks for a hint or similar
-              if (gameState.hintManager.getHintsRemaining() > 0) {
+              if (gameState.getHintManager().getHintsRemaining() > 0) {
                 response = runGpt(msg);
               } else {
                 // gpt will tell user they are out of hints
@@ -168,11 +168,12 @@ public class GuitaristRiddleController {
               if (response
                   .getContent()
                   .startsWith("Here's a hint")) { // way to recognise whether response is a hint
-                gameState.hintManager.useHint();
+                gameState.getHintManager().useHint();
               }
               if (response.getContent().startsWith("Correct")) {
                 GameState.isRiddleResolved = true;
-                gameState.objectiveListManager
+                gameState
+                    .getObjectiveListManager()
                     .completeObjective3(); // objective 3 is to talk to guitarist
               }
             }

@@ -171,10 +171,11 @@ public class ChatManager {
             if (message.toLowerCase().contains("help")
                 || message.toLowerCase().contains("hint")
                 || message.toLowerCase().contains("clue")) {
-
-              if (gameState.hintManager.getHintsRemaining() > 0) {
+              // If the user asks for a hint or similar
+              if (gameState.getHintManager().getHintsRemaining() > 0) {
+                // run gpt with the hint prompt
                 System.out.println("hint used");
-                gameState.hintManager.useHint();
+                gameState.getHintManager().useHint();
                 lastMsg = runGpt(new ChatMessage("user", GptPromptEngineering.getGmHint()));
               } else {
                 // gpt will tell user they are out of hints

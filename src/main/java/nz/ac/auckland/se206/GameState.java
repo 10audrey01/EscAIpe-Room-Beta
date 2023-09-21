@@ -85,16 +85,68 @@ public class GameState {
   }
 
   // Managers and controllers to handle game components
-  public TimeManager timeManager;
-  public HintManager hintManager;
-  public TaskManager taskManager;
-  public ChatManager chatManager;
-  public RockBigTaskManager rockBigTaskManager;
-  public RavePuzzle ravePuzzle;
-  public ObjectiveListManager objectiveListManager;
-  public BodybuilderController bodybuilderController;
-  public ClassicalNoteController classicalNote;
-  public RockNoteController rockNote;
+  private TimeManager timeManager;
+  private HintManager hintManager;
+  private TaskManager taskManager;
+  private ChatManager chatManager;
+  private RockBigTaskManager rockBigTaskManager;
+  private RavePuzzle ravePuzzle;
+  private ObjectiveListManager objectiveListManager;
+  private BodybuilderController bodybuilderController;
+  private ClassicalNoteController classicalNote;
+  private RockNoteController rockNote;
+
+  public TimeManager getTimeManager() {
+    return timeManager;
+  }
+
+  public HintManager getHintManager() {
+    return hintManager;
+  }
+
+  public TaskManager getTaskManager() {
+    return taskManager;
+  }
+
+  public ChatManager getChatManager() {
+    return chatManager;
+  }
+
+  public RockBigTaskManager getRockBigTaskManager() {
+    return rockBigTaskManager;
+  }
+
+  public RavePuzzle getRavePuzzle() {
+    return ravePuzzle;
+  }
+
+  public ObjectiveListManager getObjectiveListManager() {
+    return objectiveListManager;
+  }
+
+  public BodybuilderController getBodybuilderController() {
+    return bodybuilderController;
+  }
+
+  public void setBodybuilderController(BodybuilderController bodybuilderController) {
+    this.bodybuilderController = bodybuilderController;
+  }
+
+  public ClassicalNoteController getClassicalNote() {
+    return classicalNote;
+  }
+
+  public void setClassicalNote(ClassicalNoteController classicalNote) {
+    this.classicalNote = classicalNote;
+  }
+
+  public RockNoteController getRockNote() {
+    return rockNote;
+  }
+
+  public void setRockNote(RockNoteController rockNote) {
+    this.rockNote = rockNote;
+  }
 
   // Method to start the game and initialize various components
   public void startGame() throws IOException {

@@ -63,9 +63,9 @@ public class BodybuilderController {
   private void initialize() throws IOException {
     // gets the gamestate instance, adding the labels for hints/timers to the gamestate
     this.gameState = GameState.getInstance();
-    this.gameState.timeManager.addToTimers(timerLabel);
-    this.gameState.hintManager.addHintLabel(hintLabel);
-    this.gameState.bodybuilderController = this;
+    this.gameState.getTimeManager().addToTimers(timerLabel);
+    this.gameState.getHintManager().addHintLabel(hintLabel);
+    this.gameState.setBodybuilderController(this);
     this.speechBox.setText("Hey bro, I need your help... I need to open this safe.");
     //
     resetSafe();
@@ -74,7 +74,7 @@ public class BodybuilderController {
   // initialises the code for the puzzle, getting the solution and updating ui based off the the
   // instance of the puzzle
   public void initialiseCode() throws IOException {
-    RavePuzzle puzzle = gameState.ravePuzzle;
+    RavePuzzle puzzle = gameState.getRavePuzzle();
     this.puzzleInstance = puzzle;
     this.solution = puzzleInstance.getSolution();
     this.puzzleInstance.setImages(firstRoomHint, secondRoomHint);
@@ -162,13 +162,13 @@ public class BodybuilderController {
     hintImage1.setOpacity(1);
     hintImage2.setOpacity(1);
     // decrement hint
-    this.gameState.hintManager.useHint();
+    this.gameState.getHintManager().useHint();
     // if the player doesnt have hints left, notify them through the bodybuilder
-    if (gameState.hintManager.getHintsRemaining() > 0) {
+    if (gameState.getHintManager().getHintsRemaining() > 0) {
       btnHint.setVisible(false);
       hintImage1.setOpacity(1);
       hintImage2.setOpacity(1);
-      this.gameState.hintManager.useHint();
+      this.gameState.getHintManager().useHint();
     } else {
       speechBox.setText("Sorry bro, I don't have any hints for you man.");
     }
@@ -317,7 +317,7 @@ public class BodybuilderController {
       resultText.setText("CORRECT (" + code + ")");
       resultText.setFill(Color.GREEN);
       GameState.isSafeOpened = true;
-      gameState.objectiveListManager.completeObjective2();
+      gameState.getObjectiveListManager().completeObjective2();
       btnHint.setVisible(false);
       return;
     }
