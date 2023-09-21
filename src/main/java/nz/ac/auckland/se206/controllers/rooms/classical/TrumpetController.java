@@ -124,10 +124,12 @@ public class TrumpetController {
     }
   }
 
+  // function for handling when the trumpet button is clicked
   @FXML
   private void onClickedTrumpetButton1(MouseEvent event) throws IOException {
     // Toggle the state of trumpet button 1 (down/up)
     if (!isButton1Down) {
+      // updates the trumpet image to the downview if the button is not down
       ImageView current = (ImageView) event.getSource();
       Image currentImage =
           new Image(
@@ -140,6 +142,7 @@ public class TrumpetController {
           });
       isButton1Down = true;
     } else {
+      // otherwise update the trumper image to the upview as button is down
       ImageView current = (ImageView) event.getSource();
       Image currentImage =
           new Image(
@@ -154,10 +157,12 @@ public class TrumpetController {
     }
   }
 
+  // function for handling when the trumpet button is clicked
   @FXML
   private void onClickedTrumpetButton2(MouseEvent event) throws IOException {
     // Toggle the state of trumpet button 2 (down/up)
     if (!isButton2Down) {
+      // updates the trumpet image to the downview if the button is not down
       ImageView current = (ImageView) event.getSource();
       Image currentImage =
           new Image(
@@ -165,11 +170,13 @@ public class TrumpetController {
                   .getResource("/images/classicalRoom/Trumpet/TrumpetButton2Down.png")
                   .openStream());
       Platform.runLater(
+          // update the gui
           () -> {
             current.setImage(currentImage);
           });
       isButton2Down = true;
     } else {
+      // otherwise update the trumper image to the upview as button is down
       ImageView current = (ImageView) event.getSource();
       Image currentImage =
           new Image(
@@ -177,6 +184,7 @@ public class TrumpetController {
                   .getResource("/images/classicalRoom/Trumpet/TrumpetButton2Up.png")
                   .openStream());
       Platform.runLater(
+          // update the gui
           () -> {
             current.setImage(currentImage);
           });
@@ -184,10 +192,12 @@ public class TrumpetController {
     }
   }
 
+  // function for handling when the trumpet button is clicked
   @FXML
   private void onClickedTrumpetButton3(MouseEvent event) throws IOException {
     // Toggle the state of trumpet button 3 (down/up)
     if (!isButton3Down) {
+      // updates the trumpet image to the downview if the button is not down
       ImageView current = (ImageView) event.getSource();
       Image currentImage =
           new Image(
@@ -195,11 +205,13 @@ public class TrumpetController {
                   .getResource("/images/classicalRoom/Trumpet/TrumpetButton3Down.png")
                   .openStream());
       Platform.runLater(
+          // update the gui
           () -> {
             current.setImage(currentImage);
           });
       isButton3Down = true;
     } else {
+      // otherwise update the trumper image to the upview as button is down
       ImageView current = (ImageView) event.getSource();
       Image currentImage =
           new Image(
@@ -207,6 +219,7 @@ public class TrumpetController {
                   .getResource("/images/classicalRoom/Trumpet/TrumpetButton3Up.png")
                   .openStream());
       Platform.runLater(
+          // update the gui
           () -> {
             current.setImage(currentImage);
           });
@@ -256,13 +269,16 @@ public class TrumpetController {
     return false;
   }
 
+  // function for handling if the play trumpet is clicked
   @FXML
   public void onClickedPlayTrumpet(MouseEvent event) {
     System.out.println("Play Trumpet Clicked");
+    // check if the notes have been played correctly
     if (checkNote1() && checkNote2() && checkNote3()) {
       System.out.println("Correct note played");
       correctNotePlayed();
     } else {
+      // otherwise handle the player not inputting the correct note
       System.out.println("Incorrect note played");
       incorrectNotePlayed();
     }
@@ -289,8 +305,10 @@ public class TrumpetController {
     System.out.println(noteToPlay);
   }
 
+  // helper function for setting the beam notes to show
   private void setBeamNotes() {
     for (int i = 0; i < beamNotes.size(); i++) {
+      // update the respective views of the beams based on the current indices
       if (currentNoteIndex > i) {
         beamNotes.get(i).setOpacity(1);
         System.out.println("Show");

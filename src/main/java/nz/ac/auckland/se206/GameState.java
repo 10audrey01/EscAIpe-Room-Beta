@@ -71,7 +71,8 @@ public class GameState {
     GameState.instance = instance;
   }
 
-  // Reset various game variables
+  // Reset various game variables to the initial state
+  // Resetting all the tasks to incompleted for the current game
   public static void resetVariables() {
     isRiddleResolved = false;
     isRiddleObjectFound = false;
