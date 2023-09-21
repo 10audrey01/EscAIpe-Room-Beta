@@ -143,7 +143,7 @@ public class StartController {
     // switches the current scene to the rock room
     Button current = (Button) event.getSource();
     Scene currentScene = current.getScene();
-    currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
+    currentScene.setRoot(SceneManager.getUiRoot(AppUi.RAVE));
     System.out.println(
         "Started with difficulty: "
             + GameState.difficulty
