@@ -102,7 +102,11 @@ public class GuitaristRiddleController {
    * @param msg the chat message to append
    */
   private void appendChatMessage(ChatMessage msg) {
-    textArea.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
+    if (msg.getRole().equals("user")) {
+      textArea.appendText("You: " + msg.getContent() + "\n\n");
+    } else if (msg.getRole().equals("assistant")) {
+      textArea.appendText("Guitarist: " + msg.getContent() + "\n\n");
+    }
   }
 
   @FXML

@@ -107,7 +107,11 @@ public class ChatManager {
 
   // Add a user or AI chat message to the display
   public void addMessage(ChatMessage msg) {
-    messages = msg.getRole() + ": " + msg.getContent() + "\n\n";
+    if (msg.getRole().equals("assistant")) {
+      messages = "Game Master: " + msg.getContent() + "\n\n";
+    } else {
+      messages = "You: " + msg.getContent() + "\n\n";
+    }
     Platform.runLater(
         () -> {
           for (TextArea textArea : TextAreas) {

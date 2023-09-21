@@ -114,7 +114,7 @@ public class RaveController {
           noteSequenceLabel,
           pointingArrowGif);
     }
-    chatOpened = false;
+    chatOpened = true;
 
     // create an array list of objects in the room
     objects = new ArrayList<String>();
