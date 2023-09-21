@@ -360,6 +360,8 @@ public class MusicQuizController {
     if (this.gamestate.hintManager.getHintsRemaining() > 0) {
       this.gamestate.hintManager.useHint();
       deleteWrongOption();
+    } else {
+      speechBox.setText("Sorry bro, I don't have any hints for you man.");
     }
   }
 

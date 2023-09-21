@@ -163,6 +163,15 @@ public class BodybuilderController {
     hintImage2.setOpacity(1);
     // decrement hint
     this.gamestate.hintManager.useHint();
+    //if the player doesnt have hints left, notify them through the bodybuilder
+    if (gamestate.hintManager.getHintsRemaining() > 0) {
+      btnHint.setVisible(false);
+      hintImage1.setOpacity(1);
+      hintImage2.setOpacity(1);
+      this.gamestate.hintManager.useHint();
+    } else {
+      speechBox.setText("Sorry bro, I don't have any hints for you man.");
+    }
   }
 
   // Handles the event where any number is pressed.
