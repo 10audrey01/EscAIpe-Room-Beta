@@ -89,11 +89,7 @@ public class RaveController {
   private void initialize() {
     // add the gamestate instance and relevant components to the gamestate/managers
     gameState = GameState.getInstance();
-    gameState.timeManager.addToTimers(timerLabel);
-    gameState.hintManager.addHintLabel(hintLabel);
-    gameState.chatManager.addTextArea(textArea);
-    gameState.chatManager.addTextField(textField);
-    gameState.chatManager.addSprite(gmSprite);
+    gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite);
     // add objectives / steps labels to the objective list manager
     gameState.objectiveListManager.addObjectiveLabel1(step1Label);
     gameState.objectiveListManager.addObjectiveLabel2(step2Label);

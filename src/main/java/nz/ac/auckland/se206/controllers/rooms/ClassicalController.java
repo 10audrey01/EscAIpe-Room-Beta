@@ -84,11 +84,7 @@ public class ClassicalController {
   private void initialize() {
     // add all relevant labels to gamestate instance
     gameState = GameState.getInstance();
-    gameState.timeManager.addToTimers(timerLabel);
-    gameState.hintManager.addHintLabel(hintLabel);
-    gameState.chatManager.addTextArea(textArea);
-    gameState.chatManager.addTextField(textField);
-    gameState.chatManager.addSprite(gmSprite);
+    gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite);
 
     // add objective labels and steps to the objective list manager
     gameState.objectiveListManager.addObjectiveLabel1(step1Label);

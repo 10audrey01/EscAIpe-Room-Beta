@@ -1,6 +1,10 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import nz.ac.auckland.se206.controllers.rooms.notes.ClassicalNoteController;
 import nz.ac.auckland.se206.controllers.rooms.notes.RockNoteController;
 import nz.ac.auckland.se206.controllers.rooms.rave.BodybuilderController;
@@ -100,5 +104,19 @@ public class GameState {
     this.hintManager.initialiseManager(difficulty); // Initialize hint manager based on difficulty
     this.ravePuzzle.setHints(classicalNote, rockNote); // Set hints for the Rave puzzle
     this.bodybuilderController.initialiseCode(); // Initialize code for the Bodybuilder puzzle
+  }
+
+  // method for adding all initial labels needed for each room
+  public void addInitialLabels(
+      Label timerLabel,
+      Label hintLabel,
+      TextArea textArea,
+      TextField textField,
+      ImageView gmSprite) {
+    instance.timeManager.addToTimers(timerLabel);
+    instance.hintManager.addHintLabel(hintLabel);
+    instance.chatManager.addTextArea(textArea);
+    instance.chatManager.addTextField(textField);
+    instance.chatManager.addSprite(gmSprite);
   }
 }

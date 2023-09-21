@@ -81,11 +81,7 @@ public class RockController {
   private void initialize() throws ApiProxyException {
     // intialising game state and adding relevant labels
     gameState = GameState.getInstance();
-    gameState.timeManager.addToTimers(timerLabel);
-    gameState.hintManager.addHintLabel(hintLabel);
-    gameState.chatManager.addTextArea(textArea);
-    gameState.chatManager.addTextField(textField);
-    gameState.chatManager.addSprite(gmSprite);
+    gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite);
     gameState.chatManager.generateInitialMessage();
     // adding labels for objective list to the objective list manager
     gameState.objectiveListManager.addObjectiveLabel1(step1Label);
