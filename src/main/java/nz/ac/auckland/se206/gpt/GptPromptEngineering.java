@@ -62,4 +62,8 @@ public class GptPromptEngineering {
           + " 'Here's a hint: '";
     }
   }
+
+  public static String getGmNoHint() {
+    return "Tell the player that it looks like they have no hints";
+  }
 }

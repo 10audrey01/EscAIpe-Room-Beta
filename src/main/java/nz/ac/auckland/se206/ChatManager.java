@@ -125,7 +125,6 @@ public class ChatManager {
             clearAllTextFields();
             ChatMessage msg = new ChatMessage("user", message);
             addMessage(msg);
-            // ChatMessage response = runGpt(msg);
 
             chatCompletionRequest =
                 new ChatCompletionRequest()
@@ -138,10 +137,14 @@ public class ChatManager {
                 || message.toLowerCase().contains("hint")
                 || message
                     .toLowerCase()
-                    .contains("clue")) { // (response.getContent().startsWith("Here's a hint")) {
-              System.out.println("hint used");
-              gameState.hintManager.useHint();
-              runGpt(new ChatMessage("user", GptPromptEngineering.getGmHint()));
+                    .contains("clue")) { // if the user asks for a hint or similar
+              if (gameState.hintManager.getHintsRemaining() > 0) {
+                System.out.println("hint used");
+                gameState.hintManager.useHint();
+                runGpt(new ChatMessage("user", GptPromptEngineering.getGmHint()));
+              } else {
+                runGpt(new ChatMessage("user", GptPromptEngineering.getGmNoHint()));
+              }
             } else {
               runGpt(msg);
             }
