@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -51,9 +50,9 @@ public class ClassicalController {
   @FXML private Label step4Label;
   @FXML private TextArea textArea;
   @FXML private TextField textField;
-  @FXML private ToggleButton toggleNoteBtn;
   @FXML private ImageView pointingArrowGif;
   @FXML private ImageView noteImage;
+  @FXML private ImageView noteImage1;
   @FXML private ImageView step1BlueKey;
   @FXML private ImageView step2GreenKey;
   @FXML private ImageView step3RedKey;
@@ -108,7 +107,7 @@ public class ClassicalController {
           colourLabel3,
           colourLabel4,
           notePane,
-          toggleNoteBtn,
+          noteImage1,
           noteSequenceLabel,
           pointingArrowGif);
     }
@@ -257,7 +256,7 @@ public class ClassicalController {
 
   // function for handling the note toggling event
   @FXML
-  private void onToggleNote() {
+  private void onClickNote1() {
     gameState.rockBigTaskManager.setVisibilityNotePanes(true);
     gameState.rockBigTaskManager.setVisibilityArrows(false);
   }

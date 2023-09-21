@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -67,9 +66,9 @@ public class RaveController {
   @FXML private ImageView step3RedKey;
   @FXML private ImageView step4YellowKey;
   @FXML private ImageView openedDoor;
+  @FXML private ImageView noteImage1;
   @FXML private TextArea textArea;
   @FXML private TextField textField;
-  @FXML private ToggleButton toggleNoteBtn;
   @FXML private ImageView pointingArrowGif;
   @FXML private boolean chatOpened;
   @FXML private Circle circle3, circle4, circle5;
@@ -111,7 +110,7 @@ public class RaveController {
           colourLabel3,
           colourLabel4,
           notePane,
-          toggleNoteBtn,
+          noteImage1,
           noteSequenceLabel,
           pointingArrowGif);
     }
@@ -300,7 +299,7 @@ public class RaveController {
 
   // function for toggling note visibility
   @FXML
-  private void onToggleNote() {
+  private void onClickNote1() {
     gameState.rockBigTaskManager.setVisibilityNotePanes(true);
     gameState.rockBigTaskManager.setVisibilityArrows(false);
   }
@@ -313,8 +312,7 @@ public class RaveController {
         GameState.isRiddleObjectFound = true;
         gameState.rockBigTaskManager.setLabelColours();
         gameState.rockBigTaskManager.setOrderColourMap();
-        gameState.rockBigTaskManager.setDisableNoteButtons(false);
-        gameState.rockBigTaskManager.setVisibilityNoteButtons(true);
+        gameState.rockBigTaskManager.setVisibilityNoteImages(true);
         gameState.rockBigTaskManager.setVisibilityArrows(true);
       }
     }

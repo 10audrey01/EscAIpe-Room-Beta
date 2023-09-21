@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
@@ -33,7 +32,7 @@ public class RockBigTaskManager {
   private ArrayList<Label> colourLabels3;
   private ArrayList<Label> colourLabels4;
   private ArrayList<Pane> notePanes;
-  private ArrayList<ToggleButton> noteButtons;
+  private ArrayList<ImageView> noteImages;
   private ArrayList<Label> noteSequenceLabels;
   private ArrayList<ImageView> arrows;
   private ArrayList<Colour> colours; // List of available colors
@@ -49,7 +48,7 @@ public class RockBigTaskManager {
     this.colourLabels3 = new ArrayList<Label>();
     this.colourLabels4 = new ArrayList<Label>();
     this.notePanes = new ArrayList<Pane>();
-    this.noteButtons = new ArrayList<ToggleButton>();
+    this.noteImages = new ArrayList<ImageView>();
     this.noteSequenceLabels = new ArrayList<Label>();
     this.arrows = new ArrayList<ImageView>();
     this.colours = new ArrayList<Colour>();
@@ -83,7 +82,7 @@ public class RockBigTaskManager {
       Label label3,
       Label label4,
       Pane pane,
-      ToggleButton button,
+      ImageView noteImage,
       Label noteSequenceLabel,
       ImageView arrow) {
     addToColourLabels1(label1);
@@ -91,7 +90,7 @@ public class RockBigTaskManager {
     addToColourLabels3(label3);
     addToColourLabels4(label4);
     addToNotePanes(pane);
-    addToNoteButtons(button);
+    addToNoteImage(noteImage);
     addToNoteSequenceLabels(noteSequenceLabel);
     addToArrows(arrow);
   }
@@ -122,8 +121,8 @@ public class RockBigTaskManager {
   }
 
   // adds a button to the note buttons
-  public void addToNoteButtons(ToggleButton button) {
-    noteButtons.add(button);
+  public void addToNoteImage(ImageView note) {
+    noteImages.add(note);
   }
 
   // adds a label to the sequence labels
@@ -148,21 +147,15 @@ public class RockBigTaskManager {
     }
   }
 
-  public void setVisibilityNoteButtons(boolean visibility) {
-    for (ToggleButton button : noteButtons) {
-      button.setVisible(visibility);
+  public void setVisibilityNoteImages(boolean visibility) {
+    for (ImageView note : noteImages) {
+      note.setVisible(visibility);
     }
   }
 
   public void setVisibilityArrows(boolean visibility) {
     for (ImageView arrow : arrows) {
       arrow.setVisible(visibility);
-    }
-  }
-
-  public void setDisableNoteButtons(boolean disable) {
-    for (ToggleButton button : noteButtons) {
-      button.setDisable(disable);
     }
   }
 
