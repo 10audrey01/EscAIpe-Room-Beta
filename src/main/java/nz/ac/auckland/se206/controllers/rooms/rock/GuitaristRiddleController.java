@@ -124,6 +124,12 @@ public class GuitaristRiddleController {
             ChatMessage msg = new ChatMessage("user", message);
             appendChatMessage(msg);
 
+            Platform.runLater(
+                () -> {
+                  textField.setText("Loading . . .");
+                  textField.setEditable(false);
+                });
+
             if (message.toLowerCase().contains("help")
                 || message.toLowerCase().contains("hint")
                 || message
@@ -137,6 +143,12 @@ public class GuitaristRiddleController {
             } else {
               response = runGpt(msg);
             }
+
+            Platform.runLater(
+                () -> {
+                  textField.setText("");
+                  textField.setEditable(true);
+                });
 
             if (response.getRole().equals("assistant")) {
               if (response.getContent().startsWith("Here's a hint")) {
