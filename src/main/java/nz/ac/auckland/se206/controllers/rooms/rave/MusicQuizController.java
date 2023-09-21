@@ -7,6 +7,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -49,12 +53,18 @@ public class MusicQuizController {
   private int correctGenreIndex;
   private MediaPlayer musicPlayer;
   private List<String> selectedGenres = new ArrayList<>();
+  private int timeToAnswer;
+  private Timer timer;
+  private Thread timerThread;
+  private boolean timerStarted;
 
   @FXML
   private void initialize() throws IOException, URISyntaxException, ApiProxyException {
     this.gamestate = GameState.getInstance();
     this.gamestate.timeManager.addToTimers(timerLabel);
     this.gamestate.hintManager.addHintLabel(hintLabel);
+    this.timeToAnswer = 0;
+    this.timerStarted = false;
     this.speechBox.setText("Hey man, I need your help identifying this music...");
     Random random = new Random();
     int randomNumber = random.nextInt(8);
@@ -119,6 +129,11 @@ public class MusicQuizController {
   }
 
   private void setButtonCooldowns() {
+    disableAllButtons();
+    startCooldownTimer();
+  }
+
+  private void disableAllButtons() {
     optionOneBtn.setDisable(true);
     optionTwoBtn.setDisable(true);
     optionThreeBtn.setDisable(true);
@@ -127,8 +142,74 @@ public class MusicQuizController {
     optionSixBtn.setDisable(true);
   }
 
+  private void startCooldownTimer() {
+    // will not start the countdown if it has already started.
+    if (this.timerStarted) {
+      return;
+    }
+
+    timer = new Timer();
+    this.timerStarted = true;
+    this.timeToAnswer = 20;
+
+    // task for the update of the timer, decrements timer every second and updates GUI, aswell as
+    // validating for any events that may have to be run.
+    Task<Void> timerTask =
+        new Task<Void>() {
+
+          @Override
+          // A task for the continuous decrementing of the timer, and updates all timer
+          // value indicators for the GUI.
+          protected Void call() throws Exception {
+            timer.scheduleAtFixedRate(
+                new TimerTask() {
+                  @Override
+                  public void run() {
+                    if (timeToAnswer > 0) {
+                      timeToAnswer--;
+                      Platform.runLater(
+                          () -> {
+                            cooldownLabel.setText(
+                                "You can answer again in " + timeToAnswer + " seconds!");
+                          });
+                    } else {
+                      stopCountdown();
+                      Platform.runLater(
+                          () -> {
+                            cooldownLabel.setText("You can attempt to answer again!");
+                          });
+                    }
+                  }
+                },
+                1000,
+                1000);
+            return null;
+          }
+        };
+
+    Thread timerThread = new Thread(timerTask, "TimerThread");
+    timerThread.start();
+  }
+
+  public void stopCountdown() {
+    if (timer != null) {
+      timer.cancel();
+    }
+
+    if (timerThread != null) {
+      timerThread.interrupt();
+    }
+
+    this.timerStarted = false;
+    optionOneBtn.setDisable(false);
+    optionTwoBtn.setDisable(false);
+    optionThreeBtn.setDisable(false);
+    optionFourBtn.setDisable(false);
+    optionFiveBtn.setDisable(false);
+    optionSixBtn.setDisable(false);
+  }
+
   private void attemptSolve(int index) {
-    setButtonCooldowns();
 
     if (correctGenreIndex == index) {
       hintBtn.setVisible(false);
@@ -136,13 +217,16 @@ public class MusicQuizController {
       speechBox.setText("Nice work bro. You can take this key if you want, I guess");
       gamestate.objectiveListManager.completeObjective1();
       answerLabel.setText("CORRECT");
-      answerLabel.setTextFill(Color.RED);
+      answerLabel.setTextFill(Color.GREEN);
+      cooldownLabel.setVisible(false);
+      disableAllButtons();
       return;
     }
 
     if (correctGenreIndex != index) {
       answerLabel.setText("INCORRECT");
       answerLabel.setTextFill(Color.RED);
+      setButtonCooldowns();
     }
   }
 
