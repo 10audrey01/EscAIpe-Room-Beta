@@ -25,8 +25,6 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.GameState.Difficulty;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.gpt.ChatMessage;
-import nz.ac.auckland.se206.gpt.GptPromptEngineering;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
 public class MusicQuizController {
@@ -57,6 +55,7 @@ public class MusicQuizController {
   private Timer timer;
   private Thread timerThread;
   private boolean timerStarted;
+  private ArrayList<Integer> availableWrongButtons;
 
   @FXML
   private void initialize() throws IOException, URISyntaxException, ApiProxyException {
@@ -65,6 +64,7 @@ public class MusicQuizController {
     this.gamestate.hintManager.addHintLabel(hintLabel);
     this.timeToAnswer = 0;
     this.timerStarted = false;
+    this.availableWrongButtons = new ArrayList<Integer>();
     this.speechBox.setText("Hey man, I need your help identifying this music...");
     Random random = new Random();
     int randomNumber = random.nextInt(8);
@@ -111,6 +111,12 @@ public class MusicQuizController {
       String genre = selectedGenres.get(i);
       Button button = optionButtons.get(i);
       button.setText((i + 1) + ". " + genre);
+    }
+
+    for (int i = 1; i <= 6; i++) {
+      if (i != correctGenreIndex) {
+        availableWrongButtons.add(i);
+      }
     }
 
     System.out.println("Correct genre index: " + correctGenreIndex);
@@ -214,7 +220,7 @@ public class MusicQuizController {
     if (correctGenreIndex == index) {
       hintBtn.setVisible(false);
       GameState.isMusicQuizCompleted = true;
-      speechBox.setText("Nice work bro. You can take this key if you want, I guess");
+      speechBox.setText("Nice work bro. For you, I got this key for you man.");
       gamestate.objectiveListManager.completeObjective1();
       answerLabel.setText("CORRECT");
       answerLabel.setTextFill(Color.GREEN);
@@ -266,15 +272,48 @@ public class MusicQuizController {
     attemptSolve(6);
   }
 
+  private void deleteWrongOption() {
+    Collections.shuffle(availableWrongButtons);
+    int firstToRemove = availableWrongButtons.remove(0);
+    int secondToRemove = availableWrongButtons.remove(0);
+    hideIncorrectButton(firstToRemove);
+    hideIncorrectButton(secondToRemove);
+    if (availableWrongButtons.size() <= 2) {
+      hintBtn.setVisible(false);
+    }
+  }
+
+  private void hideIncorrectButton(int number) {
+    switch (number) {
+      case 0:
+        optionOneBtn.setVisible(false);
+        break;
+      case 1:
+        optionTwoBtn.setVisible(false);
+        break;
+      case 2:
+        optionThreeBtn.setVisible(false);
+        break;
+      case 3:
+        optionFourBtn.setVisible(false);
+        break;
+      case 4:
+        optionFiveBtn.setVisible(false);
+        break;
+      case 5:
+        optionSixBtn.setVisible(false);
+        break;
+      default:
+        break;
+    }
+  }
+
   @FXML
   private void onClickHint() {
     System.out.println("hint");
     if (this.gamestate.hintManager.getHintsRemaining() > 0) {
       this.gamestate.hintManager.useHint();
-      this.gamestate.chatManager.getMusicQuizHint(
-          new ChatMessage("user", GptPromptEngineering.getHintWithMusic(genreSolution)),
-          hintBtn,
-          speechBox);
+      deleteWrongOption();
     }
   }
 
