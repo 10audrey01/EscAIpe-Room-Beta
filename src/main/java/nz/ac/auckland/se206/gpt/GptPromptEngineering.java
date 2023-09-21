@@ -31,7 +31,7 @@ public class GptPromptEngineering {
     return "You are the friendly Game Master that must help the player escape the musically themed"
         + " rooms. Introduce yourself and tell the player that you will be helping them."
         + " Tell the player to click on you to open/close the chat. Your response should be"
-        + " at most 3 lines";
+        + " at most 2 lines";
   }
 
   public static String getGmInteraction(String msg) {
@@ -45,24 +45,24 @@ public class GptPromptEngineering {
   public static String getGmHint() {
     if (!GameState.isRiddleResolved) {
       return "Tell the player that maybe the guitarist can help them. Your response should be at"
-          + " most 3 lines. Start your answer with 'Here's a hint: '";
+          + " most 2 lines. Start your answer with 'Here's a hint: '";
     } else if (!GameState.isRiddleObjectFound) {
       return "Tell the player that they should find the riddle object. Your response should be at"
-          + " most 3 lines. Start your answer with 'Here's a hint: '";
+          + " most 2 lines. Start your answer with 'Here's a hint: '";
     } else if (!GameState.isNoteSequenceFound) {
       return "Tell the player that the colours on the note might relate to some objects in a room."
-          + " Your response should be at most 3 lines. Start your answer with 'Here's a"
+          + " Your response should be at most 2 lines. Start your answer with 'Here's a"
           + " hint: '";
     } else if (!GameState.isPianoPlayed) {
       return "Tell the player that the note sequence they found could be played on an instrument."
-          + " Your response should be at most 3 lines. Start your answer with 'Here's a"
+          + " Your response should be at most 2 lines. Start your answer with 'Here's a"
           + " hint: '";
     } else if (!GameState.isHarpPlayed) {
       return "Tell the player that they should look for hidden circles in each room. Your response"
-          + " should be at most 3 lines. Start your answer with 'Here's a hint: '";
+          + " should be at most 2 lines. Start your answer with 'Here's a hint: '";
     } else { // if all the objectives are completed
       return "Tell the player that they should unlock the door and escape. Your response should be"
-          + " at most 3 lines. Start your answer with 'Here's a hint: '";
+          + " at most 2 lines. Start your answer with 'Here's a hint: '";
     }
   }
 

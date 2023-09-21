@@ -95,18 +95,16 @@ public class RockController {
     gameState.objectiveListManager.addStep2Key(step2GreenKey);
     gameState.objectiveListManager.addStep3Key(step3RedKey);
     gameState.objectiveListManager.addStep4Key(step4YellowKey);
-    // if the task is the rock room task, add the relevant fields to the task manager
-    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
-      gameState.rockBigTaskManager.addAllRockTaskElements(
-          colourLabel1,
-          colourLabel2,
-          colourLabel3,
-          colourLabel4,
-          notePane,
-          noteImage1,
-          noteSequenceLabel,
-          pointingArrowGif);
-    }
+    // add elements needed for the rock room task
+    gameState.rockBigTaskManager.addAllRockTaskElements(
+        colourLabel1,
+        colourLabel2,
+        colourLabel3,
+        colourLabel4,
+        notePane,
+        noteImage1,
+        noteSequenceLabel,
+        pointingArrowGif);
 
     // create an array list of the notes
     audioNames = new ArrayList<String>();

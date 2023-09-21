@@ -20,7 +20,6 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.TaskManager.LargeTask;
 import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
@@ -102,18 +101,16 @@ public class RaveController {
     gameState.objectiveListManager.addStep2Key(step2GreenKey);
     gameState.objectiveListManager.addStep3Key(step3RedKey);
     gameState.objectiveListManager.addStep4Key(step4YellowKey);
-    // if the largetask this game is rock - add all elements relevant to the task to the manager.
-    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
-      gameState.rockBigTaskManager.addAllRockTaskElements(
-          colourLabel1,
-          colourLabel2,
-          colourLabel3,
-          colourLabel4,
-          notePane,
-          noteImage1,
-          noteSequenceLabel,
-          pointingArrowGif);
-    }
+    // add elements needed for the rock room task
+    gameState.rockBigTaskManager.addAllRockTaskElements(
+        colourLabel1,
+        colourLabel2,
+        colourLabel3,
+        colourLabel4,
+        notePane,
+        noteImage1,
+        noteSequenceLabel,
+        pointingArrowGif);
     chatOpened = true;
 
     // create an array list of objects in the room
@@ -173,7 +170,7 @@ public class RaveController {
   @FXML
   private void onClickSpeaker(MouseEvent event) {
     System.out.println("speaker clicked");
-    isRiddleObject("speaker");
+    isRiddleObject("speakers");
   }
 
   // function for handing clicking the red lock
@@ -306,15 +303,13 @@ public class RaveController {
 
   // helper function to check for if the riddle object selected is the clicked on object
   public void isRiddleObject(String object) {
-    if (gameState.taskManager.largeTask == LargeTask.ROCK) {
-      if (riddleObject.equals(object)) { // } && GameState.isRiddleResolved) {
-        // if the object is the correct one, set relevant labels to notify the user
-        GameState.isRiddleObjectFound = true;
-        gameState.rockBigTaskManager.setLabelColours();
-        gameState.rockBigTaskManager.setOrderColourMap();
-        gameState.rockBigTaskManager.setVisibilityNoteImages(true);
-        gameState.rockBigTaskManager.setVisibilityArrows(true);
-      }
+    if (riddleObject.equals(object) && GameState.isRiddleResolved) {
+      // if the object is the correct one, set relevant labels to notify the user
+      GameState.isRiddleObjectFound = true;
+      gameState.rockBigTaskManager.setLabelColours();
+      gameState.rockBigTaskManager.setOrderColourMap();
+      gameState.rockBigTaskManager.setVisibilityNoteImages(true);
+      gameState.rockBigTaskManager.setVisibilityArrows(true);
     }
   }
 
