@@ -7,12 +7,14 @@ import nz.ac.auckland.se206.controllers.rooms.rave.BodybuilderController;
 
 /** Represents the state of the game. */
 public class GameState {
+  // Enum to represent game difficulty levels
   public enum Difficulty {
     EASY,
     MEDIUM,
     HARD
   }
 
+  // Enum to represent game playtime options
   public enum PlayTime {
     TWO(2),
     FOUR(4),
@@ -29,10 +31,10 @@ public class GameState {
     }
   }
 
-  // variables to keep track of the game state
-  private static GameState instance;
-  public static Difficulty difficulty;
-  public static PlayTime time;
+  // Variables to keep track of various game states
+  private static GameState instance; // Singleton instance of GameState
+  public static Difficulty difficulty; // Current game difficulty
+  public static PlayTime time; // Current game playtime
   public static boolean isRiddleResolved = false;
   public static boolean isRiddleObjectFound = false;
   public static boolean isNoteSequenceFound = false;
@@ -44,9 +46,11 @@ public class GameState {
   public static boolean isEscaped = false;
   public static boolean isTrumpetPlayed = false;
 
+  // Singleton pattern: Get an instance of the GameState
   public static GameState getInstance() {
     if (instance == null) {
       instance = new GameState();
+      // Initialize various game managers and components
       instance.timeManager = new TimeManager();
       instance.taskManager = new TaskManager();
       instance.chatManager = new ChatManager();
@@ -58,10 +62,12 @@ public class GameState {
     return instance;
   }
 
+  // Setter for the GameState instance
   public static void setInstance(GameState instance) {
     GameState.instance = instance;
   }
 
+  // Reset various game variables
   public static void resetVariables() {
     isRiddleResolved = false;
     isRiddleObjectFound = false;
@@ -74,6 +80,7 @@ public class GameState {
     isEscaped = false;
   }
 
+  // Managers and controllers to handle game components
   public TimeManager timeManager;
   public HintManager hintManager;
   public TaskManager taskManager;
@@ -81,17 +88,17 @@ public class GameState {
   public RockBigTaskManager rockBigTaskManager;
   public RavePuzzle ravePuzzle;
   public ObjectiveListManager objectiveListManager;
-
   public BodybuilderController bodybuilderController;
   public ClassicalNoteController classicalNote;
   public RockNoteController rockNote;
 
+  // Method to start the game and initialize various components
   public void startGame() throws IOException {
-    this.taskManager.generateTasks();
-    this.timeManager.setTime(time.getTime() * 60);
-    this.timeManager.startCountdown();
-    this.hintManager.initialiseManager(difficulty);
-    this.ravePuzzle.setHints(classicalNote, rockNote);
-    this.bodybuilderController.initialiseCode();
+    this.taskManager.generateTasks(); // Generate game tasks
+    this.timeManager.setTime(time.getTime() * 60); // Set game time
+    this.timeManager.startCountdown(); // Start countdown timer
+    this.hintManager.initialiseManager(difficulty); // Initialize hint manager based on difficulty
+    this.ravePuzzle.setHints(classicalNote, rockNote); // Set hints for the Rave puzzle
+    this.bodybuilderController.initialiseCode(); // Initialize code for the Bodybuilder puzzle
   }
 }
