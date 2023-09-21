@@ -36,6 +36,10 @@ public class PianoController {
   // sequence of notes played by user
   public static String notesPlayed = "";
 
+  public static void resetNotesPlayed() {
+    notesPlayed = "";
+  }
+
   @FXML private ImageView note1;
   @FXML private ImageView note2;
   @FXML private ImageView note3;
@@ -81,8 +85,10 @@ public class PianoController {
 
   @FXML
   private void initialize() throws IOException {
+    // gets the gamestate instance, adding the labels for timers to the gamestate
     gameState = GameState.getInstance();
     gameState.getTimeManager().addToTimers(timerLabel);
+    // initialise the notes and note letters
     notesList =
         new ArrayList<ImageView>(List.of(note1, note2, note3, note4, note5, note6, note7, note8));
     notesLetterList =
@@ -113,12 +119,10 @@ public class PianoController {
     }
   }
 
-  public static void resetNotesPlayed() {
-    notesPlayed = "";
-  }
-
+  // loads the notes on music sheet according to its location on the sheet
   public void loadNotes() throws IOException {
     for (int i = 0; i < notesList.size(); i++) {
+      // set the y location of each note
       switch (notesToPlay.charAt(i)) {
         case 'A':
           notesList.get(i).setY(A_NOTE_LOCATION);
@@ -145,10 +149,11 @@ public class PianoController {
           break;
       }
 
-      notesList.get(i).setOpacity(100);
+      notesList.get(i).setOpacity(100); // make the notes visible
 
       ImageView current = notesLetterList.get(i);
 
+      // load the note letter image
       Image currentImage =
           new Image(App.class.getResource(noteLetterUrlGetter(notesToPlay.charAt(i))).openStream());
       Platform.runLater(
@@ -158,6 +163,7 @@ public class PianoController {
     }
   }
 
+  // loads the notes for the rock task
   public void loadRockNotes() throws IOException {
     if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
       if (GameState.isNoteSequenceFound) {
@@ -165,7 +171,7 @@ public class PianoController {
         for (int i = 0; i < notesLetterList.size(); i++) {
           notesLetterList.get(i).setOpacity(100);
         }
-      } else {
+      } else { // music sheet does not show notes to play
         for (int i = 0; i < notesList.size(); i++) {
           notesList.get(i).setOpacity(0);
         }
@@ -176,11 +182,13 @@ public class PianoController {
     }
   }
 
+  // gets the url for the note letter image
   public String noteLetterUrlGetter(Character letter) {
     String url = "/images/classicalRoom/Notes/" + Character.toUpperCase(letter) + "Note.png";
     return url;
   }
 
+  // plays the A note
   @FXML
   public void onClickedKeyA(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("A Key Pressed");
@@ -189,6 +197,7 @@ public class PianoController {
     checkWin();
   }
 
+  // plays the B note
   @FXML
   public void onClickedKeyB(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("B Key Pressed");
@@ -197,6 +206,7 @@ public class PianoController {
     checkWin();
   }
 
+  // plays the C note
   @FXML
   public void onClickedKeyC(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("C Key Pressed");
@@ -205,6 +215,7 @@ public class PianoController {
     checkWin();
   }
 
+  // plays the D note
   @FXML
   public void onClickedKeyD(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("D Key Pressed");
@@ -213,6 +224,7 @@ public class PianoController {
     checkWin();
   }
 
+  // plays the E note
   @FXML
   public void onClickedKeyE(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("E Key Pressed");
@@ -221,6 +233,7 @@ public class PianoController {
     checkWin();
   }
 
+  // plays the F note
   @FXML
   public void onClickedKeyF(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("F Key Pressed");
@@ -229,6 +242,7 @@ public class PianoController {
     checkWin();
   }
 
+  // plays the G note
   @FXML
   public void onClickedKeyG(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("G Key Pressed");
@@ -237,6 +251,7 @@ public class PianoController {
     checkWin();
   }
 
+  // uses media player to play the piano note
   public void playPianoNotePlayer(String audioName) throws URISyntaxException {
     Media note =
         new Media(getClass().getResource("/sounds/" + audioName + ".mp3").toURI().toString());
@@ -244,18 +259,20 @@ public class PianoController {
     pianoNotePlayer.play();
   }
 
+  // checks if the user has played the correct note sequence
   public void checkWin() throws IOException {
     System.out.println(notesPlayed);
-    if (notesPlayed.contains(notesToPlay)) {
+    if (notesPlayed.contains(notesToPlay)) { // user has played the correct sequence
       System.out.println("You Win");
       GameState.isPianoPlayed = true;
-      gameState.getObjectiveListManager().setVisibilityKeyRed3(true);
+      gameState.getObjectiveListManager().setVisibilityKeyRed3(true); // red key obtained after win
       Pane current = (Pane) leavePiano.getParent();
       Scene currentScene = current.getScene();
       currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICAL));
     }
   }
 
+  // switches back to the classical room when leaving piano
   @FXML
   public void onClickedLeavePiano(MouseEvent event) throws IOException {
     System.out.println("Leave Piano Clicked");
