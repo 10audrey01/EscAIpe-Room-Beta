@@ -42,6 +42,7 @@ public class BodybuilderController {
   @FXML private Button btnReturn;
   @FXML private Button btnHint;
   @FXML private Text codeInputText;
+  @FXML private Text resultText;
   @FXML private Circle digitOne;
   @FXML private Circle digitTwo;
   @FXML private Circle digitThree;
@@ -304,10 +305,17 @@ public class BodybuilderController {
     // task.
     if (this.code.equals(this.solution)) {
       speechBox.setText("Nice work bro. You can take this key if you want, I guess");
+      resultText.setText("CORRECT (" + code + ")");
+      resultText.setFill(Color.GREEN);
       GameState.isSafeOpened = true;
       gamestate.objectiveListManager.completeObjective2();
       btnHint.setVisible(false);
+      return;
     }
+
+    // if the code is incorrect, notify the user through the result text
+    resultText.setText("INCORRECT (" + code + ")");
+    resultText.setFill(Color.RED);
   }
 
   // switches back to the rave room

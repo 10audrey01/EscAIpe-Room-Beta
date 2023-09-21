@@ -86,12 +86,17 @@
                <font>
                   <Font size="36.0" />
                </font></Text>
-            <Circle fx:id="digitOne" fill="DODGERBLUE" layoutX="85.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="digitOne" fill="DODGERBLUE" layoutX="92.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="digitTwo" fill="DODGERBLUE" layoutX="113.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="digitThree" fill="DODGERBLUE" layoutX="132.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="digitFour" fill="DODGERBLUE" layoutX="152.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="digitFive" fill="DODGERBLUE" layoutX="171.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="digitSix" fill="DODGERBLUE" layoutX="189.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+            <Text fx:id="resultText" layoutX="32.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="186.21630859375">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
             <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1185.0" layoutY="23.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
