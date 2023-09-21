@@ -41,7 +41,6 @@ public class RavePuzzle {
   public boolean attemptSolveSafe(String input) {
     if (input.equals(safeSolution)) {
       this.isSafeSolved = true;
-      this.gamestate.taskManager.completeLargeTask();
       return true;
     }
     return false;
