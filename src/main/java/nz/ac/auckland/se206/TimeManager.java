@@ -85,7 +85,9 @@ public class TimeManager {
     int seconds = time % 60;
     Platform.runLater(
         () -> {
-          for (Label label : timers) label.setText(String.format("%01d:%02d", minutes, seconds));
+          for (Label label : timers) {
+            label.setText(String.format("%01d:%02d", minutes, seconds));
+          }
         });
   }
 
