@@ -33,18 +33,22 @@ public class ChatManager {
     gmSprites = new ArrayList<ImageView>();
   }
 
+  // Add a TextArea to the list for displaying chat messages
   public void addTextArea(TextArea textArea) {
     TextAreas.add(textArea);
   }
 
+  // Add a TextField to the list for user input
   public void addTextField(TextField textField) {
     TextFields.add(textField);
   }
 
+  // Add an ImageView for displaying game sprites
   public void addSprite(ImageView image) {
     gmSprites.add(image);
   }
 
+  // Clear the text in all TextFields
   public void clearAllTextFields() {
     Platform.runLater(
         () -> {
@@ -54,6 +58,7 @@ public class ChatManager {
         });
   }
 
+  // Set game sprites to loading state
   private void setToLoading() throws IOException {
     Image image = new Image(App.class.getResource("/images/gm/gmloading.gif").openStream());
     Platform.runLater(
@@ -64,6 +69,7 @@ public class ChatManager {
         });
   }
 
+  // Set game sprites to default state
   private void setToDefault() throws IOException {
     Image image = new Image(App.class.getResource("/images/gm/gmdefault.png").openStream());
     Platform.runLater(
@@ -74,6 +80,7 @@ public class ChatManager {
         });
   }
 
+  // Generate the initial chat message to start the conversation
   public void generateInitialMessage() throws ApiProxyException {
 
     Task<Void> initializeRiddleTask =
@@ -98,6 +105,7 @@ public class ChatManager {
     initializeRiddleThread.start();
   }
 
+  // Add a user or AI chat message to the display
   public void addMessage(ChatMessage msg) {
     messages = msg.getRole() + ": " + msg.getContent() + "\n\n";
     Platform.runLater(
@@ -108,6 +116,7 @@ public class ChatManager {
         });
   }
 
+  // Handle user's message input and initiate a conversation with the AI
   @FXML
   public void onSendMessage(TextField inputText) throws ApiProxyException, IOException {
     String message = inputText.getText();
@@ -121,6 +130,7 @@ public class ChatManager {
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
+            // reset the chatting field on sending message
             setToLoading();
             clearAllTextFields();
             ChatMessage msg = new ChatMessage("user", message);
@@ -135,14 +145,15 @@ public class ChatManager {
 
             if (message.toLowerCase().contains("help")
                 || message.toLowerCase().contains("hint")
-                || message
-                    .toLowerCase()
-                    .contains("clue")) { // if the user asks for a hint or similar
+                || message.toLowerCase().contains("clue")) {
+              // If the user asks for a hint or similar
               if (gameState.hintManager.getHintsRemaining() > 0) {
+                // run gpt with the hint prompt
                 System.out.println("hint used");
                 gameState.hintManager.useHint();
                 runGpt(new ChatMessage("user", GptPromptEngineering.getGmHint()));
               } else {
+                // otherwise run the gpt without the hint prompt
                 runGpt(new ChatMessage("user", GptPromptEngineering.getGmNoHint()));
               }
             } else {
@@ -157,19 +168,12 @@ public class ChatManager {
     onSendMessageThread.start();
   }
 
-  /**
-   * Runs the GPT model with a given chat message.
-   *
-   * @param msg the chat message to process
-   * @return the response chat message
-   * @throws ApiProxyException if there is an error communicating with the API proxy
-   */
+  // Run the GPT model with a given chat message
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     if (chatCompletionRequest.getMessages().size() > 3) {
       chatCompletionRequest.getMessages().remove(2);
     }
 
-    chatCompletionRequest.addMessage(msg);
     chatCompletionRequest.addMessage(msg);
     try {
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
