@@ -22,6 +22,20 @@ import nz.ac.auckland.se206.TaskManager.LargeTask;
 
 public class PianoController {
 
+  private static final int C_NOTE_LOCATION = 90;
+  private static final int D_NOTE_LOCATION = 75;
+  private static final int E_NOTE_LOCATION = 60;
+  private static final int F_NOTE_LOCATION = 45;
+  private static final int G_NOTE_LOCATION = 30;
+  private static final int A_NOTE_LOCATION = 15;
+  private static final int B_NOTE_LOCATION = 0;
+
+  // winning squence
+  public static String notesToPlay = "ABCDEFGA";
+
+  // sequence of notes played by user
+  public static String notesPlayed = "";
+
   @FXML private ImageView note1;
   @FXML private ImageView note2;
   @FXML private ImageView note3;
@@ -60,28 +74,6 @@ public class PianoController {
   @FXML private Pane leavePiano;
   @FXML private Label timerLabel;
 
-  // private static final int C_NOTE_LOCATION = 193;
-  // private static final int D_NOTE_LOCATION = 178;
-  // private static final int E_NOTE_LOCATION = 163;
-  // private static final int F_NOTE_LOCATION = 148;
-  // private static final int G_NOTE_LOCATION = 133;
-  // private static final int A_NOTE_LOCATION = 118;
-  // private static final int B_NOTE_LOCATION = 103;
-
-  private static final int C_NOTE_LOCATION = 90;
-  private static final int D_NOTE_LOCATION = 75;
-  private static final int E_NOTE_LOCATION = 60;
-  private static final int F_NOTE_LOCATION = 45;
-  private static final int G_NOTE_LOCATION = 30;
-  private static final int A_NOTE_LOCATION = 15;
-  private static final int B_NOTE_LOCATION = 0;
-
-  // winning squence
-  public static String notesToPlay = "ABCDEFGA";
-
-  // sequence of notes played by user
-  public static String notesPlayed = "";
-
   private GameState gameState;
   private ArrayList<ImageView> notesList;
   private ArrayList<ImageView> notesLetterList;
@@ -108,8 +100,6 @@ public class PianoController {
 
     gameState = GameState.getInstance();
     System.out.println(gameState.getTaskManager().largeTask);
-
-    // TODO: gameState.timeManager.addToTimers(timerLabel);
 
     if (gameState.getTaskManager().largeTask
         == LargeTask.ROCK) { // execute if the chosen big task is ROCK
