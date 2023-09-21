@@ -21,8 +21,8 @@ public class ChatManager {
 
   private GameState gameState;
   private ChatCompletionRequest chatCompletionRequest;
-  private ArrayList<TextArea> TextAreas;
-  private ArrayList<TextField> TextFields;
+  private ArrayList<TextArea> textAreas;
+  private ArrayList<TextField> textFields;
   private ArrayList<ImageView> gmSprites;
   private String messages;
   private ChatMessage lastMsg;
@@ -30,19 +30,19 @@ public class ChatManager {
   public ChatManager() {
     this.gameState = GameState.getInstance();
     this.messages = "";
-    TextAreas = new ArrayList<TextArea>();
-    TextFields = new ArrayList<TextField>();
+    textAreas = new ArrayList<TextArea>();
+    textFields = new ArrayList<TextField>();
     gmSprites = new ArrayList<ImageView>();
   }
 
   // Add a TextArea to the list for displaying chat messages
   public void addTextArea(TextArea textArea) {
-    TextAreas.add(textArea);
+    textAreas.add(textArea);
   }
 
   // Add a TextField to the list for user input
   public void addTextField(TextField textField) {
-    TextFields.add(textField);
+    textFields.add(textField);
   }
 
   // Add an ImageView for displaying game sprites
@@ -50,11 +50,11 @@ public class ChatManager {
     gmSprites.add(image);
   }
 
-  // Clear the text in all TextFields
+  // Clear the text in all textFields
   public void clearAllTextFields() {
     Platform.runLater(
         () -> {
-          for (TextField textField : TextFields) {
+          for (TextField textField : textFields) {
             textField.setText("");
           }
         });
@@ -130,7 +130,7 @@ public class ChatManager {
     }
     Platform.runLater(
         () -> {
-          for (TextArea textArea : TextAreas) {
+          for (TextArea textArea : textAreas) {
             textArea.appendText(messages);
           }
         });
