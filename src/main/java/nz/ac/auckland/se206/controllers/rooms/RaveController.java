@@ -5,12 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -21,9 +16,8 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
-import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
-public class RaveController {
+public class RaveController extends AbstractRoomController {
   private static ArrayList<String> objects;
   private static String riddleObject;
 
@@ -42,41 +36,21 @@ public class RaveController {
   @FXML private Pane discoPane;
   @FXML private Pane speakerPane;
   @FXML private Pane chatBoxPane;
-  @FXML private Pane notePane;
-  @FXML private Label colourLabel1;
-  @FXML private Label colourLabel2;
-  @FXML private Label colourLabel3;
-  @FXML private Label colourLabel4;
-  @FXML private Label noteSequenceLabel;
-  @FXML private Label timerLabel;
-  @FXML private Label hintLabel;
-  @FXML private Label step1Label;
-  @FXML private Label step2Label;
-  @FXML private Label step3Label;
-  @FXML private Label step4Label;
-  @FXML private ImageView gmSprite;
   @FXML private ImageView doorImage;
   @FXML private ImageView greenLock;
   @FXML private ImageView redLock;
   @FXML private ImageView blueLock;
   @FXML private ImageView yellowLock;
-  @FXML private ImageView step1BlueKey;
-  @FXML private ImageView step2GreenKey;
-  @FXML private ImageView step3RedKey;
-  @FXML private ImageView step4YellowKey;
   @FXML private ImageView openedDoor;
   @FXML private ImageView noteImage1;
-  @FXML private TextArea textArea;
-  @FXML private TextField textField;
-  @FXML private ImageView pointingArrowGif;
-  @FXML private boolean chatOpened;
-  @FXML private Circle circle3, circle4, circle5;
+  @FXML private Circle circle3;
+  @FXML private Circle circle4;
+  @FXML private Circle circle5;
   @FXML private VBox objectiveList;
 
   private ArrayList<Circle> circles;
 
   // gamestate instance and the state of the exit locks
-  private GameState gameState;
   private boolean isRedLockUnlocked = false;
   private boolean isGreenLockUnlocked = false;
   private boolean isBlueLockUnlocked = false;
@@ -85,30 +59,7 @@ public class RaveController {
   // initialises the fxml file
   @FXML
   private void initialize() {
-    // add the gamestate instance and relevant components to the gamestate/managers
-    gameState = GameState.getInstance();
-    gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite);
-    // add objectives / steps labels to the objective list manager
-    gameState.getObjectiveListManager().addObjectiveLabel1(step1Label);
-    gameState.getObjectiveListManager().addObjectiveLabel2(step2Label);
-    gameState.getObjectiveListManager().addObjectiveLabel3(step3Label);
-    gameState.getObjectiveListManager().addObjectiveLabel4(step4Label);
-    gameState.getObjectiveListManager().addStep1Key(step1BlueKey);
-    gameState.getObjectiveListManager().addStep2Key(step2GreenKey);
-    gameState.getObjectiveListManager().addStep3Key(step3RedKey);
-    gameState.getObjectiveListManager().addStep4Key(step4YellowKey);
-    // add elements needed for the rock room task
-    gameState
-        .getRockBigTaskManager()
-        .addAllRockTaskElements(
-            colourLabel1,
-            colourLabel2,
-            colourLabel3,
-            colourLabel4,
-            notePane,
-            noteImage1,
-            noteSequenceLabel,
-            pointingArrowGif);
+    initialiseAllGameStateVariables();
 
     chatOpened = true;
 
@@ -258,39 +209,6 @@ public class RaveController {
     Rectangle current = (Rectangle) event.getSource();
     Scene currentScene = current.getScene();
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
-  }
-
-  // function for handing the toggling of the chat
-  @FXML
-  private void toggleChat() {
-    if (chatOpened) {
-      // closes the chat if it is opened
-      chatBoxPane.setDisable(true);
-      chatBoxPane.setOpacity(0);
-    } else {
-      // else open the chat
-      chatBoxPane.setDisable(false);
-      chatBoxPane.setOpacity(0.95);
-    }
-    chatOpened = !chatOpened;
-  }
-
-  // function for handing key presses
-  @FXML
-  public void onKeyPressed(KeyEvent event) {
-    System.out.println("key " + event.getCode() + " pressed");
-  }
-
-  // function for handing releasing the enter key
-  @FXML
-  public void onKeyReleased(KeyEvent event) throws ApiProxyException, IOException {
-    // sends message to chat if the player releases enter, allowing them to chat with enter.
-    System.out.println("key " + event.getCode() + " released");
-    if (event.getCode() == KeyCode.ENTER && chatOpened) {
-      System.out.println("Message Sent");
-      gameState = GameState.getInstance();
-      gameState.getChatManager().onSendMessage(textField);
-    }
   }
 
   // function for toggling note visibility

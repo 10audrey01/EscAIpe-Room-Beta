@@ -5,13 +5,8 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -21,11 +16,9 @@ import nz.ac.auckland.se206.DraggableMaker;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.TaskManager.LargeTask;
 import nz.ac.auckland.se206.controllers.rooms.classical.PianoController;
-import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
-public class ClassicalController {
+public class ClassicalController extends AbstractRoomController {
 
   @FXML private Rectangle raveDoor;
   @FXML private Rectangle rockDoor;
@@ -38,32 +31,10 @@ public class ClassicalController {
   @FXML private Pane tambourinePane;
   @FXML private Pane trumpetPane;
   @FXML private Pane chatBoxPane;
-  @FXML private Pane notePane;
-  @FXML private Pane classicalNotePane;
-  @FXML private Label colourLabel1;
-  @FXML private Label colourLabel2;
-  @FXML private Label colourLabel3;
-  @FXML private Label colourLabel4;
-  @FXML private Label timerLabel;
-  @FXML private Label hintLabel;
-  @FXML private Label noteSequenceLabel;
-  @FXML private Label step1Label;
-  @FXML private Label step2Label;
-  @FXML private Label step3Label;
-  @FXML private Label step4Label;
-  @FXML private TextArea textArea;
-  @FXML private TextField textField;
   @FXML private ImageView tambourineImage;
-  @FXML private ImageView pointingArrowGif;
-  @FXML private ImageView noteImage;
-  @FXML private ImageView noteImage1;
-  @FXML private ImageView step1BlueKey;
-  @FXML private ImageView step2GreenKey;
-  @FXML private ImageView step3RedKey;
-  @FXML private ImageView step4YellowKey;
-  @FXML private ImageView gmSprite;
+
+  @FXML private Pane classicalNotePane;
   @FXML private VBox objectiveList;
-  private boolean chatOpened;
 
   // put these into gamestate later
   private boolean isTambourineBroken;
@@ -86,38 +57,10 @@ public class ClassicalController {
   // function for initialising room FXML
   @FXML
   private void initialize() {
-    // add all relevant labels to gamestate instance
-    gameState = GameState.getInstance();
-    gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite);
 
-    // add objective labels and steps to the objective list manager
-    gameState.addObjectiveListLabels(
-        step1Label,
-        step2Label,
-        step3Label,
-        step4Label,
-        step1BlueKey,
-        step2GreenKey,
-        step3RedKey,
-        step4YellowKey);
-
-    // if the  gamestate is the rock large task, add the elements to the rock task manager
-    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
-      gameState
-          .getRockBigTaskManager()
-          .addAllRockTaskElements(
-              colourLabel1,
-              colourLabel2,
-              colourLabel3,
-              colourLabel4,
-              notePane,
-              noteImage1,
-              noteSequenceLabel,
-              pointingArrowGif);
-    }
+    initialiseAllGameStateVariables();
 
     // initial states for fields
-    chatOpened = false;
     numOfTambourinePresses = 0;
     isTambourineBroken = false;
     isDraggable = false;
@@ -233,38 +176,6 @@ public class ClassicalController {
       isTambourineBroken = true;
     }
     numOfTambourinePresses++;
-  }
-
-  // function which toggles the visibility of the chatbox
-  @FXML
-  private void toggleChat() {
-    if (chatOpened) {
-      // if the chat is opened already, close it
-      chatBoxPane.setDisable(true);
-      chatBoxPane.setOpacity(0);
-    } else {
-      // otherwise show the chat
-      chatBoxPane.setDisable(false);
-      chatBoxPane.setOpacity(0.95);
-    }
-    chatOpened = !chatOpened;
-  }
-
-  // function for handling key presses
-  @FXML
-  public void onKeyPressed(KeyEvent event) {
-    System.out.println("key " + event.getCode() + " pressed");
-  }
-
-  // function for handling if the player presses enter - for sending messages to the gm
-  @FXML
-  public void onKeyReleased(KeyEvent event) throws ApiProxyException, IOException {
-    System.out.println("key " + event.getCode() + " released");
-    if (event.getCode() == KeyCode.ENTER && chatOpened) {
-      System.out.println("Message Sent");
-      gameState = GameState.getInstance();
-      gameState.getChatManager().onSendMessage(textField);
-    }
   }
 
   // function for handling clicking the note
