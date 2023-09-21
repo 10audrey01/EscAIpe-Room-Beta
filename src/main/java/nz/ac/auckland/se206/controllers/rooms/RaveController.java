@@ -125,7 +125,7 @@ public class RaveController {
   @FXML
   private void onClickPoster(MouseEvent event) {
     System.out.println("poster clicked");
-    isRiddleObject("poster");
+    isRiddleObject("band poster");
   }
 
   @FXML
@@ -153,7 +153,7 @@ public class RaveController {
   @FXML
   private void onClickDisco(MouseEvent event) {
     System.out.println("disco clicked");
-    isRiddleObject("disco");
+    isRiddleObject("disco ball");
   }
 
   @FXML

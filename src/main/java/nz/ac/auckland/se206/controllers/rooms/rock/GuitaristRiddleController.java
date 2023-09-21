@@ -39,7 +39,7 @@ public class GuitaristRiddleController {
     this.gameState = GameState.getInstance();
     gameState.timeManager.addToTimers(timerLabel);
     gameState.hintManager.addHintLabel(hintLabel);
-    // generateInitialMessage();
+    generateInitialMessage();
   }
 
   @FXML
@@ -118,10 +118,38 @@ public class GuitaristRiddleController {
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
+            ChatMessage response = null;
+
             clearTextField();
             ChatMessage msg = new ChatMessage("user", message);
             appendChatMessage(msg);
-            ChatMessage response = runGpt(msg);
+
+            Platform.runLater(
+                () -> {
+                  textField.setText("Loading . . .");
+                  textField.setEditable(false);
+                });
+
+            if (message.toLowerCase().contains("help")
+                || message.toLowerCase().contains("hint")
+                || message
+                    .toLowerCase()
+                    .contains("clue")) { // if the user asks for a hint or similar
+              if (gameState.hintManager.getHintsRemaining() > 0) {
+                response = runGpt(msg);
+              } else {
+                runGpt(new ChatMessage("user", GptPromptEngineering.getGmNoHint()));
+              }
+            } else {
+              response = runGpt(msg);
+            }
+
+            Platform.runLater(
+                () -> {
+                  textField.setText("");
+                  textField.setEditable(true);
+                });
+
             if (response.getRole().equals("assistant")) {
               if (response.getContent().startsWith("Here's a hint")) {
                 gameState.hintManager.useHint();

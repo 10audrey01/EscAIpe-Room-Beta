@@ -5,13 +5,10 @@ import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Font;
-import nz.ac.auckland.se206.controllers.rooms.RaveController;
 import nz.ac.auckland.se206.gpt.ChatMessage;
 import nz.ac.auckland.se206.gpt.GptPromptEngineering;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
@@ -87,15 +84,10 @@ public class ChatManager {
             chatCompletionRequest =
                 new ChatCompletionRequest()
                     .setN(1)
-                    .setTemperature(0.2)
+                    .setTemperature(0.8)
                     .setTopP(0.5)
-                    .setMaxTokens(100);
-            runGpt(
-                new ChatMessage(
-                    "user",
-                    GptPromptEngineering.getRiddleWithGivenWord(
-                        RaveController
-                            .getRiddleObject()))); // TODO: change this to be a greeting from gm
+                    .setMaxTokens(70);
+            runGpt(new ChatMessage("user", GptPromptEngineering.getGmGreeting()));
             setToDefault();
             return null;
           }
@@ -133,47 +125,36 @@ public class ChatManager {
             clearAllTextFields();
             ChatMessage msg = new ChatMessage("user", message);
             addMessage(msg);
-            ChatMessage response = runGpt(msg);
-            if (response.getRole().equals("assistant")) {
-              if (response.getContent().startsWith("Correct")) {
-                GameState.isRiddleResolved = true;
-                gameState.objectiveListManager.completeObjective3();
+
+            chatCompletionRequest =
+                new ChatCompletionRequest()
+                    .setN(1)
+                    .setTemperature(0.8)
+                    .setTopP(0.5)
+                    .setMaxTokens(70);
+
+            if (message.toLowerCase().contains("help")
+                || message.toLowerCase().contains("hint")
+                || message
+                    .toLowerCase()
+                    .contains("clue")) { // if the user asks for a hint or similar
+              if (gameState.hintManager.getHintsRemaining() > 0) {
+                System.out.println("hint used");
+                gameState.hintManager.useHint();
+                runGpt(new ChatMessage("user", GptPromptEngineering.getGmHint()));
+              } else {
+                runGpt(new ChatMessage("user", GptPromptEngineering.getGmNoHint()));
               }
+            } else {
+              runGpt(msg);
             }
+
             setToDefault();
             return null;
           }
         };
     Thread onSendMessageThread = new Thread(onSendMessageTask, "onSendMessageThread");
     onSendMessageThread.start();
-  }
-
-  // get a hint for the music quiz
-  public void getMusicQuizHint(ChatMessage msg, Button btn, TextArea speechArea) {
-    Task<Void> getHintTask =
-        new Task<Void>() {
-          @Override
-          protected Void call() throws Exception {
-            Platform.runLater(
-                () -> {
-                  btn.setText("Loading...");
-                  btn.setFont(Font.font(20));
-                  btn.setDisable(true);
-                });
-
-            ChatMessage res = runGpt(msg);
-
-            Platform.runLater(
-                () -> {
-                  speechArea.setText("Hey man, I got a hint for you...\n" + res.getContent());
-                  btn.setVisible(false);
-                });
-            return null;
-          }
-        };
-
-    Thread hintThread = new Thread(getHintTask, "hintThread");
-    hintThread.start();
   }
 
   /**
