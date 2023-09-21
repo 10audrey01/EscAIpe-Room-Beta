@@ -50,13 +50,13 @@ public class PianoController {
   @FXML private ImageView note12Letter;
   @FXML private ImageView note13Letter;
   @FXML private ImageView note14Letter;
-  @FXML private Pane aKey;
-  @FXML private Pane bKey;
-  @FXML private Pane cKey;
-  @FXML private Pane dKey;
-  @FXML private Pane eKey;
-  @FXML private Pane fKey;
-  @FXML private Pane gKey;
+  @FXML private Pane keyA;
+  @FXML private Pane keyB;
+  @FXML private Pane keyC;
+  @FXML private Pane keyD;
+  @FXML private Pane keyE;
+  @FXML private Pane keyF;
+  @FXML private Pane keyG;
   @FXML private Pane leavePiano;
   @FXML private Label timerLabel;
 
