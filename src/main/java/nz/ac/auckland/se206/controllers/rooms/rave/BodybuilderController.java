@@ -84,7 +84,12 @@ public class BodybuilderController {
   }
 
   @FXML
-  private void onClickHint(ActionEvent action) {}
+  private void onClickHint(ActionEvent action) {
+    btnHint.setVisible(false);
+    hintImage1.setOpacity(1);
+    hintImage2.setOpacity(1);
+    this.gamestate.hintManager.useHint();
+  }
 
   // Handles the event where any number is pressed.
   @FXML
@@ -225,6 +230,7 @@ public class BodybuilderController {
       speechBox.setText("Nice work bro. You can take this key if you want, I guess");
       GameState.isSafeOpened = true;
       gamestate.objectiveListManager.completeObjective2();
+      btnHint.setVisible(false);
     }
   }
 

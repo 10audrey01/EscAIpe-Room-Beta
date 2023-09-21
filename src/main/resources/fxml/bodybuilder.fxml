@@ -22,7 +22,10 @@
             <Image url="@../images/raveRoom/bodybuilder.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="speechBox" editable="false" layoutX="25.0" layoutY="32.0" prefHeight="137.0" prefWidth="351.0" />
+      <TextArea fx:id="speechBox" editable="false" layoutX="25.0" layoutY="32.0" prefHeight="137.0" prefWidth="351.0" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font></TextArea>
       <ImageView fx:id="safeImage" fitHeight="473.0" fitWidth="843.0" layoutX="386.0" layoutY="227.0" pickOnBounds="true">
          <image>
             <Image url="@../images/misc/safeClosed.png" />
