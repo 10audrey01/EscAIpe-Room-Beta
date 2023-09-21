@@ -21,6 +21,8 @@ public class BodybuilderController {
   @FXML private TextArea speechBox;
   @FXML private ImageView firstRoomHint;
   @FXML private ImageView secondRoomHint;
+  @FXML private ImageView hintImage1;
+  @FXML private ImageView hintImage2;
   @FXML private Button btnOne;
   @FXML private Button btnTwo;
   @FXML private Button btnThree;
@@ -34,6 +36,7 @@ public class BodybuilderController {
   @FXML private Button btnRemove;
   @FXML private Button btnSub;
   @FXML private Button btnReturn;
+  @FXML private Button btnHint;
   @FXML private Text codeInputText;
   @FXML private Circle digitOne;
   @FXML private Circle digitTwo;
@@ -78,6 +81,14 @@ public class BodybuilderController {
     digitFour.setFill(Color.RED);
     digitFive.setFill(Color.RED);
     digitSix.setFill(Color.RED);
+  }
+
+  @FXML
+  private void onClickHint(ActionEvent action) {
+    btnHint.setVisible(false);
+    hintImage1.setOpacity(1);
+    hintImage2.setOpacity(1);
+    this.gamestate.hintManager.useHint();
   }
 
   // Handles the event where any number is pressed.
@@ -219,6 +230,7 @@ public class BodybuilderController {
       speechBox.setText("Nice work bro. You can take this key if you want, I guess");
       GameState.isSafeOpened = true;
       gamestate.objectiveListManager.completeObjective2();
+      btnHint.setVisible(false);
     }
   }
 

@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -17,18 +19,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.text.Font;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.GameState.Difficulty;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.gpt.ChatMessage;
-import nz.ac.auckland.se206.gpt.GptPromptEngineering;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
-import nz.ac.auckland.se206.gpt.openai.ChatCompletionRequest;
-import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
-import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 
 public class MusicQuizController {
   @FXML private TextArea speechBox;
@@ -43,6 +40,8 @@ public class MusicQuizController {
   @FXML private Button optionSixBtn;
   @FXML private Label timerLabel;
   @FXML private Label hintLabel;
+  @FXML private Label cooldownLabel;
+  @FXML private Label answerLabel;
 
   private GameState gamestate;
   private String[] genres = {
@@ -52,13 +51,20 @@ public class MusicQuizController {
   private int correctGenreIndex;
   private MediaPlayer musicPlayer;
   private List<String> selectedGenres = new ArrayList<>();
-  private ChatCompletionRequest chatCompletionRequest;
+  private int timeToAnswer;
+  private Timer timer;
+  private Thread timerThread;
+  private boolean timerStarted;
+  private ArrayList<Integer> availableWrongButtons;
 
   @FXML
   private void initialize() throws IOException, URISyntaxException, ApiProxyException {
     this.gamestate = GameState.getInstance();
     this.gamestate.timeManager.addToTimers(timerLabel);
     this.gamestate.hintManager.addHintLabel(hintLabel);
+    this.timeToAnswer = 0;
+    this.timerStarted = false;
+    this.availableWrongButtons = new ArrayList<Integer>();
     this.speechBox.setText("Hey man, I need your help identifying this music...");
     Random random = new Random();
     int randomNumber = random.nextInt(8);
@@ -107,6 +113,12 @@ public class MusicQuizController {
       button.setText((i + 1) + ". " + genre);
     }
 
+    for (int i = 1; i <= 6; i++) {
+      if (i != correctGenreIndex) {
+        availableWrongButtons.add(i);
+      }
+    }
+
     System.out.println("Correct genre index: " + correctGenreIndex);
   }
 
@@ -122,69 +134,171 @@ public class MusicQuizController {
     }
   }
 
+  private void setButtonCooldowns() {
+    disableAllButtons();
+    startCooldownTimer();
+  }
+
+  private void disableAllButtons() {
+    optionOneBtn.setDisable(true);
+    optionTwoBtn.setDisable(true);
+    optionThreeBtn.setDisable(true);
+    optionFourBtn.setDisable(true);
+    optionFiveBtn.setDisable(true);
+    optionSixBtn.setDisable(true);
+  }
+
+  private void startCooldownTimer() {
+    // will not start the countdown if it has already started.
+    if (this.timerStarted) {
+      return;
+    }
+
+    timer = new Timer();
+    this.timerStarted = true;
+    this.timeToAnswer = 20;
+
+    // task for the update of the timer, decrements timer every second and updates GUI, aswell as
+    // validating for any events that may have to be run.
+    Task<Void> timerTask =
+        new Task<Void>() {
+
+          @Override
+          // A task for the continuous decrementing of the timer, and updates all timer
+          // value indicators for the GUI.
+          protected Void call() throws Exception {
+            timer.scheduleAtFixedRate(
+                new TimerTask() {
+                  @Override
+                  public void run() {
+                    if (timeToAnswer > 0) {
+                      timeToAnswer--;
+                      Platform.runLater(
+                          () -> {
+                            cooldownLabel.setText(
+                                "You can answer again in " + timeToAnswer + " seconds!");
+                          });
+                    } else {
+                      stopCountdown();
+                      Platform.runLater(
+                          () -> {
+                            cooldownLabel.setText("You can attempt to answer again!");
+                          });
+                    }
+                  }
+                },
+                1000,
+                1000);
+            return null;
+          }
+        };
+
+    Thread timerThread = new Thread(timerTask, "TimerThread");
+    timerThread.start();
+  }
+
+  public void stopCountdown() {
+    if (timer != null) {
+      timer.cancel();
+    }
+
+    if (timerThread != null) {
+      timerThread.interrupt();
+    }
+
+    this.timerStarted = false;
+    optionOneBtn.setDisable(false);
+    optionTwoBtn.setDisable(false);
+    optionThreeBtn.setDisable(false);
+    optionFourBtn.setDisable(false);
+    optionFiveBtn.setDisable(false);
+    optionSixBtn.setDisable(false);
+  }
+
+  private void attemptSolve(int index) {
+
+    if (correctGenreIndex == index) {
+      hintBtn.setVisible(false);
+      GameState.isMusicQuizCompleted = true;
+      speechBox.setText("Nice work bro. For you, I got this key for you man.");
+      gamestate.objectiveListManager.completeObjective1();
+      answerLabel.setText("CORRECT");
+      answerLabel.setTextFill(Color.GREEN);
+      cooldownLabel.setVisible(false);
+      disableAllButtons();
+      return;
+    }
+
+    if (correctGenreIndex != index) {
+      answerLabel.setText("INCORRECT");
+      answerLabel.setTextFill(Color.RED);
+      setButtonCooldowns();
+    }
+  }
+
   @FXML
   private void onClickOne() {
     System.out.println("1");
-    if (correctGenreIndex == 1) {
-      GameState.isMusicQuizCompleted = true;
-      speechBox.setText("Nice work bro. You can take this key if you want, I guess");
-      gamestate.objectiveListManager.completeObjective1();
-      System.out.println("correct");
-    }
+    attemptSolve(1);
   }
 
   @FXML
   private void onClickTwo() {
     System.out.println("2");
-    if (correctGenreIndex == 2) {
-      GameState.isMusicQuizCompleted = true;
-      speechBox.setText("Nice work bro. You can take this key if you want, I guess");
-      gamestate.objectiveListManager.completeObjective1();
-      System.out.println("correct");
-    }
+    attemptSolve(2);
   }
 
   @FXML
   private void onClickThree() {
     System.out.println("3");
-    if (correctGenreIndex == 3) {
-      GameState.isMusicQuizCompleted = true;
-      speechBox.setText("Nice work bro. You can take this key if you want, I guess");
-      gamestate.objectiveListManager.completeObjective1();
-      System.out.println("correct");
-    }
+    attemptSolve(3);
   }
 
   @FXML
   private void onClickFour() {
     System.out.println("4");
-    if (correctGenreIndex == 4) {
-      GameState.isMusicQuizCompleted = true;
-      speechBox.setText("Nice work bro. You can take this key if you want, I guess");
-      gamestate.objectiveListManager.completeObjective1();
-      System.out.println("correct");
-    }
+    attemptSolve(4);
   }
 
   @FXML
   private void onClickFive() {
     System.out.println("5");
-    if (correctGenreIndex == 5) {
-      GameState.isMusicQuizCompleted = true;
-      speechBox.setText("Nice work bro. You can take this key if you want, I guess");
-      gamestate.objectiveListManager.completeObjective1();
-      System.out.println("correct");
-    }
+    attemptSolve(5);
   }
 
   @FXML
   private void onClickSix() {
     System.out.println("6");
-    if (correctGenreIndex == 6) {
-      GameState.isMusicQuizCompleted = true;
-      speechBox.setText("Nice work bro. You can take this key if you want, I guess");
-      gamestate.objectiveListManager.completeObjective1();
-      System.out.println("correct");
+    attemptSolve(6);
+  }
+
+  private void deleteWrongOption() {
+    Collections.shuffle(availableWrongButtons);
+    int toRemove = availableWrongButtons.remove(0);
+    switch (toRemove) {
+      case 1:
+        optionOneBtn.setVisible(false);
+        break;
+      case 2:
+        optionTwoBtn.setVisible(false);
+        break;
+      case 3:
+        optionThreeBtn.setVisible(false);
+        break;
+      case 4:
+        optionFourBtn.setVisible(false);
+        break;
+      case 5:
+        optionFiveBtn.setVisible(false);
+        break;
+      case 6:
+        optionSixBtn.setVisible(false);
+        break;
+      default:
+        break;
+    }
+    if (availableWrongButtons.size() <= 1) {
+      hintBtn.setVisible(false);
     }
   }
 
@@ -193,8 +307,7 @@ public class MusicQuizController {
     System.out.println("hint");
     if (this.gamestate.hintManager.getHintsRemaining() > 0) {
       this.gamestate.hintManager.useHint();
-      getMusicQuizHint(
-          new ChatMessage("user", GptPromptEngineering.getHintWithMusic(genreSolution)));
+      deleteWrongOption();
     }
   }
 
@@ -206,66 +319,5 @@ public class MusicQuizController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.RAVE));
     musicPlayer.pause();
     songBtn.setText("PLAY SONG");
-  }
-
-  // get a hint for the music quiz
-  public void getMusicQuizHint(ChatMessage msg) {
-    Task<Void> getHintTask =
-        new Task<Void>() {
-          @Override
-          protected Void call() throws Exception {
-            Platform.runLater(
-                () -> {
-                  hintBtn.setText("Loading...");
-                  hintBtn.setFont(Font.font(20));
-                  hintBtn.setDisable(true);
-                });
-
-            chatCompletionRequest =
-                new ChatCompletionRequest()
-                    .setN(1)
-                    .setTemperature(0.8)
-                    .setTopP(0.5)
-                    .setMaxTokens(70);
-
-            ChatMessage res = runGpt(msg);
-
-            Platform.runLater(
-                () -> {
-                  speechBox.setText("Hey man, I got a hint for you...\n" + res.getContent());
-                  hintBtn.setVisible(false);
-                });
-            return null;
-          }
-        };
-
-    Thread hintThread = new Thread(getHintTask, "hintThread");
-    hintThread.start();
-  }
-
-  /**
-   * Runs the GPT model with a given chat message.
-   *
-   * @param msg the chat message to process
-   * @return the response chat message
-   * @throws ApiProxyException if there is an error communicating with the API proxy
-   */
-  private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
-    if (chatCompletionRequest.getMessages().size() > 3) {
-      chatCompletionRequest.getMessages().remove(2);
-    }
-
-    chatCompletionRequest.addMessage(msg);
-    chatCompletionRequest.addMessage(msg);
-    try {
-      ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
-      Choice result = chatCompletionResult.getChoices().iterator().next();
-      chatCompletionRequest.addMessage(result.getChatMessage());
-      return result.getChatMessage();
-    } catch (ApiProxyException e) {
-      // TODO handle exception appropriately
-      e.printStackTrace();
-      return null;
-    }
   }
 }
