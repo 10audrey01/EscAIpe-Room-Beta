@@ -26,14 +26,16 @@
             <Image url="@../images/rockRoom/gameMaster.png" />
          </image>
       </ImageView>
-      <Pane layoutX="461.0" layoutY="71.0" prefHeight="357.0" prefWidth="629.0" style="-fx-background-color: fff;">
+      <Pane layoutX="454.0" layoutY="106.0" prefHeight="357.0" prefWidth="629.0" style="-fx-background-color: fff;">
          <children>
-            <TextArea fx:id="textArea" editable="false" layoutX="4.0" layoutY="6.0" prefHeight="308.0" prefWidth="619.0" wrapText="true" />
+            <TextArea fx:id="textArea" editable="false" layoutX="4.0" layoutY="6.0" prefHeight="308.0" prefWidth="619.0" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font></TextArea>
             <TextField fx:id="textField" layoutX="4.0" layoutY="318.0" prefHeight="32.0" prefWidth="619.0" promptText="Enter Response Here" />
          </children>
       </Pane>
-      <Button fx:id="btnReturn" layoutX="1190.0" layoutY="75.0" mnemonicParsing="false" onAction="#onClickReturn" text="Return" />
-      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1185.0" layoutY="23.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
+      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1186.0" layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
          <font>
             <Font size="30.0" />
          </font>
@@ -43,5 +45,9 @@
             <Font size="17.0" />
          </font>
       </Label>
+      <Button fx:id="btnReturn" layoutX="1083.0" layoutY="30.0" mnemonicParsing="false" onAction="#onClickReturn" text="Return">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
    </children>
 </Pane>
