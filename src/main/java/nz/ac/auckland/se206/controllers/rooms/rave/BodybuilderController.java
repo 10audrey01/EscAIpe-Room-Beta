@@ -96,7 +96,8 @@ public class BodybuilderController {
     digitSix.setFill(Color.RED);
   }
 
-  // handles the player clicking any keyboard keys for inputting into the safe
+  // handles the player clicking any keyboard keys for inputting into the safe, using any number
+  // inputs or backspace and enter for submission
   @FXML
   private void onKeyPressed(KeyEvent event) throws ApiProxyException, IOException {
     // gets the current value of the key pressed
@@ -104,13 +105,16 @@ public class BodybuilderController {
     // switch case which runs the respective event based on the key pressed.
     switch (keyCode) {
       case BACK_SPACE:
+        // backspace runs the remove button
         onClickRemove(new ActionEvent());
         break;
       case ENTER:
+        // enter runs the submit button
         onClickSubmit(new ActionEvent());
         break;
       case DIGIT0:
       case NUMPAD0:
+        // all other digits/numpads run their respective number
         onClickZero(new ActionEvent());
         break;
       case DIGIT1:

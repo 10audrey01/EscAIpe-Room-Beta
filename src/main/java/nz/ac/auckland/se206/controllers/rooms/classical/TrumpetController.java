@@ -43,16 +43,19 @@ public class TrumpetController {
 
   private GameState gameState;
 
+  // initialises the trumpet event controller
   @FXML
   private void initialize() throws IOException {
+    // set gamestate and add timer for the controller
     gameState = GameState.getInstance();
     gameState.getTimeManager().addToTimers(timerLabel);
+    // set initial fields
     isButton1Down = false;
     isButton2Down = false;
     isButton3Down = false;
     beamNotes =
         new ArrayList<ImageView>(List.of(beamNote1, beamNote2, beamNote3, beamNote4, beamNote5));
-
+    // generate the sequence of notes for the player to play this game
     generateNoteSequence();
     noteToPlay = noteSequence.get(0);
     currentNoteIndex = 0;
@@ -60,15 +63,18 @@ public class TrumpetController {
     setBeamNotes();
   }
 
+  // helper function to generate the note sequence for the task
   private void generateNoteSequence() {
     int numberToAdd;
     noteSequence = new ArrayList<Integer>();
+    // randomly select 5 unique notes to add to sequence
     for (int i = 0; i < 5; i++) {
       numberToAdd =
           (int) (Math.random() * 2)
               + 10 * (int) (Math.random() * 2)
               + 100 * (int) (Math.random() * 2);
       while (noteSequence.contains(numberToAdd)) {
+        // ensure notes are unique
         numberToAdd =
             (int) (Math.random() * 2)
                 + 10 * (int) (Math.random() * 2)
@@ -78,11 +84,15 @@ public class TrumpetController {
     }
   }
 
+  // method for setting the symbols for the trumpet event
   private void setSymbols() throws IOException {
+    // Load images for the musical notes (on and off)
     Image onNoteImage =
         new Image(App.class.getResource("/images/classicalRoom/Note.png").openStream());
     Image offNoteImage =
         new Image(App.class.getResource("/images/classicalRoom/RestNote.png").openStream());
+
+    // Check the value of each noteToPlay digit and update the corresponding note symbol
     if (noteToPlay / 100 == 1) {
       Platform.runLater(
           () -> {
@@ -118,9 +128,12 @@ public class TrumpetController {
     }
   }
 
+  // function for handling when the trumpet button is clicked
   @FXML
   private void onClickedTrumpetButton1(MouseEvent event) throws IOException {
+    // Toggle the state of trumpet button 1 (down/up)
     if (!isButton1Down) {
+      // updates the trumpet image to the downview if the button is not down
       ImageView current = (ImageView) event.getSource();
       Image currentImage =
           new Image(
@@ -133,6 +146,7 @@ public class TrumpetController {
           });
       isButton1Down = true;
     } else {
+      // otherwise update the trumper image to the upview as button is down
       ImageView current = (ImageView) event.getSource();
       Image currentImage =
           new Image(
@@ -147,9 +161,12 @@ public class TrumpetController {
     }
   }
 
+  // function for handling when the trumpet button is clicked
   @FXML
   private void onClickedTrumpetButton2(MouseEvent event) throws IOException {
+    // Toggle the state of trumpet button 2 (down/up)
     if (!isButton2Down) {
+      // updates the trumpet image to the downview if the button is not down
       ImageView current = (ImageView) event.getSource();
       Image currentImage =
           new Image(
@@ -157,11 +174,13 @@ public class TrumpetController {
                   .getResource("/images/classicalRoom/Trumpet/TrumpetButton2Down.png")
                   .openStream());
       Platform.runLater(
+          // update the gui
           () -> {
             current.setImage(currentImage);
           });
       isButton2Down = true;
     } else {
+      // otherwise update the trumper image to the upview as button is down
       ImageView current = (ImageView) event.getSource();
       Image currentImage =
           new Image(
@@ -169,6 +188,7 @@ public class TrumpetController {
                   .getResource("/images/classicalRoom/Trumpet/TrumpetButton2Up.png")
                   .openStream());
       Platform.runLater(
+          // update the gui
           () -> {
             current.setImage(currentImage);
           });
@@ -176,9 +196,12 @@ public class TrumpetController {
     }
   }
 
+  // function for handling when the trumpet button is clicked
   @FXML
   private void onClickedTrumpetButton3(MouseEvent event) throws IOException {
+    // Toggle the state of trumpet button 3 (down/up)
     if (!isButton3Down) {
+      // updates the trumpet image to the downview if the button is not down
       ImageView current = (ImageView) event.getSource();
       Image currentImage =
           new Image(
@@ -186,11 +209,13 @@ public class TrumpetController {
                   .getResource("/images/classicalRoom/Trumpet/TrumpetButton3Down.png")
                   .openStream());
       Platform.runLater(
+          // update the gui
           () -> {
             current.setImage(currentImage);
           });
       isButton3Down = true;
     } else {
+      // otherwise update the trumper image to the upview as button is down
       ImageView current = (ImageView) event.getSource();
       Image currentImage =
           new Image(
@@ -198,6 +223,7 @@ public class TrumpetController {
                   .getResource("/images/classicalRoom/Trumpet/TrumpetButton3Up.png")
                   .openStream());
       Platform.runLater(
+          // update the gui
           () -> {
             current.setImage(currentImage);
           });
@@ -205,6 +231,7 @@ public class TrumpetController {
     }
   }
 
+  // check if the note is the correct note, returning a boolean depending on the current game
   private boolean checkNote1() {
     if (noteToPlay / 100 == 1) {
       if (isButton1Down) {
@@ -218,6 +245,7 @@ public class TrumpetController {
     return false;
   }
 
+  // check if the note is the correct note, returning a boolean depending on the current game
   private boolean checkNote2() {
     if (noteToPlay / 10 % 10 == 1) {
       if (isButton2Down) {
@@ -231,6 +259,7 @@ public class TrumpetController {
     return false;
   }
 
+  // check if the note is the correct note, returning a boolean depending on the current game
   private boolean checkNote3() {
     if (noteToPlay % 10 == 1) {
       if (isButton3Down) {
@@ -244,13 +273,16 @@ public class TrumpetController {
     return false;
   }
 
+  // function for handling if the play trumpet is clicked
   @FXML
   public void onClickedPlayTrumpet(MouseEvent event) {
     System.out.println("Play Trumpet Clicked");
+    // check if the notes have been played correctly
     if (checkNote1() && checkNote2() && checkNote3()) {
       System.out.println("Correct note played");
       correctNotePlayed();
     } else {
+      // otherwise handle the player not inputting the correct note
       System.out.println("Incorrect note played");
       incorrectNotePlayed();
     }
@@ -277,8 +309,10 @@ public class TrumpetController {
     System.out.println(noteToPlay);
   }
 
+  // helper function for setting the beam notes to show
   private void setBeamNotes() {
     for (int i = 0; i < beamNotes.size(); i++) {
+      // update the respective views of the beams based on the current indices
       if (currentNoteIndex > i) {
         beamNotes.get(i).setOpacity(1);
         System.out.println("Show");

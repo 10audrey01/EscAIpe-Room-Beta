@@ -74,11 +74,14 @@ public class HarpController {
   private Paint noteOrginalColor;
   private MediaPlayer harpNotePlayer;
 
+  // function which initialises the harp controller
   @FXML
   private void initialize() throws IOException {
+    // get instance of gamestate and add the timer label to the gamestate
     this.gameState = GameState.getInstance();
     gameState.getTimeManager().addToTimers(timerLabel);
 
+    // list of all available strings of the harp
     strings =
         new ArrayList<Line>(
             List.of(
@@ -88,6 +91,7 @@ public class HarpController {
                 string26, string27, string28, string29, string30, string31, string32, string33,
                 string34));
     harpSequencePlayable = false;
+    // list of all available colours
     colours =
         new ArrayList<Paint>(
             List.of(
@@ -101,20 +105,18 @@ public class HarpController {
                 Color.CYAN,
                 Color.BROWN,
                 Color.GOLD,
-                Color.DARKBLUE,
-                Color.DARKGREEN,
-                Color.DARKRED,
-                Color.DARKVIOLET,
-                Color.DARKORANGE,
                 Color.ALICEBLUE,
                 Color.MAGENTA,
                 Color.SALMON,
                 Color.SLATEBLUE,
-                Color.AQUAMARINE,
                 Color.TURQUOISE));
+
+    // initial states of fields
     notesToPlay = new ArrayList<Line>();
     notesToShow = new ArrayList<Boolean>(List.of(false, false, false, false, false));
     circles = new ArrayList<Circle>(List.of(circle1, circle2, circle3, circle4, circle5));
+
+    // set up the initial state of the harp for the current game
     setStrings();
     generateRandomHarpNotes();
     generateRandomColours();
@@ -123,11 +125,14 @@ public class HarpController {
     noteToPlay = notesToPlay.get(0);
   }
 
+  // helper function to generate the random sequence of notes for the harp
   @FXML
   private void generateRandomHarpNotes() {
+    // generate 5 random unique notes for the user to play
     for (int i = 0; i < 5; i++) {
       int randomNum = (int) (Math.random() * 34);
       Line randomNote = strings.get(randomNum);
+      // ensure the notes are unique
       while (notesToPlay.contains(randomNote)) {
         randomNum = (int) (Math.random() * 34);
         randomNote = strings.get(randomNum);
@@ -137,15 +142,19 @@ public class HarpController {
     }
   }
 
+  // generate random colours
   private void generateRandomColours() {
     noteColours = new ArrayList<Paint>();
+    // select a random colour for every note to play
     for (int i = 0; i < notesToPlay.size(); i++) {
-      int randomNum = (int) (Math.random() * 20);
+      int randomNum = (int) (Math.random() * 14);
       Paint randomColour = getColour(randomNum);
+      // ensure the colours are unique
       while (noteColours.contains(randomColour)) {
-        randomNum = (int) (Math.random() * 20);
+        randomNum = (int) (Math.random() * 14);
         randomColour = getColour(randomNum);
       }
+      // add to the colours list array
       noteColours.add(randomColour);
     }
   }
@@ -173,9 +182,11 @@ public class HarpController {
     }
   }
 
+  // helper function to handle events related to the player interacting with the harp strings
   @FXML
   private void setStrings() {
     for (Line string : strings) {
+      // on mouse enter, set the current string to the gray selected colours
       string.setOnMouseEntered(
           e -> {
             noteOrginalColor = string.getStroke();
@@ -188,11 +199,15 @@ public class HarpController {
               e1.printStackTrace();
             }
           });
+
+      // on mouse exit, revert the strings colour to the original
       string.setOnMouseExited(
           e -> {
             string.setStroke(noteOrginalColor);
             System.out.println(string.getId() + " left");
           });
+
+      // on the click of a string
       string.setOnMouseClicked(
           e -> {
             System.out.println(string.getId() + " clicked");
@@ -200,43 +215,57 @@ public class HarpController {
               return;
             }
             if (noteToPlay == string) {
+              // if the note is the correct note, handle the correct note played event
               System.out.println("Correct note played");
               noteOrginalColor = javafx.scene.paint.Color.BLACK;
               correctNotePlayed();
             } else {
+              // otherwise handle the incorrect note played event
               System.out.println("Incorrect note played");
               incorrectNotePlayed();
             }
           });
+      // update the mouse cursor for the user
       string.setCursor(javafx.scene.Cursor.CLOSED_HAND);
     }
   }
 
+  // helper function which handles the event of the correct note being played
   public void correctNotePlayed() {
+    // changes the colour of the correct note thats been played
     notesToShow.set(notesToPlay.indexOf(noteToPlay), false);
     if (notesToPlay.indexOf(noteToPlay) != 4) {
+      // if there are more notes to play, shift the note to play to the next note
       noteToPlay = notesToPlay.get(notesToPlay.indexOf(noteToPlay) + 1);
     } else {
+      // otherwise the harp should be completed - update the relevant gamestate
       System.out.println("Harp completed");
       harpSequencePlayable = false;
       GameState.isHarpPlayed = true;
       gameState.getObjectiveListManager().completeObjective4();
     }
+    // set the circle colours
     setCircleColours();
   }
 
+  // function for handling if an incorrect note is played
   public void incorrectNotePlayed() {
+    // reset the sequence of notes the player has played, as they have to restart
     noteToPlay = notesToPlay.get(0);
     notesToShow = new ArrayList<Boolean>(List.of(true, true, true, true, true));
+    // reset the colours for the gui
     setNoteColours();
     setCircleColours();
   }
 
+  // sets the colours for the circles that the player has found through the map
   public void setCirclesFound(int index) {
     notesToShow.set(index, true);
+    // set the notes and colours for the found circles
     setNoteColours();
     setCircleColours();
     if (!harpSequencePlayable) {
+      // check if the player has every note before allowing playing
       for (boolean note : notesToShow) {
         if (note == false) {
           return;

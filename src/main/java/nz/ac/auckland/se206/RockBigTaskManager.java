@@ -76,6 +76,8 @@ public class RockBigTaskManager {
   }
 
   // Methods to add UI elements to the corresponding lists
+  // add all of the labels relevant to the rock task (extra note for guitar sequence) so they can be
+  // updated together
   public void addAllRockTaskElements(
       Label label1,
       Label label2,
@@ -85,10 +87,12 @@ public class RockBigTaskManager {
       ImageView noteImage,
       Label noteSequenceLabel,
       ImageView arrow) {
+    // add all the relevant labels
     addToColourLabels1(label1);
     addToColourLabels2(label2);
     addToColourLabels3(label3);
     addToColourLabels4(label4);
+    // add the panes / images / arrow
     addToNotePanes(pane);
     addToNoteImage(noteImage);
     addToNoteSequenceLabels(noteSequenceLabel);

@@ -102,6 +102,8 @@ public class ObjectiveListManager {
   // Apply strikethrough effect to a list of labels
   public void strikeThroughLabels(ArrayList<Label> labels) {
     for (Label label : labels) {
+      // go through every label and apply css values to every label in the gui for the objective
+      // list.
       Text text = new Text(label.getText());
       text.setStyle(
           "-fx-stroke: black; -fx-stroke-width: 0px; -fx-font-size: 16px; -fx-strikethrough: true;"
