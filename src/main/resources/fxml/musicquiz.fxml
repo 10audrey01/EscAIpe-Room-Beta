@@ -24,7 +24,10 @@
          <font>
             <Font size="20.0" />
          </font></TextArea>
-      <Button fx:id="btnReturn" layoutX="1185.0" layoutY="75.0" mnemonicParsing="false" onAction="#onClickReturn" text="Return" />
+      <Button fx:id="btnReturn" layoutX="1083.0" layoutY="30.0" mnemonicParsing="false" onAction="#onClickReturn" text="Return">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
       <Button fx:id="songBtn" layoutX="574.0" layoutY="55.0" mnemonicParsing="false" onAction="#onClickSongBtn" text="PLAY SONG">
          <font>
             <Font size="47.0" />
