@@ -161,14 +161,6 @@ public class ChatManager {
             ChatMessage msg = new ChatMessage("user", message);
             addMessage(msg);
 
-            // create a new chat completion request to reduce token usage
-            chatCompletionRequest =
-                new ChatCompletionRequest()
-                    .setN(1)
-                    .setTemperature(0.8)
-                    .setTopP(0.5)
-                    .setMaxTokens(70);
-
             // If the user asks for a hint or similar
             if (message.toLowerCase().contains("help")
                 || message.toLowerCase().contains("hint")

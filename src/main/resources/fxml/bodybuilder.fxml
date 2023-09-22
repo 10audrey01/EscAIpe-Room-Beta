@@ -31,7 +31,7 @@
             <Image url="@../images/misc/safeClosed.png" />
          </image></ImageView>
       <ImageView fx:id="firstRoomHint" fitHeight="128.0" fitWidth="151.0" layoutX="626.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="btnReturn" layoutX="1190.0" layoutY="75.0" mnemonicParsing="false" onAction="#onClickReturn" text="Return" />
+      <Button fx:id="btnReturn" layoutX="1185.0" layoutY="75.0" mnemonicParsing="false" onAction="#onClickReturn" text="Return" />
       <Pane layoutX="961.0" layoutY="255.0" prefHeight="443.0" prefWidth="319.0">
          <children>
             <Button fx:id="btnOne" layoutX="20.0" layoutY="156.0" mnemonicParsing="false" onAction="#onClickOne" text="1">
@@ -99,7 +99,7 @@
             </Text>
          </children>
       </Pane>
-            <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1185.0" layoutY="23.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
+            <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1186.0" layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
          <font>
             <Font size="30.0" />
          </font>

@@ -159,6 +159,9 @@
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
                   </TextArea>
                   <TextField fx:id="textField" prefHeight="26.0" prefWidth="1156.0" promptText="Enter Response Here">
                      <VBox.margin>
