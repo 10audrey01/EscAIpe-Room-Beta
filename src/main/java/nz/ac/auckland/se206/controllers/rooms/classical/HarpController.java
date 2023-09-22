@@ -147,11 +147,11 @@ public class HarpController {
     noteColours = new ArrayList<Paint>();
     // select a random colour for every note to play
     for (int i = 0; i < notesToPlay.size(); i++) {
-      int randomNum = (int) (Math.random() * 15);
+      int randomNum = (int) (Math.random() * 14);
       Paint randomColour = getColour(randomNum);
       // ensure the colours are unique
       while (noteColours.contains(randomColour)) {
-        randomNum = (int) (Math.random() * 15);
+        randomNum = (int) (Math.random() * 14);
         randomColour = getColour(randomNum);
       }
       // add to the colours list array
