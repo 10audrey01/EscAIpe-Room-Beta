@@ -29,9 +29,9 @@ public class GptPromptEngineering {
   // game master's introduction
   public static String getGmGreeting() {
     return "You are the friendly Game Master that must help the player escape the musically themed"
-        + " rooms. Introduce yourself and tell the player that you will be helping them."
-        + " Tell the player to click on you to open/close the chat. Your response should be"
-        + " at most 2 lines";
+               + " rooms. Introduce yourself and tell the player that you will be helping them."
+               + " Tell the player to click on you to open/close the chat and ask for hints if they"
+               + " need them. Your response should be at most 2 lines";
   }
 
   public static String getGmInteraction(String msg) {
