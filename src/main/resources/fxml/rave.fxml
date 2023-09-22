@@ -138,7 +138,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1186.0" layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
+      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1158.0" layoutY="27.0" prefHeight="45.0" prefWidth="107.0" style="-fx-background-color: FFFF;">
          <font>
             <Font size="30.0" />
          </font>
@@ -156,7 +156,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ImageView>
-      <Pane fx:id="notePane" layoutX="745.0" layoutY="12.0" prefHeight="96.0" prefWidth="186.0" style="-fx-background-color: FFF5D8;" visible="false">
+      <Pane fx:id="notePane" layoutX="719.0" layoutY="12.0" prefHeight="96.0" prefWidth="186.0" style="-fx-background-color: FFF5D8;" visible="false">
          <children>
             <Label fx:id="colourLabel1" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="10.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: transparent;" text="1" textAlignment="CENTER">
                <font>
@@ -229,35 +229,56 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="935.0" layoutY="5.0" prefHeight="226.0" prefWidth="230.0">
+      <ImageView fx:id="openedDoor" disable="true" fitHeight="303.0" fitWidth="222.0" layoutX="533.0" layoutY="215.0" onMouseClicked="#onClickOpenedDoor" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/doorOpen.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ImageView>
+      <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="156.0" layoutY="14.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: FFFF;" text="HINTS LEFT:">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="gamemaster" fitHeight="134.0" fitWidth="134.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#toggleChat" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/gm/gmrave.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </ImageView>
+      <Pane layoutX="920.0" layoutY="7.0" prefHeight="226.0" prefWidth="230.0">
          <children>
-            <VBox fx:id="objectiveList" layoutX="7.0" maxWidth="187.0" prefHeight="211.0" prefWidth="187.0" spacing="10.0" style="-fx-background-color: FFF5D8;">
+            <VBox fx:id="objectiveList" layoutY="3.0" maxWidth="231.0" prefHeight="221.0" prefWidth="211.0" spacing="10.0" style="-fx-background-color: FFF5D8;">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="176.0" text="HOW TO ESCAPE 101" textAlignment="CENTER" underline="true" wrapText="true">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="215.0" text="HOW TO ESCAPE 101" textAlignment="CENTER" underline="true" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
-                  <Label fx:id="step1Label" alignment="CENTER" prefHeight="21.0" prefWidth="193.0" text="- Help the DJ">
+                  <Line endX="105.29289245605469" startX="-100.0" stroke="#bfbebe" />
+                  <Label fx:id="step1Label" alignment="CENTER" prefHeight="25.0" prefWidth="213.0" text="- Help the DJ">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
-                  <Label fx:id="step2Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="183.0" text="- Help the bodybuilder" textAlignment="CENTER" wrapText="true">
+                  <Line endX="105.29289245605469" startX="-100.0" stroke="#bfbebe" />
+                  <Label fx:id="step2Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="214.0" text="- Help the bodybuilder" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
-                  <Label fx:id="step3Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="184.0" text="- Talk to the guitarist" textAlignment="CENTER">
+                  <Line endX="105.5" startX="-100.0" stroke="#bfbebe" />
+                  <Label fx:id="step3Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="208.0" text="- Talk to the guitarist" textAlignment="CENTER">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Line endX="76.0" startX="-100.0" stroke="#bfbebe" />
-                  <Label fx:id="step4Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="172.0" text="- Play the harp">
+                  <Line endX="103.29289245605469" startX="-100.0" stroke="#bfbebe" />
+                  <Label fx:id="step4Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="209.0" text="- Play the harp">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -267,7 +288,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </VBox>
-            <VBox layoutX="198.0" layoutY="41.0" prefHeight="180.0" prefWidth="25.0" spacing="11.0">
+            <VBox layoutX="202.0" layoutY="49.0" prefHeight="168.0" prefWidth="31.0" spacing="11.0">
                <children>
                   <ImageView fx:id="step1BlueKey" fitHeight="32.0" fitWidth="30.0" visible="false">
                      <image>
@@ -296,26 +317,5 @@
             </VBox>
          </children>
       </Pane>
-      <ImageView fx:id="openedDoor" disable="true" fitHeight="303.0" fitWidth="222.0" layoutX="533.0" layoutY="215.0" onMouseClicked="#onClickOpenedDoor" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@../images/doorOpen.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor>
-      </ImageView>
-      <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="156.0" layoutY="14.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: FFFF;" text="HINTS LEFT:">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="gamemaster" fitHeight="134.0" fitWidth="134.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#toggleChat" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/gm/gmrave.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor>
-      </ImageView>
    </children>
 </Pane>
