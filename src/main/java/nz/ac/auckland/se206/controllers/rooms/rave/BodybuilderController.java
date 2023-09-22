@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.GameState.Difficulty;
 import nz.ac.auckland.se206.RavePuzzle;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -69,6 +70,11 @@ public class BodybuilderController {
     this.speechBox.setText("Hey bro, I need your help... I need to open this safe.");
     //
     resetSafe();
+
+    // hide the hint button on hard, as hints are not available
+    if (GameState.difficulty == Difficulty.HARD) {
+      btnHint.setVisible(false);
+    }
   }
 
   // initialises the code for the puzzle, getting the solution and updating ui based off the the
@@ -161,19 +167,14 @@ public class BodybuilderController {
   // function which reveals the extra hint images when the player decides to use the hint
   @FXML
   private void onClickHint(ActionEvent action) {
-    // hide the hint button and show the hint images
+    // hide the hint button, one time use
     btnHint.setVisible(false);
-    hintImage1.setOpacity(1);
-    hintImage2.setOpacity(1);
-    // decrement hint
-    this.gameState.getHintManager().useHint();
-    // if the player doesnt have hints left, notify them through the bodybuilder
     if (gameState.getHintManager().getHintsRemaining() > 0) {
-      btnHint.setVisible(false);
+      // show the hint images
       hintImage1.setOpacity(1);
       hintImage2.setOpacity(1);
       this.gameState.getHintManager().useHint();
-    } else {
+    } else { // if the player doesnt have hints left, notify them through the bodybuilder
       speechBox.setText("Sorry bro, I don't have any hints for you man.");
     }
   }
