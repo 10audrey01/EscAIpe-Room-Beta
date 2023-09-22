@@ -31,7 +31,7 @@
             <Image url="@../images/misc/safeClosed.png" />
          </image></ImageView>
       <ImageView fx:id="firstRoomHint" fitHeight="128.0" fitWidth="151.0" layoutX="626.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="btnReturn" layoutX="1083.0" layoutY="30.0" mnemonicParsing="false" onAction="#onClickReturn" text="Return">
+      <Button fx:id="btnReturn" layoutX="1060.0" layoutY="30.0" mnemonicParsing="false" onAction="#onClickReturn" text="Return">
          <font>
             <Font size="18.0" />
          </font></Button>
@@ -102,11 +102,6 @@
             </Text>
          </children>
       </Pane>
-            <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1186.0" layoutY="27.0" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: FFFF;">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
       <ImageView fx:id="secondRoomHint" fitHeight="128.0" fitWidth="151.0" layoutX="874.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
       <Text layoutX="801.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+">
          <font>
@@ -132,5 +127,10 @@
             <Image url="@../images/misc/note.png" />
          </image>
       </ImageView>
+      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1158.0" layoutY="27.0" prefHeight="45.0" prefWidth="107.0" style="-fx-background-color: FFFF;">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
