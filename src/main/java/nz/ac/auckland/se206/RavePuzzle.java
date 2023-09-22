@@ -73,15 +73,19 @@ public class RavePuzzle {
 
   // Set images for the puzzle in the ImageView elements
   public void setImages(ImageView first, ImageView second) throws IOException {
+    // load the rock / classical image sprites
     Image rock = new Image(App.class.getResource("/images/misc/rockicon.png").openStream());
     Image classical =
         new Image(App.class.getResource("/images/misc/classicalicon.png").openStream());
     Platform.runLater(
+        // update the gui for each image
         () -> {
           if (this.firstHalfRoom.equals("rock")) {
+            // if the first half is rock, the first image should be the rock sprite
             first.setImage(rock);
             second.setImage(classical);
           } else {
+            // otherwise the order should be reversed
             first.setImage(classical);
             second.setImage(rock);
           }

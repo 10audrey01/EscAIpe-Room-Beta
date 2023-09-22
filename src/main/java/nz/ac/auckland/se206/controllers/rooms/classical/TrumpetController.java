@@ -43,16 +43,19 @@ public class TrumpetController {
 
   private GameState gameState;
 
+  // initialises the trumpet event controller
   @FXML
   private void initialize() throws IOException {
+    // set gamestate and add timer for the controller
     gameState = GameState.getInstance();
     gameState.getTimeManager().addToTimers(timerLabel);
+    // set initial fields
     isButton1Down = false;
     isButton2Down = false;
     isButton3Down = false;
     beamNotes =
         new ArrayList<ImageView>(List.of(beamNote1, beamNote2, beamNote3, beamNote4, beamNote5));
-
+    // generate the sequence of notes for the player to play this game
     generateNoteSequence();
     noteToPlay = noteSequence.get(0);
     currentNoteIndex = 0;
@@ -81,6 +84,7 @@ public class TrumpetController {
     }
   }
 
+  // method for setting the symbols for the trumpet event
   private void setSymbols() throws IOException {
     // Load images for the musical notes (on and off)
     Image onNoteImage =

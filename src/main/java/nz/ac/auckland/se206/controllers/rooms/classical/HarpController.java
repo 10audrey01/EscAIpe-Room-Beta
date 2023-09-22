@@ -248,18 +248,24 @@ public class HarpController {
     setCircleColours();
   }
 
+  // function for handling if an incorrect note is played
   public void incorrectNotePlayed() {
+    // reset the sequence of notes the player has played, as they have to restart
     noteToPlay = notesToPlay.get(0);
     notesToShow = new ArrayList<Boolean>(List.of(true, true, true, true, true));
+    // reset the colours for the gui
     setNoteColours();
     setCircleColours();
   }
 
+  // sets the colours for the circles that the player has found through the map
   public void setCirclesFound(int index) {
     notesToShow.set(index, true);
+    // set the notes and colours for the found circles
     setNoteColours();
     setCircleColours();
     if (!harpSequencePlayable) {
+      // check if the player has every note before allowing playing
       for (boolean note : notesToShow) {
         if (note == false) {
           return;
