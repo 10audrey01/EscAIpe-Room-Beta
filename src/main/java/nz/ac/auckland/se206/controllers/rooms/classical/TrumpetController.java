@@ -233,7 +233,9 @@ public class TrumpetController {
 
   // check if the note is the correct note, returning a boolean depending on the current game
   private boolean checkNote1() {
+    // check if the note is the note to play
     if (noteToPlay / 100 == 1) {
+      // return a boolean based on if the note is the correct note played
       if (isButton1Down) {
         return true;
       }
@@ -242,12 +244,15 @@ public class TrumpetController {
         return true;
       }
     }
+    // return a false if it is incorrect
     return false;
   }
 
   // check if the note is the correct note, returning a boolean depending on the current game
   private boolean checkNote2() {
+    // check if the note is the note to play
     if (noteToPlay / 10 % 10 == 1) {
+      // return a boolean based on if the note is the correct note played
       if (isButton2Down) {
         return true;
       }
@@ -256,12 +261,15 @@ public class TrumpetController {
         return true;
       }
     }
+    // return a false if it is incorrect
     return false;
   }
 
   // check if the note is the correct note, returning a boolean depending on the current game
   private boolean checkNote3() {
+    // check if the note is the note to play
     if (noteToPlay % 10 == 1) {
+      // return a boolean based on if the note is the correct note played
       if (isButton3Down) {
         return true;
       }
@@ -270,6 +278,7 @@ public class TrumpetController {
         return true;
       }
     }
+    // return a false if it is incorrect
     return false;
   }
 
@@ -288,15 +297,21 @@ public class TrumpetController {
     }
   }
 
+  // method for handling if the player inputs the correct note
   public void correctNotePlayed() {
+    // increment the note index
     currentNoteIndex++;
     if (currentNoteIndex <= 4) {
+      // if the sequence isn't finished, set the next note to play
       noteToPlay = noteSequence.get(currentNoteIndex);
     } else {
+      // otherwise the sequence is completed, so finish the task
       System.out.println("Trumpet completed");
       GameState.isTrumpetPlayed = true;
       hideAllSymbols();
     }
+
+    // try to set the new symbols / beam notes for the player ui
     try {
       setSymbols();
       setBeamNotes();

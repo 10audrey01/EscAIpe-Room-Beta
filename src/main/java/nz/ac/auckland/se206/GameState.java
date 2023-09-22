@@ -74,10 +74,13 @@ public class GameState {
   // Reset various game variables to the initial state
   // Resetting all the tasks to incompleted for the current game
   public static void resetVariables() {
+    // reset riddle fileds
     isRiddleResolved = false;
     isRiddleObjectFound = false;
+    // reset note fields
     isNoteSequenceFound = false;
     isKeyFound = false;
+    // reset minitask fields
     isMusicQuizCompleted = false;
     isSafeOpened = false;
     isPianoPlayed = false;
@@ -168,8 +171,11 @@ public class GameState {
       TextArea textArea,
       TextField textField,
       ImageView gmSprite) {
+    // add the timer labels for the global timer
     instance.timeManager.addToTimers(timerLabel);
+    // add the hint labels for the hint manager
     instance.hintManager.addHintLabel(hintLabel);
+    // add the text areas and the gm sprite for the chat
     instance.chatManager.addTextArea(textArea);
     instance.chatManager.addTextField(textField);
     instance.chatManager.addSprite(gmSprite);
