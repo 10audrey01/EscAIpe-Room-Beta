@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.speech;
 
+import java.util.concurrent.atomic.AtomicBoolean;
 import javax.speech.AudioException;
 import javax.speech.Central;
 import javax.speech.EngineException;
@@ -8,6 +9,9 @@ import javax.speech.synthesis.SynthesizerModeDesc;
 
 /** Text-to-speech API using the JavaX speech library. */
 public class TextToSpeech {
+
+  public static AtomicBoolean isTtsEnabled = new AtomicBoolean(true);
+
   /** Custom unchecked exception for Text-to-speech issues. */
   static class TextToSpeechException extends RuntimeException {
     public TextToSpeechException(final String message) {
@@ -61,6 +65,12 @@ public class TextToSpeech {
     boolean isFirst = true;
 
     for (final String sentence : sentences) {
+      System.out.println(isTtsEnabled.get());
+      System.out.println(sentence);
+      if (!isTtsEnabled.get()) {
+        return;
+      }
+
       if (isFirst) {
         isFirst = false;
       } else {

@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -247,7 +248,7 @@
             </VBox>
          </children>
       </Pane>
-      <ImageView fx:id="gamemaster" fitHeight="134.0" fitWidth="134.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#toggleChat" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="gamemaster" fitHeight="134.0" fitWidth="134.0" layoutX="19.0" layoutY="14.0" onMouseClicked="#toggleChat" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/gm/gmrock.png" />
          </image>
@@ -260,5 +261,10 @@
             <Font size="30.0" />
          </font>
       </Label>
+      <CheckBox fx:id="ttsCheckBox" layoutX="8.0" layoutY="155.0" mnemonicParsing="false" onAction="#onClickTts" selected="true" style="-fx-background-color: ffff;" text="Text-to-Speech">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
    </children>
 </Pane>
