@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -24,6 +25,7 @@ public class ChatManager {
   private ArrayList<TextArea> textAreas;
   private ArrayList<TextField> textFields;
   private ArrayList<ImageView> gmSprites;
+  private ArrayList<CheckBox> ttsCheckBoxes;
   private String messages;
   private ChatMessage lastMsg;
 
@@ -33,6 +35,7 @@ public class ChatManager {
     textAreas = new ArrayList<TextArea>();
     textFields = new ArrayList<TextField>();
     gmSprites = new ArrayList<ImageView>();
+    ttsCheckBoxes = new ArrayList<CheckBox>();
   }
 
   // Add a TextArea to the list for displaying chat messages
@@ -50,12 +53,26 @@ public class ChatManager {
     gmSprites.add(image);
   }
 
+  // Add a checkbox for toggling text to speech
+  public void addTtsCheckBox(CheckBox checkBox) {
+    ttsCheckBoxes.add(checkBox);
+  }
+
   // Clear the text in all textFields
   public void clearAllTextFields() {
     Platform.runLater(
         () -> {
           for (TextField textField : textFields) {
             textField.setText("");
+          }
+        });
+  }
+
+  public void setCheckboxSelected(boolean selected) {
+    Platform.runLater(
+        () -> {
+          for (CheckBox checkBox : ttsCheckBoxes) {
+            checkBox.setSelected(selected);
           }
         });
   }

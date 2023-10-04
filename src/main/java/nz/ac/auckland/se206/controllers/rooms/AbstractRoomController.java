@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers.rooms;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -11,6 +12,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 public abstract class AbstractRoomController {
 
@@ -37,6 +39,7 @@ public abstract class AbstractRoomController {
   @FXML protected ImageView step2GreenKey;
   @FXML protected ImageView step3RedKey;
   @FXML protected ImageView step4YellowKey;
+  @FXML protected CheckBox ttsCheckBox;
 
   protected boolean chatOpened = false;
   protected GameState gameState;
@@ -73,12 +76,20 @@ public abstract class AbstractRoomController {
     }
   }
 
+  @FXML
+  public void onClickTts() {
+    TextToSpeech.isTtsEnabled.set(!TextToSpeech.isTtsEnabled.get()); // Toggle TTS
+    gameState
+        .getChatManager()
+        .setCheckboxSelected(TextToSpeech.isTtsEnabled.get()); // Update checkbox
+  }
+
   // initialise all gamestate variables
   public void initialiseAllGameStateVariables() {
 
     // add all relevant labels to gamestate instance
     gameState = GameState.getInstance();
-    gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite);
+    gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite, ttsCheckBox);
 
     // add objective labels and steps to the objective list manager
     gameState.getObjectiveListManager().addObjectiveLabel1(step1Label);

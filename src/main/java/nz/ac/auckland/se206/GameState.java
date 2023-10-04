@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -170,7 +171,8 @@ public class GameState {
       Label hintLabel,
       TextArea textArea,
       TextField textField,
-      ImageView gmSprite) {
+      ImageView gmSprite,
+      CheckBox ttsCheckBox) {
     // add the timer labels for the global timer
     instance.timeManager.addToTimers(timerLabel);
     // add the hint labels for the hint manager
@@ -179,6 +181,8 @@ public class GameState {
     instance.chatManager.addTextArea(textArea);
     instance.chatManager.addTextField(textField);
     instance.chatManager.addSprite(gmSprite);
+    // add the checkbox for the text to speech
+    instance.chatManager.addTtsCheckBox(ttsCheckBox);
   }
 
   // method for adding all objective list labels
