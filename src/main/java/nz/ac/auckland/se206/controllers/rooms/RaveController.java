@@ -220,7 +220,9 @@ public class RaveController extends AbstractRoomController {
 
   // helper function to check for if the riddle object selected is the clicked on object
   public void isRiddleObject(String object) {
-    if (riddleObject.equals(object) && GameState.isRiddleResolved) {
+    if (riddleObject.equals(object)
+        && GameState.isRiddleResolved
+        && !GameState.isRiddleObjectFound) {
       // if the object is the correct one, set relevant labels to notify the user
       GameState.isRiddleObjectFound = true;
       gameState.getRockBigTaskManager().setLabelColours();
