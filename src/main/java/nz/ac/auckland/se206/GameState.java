@@ -58,7 +58,11 @@ public class GameState {
   public static boolean isEscaped = false;
   public static boolean isTrumpetPlayed = false;
 
-  // Singleton pattern: Get an instance of the GameState
+  /**
+   * Returns the singleton instance of the GameState class.
+   *
+   * @return The GameState instance.
+   */
   public static GameState getInstance() {
     if (instance == null) {
       instance = new GameState();
@@ -75,7 +79,7 @@ public class GameState {
   }
 
   /**
-   * Sets the GameState instance.
+   * Sets the GameState instance to the new given instance of a GameState.
    *
    * @param instance The new GameState instance.
    */
