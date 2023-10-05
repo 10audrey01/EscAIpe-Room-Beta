@@ -64,7 +64,14 @@ public class MusicQuizController {
   private Thread timerThread;
   private boolean timerStarted;
 
-  // initialises the musicquiz controller
+  /**
+   * Initializes the MusicQuizController by setting up the gamestate, labels, timers, and other
+   * game-related variables.
+   *
+   * @throws IOException If there is an issue with input/output.
+   * @throws URISyntaxException If there is an issue with URI syntax.
+   * @throws ApiProxyException If there is an issue with the API proxy.
+   */
   @FXML
   private void initialize() throws IOException, URISyntaxException, ApiProxyException {
     // gets the gamestate and adds the relevant labels to the gamestate
@@ -109,7 +116,12 @@ public class MusicQuizController {
     }
   }
 
-  // selects the other incorrect options for the game
+  /**
+   * Selects incorrect genre options for the game, shuffles them, and sets them on the corresponding
+   * buttons. Also determines the correct genre.
+   *
+   * @throws ApiProxyException If there is an issue with the API proxy.
+   */
   private void selectOptions() throws ApiProxyException {
     // get a list of all the available genres excluding the genre solution to choose from
     List<String> availableGenres = new ArrayList<>();
@@ -150,7 +162,10 @@ public class MusicQuizController {
     System.out.println("Correct genre index: " + correctGenreIndex);
   }
 
-  // event handler for when the play song button is clicked
+  /**
+   * Handles the click event for the "PLAY SONG" button, allowing the player to play or pause the
+   * music.
+   */
   @FXML
   private void onClickSongBtn() {
     // if already playing, we pause the music and update the button
@@ -164,13 +179,13 @@ public class MusicQuizController {
     }
   }
 
-  // helper function that will set all buttons on cooldown and start the timer
+  /** Sets cooldowns on all option buttons and starts a timer for the cooldown period. */
   private void setButtonCooldowns() {
     disableAllButtons();
     startCooldownTimer();
   }
 
-  // helper function that disables ALL of the option buttons
+  /** Disables all option buttons. */
   private void disableAllButtons() {
     optionOneBtn.setDisable(true);
     optionTwoBtn.setDisable(true);
@@ -180,7 +195,7 @@ public class MusicQuizController {
     optionSixBtn.setDisable(true);
   }
 
-  // function for starting a cooldown timer for the buttons
+  /** Starts a countdown timer for the button cooldown period, updating the GUI accordingly. */
   private void startCooldownTimer() {
     // will not start the countdown if it has already started.
     if (this.timerStarted) {
@@ -233,7 +248,7 @@ public class MusicQuizController {
     timerThread.start();
   }
 
-  // helper function to stop the countdown.
+  /** Stops the countdown timer, re-enables option buttons, and hides the cooldown label. */
   public void stopCountdown() {
     // cancels / interrupts the thread relevant to timing
     if (timer != null) {
@@ -254,7 +269,12 @@ public class MusicQuizController {
     optionSixBtn.setDisable(false);
   }
 
-  // helper function to attempt solve the puzzle
+  /**
+   * Attempts to solve the music quiz with the given index and handles the outcome, such as correct
+   * and incorrect selections.
+   *
+   * @param index The index of the selected answer.
+   */
   private void attemptSolve(int index) {
     if (correctGenreIndex == index) {
       // if the selection is correct, notify the user through the GUI and notify the gamestate.
@@ -278,49 +298,70 @@ public class MusicQuizController {
     }
   }
 
-  // on clicking the first answer button
+  /**
+   * Event handler for when the corresponding answer button is clicked, attempting to solve the quiz
+   * with the respective index.
+   */
   @FXML
   private void onClickOne() {
     System.out.println("1");
     attemptSolve(1);
   }
 
-  // on clicking the second answer button
+  /**
+   * Event handler for when the corresponding answer button is clicked, attempting to solve the quiz
+   * with the respective index.
+   */
   @FXML
   private void onClickTwo() {
     System.out.println("2");
     attemptSolve(2);
   }
 
-  // on clicking the third answer button
+  /**
+   * Event handler for when the corresponding answer button is clicked, attempting to solve the quiz
+   * with the respective index.
+   */
   @FXML
   private void onClickThree() {
     System.out.println("3");
     attemptSolve(3);
   }
 
-  // on clicking the fourth answer button
+  /**
+   * Event handler for when the corresponding answer button is clicked, attempting to solve the quiz
+   * with the respective index.
+   */
   @FXML
   private void onClickFour() {
     System.out.println("4");
     attemptSolve(4);
   }
 
-  // on clicking the fifth answer button
+  /**
+   * Event handler for when the corresponding answer button is clicked, attempting to solve the quiz
+   * with the respective index.
+   */
   @FXML
   private void onClickFive() {
     System.out.println("5");
     attemptSolve(5);
   }
 
-  // on clicking the sixth answer button
+  /**
+   * Event handler for when the corresponding answer button is clicked, attempting to solve the quiz
+   * with the respective index.
+   */
   @FXML
   private void onClickSix() {
     System.out.println("6");
     attemptSolve(6);
   }
 
-  // deletes a singular wrong option from the buttons
+  /**
+   * Deletes a single wrong option from the available buttons, making the game easier by providing a
+   * hint.
+   */
   private void deleteWrongOption() {
     // select a random wrong button to remove
     Collections.shuffle(availableWrongButtons);
@@ -354,7 +395,10 @@ public class MusicQuizController {
     }
   }
 
-  // on the clicking of the hint button
+  /**
+   * Event handler for clicking the hint button, using a hint if available and deleting a wrong
+   * option as a hint.
+   */
   @FXML
   private void onClickHint() {
     System.out.println("hint");
@@ -368,7 +412,12 @@ public class MusicQuizController {
     }
   }
 
-  // switches back to the rave room
+  /**
+   * Switches back to the Rave room scene when the "RETURN" button is clicked, pausing the music if
+   * it's playing.
+   *
+   * @param event The ActionEvent representing the button click event.
+   */
   @FXML
   private void onClickReturn(ActionEvent event) {
     Button source = (Button) event.getSource();
