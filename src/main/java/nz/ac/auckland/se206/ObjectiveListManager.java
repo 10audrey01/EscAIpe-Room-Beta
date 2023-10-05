@@ -59,7 +59,7 @@ public class ObjectiveListManager {
   public void completeObjective1() {
     if (GameState.isMusicQuizCompleted) {
       strikeThroughLabels(this.allObjectiveLabels.get(0)); // Apply strikethrough effect to labels
-      setVisibilityKeyBlue1(true); // Set visibility of step 1 key to true
+      setVisibilityKey(0, true); // Set visibility of step 1 key to true
     }
   }
 
@@ -67,7 +67,7 @@ public class ObjectiveListManager {
   public void completeObjective2() {
     if (GameState.isSafeOpened) {
       strikeThroughLabels(this.allObjectiveLabels.get(1)); // Apply strikethrough effect to labels
-      setVisibilityKeyGreen2(true); // Set visibility of step 2 key to true
+      setVisibilityKey(1, true); // Set visibility of step 2 key to true
     }
   }
 
@@ -82,7 +82,7 @@ public class ObjectiveListManager {
   public void completeObjective4() {
     if (GameState.isHarpPlayed) {
       strikeThroughLabels(this.allObjectiveLabels.get(3)); // Apply strikethrough effect to labels
-      setVisibilityKeyYellow4(true); // Set visibility of step 4 key to true
+      setVisibilityKey(3, true); // Set visibility of step 4 key to true
     }
   }
 
@@ -100,30 +100,9 @@ public class ObjectiveListManager {
     }
   }
 
-  // Set visibility of step 1 key ImageView(s)
-  public void setVisibilityKeyBlue1(boolean visibility) {
-    for (ImageView key : allStepKeys.get(0)) {
-      key.setVisible(visibility);
-    }
-  }
-
-  // Set visibility of step 2 key ImageView(s)
-  public void setVisibilityKeyGreen2(boolean visibility) {
-    for (ImageView key : allStepKeys.get(1)) {
-      key.setVisible(visibility);
-    }
-  }
-
-  // Set visibility of step 3 key ImageView(s)
-  public void setVisibilityKeyRed3(boolean visibility) {
-    for (ImageView key : allStepKeys.get(2)) {
-      key.setVisible(visibility);
-    }
-  }
-
-  // Set visibility of step 4 key ImageView(s)
-  public void setVisibilityKeyYellow4(boolean visibility) {
-    for (ImageView key : allStepKeys.get(3)) {
+  // Set visibility of any key ImageView(s)
+  public void setVisibilityKey(int keyIndex, boolean visibility) {
+    for (ImageView key : allStepKeys.get(keyIndex)) {
       key.setVisible(visibility);
     }
   }
