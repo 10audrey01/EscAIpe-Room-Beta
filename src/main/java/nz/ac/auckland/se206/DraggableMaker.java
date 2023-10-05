@@ -2,22 +2,26 @@ package nz.ac.auckland.se206;
 
 import javafx.scene.Node;
 
-// class for handling draggable components in the gui
+/** Utility class for making JavaFX nodes draggable within the GUI. */
 public class DraggableMaker {
   private double mouseAnchorX;
   private double mouseAnchorY;
 
-  // function for making a node draggable by the user
+  /**
+   * Makes a JavaFX node draggable by the user.
+   *
+   * @param node The JavaFX node to be made draggable.
+   */
   public void makeDraggable(Node node) {
 
-    // get the current co-ordinates on click
+    // Get the current coordinates on click
     node.setOnMousePressed(
         (mouseEvent) -> {
           mouseAnchorX = mouseEvent.getX();
           mouseAnchorY = mouseEvent.getY();
         });
 
-    // as the user drags, update the co-ordinates to the cursor or where the user drags to
+    // As the user drags, update the coordinates to the cursor or where the user drags to
     node.setOnMouseDragged(
         (mouseEvent) -> {
           node.setLayoutX(mouseEvent.getSceneX() - mouseAnchorX);
