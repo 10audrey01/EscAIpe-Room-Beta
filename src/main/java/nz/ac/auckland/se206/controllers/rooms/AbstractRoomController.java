@@ -42,10 +42,8 @@ public abstract class AbstractRoomController {
 
   protected boolean chatOpened = false;
   protected GameState gameState;
-  protected ArrayList<Label> objectiveLabels =
-      new ArrayList<Label>(List.of(step1Label, step2Label, step3Label, step4Label));
-  protected ArrayList<ImageView> stepKeys =
-      new ArrayList<ImageView>(List.of(step1BlueKey, step2GreenKey, step3RedKey, step4YellowKey));
+  protected ArrayList<Label> objectiveLabels;
+  protected ArrayList<ImageView> stepKeys;
 
   // function which toggles the visibility of the chatbox
   @FXML
@@ -81,6 +79,10 @@ public abstract class AbstractRoomController {
 
   // initialise all gamestate variables
   public void initialiseAllGameStateVariables() {
+
+    objectiveLabels = new ArrayList<Label>(List.of(step1Label, step2Label, step3Label, step4Label));
+    stepKeys =
+        new ArrayList<ImageView>(List.of(step1BlueKey, step2GreenKey, step3RedKey, step4YellowKey));
 
     // add all relevant labels to gamestate instance
     gameState = GameState.getInstance();
