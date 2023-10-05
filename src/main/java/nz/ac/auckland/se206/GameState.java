@@ -10,7 +10,9 @@ import nz.ac.auckland.se206.controllers.rooms.notes.ClassicalNoteController;
 import nz.ac.auckland.se206.controllers.rooms.notes.RockNoteController;
 import nz.ac.auckland.se206.controllers.rooms.rave.BodybuilderController;
 
-/** Represents the state of the game. */
+/**
+ * Represents the state of the game, including game difficulty, playtime, and various game states.
+ */
 public class GameState {
   // Enum to represent game difficulty levels
   public enum Difficulty {
@@ -31,6 +33,11 @@ public class GameState {
       this.time = time;
     }
 
+    /**
+     * Gets the playtime duration in hours.
+     *
+     * @return The playtime duration in hours.
+     */
     public Integer getTime() {
       return this.time;
     }
@@ -67,13 +74,19 @@ public class GameState {
     return instance;
   }
 
-  // Setter for the GameState instance
+  /**
+   * Sets the GameState instance.
+   *
+   * @param instance The new GameState instance.
+   */
   public static void setInstance(GameState instance) {
     GameState.instance = instance;
   }
 
-  // Reset various game variables to the initial state
-  // Resetting all the tasks to incompleted for the current game
+  /**
+   * Resets various game variables to their initial state, allowing for a new game session. All
+   * tasks are reset to their initial incompleted state for the current game.
+   */
   public static void resetVariables() {
     // reset riddle fileds
     isRiddleResolved = false;
@@ -101,59 +114,134 @@ public class GameState {
   private ClassicalNoteController classicalNote;
   private RockNoteController rockNote;
 
+  /**
+   * Gets the TimeManager responsible for managing game time and time-related events.
+   *
+   * @return The TimeManager instance.
+   */
   public TimeManager getTimeManager() {
     return timeManager;
   }
 
+  /**
+   * Gets the HintManager responsible for managing hints and hint-related functionalities in the
+   * game.
+   *
+   * @return The HintManager instance.
+   */
   public HintManager getHintManager() {
     return hintManager;
   }
 
+  /**
+   * Gets the TaskManager responsible for managing game tasks, objectives, and task-related
+   * activities.
+   *
+   * @return The TaskManager instance.
+   */
   public TaskManager getTaskManager() {
     return taskManager;
   }
 
+  /**
+   * Gets the ChatManager responsible for handling in-game chat interactions and messaging.
+   *
+   * @return The ChatManager instance.
+   */
   public ChatManager getChatManager() {
     return chatManager;
   }
 
+  /**
+   * Gets the RockBigTaskManager responsible for managing the "Rock Big Task" in the game.
+   *
+   * @return The RockBigTaskManager instance.
+   */
   public RockBigTaskManager getRockBigTaskManager() {
     return rockBigTaskManager;
   }
 
+  /**
+   * Gets the RavePuzzle responsible for managing the Rave Puzzle mini-game in the game.
+   *
+   * @return The RavePuzzle instance.
+   */
   public RavePuzzle getRavePuzzle() {
     return ravePuzzle;
   }
 
+  /**
+   * Gets the ObjectiveListManager responsible for managing the game's objective list and
+   * objectives.
+   *
+   * @return The ObjectiveListManager instance.
+   */
   public ObjectiveListManager getObjectiveListManager() {
     return objectiveListManager;
   }
 
+  /**
+   * Gets the BodybuilderController responsible for managing the Bodybuilder mini-game in the game.
+   *
+   * @return The BodybuilderController instance.
+   */
   public BodybuilderController getBodybuilderController() {
     return bodybuilderController;
   }
 
+  /**
+   * Sets the BodybuilderController responsible for managing the Bodybuilder mini-game in the game.
+   *
+   * @param bodybuilderController The BodybuilderController instance to set.
+   */
   public void setBodybuilderController(BodybuilderController bodybuilderController) {
     this.bodybuilderController = bodybuilderController;
   }
 
+  /**
+   * Gets the ClassicalNoteController responsible for managing the Classical Note mini-game in the
+   * game.
+   *
+   * @return The ClassicalNoteController instance.
+   */
   public ClassicalNoteController getClassicalNote() {
     return classicalNote;
   }
 
+  /**
+   * Sets the ClassicalNoteController responsible for managing the Classical Note mini-game in the
+   * game.
+   *
+   * @param classicalNote The ClassicalNoteController instance to set.
+   */
   public void setClassicalNote(ClassicalNoteController classicalNote) {
     this.classicalNote = classicalNote;
   }
 
+  /**
+   * Gets the RockNoteController responsible for managing the Rock Note mini-game in the game.
+   *
+   * @return The RockNoteController instance.
+   */
   public RockNoteController getRockNote() {
     return rockNote;
   }
 
+  /**
+   * Sets the RockNoteController responsible for managing the Rock Note mini-game in the game.
+   *
+   * @param rockNote The RockNoteController instance to set.
+   */
   public void setRockNote(RockNoteController rockNote) {
     this.rockNote = rockNote;
   }
 
-  // Method to start the game and initialize various components
+  /**
+   * Starts the game and initializes various game components including tasks, timers, hints, and
+   * puzzles.
+   *
+   * @throws IOException If an I/O error occurs during game initialization.
+   */
   public void startGame() throws IOException {
     this.taskManager.generateTasks(); // Generate game tasks
     this.timeManager.setTime(time.getTime() * 60); // Set game time
@@ -163,9 +251,17 @@ public class GameState {
     this.bodybuilderController.initialiseCode(); // Initialize code for the Bodybuilder puzzle
   }
 
-  // method for adding all initial labels needed for each room
-  // adds the labels for global timer, aswell as hints.
-  // adds the text areas and sprites for the chatmanager to update for all rooms.
+  /**
+   * Adds initial labels and components needed for each room, including timer labels, hint labels,
+   * chat text areas, GM sprite, and text-to-speech checkbox.
+   *
+   * @param timerLabel The label for displaying the global timer.
+   * @param hintLabel The label for displaying hints.
+   * @param textArea The text area for displaying chat messages.
+   * @param textField The text field for entering chat messages.
+   * @param gmSprite The sprite for the game master (GM).
+   * @param ttsCheckBox The checkbox for enabling text-to-speech functionality.
+   */
   public void addInitialLabels(
       Label timerLabel,
       Label hintLabel,
