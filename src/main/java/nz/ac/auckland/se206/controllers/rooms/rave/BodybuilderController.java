@@ -59,7 +59,12 @@ public class BodybuilderController {
   private String code = "";
   private String solution = "";
 
-  // initializes the controller
+  /**
+   * Initializes the SafeController by setting up the gamestate, labels, and other game-related
+   * variables.
+   *
+   * @throws IOException If there is an issue with input/output.
+   */
   @FXML
   private void initialize() throws IOException {
     // gets the gamestate instance, adding the labels for hints/timers to the gamestate
@@ -77,8 +82,12 @@ public class BodybuilderController {
     }
   }
 
-  // initialises the code for the puzzle, getting the solution and updating ui based off the the
-  // instance of the puzzle
+  /**
+   * Initializes the safe puzzle code, retrieves the solution, and updates UI elements based on the
+   * puzzle instance.
+   *
+   * @throws IOException If there is an issue with input/output.
+   */
   public void initialiseCode() throws IOException {
     RavePuzzle puzzle = gameState.getRavePuzzle();
     this.puzzleInstance = puzzle;
@@ -87,7 +96,11 @@ public class BodybuilderController {
     System.out.println("Solution added to controller." + this.solution);
   }
 
-  // resets the status of the safe to the default
+  /**
+   * Resets the status of the safe puzzle to its default state.
+   *
+   * @throws IOException If there is an issue with input/output.
+   */
   public void resetSafe() throws IOException {
     // resets the current solution and code.
     this.code = "";
@@ -102,8 +115,14 @@ public class BodybuilderController {
     digitSix.setFill(Color.RED);
   }
 
-  // handles the player clicking any keyboard keys for inputting into the safe, using any number
-  // inputs or backspace and enter for submission
+  /**
+   * Handles key presses, allowing the player to input numbers (0-9), backspace, and enter for safe
+   * code submission.
+   *
+   * @param event The KeyEvent representing the key press event.
+   * @throws ApiProxyException If there is an issue with the API proxy.
+   * @throws IOException If there is an issue with input/output.
+   */
   @FXML
   private void onKeyPressed(KeyEvent event) throws ApiProxyException, IOException {
     // gets the current value of the key pressed
@@ -164,7 +183,12 @@ public class BodybuilderController {
     }
   }
 
-  // function which reveals the extra hint images when the player decides to use the hint
+  /**
+   * Handles the event when the hint button is clicked. Reveals hint images and consumes a hint if
+   * available.
+   *
+   * @param action The ActionEvent representing the button click event.
+   */
   @FXML
   private void onClickHint(ActionEvent action) {
     // hide the hint button, one time use
@@ -179,7 +203,12 @@ public class BodybuilderController {
     }
   }
 
-  // Handles the event where any number is pressed.
+  /**
+   * Handles pressing a number button (0-9) and adds the number to the input code if the code length
+   * is less than 6.
+   *
+   * @param number The number to be added to the input code.
+   */
   @FXML
   private void pressNumber(int number) {
     // only adds the number if the code length is less than 6
@@ -189,67 +218,122 @@ public class BodybuilderController {
     }
   }
 
-  // ons clicking of the 0
+  /**
+   * Event handler for clicking respective number button, which add the respective number to the
+   * input code.
+   *
+   * @param action The ActionEvent representing the button click event.
+   */
   @FXML
   private void onClickZero(ActionEvent action) {
     pressNumber(0);
   }
 
-  // ons clicking of the 1
+  /**
+   * Event handler for clicking respective number button, which add the respective number to the
+   * input code.
+   *
+   * @param action The ActionEvent representing the button click event.
+   */
   @FXML
   private void onClickOne(ActionEvent action) {
     pressNumber(1);
   }
 
-  // ons clicking of the 2
+  /**
+   * Event handler for clicking respective number button, which add the respective number to the
+   * input code.
+   *
+   * @param action The ActionEvent representing the button click event.
+   */
   @FXML
   private void onClickTwo(ActionEvent action) {
     pressNumber(2);
   }
 
-  // ons clicking of the 3
+  /**
+   * Event handler for clicking respective number button, which add the respective number to the
+   * input code.
+   *
+   * @param action The ActionEvent representing the button click event.
+   */
   @FXML
   private void onClickThree(ActionEvent action) {
     pressNumber(3);
   }
 
-  // ons clicking of the 4
+  /**
+   * Event handler for clicking respective number button, which add the respective number to the
+   * input code.
+   *
+   * @param action The ActionEvent representing the button click event.
+   */
   @FXML
   private void onClickFour(ActionEvent action) {
     pressNumber(4);
   }
 
-  // ons clicking of the 5
+  /**
+   * Event handler for clicking respective number button, which add the respective number to the
+   * input code.
+   *
+   * @param action The ActionEvent representing the button click event.
+   */
   @FXML
   private void onClickFive(ActionEvent action) {
     pressNumber(5);
   }
 
-  // ons clicking of the 6
+  /**
+   * Event handler for clicking respective number button, which add the respective number to the
+   * input code.
+   *
+   * @param action The ActionEvent representing the button click event.
+   */
   @FXML
   private void onClickSix(ActionEvent action) {
     pressNumber(6);
   }
 
-  // ons clicking of the 7
+  /**
+   * Event handler for clicking respective number button, which add the respective number to the
+   * input code.
+   *
+   * @param action The ActionEvent representing the button click event.
+   */
   @FXML
   private void onClickSeven(ActionEvent action) {
     pressNumber(7);
   }
 
-  // ons clicking of the 8
+  /**
+   * Event handler for clicking respective number button, which add the respective number to the
+   * input code.
+   *
+   * @param action The ActionEvent representing the button click event.
+   */
   @FXML
   private void onClickEight(ActionEvent action) {
     pressNumber(8);
   }
 
-  // ons clicking of the 9
+  /**
+   * Event handler for clicking respective number button, which add the respective number to the
+   * input code.
+   *
+   * @param action The ActionEvent representing the button click event.
+   */
   @FXML
   private void onClickNine(ActionEvent action) {
     pressNumber(9);
   }
 
-  // ons clicking of the delete
+  /**
+   * Handles the event when the remove (backspace) button is clicked. Removes the last digit from
+   * the input code.
+   *
+   * @param action The ActionEvent representing the button click event.
+   */
   @FXML
   private void onClickRemove(ActionEvent action) {
     if (this.code.length() > 0) {
@@ -258,10 +342,13 @@ public class BodybuilderController {
     codeInputText.setText(code);
   }
 
-  // ons clicking of the submit
-  // checks for the correct numbers at each relative digit to green or red based on the correctness
-  // of the input.
-  // this way hinting for the player the correctness of the inputs that they
+  /**
+   * Handles the event when the submit button is clicked. Checks the correctness of the input code
+   * and updates UI accordingly.
+   *
+   * @param action The ActionEvent representing the button click event.
+   * @throws IOException If there is an issue with input/output.
+   */
   @FXML
   private void onClickSubmit(ActionEvent action) throws IOException {
     System.out.println("submitted code " + code);
@@ -332,7 +419,11 @@ public class BodybuilderController {
     resultText.setFill(Color.RED);
   }
 
-  // switches back to the rave room
+  /**
+   * Switches back to the Rave room scene when the "RETURN" button is clicked.
+   *
+   * @param event The ActionEvent representing the button click event.
+   */
   @FXML
   private void onClickReturn(ActionEvent event) {
     Button source = (Button) event.getSource();
