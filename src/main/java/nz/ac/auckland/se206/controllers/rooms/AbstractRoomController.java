@@ -1,6 +1,8 @@
 package nz.ac.auckland.se206.controllers.rooms;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -43,6 +45,8 @@ public abstract class AbstractRoomController {
 
   protected boolean chatOpened = false;
   protected GameState gameState;
+  protected ArrayList<Label> objectiveLabels;
+  protected ArrayList<ImageView> stepKeys;
 
   // function which toggles the visibility of the chatbox
   @FXML
@@ -87,19 +91,17 @@ public abstract class AbstractRoomController {
   // initialise all gamestate variables
   public void initialiseAllGameStateVariables() {
 
+    objectiveLabels = new ArrayList<Label>(List.of(step1Label, step2Label, step3Label, step4Label));
+    stepKeys =
+        new ArrayList<ImageView>(List.of(step1BlueKey, step2GreenKey, step3RedKey, step4YellowKey));
+
     // add all relevant labels to gamestate instance
     gameState = GameState.getInstance();
     gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite, ttsCheckBox);
 
     // add objective labels and steps to the objective list manager
-    gameState.getObjectiveListManager().addObjectiveLabel1(step1Label);
-    gameState.getObjectiveListManager().addObjectiveLabel2(step2Label);
-    gameState.getObjectiveListManager().addObjectiveLabel3(step3Label);
-    gameState.getObjectiveListManager().addObjectiveLabel4(step4Label);
-    gameState.getObjectiveListManager().addStep1Key(step1BlueKey);
-    gameState.getObjectiveListManager().addStep2Key(step2GreenKey);
-    gameState.getObjectiveListManager().addStep3Key(step3RedKey);
-    gameState.getObjectiveListManager().addStep4Key(step4YellowKey);
+    gameState.getObjectiveListManager().addObjectiveLabels(objectiveLabels);
+    gameState.getObjectiveListManager().addStepKeys(stepKeys);
 
     // add elements needed for the rock room task
     gameState
