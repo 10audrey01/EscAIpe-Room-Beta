@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206;
 
 import java.util.ArrayList;
+import java.util.List;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -12,8 +13,20 @@ public class ObjectiveListManager {
 
   public ObjectiveListManager() {
     // Initialize lists for objective labels and step keys
-    this.allObjectiveLabels = new ArrayList<ArrayList<Label>>();
-    this.allStepKeys = new ArrayList<ArrayList<ImageView>>();
+    this.allObjectiveLabels =
+        new ArrayList<ArrayList<Label>>(
+            List.of(
+                new ArrayList<Label>(),
+                new ArrayList<Label>(),
+                new ArrayList<Label>(),
+                new ArrayList<Label>()));
+    this.allStepKeys =
+        new ArrayList<ArrayList<ImageView>>(
+            List.of(
+                new ArrayList<ImageView>(),
+                new ArrayList<ImageView>(),
+                new ArrayList<ImageView>(),
+                new ArrayList<ImageView>()));
   }
 
   // Add an objective label for any step
