@@ -44,7 +44,12 @@ public class TrumpetController {
 
   private GameState gameState;
 
-  // initialises the trumpet event controller
+  /**
+   * Initializes the TrumpetEventController by setting up the game state, labels, and other
+   * game-related variables.
+   *
+   * @throws IOException If there is an issue with input/output.
+   */
   @FXML
   private void initialize() throws IOException {
     // set gamestate and add timer for the controller
@@ -64,7 +69,7 @@ public class TrumpetController {
     setBeamNotes();
   }
 
-  // helper function to generate the note sequence for the task
+  /** Helper function to generate the note sequence for the trumpet event task. */
   private void generateNoteSequence() {
     int numberToAdd;
     noteSequence = new ArrayList<Integer>();
@@ -85,7 +90,11 @@ public class TrumpetController {
     }
   }
 
-  // method for setting the symbols for the trumpet event
+  /**
+   * Sets the symbols for the trumpet event based on the current note to play.
+   *
+   * @throws IOException If there is an issue with loading images.
+   */
   private void setSymbols() throws IOException {
     // Load images for the musical notes (on and off)
     Image onNoteImage =
@@ -129,7 +138,12 @@ public class TrumpetController {
     }
   }
 
-  // function for handling when the trumpet button is clicked
+  /**
+   * Handles the event when one of the trumpet buttons is clicked to toggle its state.
+   *
+   * @param event The MouseEvent representing the button click event.
+   * @throws IOException If there is an issue with loading images.
+   */
   @FXML
   private void onClickedTrumpetButton1(MouseEvent event) throws IOException {
     // Toggle the state of trumpet button 1 (down/up)
@@ -162,7 +176,12 @@ public class TrumpetController {
     }
   }
 
-  // function for handling when the trumpet button is clicked
+  /**
+   * Handles the event when one of the trumpet buttons is clicked to toggle its state.
+   *
+   * @param event The MouseEvent representing the button click event.
+   * @throws IOException If there is an issue with loading images.
+   */
   @FXML
   private void onClickedTrumpetButton2(MouseEvent event) throws IOException {
     // Toggle the state of trumpet button 2 (down/up)
@@ -197,7 +216,12 @@ public class TrumpetController {
     }
   }
 
-  // function for handling when the trumpet button is clicked
+  /**
+   * Handles the event when one of the trumpet buttons is clicked to toggle its state.
+   *
+   * @param event The MouseEvent representing the button click event.
+   * @throws IOException If there is an issue with loading images.
+   */
   @FXML
   private void onClickedTrumpetButton3(MouseEvent event) throws IOException {
     // Toggle the state of trumpet button 3 (down/up)
@@ -232,7 +256,11 @@ public class TrumpetController {
     }
   }
 
-  // check if the note is the correct note, returning a boolean depending on the current game
+  /**
+   * Checks if the corresponding trumpet button plays the correct note based on the current game.
+   *
+   * @return True if the note is correct, false otherwise.
+   */
   private boolean checkNote1() {
     // check if the note is the note to play
     if (noteToPlay / 100 == 1) {
@@ -249,7 +277,11 @@ public class TrumpetController {
     return false;
   }
 
-  // check if the note is the correct note, returning a boolean depending on the current game
+  /**
+   * Checks if the corresponding trumpet button plays the correct note based on the current game.
+   *
+   * @return True if the note is correct, false otherwise.
+   */
   private boolean checkNote2() {
     // check if the note is the note to play
     if (noteToPlay / 10 % 10 == 1) {
@@ -266,7 +298,11 @@ public class TrumpetController {
     return false;
   }
 
-  // check if the note is the correct note, returning a boolean depending on the current game
+  /**
+   * Checks if the corresponding trumpet button plays the correct note based on the current game.
+   *
+   * @return True if the note is correct, false otherwise.
+   */
   private boolean checkNote3() {
     // check if the note is the note to play
     if (noteToPlay % 10 == 1) {
@@ -283,7 +319,10 @@ public class TrumpetController {
     return false;
   }
 
-  // function for handling if the play trumpet is clicked
+  /**
+   * Handles the event when the "Play Trumpet" button is clicked to check if the notes have been
+   * played correctly.
+   */
   @FXML
   public void onClickedPlayTrumpet(MouseEvent event) {
     System.out.println("Play Trumpet Clicked");
@@ -298,7 +337,10 @@ public class TrumpetController {
     }
   }
 
-  // method for handling if the player inputs the correct note
+  /**
+   * Handles the case when the player inputs the correct note, increments the note index, and
+   * updates the next note to play.
+   */
   public void correctNotePlayed() {
     // increment the note index
     currentNoteIndex++;
@@ -321,11 +363,12 @@ public class TrumpetController {
     }
   }
 
+  /** Handles the case when the player inputs an incorrect note. */
   public void incorrectNotePlayed() {
     System.out.println(noteToPlay);
   }
 
-  // helper function for setting the beam notes to show
+  /** Helper function for setting the visibility of beam notes based on the current note index. */
   private void setBeamNotes() {
     for (int i = 0; i < beamNotes.size(); i++) {
       // update the respective views of the beams based on the current indices
@@ -339,6 +382,7 @@ public class TrumpetController {
     }
   }
 
+  /** Hides all note symbols. */
   private void hideAllSymbols() {
     Platform.runLater(
         () -> {
@@ -348,6 +392,13 @@ public class TrumpetController {
         });
   }
 
+  /**
+   * Handles the event when the "Leave Trumpet" button is clicked to switch back to the classical
+   * room.
+   *
+   * @param event The MouseEvent representing the button click event.
+   * @throws IOException If there is an issue with switching scenes.
+   */
   @FXML
   public void onClickedLeaveTrumpet(MouseEvent event) throws IOException {
     System.out.println("Leave Trumpet Clicked");
