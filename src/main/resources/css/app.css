@@ -207,3 +207,33 @@
     -fx-border-width: 1px;
     -fx-border-style: solid;
 }
+
+.testshape {
+    -fx-shape: "M 100 200 C 150 150 100 50 200 50 L 700 50 L 700 350 L 200 350 C 100 350 150 250 100 200 ";
+}
+
+.text-area-game-master {
+    -fx-background-color: FFF5D8;
+}
+
+.text-area-game-master .content {
+    -fx-background-color: FFF5D8;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+.text-area-game-master:focused .content {
+    -fx-background-color: FFF5D8;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+.text-area-game-master .scroll-bar:vertical {
+    -fx-pref-width: 1;
+    -fx-opacity: 0;
+}
+
+.text-area-game-master .scroll-bar:horizontal {
+    -fx-pref-height: 1;
+    -fx-opacity: 0;
+}
