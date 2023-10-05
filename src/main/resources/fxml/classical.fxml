@@ -133,7 +133,7 @@
             <Insets />
          </opaqueInsets>
       </Pane>
-      <Pane fx:id="chatBoxPane" layoutX="25.0" layoutY="510.0" prefHeight="195.0" prefWidth="1232.0" style="-fx-background-color: clear; -fx-background-radius: 5px;">
+      <Pane fx:id="chatBoxPane" disable="true" layoutX="25.0" layoutY="510.0" opacity="0.0" prefHeight="195.0" prefWidth="1232.0" style="-fx-background-color: clear; -fx-background-radius: 5px;">
          <children>
             <ImageView fx:id="gmSprite" fitHeight="186.0" fitWidth="200.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -148,7 +148,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                      <font>
-                        <Font size="18.0" />
+                        <Font size="16.0" />
                      </font>
                   </TextArea>
                   <TextField fx:id="textField" prefHeight="26.0" prefWidth="1156.0" promptText="Enter Response Here" style="-fx-background-color: FFF5D8;">
