@@ -15,6 +15,7 @@ import nz.ac.auckland.se206.GameState.PlayTime;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/** Controller class for handling the start screen of the game. */
 public class StartController {
 
   @FXML private Label gameNameLabel;
@@ -29,84 +30,93 @@ public class StartController {
 
   private GameState gameState;
 
-  // function for handling initialisation of the room
+  /** Initializes the start screen and sets up the game state. */
   @FXML
   private void initialize() {
     this.gameState = GameState.getInstance();
   }
 
+  /** Handles the event when the "Easy" button is clicked, setting the game difficulty to EASY. */
   @FXML
   private void onClickEasy() {
     // Set the game difficulty to EASY when the "Easy" button is clicked.
     GameState.difficulty = Difficulty.EASY;
   }
 
+  /** Displays a hint for the EASY difficulty when the mouse enters the "Easy" button area. */
   @FXML
   private void onEasyEnter() {
     // Display a hint for the EASY difficulty when the mouse enters the "Easy" button area.
     difficultyDescriptionLabel.setText("You can ask for as many hints as you want!");
   }
 
+  /** Clears the hint when the mouse exits the "Easy" button area. */
   @FXML
   private void onEasyExit() {
-    // Clear the hint when the mouse exits the "Easy" button area.
     difficultyDescriptionLabel.setText("");
   }
 
+  /** Sets the game difficulty to MEDIUM when the "Medium" button is clicked. */
   @FXML
   private void onClickMedium() {
-    // Set the game difficulty to MEDIUM when the "Medium" button is clicked.
     GameState.difficulty = Difficulty.MEDIUM;
   }
 
+  /** Displays a hint for the MEDIUM difficulty when the mouse enters the "Medium" button area. */
   @FXML
   private void onMediumEnter() {
-    // Display a hint for the MEDIUM difficulty when the mouse enters the "Medium" button area.
     difficultyDescriptionLabel.setText("You can ask for a maximum of 5 hints!");
   }
 
+  /** Clears the hint when the mouse exits the "Medium" button area. */
   @FXML
   private void onMediumExit() {
-    // Clear the hint when the mouse exits the "Medium" button area.
     difficultyDescriptionLabel.setText("");
   }
 
+  /** Sets the game difficulty to HARD when the "Hard" button is clicked. */
   @FXML
   private void onClickHard() {
-    // Set the game difficulty to HARD when the "Hard" button is clicked.
     GameState.difficulty = Difficulty.HARD;
   }
 
+  /** Displays a hint for the HARD difficulty when the mouse enters the "Hard" button area. */
   @FXML
   private void onHardEnter() {
-    // Display a hint for the HARD difficulty when the mouse enters the "Hard" button area.
     difficultyDescriptionLabel.setText("No hints will be given!");
   }
 
+  /** Clears the hint when the mouse exits the "Hard" button area. */
   @FXML
   private void onHardExit() {
-    // Clear the hint when the mouse exits the "Hard" button area.
     difficultyDescriptionLabel.setText("");
   }
 
+  /** Sets the game playtime to TWO minutes when the "2 Minutes" button is clicked. */
   @FXML
   private void onClickTwo() {
-    // Set the game playtime to TWO minutes when the "2 Minutes" button is clicked.
     GameState.time = PlayTime.TWO;
   }
 
+  /** Sets the game playtime to FOUR minutes when the "4 Minutes" button is clicked. */
   @FXML
   private void onClickFour() {
-    // Set the game playtime to FOUR minutes when the "4 Minutes" button is clicked.
     GameState.time = PlayTime.FOUR;
   }
 
+  /** Sets the game playtime to SIX minutes when the "6 Minutes" button is clicked. */
   @FXML
   private void onClickSix() {
-    // Set the game playtime to SIX minutes when the "6 Minutes" button is clicked.
     GameState.time = PlayTime.SIX;
   }
 
+  /**
+   * Handles the game start action when the "Start Game" button is clicked, starting the game by
+   * making all settings and initialising scenes.
+   *
+   * @param event The action event representing the button click.
+   * @throws IOException If there is an error loading the game scenes or components.
+   */
   @FXML
   private void onGameStart(ActionEvent event) throws IOException {
     // guard clauses for checking if there are difficulties / times selected
