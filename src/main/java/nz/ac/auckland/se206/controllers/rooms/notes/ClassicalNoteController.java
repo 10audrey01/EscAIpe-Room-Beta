@@ -19,7 +19,12 @@ public class ClassicalNoteController {
 
   private GameState gameState;
 
-  // initialise FXML file
+  /**
+   * Initializes the ClassicalNoteController by setting up the game state, labels, and other
+   * game-related variables.
+   *
+   * @throws IOException If there is an issue with input/output.
+   */
   @FXML
   private void initialize() throws IOException {
     this.gameState = GameState.getInstance();
@@ -27,12 +32,20 @@ public class ClassicalNoteController {
     this.gameState.setClassicalNote(this);
   }
 
-  // set the current hint text
+  /**
+   * Sets the current hint text to be displayed in the ClassicalNoteController.
+   *
+   * @param text The text to be displayed as a hint.
+   */
   public void setText(String text) {
     this.classicalHintText.setText(text);
   }
 
-  // switches back to the classical room
+  /**
+   * Switches back to the Classical room scene when the "RETURN" button is clicked.
+   *
+   * @param event The ActionEvent representing the button click event.
+   */
   @FXML
   private void onClickReturn(ActionEvent event) {
     Button source = (Button) event.getSource();
