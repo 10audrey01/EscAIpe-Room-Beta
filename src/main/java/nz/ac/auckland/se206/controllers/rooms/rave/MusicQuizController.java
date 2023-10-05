@@ -185,7 +185,7 @@ public class MusicQuizController {
     startCooldownTimer();
   }
 
-  /** Disables all option buttons. */
+  /** Disables all option buttons from the GUI, not allowing the player to interact with them. */
   private void disableAllButtons() {
     optionOneBtn.setDisable(true);
     optionTwoBtn.setDisable(true);

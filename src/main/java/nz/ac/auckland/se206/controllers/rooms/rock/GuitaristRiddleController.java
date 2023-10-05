@@ -23,6 +23,7 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionRequest;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 
+/** Controller class for handling the bodybuilder event room. */
 public class GuitaristRiddleController {
 
   @FXML private TextField textField;
@@ -34,6 +35,13 @@ public class GuitaristRiddleController {
   private GameState gameState;
   private ChatCompletionRequest chatCompletionRequest;
 
+  /**
+   * Initializes the RockController, setting up the game state, timer label, and generating the
+   * initial message from the guitarist.
+   *
+   * @throws IOException If there is an issue with input/output.
+   * @throws ApiProxyException If there is an issue with the API proxy.
+   */
   @FXML
   private void initialize() throws IOException, ApiProxyException {
     // gets the gamestate instance, adding the labels for hints/timers to the gamestate
@@ -43,13 +51,23 @@ public class GuitaristRiddleController {
     generateInitialMessage();
   }
 
-  // function for handling key presses
+  /**
+   * Handles key presses and prints the key code to the console.
+   *
+   * @param event The KeyEvent representing the key press event.
+   */
   @FXML
   public void onKeyPressed(KeyEvent event) {
     System.out.println("key " + event.getCode() + " pressed");
   }
 
-  // function for handling key releases
+  /**
+   * Handles key releases and sends a message when the Enter key is released.
+   *
+   * @param event The KeyEvent representing the key release event.
+   * @throws ApiProxyException If there is an issue with the API proxy.
+   * @throws IOException If there is an I/O error.
+   */
   @FXML
   public void onKeyReleased(KeyEvent event) throws ApiProxyException, IOException {
     System.out.println("key " + event.getCode() + " released");
@@ -59,7 +77,11 @@ public class GuitaristRiddleController {
     }
   }
 
-  // switches back to the rock room
+  /**
+   * Switches back to the rock room when the "Return" button is clicked.
+   *
+   * @param event The ActionEvent representing the button click event.
+   */
   @FXML
   private void onClickReturn(ActionEvent event) {
     Button source = (Button) event.getSource();
@@ -67,7 +89,11 @@ public class GuitaristRiddleController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
   }
 
-  // generates the initial message from the guitarist, which is the riddle
+  /**
+   * Generates the initial message from the guitarist, which is the riddle.
+   *
+   * @throws ApiProxyException If there is an issue with the API proxy.
+   */
   public void generateInitialMessage() throws ApiProxyException {
     Task<Void> initializeRiddleTask =
         new Task<Void>() {
@@ -95,7 +121,7 @@ public class GuitaristRiddleController {
     initializeRiddleThread.start();
   }
 
-  // clears the text field of the chat.
+  /** Clears the text field used for chat input. */
   public void clearTextField() {
     Platform.runLater(
         () -> {

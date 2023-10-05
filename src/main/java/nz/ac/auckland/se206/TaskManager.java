@@ -30,7 +30,7 @@ public class TaskManager {
 
   private ArrayList<Task> tasks; // List to store individual tasks
   private ArrayList<Task> completedTasks; // List to store completed individual tasks
-  public LargeTask largeTask; // The current large task
+  private LargeTask largeTask; // The current large task
 
   /**
    * Constructs a TaskManager instance and initializes the list of individual tasks by generating

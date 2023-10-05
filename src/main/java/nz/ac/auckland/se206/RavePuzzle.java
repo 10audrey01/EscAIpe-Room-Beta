@@ -22,10 +22,14 @@ public class RavePuzzle {
     String solution = "";
     // Generate random solution
     Random random = new Random();
+    StringBuilder solutionBuilder = new StringBuilder();
+
     for (int i = 0; i < 6; i++) {
       int currentNumber = random.nextInt(10);
-      solution += Integer.toString(currentNumber);
+      solutionBuilder.append(currentNumber);
     }
+
+    solution = solutionBuilder.toString();
 
     System.out.println(solution);
 

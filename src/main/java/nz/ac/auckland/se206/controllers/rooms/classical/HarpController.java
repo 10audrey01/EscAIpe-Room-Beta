@@ -207,7 +207,7 @@ public class HarpController {
       string.setOnMouseEntered(
           e -> {
             noteOrginalColor = string.getStroke();
-            string.setStroke(javafx.scene.paint.Color.GRAY);
+            string.setStroke(Color.GRAY);
             System.out.println(string.getId() + " entered");
             try {
               playHarpNotePlayer(string.getId());
@@ -234,7 +234,7 @@ public class HarpController {
             if (noteToPlay == string) {
               // if the note is the correct note, handle the correct note played event
               System.out.println("Correct note played");
-              noteOrginalColor = javafx.scene.paint.Color.BLACK;
+              noteOrginalColor = Color.BLACK;
               correctNotePlayed();
             } else {
               // otherwise handle the incorrect note played event

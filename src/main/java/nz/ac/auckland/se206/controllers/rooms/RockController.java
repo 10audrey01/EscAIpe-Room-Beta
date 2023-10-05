@@ -142,7 +142,7 @@ public class RockController extends AbstractRoomController {
   private void onClickCyanGuitar(MouseEvent event) throws URISyntaxException {
     // checks the correctness of the guitar sequence for the rock room task
     System.out.println("cyan guitar clicked");
-    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
+    if (gameState.getTaskManager().getCurrentLargeTask() == LargeTask.ROCK) {
       playNote(Colour.CYAN);
       checkGuitarSequence(Colour.CYAN);
     } else {
@@ -161,7 +161,7 @@ public class RockController extends AbstractRoomController {
   private void onClickBlueGuitar(MouseEvent event) throws URISyntaxException {
     // checks the correctness of the guitar sequence for the rock room task
     System.out.println("blue guitar clicked");
-    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
+    if (gameState.getTaskManager().getCurrentLargeTask() == LargeTask.ROCK) {
       playNote(Colour.BLUE);
       checkGuitarSequence(Colour.BLUE);
     } else {
@@ -180,7 +180,7 @@ public class RockController extends AbstractRoomController {
   private void onClickPurpleGuitar(MouseEvent event) throws URISyntaxException {
     // checks the correctness of the guitar sequence for the rock room task
     System.out.println("purple guitar clicked");
-    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
+    if (gameState.getTaskManager().getCurrentLargeTask() == LargeTask.ROCK) {
       playNote(Colour.PURPLE);
       checkGuitarSequence(Colour.PURPLE);
     } else {
@@ -199,7 +199,7 @@ public class RockController extends AbstractRoomController {
   private void onClickYellowGuitar(MouseEvent event) throws URISyntaxException {
     // checks the correctness of the guitar sequence for the rock room task
     System.out.println("yellow guitar clicked");
-    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
+    if (gameState.getTaskManager().getCurrentLargeTask() == LargeTask.ROCK) {
       playNote(Colour.YELLOW);
       checkGuitarSequence(Colour.YELLOW);
     } else {
@@ -231,7 +231,7 @@ public class RockController extends AbstractRoomController {
    * @throws URISyntaxException If there is an issue with URIs.
    */
   public void playNote(Colour guitarColour) throws URISyntaxException {
-    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
+    if (gameState.getTaskManager().getCurrentLargeTask() == LargeTask.ROCK) {
 
       if (GameState.isRiddleObjectFound && !GameState.isNoteSequenceFound) {
         noteSequence = gameState.getRockBigTaskManager().getNoteSequence();

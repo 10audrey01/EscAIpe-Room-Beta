@@ -114,14 +114,17 @@ public class PianoController {
 
     gameState = GameState.getInstance();
 
-    if (gameState.getTaskManager().largeTask
+    if (gameState.getTaskManager().getCurrentLargeTask()
         == LargeTask.ROCK) { // execute if the chosen big task is ROCK
       notesToPlay = "";
       String[] noteSequence = gameState.getRockBigTaskManager().getNoteSequence();
+      StringBuilder notesBuilder = new StringBuilder();
+
       for (int i = 0; i < noteSequence.length; i++) {
-        notesToPlay += noteSequence[i];
+        notesBuilder.append(noteSequence[i]);
       }
-      notesToPlay += notesToPlay; // repeat the sequence for 8 notes
+
+      String notesToPlay = notesBuilder.toString();
       System.out.println(notesToPlay);
       loadRockNotes();
     }
@@ -181,7 +184,7 @@ public class PianoController {
    * @throws IOException If there is an issue with loading note letter images.
    */
   public void loadRockNotes() throws IOException {
-    if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
+    if (gameState.getTaskManager().getCurrentLargeTask() == LargeTask.ROCK) {
       if (GameState.isNoteSequenceFound) {
         loadNotes();
         for (int i = 0; i < notesLetterList.size(); i++) {

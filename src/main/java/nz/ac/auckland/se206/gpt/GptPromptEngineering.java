@@ -21,19 +21,35 @@ public class GptPromptEngineering {
         + " do not give the answer";
   }
 
-  // generate hint for song genre
+  /**
+   * Generates a hint for a music genre riddle.
+   *
+   * @param genre The music genre for which to create a hint.
+   * @return A hint instructing the player to generate a 2-line riddle with the answer as the
+   *     specified music genre.
+   */
   public static String getHintWithMusic(String genre) {
     return "Generate a 2 line riddle where the answer is the music genre " + genre;
   }
 
-  // game master's introduction
+  /**
+   * Generates the game master's introduction message.
+   *
+   * @return The introduction message for the friendly Game Master character.
+   */
   public static String getGmGreeting() {
     return "You are the friendly Game Master that must help the player escape the musically themed"
-               + " rooms. Introduce yourself and tell the player that you will be helping them."
-               + " Tell the player to click on you to open/close the chat and ask for hints if they"
-               + " need them. Your response should be at most 2 lines";
+        + " rooms. Introduce yourself and tell the player that you will be helping them."
+        + " Tell the player to click on you to open/close the chat and ask for hints if they"
+        + " need them. Your response should be at most 2 lines";
   }
 
+  /**
+   * Generates the game master's response to player interaction.
+   *
+   * @param msg The player's message or interaction.
+   * @return The game master's response, which includes a hint if requested by the player.
+   */
   public static String getGmInteraction(String msg) {
     return "The player's message is"
         + msg
@@ -42,6 +58,11 @@ public class GptPromptEngineering {
         + ". Otherwise respond without giving any hints";
   }
 
+  /**
+   * Generates a hint based on the game's current state and objectives.
+   *
+   * @return A hint provided by the game master, tailored to the player's progress.
+   */
   public static String getGmHint() {
     if (!GameState.isRiddleResolved) {
       return "Tell the player that maybe the guitarist can help them. Your response should be at"
@@ -66,6 +87,11 @@ public class GptPromptEngineering {
     }
   }
 
+  /**
+   * Generates a message informing the player that they have no available hints.
+   *
+   * @return A message informing the player that they currently have no hints.
+   */
   public static String getGmNoHint() {
     return "Tell the player that it looks like they have no hints.";
   }
