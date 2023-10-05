@@ -118,10 +118,13 @@ public class PianoController {
         == LargeTask.ROCK) { // execute if the chosen big task is ROCK
       notesToPlay = "";
       String[] noteSequence = gameState.getRockBigTaskManager().getNoteSequence();
+      StringBuilder notesBuilder = new StringBuilder();
+
       for (int i = 0; i < noteSequence.length; i++) {
-        notesToPlay += noteSequence[i];
+        notesBuilder.append(noteSequence[i]);
       }
-      notesToPlay += notesToPlay; // repeat the sequence for 8 notes
+
+      String notesToPlay = notesBuilder.toString();
       System.out.println(notesToPlay);
       loadRockNotes();
     }
