@@ -382,7 +382,7 @@ public class TrumpetController {
     }
   }
 
-  /** Hides all note symbols. */
+  /** Hides all note symbols from the GUI by setting the opacity to 0. */
   private void hideAllSymbols() {
     Platform.runLater(
         () -> {
