@@ -128,7 +128,8 @@ public class RaveController extends AbstractRoomController {
   private void onClickRed(MouseEvent event) {
     // removes the lock if the player has completed the piano task
     if (GameState.isPianoPlayed) {
-      gameState.getObjectiveListManager().setVisibilityKeyRed3(false);
+      // set the visibility of the key 3 to false
+      gameState.getObjectiveListManager().setVisibilityKey(2, false);
       redLock.setVisible(false);
       isRedLockUnlocked = true;
     }
@@ -140,7 +141,8 @@ public class RaveController extends AbstractRoomController {
   private void onClickGreen(MouseEvent event) {
     // removes the lock if the player has completed the safe task
     if (GameState.isSafeOpened) {
-      gameState.getObjectiveListManager().setVisibilityKeyGreen2(false);
+      // set the visibility of the key 2 to false
+      gameState.getObjectiveListManager().setVisibilityKey(1, false);
       greenLock.setVisible(false);
       isGreenLockUnlocked = true;
     }
@@ -152,7 +154,8 @@ public class RaveController extends AbstractRoomController {
   private void onClickBlue(MouseEvent event) {
     // removes the lock if the player has completed the music quiz
     if (GameState.isMusicQuizCompleted) {
-      gameState.getObjectiveListManager().setVisibilityKeyBlue1(false);
+      // set the visibility of the key 1 to false
+      gameState.getObjectiveListManager().setVisibilityKey(0, false);
       blueLock.setVisible(false);
       isBlueLockUnlocked = true;
     }
@@ -164,7 +167,8 @@ public class RaveController extends AbstractRoomController {
   private void onClickYellow(MouseEvent event) {
     // removes the lock if player has completed the harp event
     if (GameState.isHarpPlayed) {
-      gameState.getObjectiveListManager().setVisibilityKeyYellow4(false);
+      // set the visibility of the key 4 to false
+      gameState.getObjectiveListManager().setVisibilityKey(3, false);
       yellowLock.setVisible(false);
       isYellowLockUnlocked = true;
     }
