@@ -147,6 +147,7 @@ public class ChatManager {
     if (msg.getRole().equals("assistant")) {
       messages = "Game Master: " + msg.getContent() + "\n\n";
     } else {
+      clearAllTextArea();
       messages = "You: " + msg.getContent() + "\n\n";
     }
     // append the message to the GUI of all chatboxes in the game.
@@ -154,6 +155,16 @@ public class ChatManager {
         () -> {
           for (TextArea textArea : textAreas) {
             textArea.appendText(messages);
+          }
+        });
+  }
+
+  // Clear all text areas
+  public void clearAllTextArea() {
+    Platform.runLater(
+        () -> {
+          for (TextArea textArea : textAreas) {
+            textArea.clear();
           }
         });
   }
