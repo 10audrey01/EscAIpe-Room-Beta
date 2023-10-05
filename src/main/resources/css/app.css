@@ -227,3 +227,13 @@
     -fx-background-insets: 0;
     -fx-background-radius: 0;
 }
+
+.text-area-game-master .scroll-bar:vertical {
+    -fx-pref-width: 1;
+    -fx-opacity: 0;
+}
+
+.text-area-game-master .scroll-bar:horizontal {
+    -fx-pref-height: 1;
+    -fx-opacity: 0;
+}
