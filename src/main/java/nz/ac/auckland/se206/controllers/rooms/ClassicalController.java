@@ -18,6 +18,7 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.rooms.classical.PianoController;
 
+/** Controller class for handling the classical room. */
 public class ClassicalController extends AbstractRoomController {
 
   @FXML private Rectangle raveDoor;
@@ -54,7 +55,10 @@ public class ClassicalController extends AbstractRoomController {
         }
       };
 
-  // function for initialising room FXML
+  /**
+   * Initializes the room's FXML, sets initial values for room-specific variables, and prepares the
+   * room for interaction.
+   */
   @FXML
   private void initialize() {
 
@@ -67,21 +71,31 @@ public class ClassicalController extends AbstractRoomController {
     tambourineLimit = 100;
   }
 
-  // function which makes the cello bow and tambourine pane draggable
+  /** Makes the cello bow and tambourine panes draggable and starts the cello play timer. */
   private void makeObjectsDraggable() {
     draggableMaker.makeDraggable(celloBowPane);
     draggableMaker.makeDraggable(tambourinePane);
     celloPlayTimer.start();
   }
 
-  // function which checks if the panes for the bow and string collide
+  /**
+   * Checks if two panes intersect and one of them is pressed.
+   *
+   * @param pane1 The first Pane to check for collision.
+   * @param pane2 The second Pane to check for collision.
+   */
   protected void checkCollision(Pane pane1, Pane pane2) {
     if (pane1.getBoundsInParent().intersects(pane2.getBoundsInParent()) && pane1.isPressed()) {
       System.out.println("Bow and Strings Collided!!");
     }
   }
 
-  // function which resets the puzzle state and switches to the rave room
+  /**
+   * Resets the puzzle state and switches to the rave room.
+   *
+   * @param event The MouseEvent representing the click event.
+   * @throws IOException If there is an I/O exception while switching scenes.
+   */
   @FXML
   private void doGoRave(MouseEvent event) throws IOException {
     numOfTambourinePresses = 0;
@@ -90,7 +104,12 @@ public class ClassicalController extends AbstractRoomController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.RAVE));
   }
 
-  // function which resets the puzzle state and switches to the rock room
+  /**
+   * Resets the puzzle state and switches to the rock room.
+   *
+   * @param event The MouseEvent representing the click event.
+   * @throws IOException If there is an I/O exception while switching scenes.
+   */
   @FXML
   private void doGoRock(MouseEvent event) throws IOException {
     numOfTambourinePresses = 0;
@@ -99,25 +118,45 @@ public class ClassicalController extends AbstractRoomController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
   }
 
-  // function for handling cello clicked
+  /**
+   * Handles clicking on the cello in the classical room.
+   *
+   * @param event The MouseEvent representing the click event.
+   * @throws IOException If there is an I/O exception.
+   */
   @FXML
   private void doClickedCello(MouseEvent event) throws IOException {
     System.out.println("Cello Clicked");
   }
 
-  // function for handling cello bow clicked
+  /**
+   * Handles clicking on the cello bow in the classical room.
+   *
+   * @param event The MouseEvent representing the click event.
+   * @throws IOException If there is an I/O exception.
+   */
   @FXML
   private void doClickedCelloBow(MouseEvent event) throws IOException {
     System.out.println("Cello Bow Clicked");
   }
 
-  // function for handling clarinet being clicked
+  /**
+   * Handles clicking on the clarinet in the classical room.
+   *
+   * @param event The MouseEvent representing the click event.
+   * @throws IOException If there is an I/O exception.
+   */
   @FXML
   private void doClickedClarinet(MouseEvent event) throws IOException {
     System.out.println("Clarinet Clicked");
   }
 
-  // function for handling grand piano clicked
+  /**
+   * Handles clicking on the grand piano in the classical room.
+   *
+   * @param event The MouseEvent representing the click event.
+   * @throws IOException If there is an I/O exception while switching scenes.
+   */
   @FXML
   private void doClickedGrandPiano(MouseEvent event) throws IOException {
     // changes the scene to the piano scene controller.
@@ -133,14 +172,24 @@ public class ClassicalController extends AbstractRoomController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.PIANO));
   }
 
-  // function for handling trumpet clicked
+  /**
+   * Handles clicking on the trumpet in the classical room.
+   *
+   * @param event The MouseEvent representing the click event.
+   * @throws IOException If there is an I/O exception.
+   */
   @FXML
   private void doClickedTrumpet(MouseEvent event) throws IOException {
     // changes the scene to the trumpet scene controller.
     System.out.println("Trumpet Clicked");
   }
 
-  // function for handling harp clicked
+  /**
+   * Handles clicking on the harp in the classical room and switches to the harp controller scene.
+   *
+   * @param event The MouseEvent representing the click event.
+   * @throws IOException If there is an I/O exception while switching scenes.
+   */
   @FXML
   private void doClickedHarp(MouseEvent event) throws IOException {
     // changes the scene to the harp controller scene
@@ -151,7 +200,13 @@ public class ClassicalController extends AbstractRoomController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.HARP));
   }
 
-  // function for handling tambourine clicked
+  /**
+   * Handles clicking on the tambourine in the classical room, increments click count, and makes
+   * objects draggable if conditions are met.
+   *
+   * @param event The MouseEvent representing the click event.
+   * @throws IOException If there is an I/O exception.
+   */
   @FXML
   private void doClickedTambourine(MouseEvent event) throws IOException {
     // increments the times tambourine has been clicked
@@ -174,7 +229,11 @@ public class ClassicalController extends AbstractRoomController {
     numOfTambourinePresses++;
   }
 
-  // function for handling clicking the note
+  /**
+   * Handles clicking on the note in the classical room, switching to the note scene.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   public void onClickNote(MouseEvent event) {
     // changes the scene to the scene for the note
@@ -183,7 +242,7 @@ public class ClassicalController extends AbstractRoomController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICALNOTE));
   }
 
-  // function for handling the note toggling event
+  /** Handles the note toggling event to set note panes visible and arrows invisible. */
   @FXML
   private void onClickNote1() {
     gameState.getRockBigTaskManager().setVisibilityNotePanes(true);

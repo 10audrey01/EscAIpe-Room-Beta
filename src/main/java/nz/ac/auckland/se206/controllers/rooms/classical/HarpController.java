@@ -19,6 +19,7 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/** Controller class for handling the harp room. */
 public class HarpController {
   @FXML private Line string1;
   @FXML private Line string2;
@@ -74,7 +75,12 @@ public class HarpController {
   private Paint noteOrginalColor;
   private MediaPlayer harpNotePlayer;
 
-  // function which initialises the harp controller
+  /**
+   * Initializes the HarpEventController, setting up the game state, timer label, strings, colors,
+   * and initial harp sequence.
+   *
+   * @throws IOException If there is an issue with input/output.
+   */
   @FXML
   private void initialize() throws IOException {
     // get instance of gamestate and add the timer label to the gamestate
@@ -125,7 +131,7 @@ public class HarpController {
     noteToPlay = notesToPlay.get(0);
   }
 
-  // helper function to generate the random sequence of notes for the harp
+  /** Generates a random sequence of harp notes for the player to play. */
   @FXML
   private void generateRandomHarpNotes() {
     // generate 5 random unique notes for the user to play
@@ -142,7 +148,7 @@ public class HarpController {
     }
   }
 
-  // generate random colours
+  /** Generates random colors for the harp notes. */
   private void generateRandomColours() {
     noteColours = new ArrayList<Paint>();
     // select a random colour for every note to play
@@ -159,6 +165,7 @@ public class HarpController {
     }
   }
 
+  /** Sets the colors of the harp notes based on the current state. */
   private void setNoteColours() {
     for (int i = 0; i < notesToPlay.size(); i++) {
       if (notesToShow.get(i)) {
@@ -167,10 +174,17 @@ public class HarpController {
     }
   }
 
+  /**
+   * Gets a color from the list of available colors based on the provided index.
+   *
+   * @param randomNum The index of the color to retrieve.
+   * @return The selected color.
+   */
   private Paint getColour(int randomNum) {
     return (colours.get(randomNum));
   }
 
+  /** Sets the colors of the circle indicators based on the current state. */
   private void setCircleColours() {
     for (int i = 0; i < notesToPlay.size(); i++) {
       if (notesToShow.get(i)) {
@@ -182,7 +196,10 @@ public class HarpController {
     }
   }
 
-  // helper function to handle events related to the player interacting with the harp strings
+  /**
+   * Sets up event handlers for interacting with harp strings, including mouse enter, mouse exit,
+   * and mouse click events.
+   */
   @FXML
   private void setStrings() {
     for (Line string : strings) {
@@ -230,7 +247,9 @@ public class HarpController {
     }
   }
 
-  // helper function which handles the event of the correct note being played
+  /**
+   * Handles the event when the correct note is played, updating the game state and harp sequence.
+   */
   public void correctNotePlayed() {
     // changes the colour of the correct note thats been played
     notesToShow.set(notesToPlay.indexOf(noteToPlay), false);
@@ -248,7 +267,7 @@ public class HarpController {
     setCircleColours();
   }
 
-  // function for handling if an incorrect note is played
+  /** Handles the event when an incorrect note is played, resetting the sequence and colors. */
   public void incorrectNotePlayed() {
     // reset the sequence of notes the player has played, as they have to restart
     noteToPlay = notesToPlay.get(0);
@@ -258,7 +277,11 @@ public class HarpController {
     setCircleColours();
   }
 
-  // sets the colours for the circles that the player has found through the map
+  /**
+   * Sets the colors for the circles representing found notes on the harp.
+   *
+   * @param index The index of the found note to set.
+   */
   public void setCirclesFound(int index) {
     notesToShow.set(index, true);
     // set the notes and colours for the found circles
@@ -276,10 +299,22 @@ public class HarpController {
     }
   }
 
+  /**
+   * Gets the color at the specified index from the list of note colors.
+   *
+   * @param index The index of the color to retrieve.
+   * @return The color at the specified index.
+   */
   public Paint getColourIndex(int index) {
     return noteColours.get(index);
   }
 
+  /**
+   * Handles the event when the "Leave Harp" button is clicked to switch back to the classical room.
+   *
+   * @param event The MouseEvent representing the button click event.
+   * @throws IOException If there is an issue with switching scenes.
+   */
   @FXML
   public void onClickedLeaveHarp(MouseEvent event) throws IOException {
     System.out.println("Leave Harp Clicked");
@@ -288,6 +323,12 @@ public class HarpController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICAL));
   }
 
+  /**
+   * Plays a harp note sound based on the provided audio name.
+   *
+   * @param audioName The name of the audio file to play.
+   * @throws URISyntaxException If there is an issue with the audio file's URI.
+   */
   public void playHarpNotePlayer(String audioName) throws URISyntaxException {
     Media note =
         new Media(

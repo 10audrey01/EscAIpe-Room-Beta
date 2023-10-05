@@ -6,13 +6,21 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
+/**
+ * A class responsible for managing objective labels and step keys for different game steps. It
+ * provides methods to add and manipulate objective labels and step keys, mark objectives as
+ * completed, apply strikethrough effect to labels, and set the visibility of step keys.
+ */
 public class ObjectiveListManager {
 
-  private ArrayList<ArrayList<Label>> allObjectiveLabels;
-  private ArrayList<ArrayList<ImageView>> allStepKeys;
+  private ArrayList<ArrayList<Label>> allObjectiveLabels; // Lists of objective labels for each step
+  private ArrayList<ArrayList<ImageView>> allStepKeys; // Lists of step keys for each step
 
+  /**
+   * Initializes a new instance of the ObjectiveListManager class. It initializes lists for
+   * objective labels and step keys.
+   */
   public ObjectiveListManager() {
-    // Initialize lists for objective labels and step keys
     this.allObjectiveLabels =
         new ArrayList<ArrayList<Label>>(
             List.of(
@@ -29,12 +37,21 @@ public class ObjectiveListManager {
                 new ArrayList<ImageView>()));
   }
 
-  // Add an objective label for any step
+  /**
+   * Adds an objective label for a specific step.
+   *
+   * @param labelIndex The index of the step for which the objective label is added.
+   * @param objectiveLabel The objective label to add.
+   */
   public void addObjectiveLabel(int labelIndex, Label objectiveLabel) {
     this.allObjectiveLabels.get(labelIndex).add(objectiveLabel);
   }
 
-  // Add an objective labels for all steps
+  /**
+   * Adds a list of objective labels for all steps.
+   *
+   * @param objectiveLabels A list of objective labels for all steps.
+   */
   public void addObjectiveLabels(ArrayList<Label> objectiveLabels) {
     this.addObjectiveLabel(0, objectiveLabels.get(0));
     this.addObjectiveLabel(1, objectiveLabels.get(1));
@@ -42,12 +59,21 @@ public class ObjectiveListManager {
     this.addObjectiveLabel(3, objectiveLabels.get(3));
   }
 
-  // Add an ImageView representing a key for any step
+  /**
+   * Adds an ImageView representing a key for a specific step.
+   *
+   * @param keyIndex The index of the step for which the key ImageView is added.
+   * @param stepKeys The key ImageView to add.
+   */
   public void addStepKey(int keyIndex, ImageView stepKeys) {
     this.allStepKeys.get(keyIndex).add(stepKeys);
   }
 
-  // Add an ImageView representing a key for all steps
+  /**
+   * Adds a list of ImageView representing keys for all steps.
+   *
+   * @param stepKeys A list of ImageView representing keys for all steps.
+   */
   public void addStepKeys(ArrayList<ImageView> stepKeys) {
     this.addStepKey(0, stepKeys.get(0));
     this.addStepKey(1, stepKeys.get(1));
@@ -55,7 +81,7 @@ public class ObjectiveListManager {
     this.addStepKey(3, stepKeys.get(3));
   }
 
-  // Mark objective 1 as completed if the music quiz is completed
+  /** Marks objective 1 as completed if the music quiz is completed. */
   public void completeObjective1() {
     if (GameState.isMusicQuizCompleted) {
       strikeThroughLabels(this.allObjectiveLabels.get(0)); // Apply strikethrough effect to labels
@@ -63,7 +89,7 @@ public class ObjectiveListManager {
     }
   }
 
-  // Mark objective 2 as completed if the safe is opened
+  /** Marks objective 2 as completed if the safe is opened. */
   public void completeObjective2() {
     if (GameState.isSafeOpened) {
       strikeThroughLabels(this.allObjectiveLabels.get(1)); // Apply strikethrough effect to labels
@@ -71,14 +97,14 @@ public class ObjectiveListManager {
     }
   }
 
-  // Mark objective 3 as completed if the riddle is resolved
+  /** Marks objective 3 as completed if the riddle is resolved. */
   public void completeObjective3() {
     if (GameState.isRiddleResolved) {
       strikeThroughLabels(this.allObjectiveLabels.get(2)); // Apply strikethrough effect to labels
     }
   }
 
-  // Mark objective 4 as completed if the harp is played
+  /** Marks objective 4 as completed if the harp is played. */
   public void completeObjective4() {
     if (GameState.isHarpPlayed) {
       strikeThroughLabels(this.allObjectiveLabels.get(3)); // Apply strikethrough effect to labels
@@ -86,7 +112,11 @@ public class ObjectiveListManager {
     }
   }
 
-  // Apply strikethrough effect to a list of labels
+  /**
+   * Applies a strikethrough effect to a list of labels.
+   *
+   * @param labels The list of labels to which the strikethrough effect is applied.
+   */
   public void strikeThroughLabels(ArrayList<Label> labels) {
     for (Label label : labels) {
       // go through every label and apply css values to every label in the gui for the objective
@@ -100,7 +130,12 @@ public class ObjectiveListManager {
     }
   }
 
-  // Set visibility of any key ImageView(s)
+  /**
+   * Sets the visibility of key ImageView(s) for a specific step.
+   *
+   * @param keyIndex The index of the step for which the key ImageView(s) visibility is set.
+   * @param visibility The visibility value to set (true for visible, false for hidden).
+   */
   public void setVisibilityKey(int keyIndex, boolean visibility) {
     for (ImageView key : allStepKeys.get(keyIndex)) {
       key.setVisible(visibility);

@@ -8,6 +8,11 @@ import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.scene.control.Label;
 
+/**
+ * The TimeManager class provides functionality for managing timers and countdowns in a JavaFX
+ * application. It allows setting and starting timers, updating timer labels in the user interface,
+ * and stopping timers when necessary.
+ */
 public class TimeManager {
   private Timer timer;
   private ArrayList<Label> timers;
@@ -15,22 +20,37 @@ public class TimeManager {
   private boolean timerStarted;
   private Thread timerThread;
 
+  /**
+   * Constructs a TimeManager object with an empty list of timers and sets the timerStarted flag to
+   * false.
+   */
   public TimeManager() {
     this.timers = new ArrayList<Label>();
     this.timerStarted = false;
   }
 
-  // sets the current time
+  /**
+   * Sets the current time for the countdown timer.
+   *
+   * @param time The time in seconds to set for the countdown timer.
+   */
   public void setTime(int time) {
     this.time = time;
   }
 
-  // add a label to list of timers
+  /**
+   * Adds a Label to the list of timers for updating their display values.
+   *
+   * @param label The Label to be added to the list of timers.
+   */
   public void addToTimers(Label label) {
     timers.add(label);
   }
 
-  // function that starts the countdown of the timer
+  /**
+   * Starts the countdown timer. If the timer has already started, this method does nothing.
+   * Otherwise, it initiates the timer and begins decrementing the time.
+   */
   public void startCountdown() {
     // will not start the countdown if it has already started.
     if (this.timerStarted) {
@@ -79,7 +99,7 @@ public class TimeManager {
     timerThread.start();
   }
 
-  // function that updates all the timer labels for displaying time
+  /** Updates all the timer labels in the UI to display the current time in minutes and seconds. */
   private void updateTime() {
     // get the time in minutes / seconds
     int minutes = time / 60;
@@ -93,7 +113,7 @@ public class TimeManager {
         });
   }
 
-  // function that stops the timer and the thread.
+  /** Stops the countdown timer and the associated timer thread, if they are active. */
   public void stopCountdown() {
     if (timer != null) {
       timer.cancel();

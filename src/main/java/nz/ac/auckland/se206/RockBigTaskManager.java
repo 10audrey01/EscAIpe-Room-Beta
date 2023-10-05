@@ -7,9 +7,15 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
+/**
+ * The RockBigTaskManager class is responsible for managing the elements and logic related to the
+ * "Rock" big task in a game application. It handles colors, notes, sequences, and user interface
+ * elements for this task.
+ */
 public class RockBigTaskManager {
 
-  public enum Colour { // Enum for colors of electric guitars
+  /** Enum to represent colors of electric guitars. */
+  public enum Colour {
     YELLOW("#EADE3B"),
     BLUE("#2E2EB6"),
     PURPLE("#7D2DB6"),
@@ -41,7 +47,11 @@ public class RockBigTaskManager {
   private HashMap<Colour, Integer> orderColourMap; // Mapping of colors to numbers
   private String noteSequenceString;
 
-  RockBigTaskManager() {
+  /**
+   * Constructs a RockBigTaskManager instance and initializes various lists and sequences needed for
+   * the "Rock" big task.
+   */
+  public RockBigTaskManager() {
     this.noteSequence = new String[4]; // Initialize note sequence with 4 slots
     this.colourLabels1 = new ArrayList<Label>();
     this.colourLabels2 = new ArrayList<Label>();
@@ -75,9 +85,19 @@ public class RockBigTaskManager {
     setNoteSequence();
   }
 
-  // Methods to add UI elements to the corresponding lists
-  // add all of the labels relevant to the rock task (extra note for guitar sequence) so they can be
-  // updated together
+  /**
+   * Adds a set of UI elements related to the "Rock" task to their respective lists for coordinated
+   * updates.
+   *
+   * @param label1 The Label representing the first color element.
+   * @param label2 The Label representing the second color element.
+   * @param label3 The Label representing the third color element.
+   * @param label4 The Label representing the fourth color element.
+   * @param pane The Pane representing a note element.
+   * @param noteImage The ImageView representing a note image.
+   * @param noteSequenceLabel The Label representing the note sequence.
+   * @param arrow The ImageView representing an arrow image.
+   */
   public void addAllRockTaskElements(
       Label label1,
       Label label2,
@@ -99,49 +119,87 @@ public class RockBigTaskManager {
     addToArrows(arrow);
   }
 
-  // adds a label to the label for colour 1
+  /**
+   * Adds a Label to the list of labels for the color element 1.
+   *
+   * @param label The Label representing the color element 1 to add.
+   */
   public void addToColourLabels1(Label label) {
     colourLabels1.add(label);
   }
 
-  // adds a label to the label for colour 2
+  /**
+   * Adds a Label to the list of labels for the color element 2.
+   *
+   * @param label The Label representing the color element 2 to add.
+   */
   public void addToColourLabels2(Label label) {
     colourLabels2.add(label);
   }
 
-  // adds a label to the label for colour 3
+  /**
+   * Adds a Label to the list of labels for the color element 3.
+   *
+   * @param label The Label representing the color element 3 to add.
+   */
   public void addToColourLabels3(Label label) {
     colourLabels3.add(label);
   }
 
-  // adds a label to the label for colour 4
+  /**
+   * Adds a Label to the list of labels for the color element 4.
+   *
+   * @param label The Label representing the color element 4 to add.
+   */
   public void addToColourLabels4(Label label) {
     colourLabels4.add(label);
   }
 
-  // adds a pane to the note panes
+  /**
+   * Adds a Pane representing a note element to the list of note panes.
+   *
+   * @param pane The Pane to add to the list of note panes.
+   */
   public void addToNotePanes(Pane pane) {
     notePanes.add(pane);
   }
 
-  // adds a button to the note buttons
+  /**
+   * Adds an ImageView representing a note image to the list of note images.
+   *
+   * @param note The ImageView to add to the list of note images.
+   */
   public void addToNoteImage(ImageView note) {
     noteImages.add(note);
   }
 
-  // adds a label to the sequence labels
+  /**
+   * Adds a Label representing a note sequence to the list of note sequence labels.
+   *
+   * @param label The Label to add to the list of note sequence labels.
+   */
   public void addToNoteSequenceLabels(Label label) {
     noteSequenceLabels.add(label);
   }
 
-  // adds an arrow imageview to the arrows
+  /**
+   * Adds an ImageView representing an arrow image to the list of arrows.
+   *
+   * @param arrow The ImageView to add to the list of arrows.
+   */
   public void addToArrows(ImageView arrow) {
     arrows.add(arrow);
   }
 
-  // Methods to set visibility and style of UI elements
+  /**
+   * Sets the visibility and style of note panes based on the specified visibility.
+   *
+   * @param visibility The visibility flag to set for note panes.
+   */
   public void setVisibilityNotePanes(boolean visibility) {
     for (Pane pane : notePanes) {
+      // Apply a specific style to note panes and set their visibility.
+      // The style includes background color and border.
       pane.setStyle(
           "-fx-background-color: #FFF5D8; -fx-border-color:"
               + " #000000;"
@@ -151,19 +209,32 @@ public class RockBigTaskManager {
     }
   }
 
+  /**
+   * Sets the visibility of note images based on the specified visibility.
+   *
+   * @param visibility The visibility flag to set for note images.
+   */
   public void setVisibilityNoteImages(boolean visibility) {
     for (ImageView note : noteImages) {
       note.setVisible(visibility);
     }
   }
 
+  /**
+   * Sets the visibility of arrow images based on the specified visibility.
+   *
+   * @param visibility The visibility flag to set for arrow images.
+   */
   public void setVisibilityArrows(boolean visibility) {
     for (ImageView arrow : arrows) {
       arrow.setVisible(visibility);
     }
   }
 
-  // Methods to style labels based on colors
+  /**
+   * Sets the style of labels based on colors for all the color groups. This method calls the
+   * 'labelStyle' method for each color group.
+   */
   public void setLabelColours() {
     labelStyle(colourLabels1, 0);
     labelStyle(colourLabels2, 1);
@@ -171,9 +242,15 @@ public class RockBigTaskManager {
     labelStyle(colourLabels4, 3);
   }
 
+  /**
+   * Styles a list of labels based on the specified color index.
+   *
+   * @param labelList The list of labels to style.
+   * @param colourIndex The index of the color to apply to the labels.
+   */
   public void labelStyle(ArrayList<Label> labelList, int colourIndex) {
     for (Label label : labelList) {
-      // Set background color and border color
+      // Set background color, border color, and a random number as label text.
       label.setStyle(
           "-fx-background-color: transparent"
               + "; -fx-border-color:"
@@ -183,7 +260,10 @@ public class RockBigTaskManager {
     }
   }
 
-  // Generate a random note sequence
+  /**
+   * Generates a random note sequence of 4 notes and assigns it to the 'noteSequence' array. Each
+   * note is randomly selected from the available notes.
+   */
   public void setNoteSequence() {
     for (int i = 0; i < 4; i++) {
       noteSequence[i] = notes.get((int) (Math.random() * notes.size()));
@@ -192,11 +272,19 @@ public class RockBigTaskManager {
         "Note sequence: " + noteSequence[0] + noteSequence[1] + noteSequence[2] + noteSequence[3]);
   }
 
+  /**
+   * Retrieves the current note sequence as an array of strings.
+   *
+   * @return An array of strings representing the note sequence.
+   */
   public String[] getNoteSequence() {
     return noteSequence;
   }
 
-  // Create a mapping of colors to numbers
+  /**
+   * Creates and sets a mapping of colors to numbers. The mapping is constructed based on the order
+   * of colors and numbers specified in the 'colours' and 'order' lists.
+   */
   public void setOrderColourMap() {
     orderColourMap = new HashMap<Colour, Integer>();
     orderColourMap.put(colours.get(0), order.get(0));
@@ -205,11 +293,21 @@ public class RockBigTaskManager {
     orderColourMap.put(colours.get(3), order.get(3));
   }
 
+  /**
+   * Retrieves the mapping of colors to numbers.
+   *
+   * @return A HashMap containing the mapping of colors to numbers.
+   */
   public HashMap<Colour, Integer> getOrderColourMap() {
     return orderColourMap;
   }
 
-  // Update note sequence labels as guitars are clicked
+  /**
+   * Updates the note sequence labels by concatenating the provided note sequence string and setting
+   * it as the text for all associated labels.
+   *
+   * @param noteSequence The string representing the note sequence to be appended.
+   */
   public void setNoteSequenceLabels(String noteSequence) {
     noteSequenceString = noteSequenceString.concat(noteSequence);
     for (Label label : noteSequenceLabels) {
@@ -217,7 +315,10 @@ public class RockBigTaskManager {
     }
   }
 
-  // clears the note sequence labels
+  /**
+   * Clears the note sequence labels by resetting the note sequence string and setting empty text
+   * for all associated labels.
+   */
   public void clearNoteSequenceLabels() {
     noteSequenceString = "";
     for (Label label : noteSequenceLabels) {

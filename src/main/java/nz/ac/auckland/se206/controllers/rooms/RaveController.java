@@ -17,10 +17,16 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
 
+/** Controller class for handling the rave room. */
 public class RaveController extends AbstractRoomController {
   private static ArrayList<String> objects;
   private static String riddleObject;
 
+  /**
+   * Returns a random riddle object from the list of available objects in the room.
+   *
+   * @return A randomly selected riddle object.
+   */
   public static String getRiddleObject() {
     riddleObject = objects.get((int) (Math.random() * objects.size()));
     System.out.println("Riddle object: " + riddleObject);
@@ -56,7 +62,7 @@ public class RaveController extends AbstractRoomController {
   private boolean isBlueLockUnlocked = false;
   private boolean isYellowLockUnlocked = false;
 
-  // initialises the fxml file
+  /** Initializes the FXML file for the rock room and sets up various components and variables. */
   @FXML
   private void initialize() {
     initialiseAllGameStateVariables();
@@ -75,14 +81,23 @@ public class RaveController extends AbstractRoomController {
     setCircles();
   }
 
-  // function for handling clicking the poster event
+  /**
+   * Handles clicking on the poster event in the rock room. Checks if the clicked object matches the
+   * riddle object.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   private void onClickPoster(MouseEvent event) {
     System.out.println("poster clicked");
     isRiddleObject("band poster");
   }
 
-  // function for handing clicking the dj
+  /**
+   * Handles clicking on the DJ in the rock room. Switches the scene to the music quiz scene.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   private void onClickDj(MouseEvent event) {
     System.out.println("dj clicked");
@@ -92,7 +107,12 @@ public class RaveController extends AbstractRoomController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.MUSICQUIZ));
   }
 
-  // function for handing clicking the bodybuilder
+  /**
+   * Handles clicking on the bodybuilder in the rock room. Switches the scene to the bodybuilder
+   * safe minigame scene.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   private void onClickBodybuilder(MouseEvent event) {
     System.out.println("bodybuilder clicked");
@@ -102,28 +122,48 @@ public class RaveController extends AbstractRoomController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.BODYBUILDER));
   }
 
-  // function for handing clicking the bouncer
+  /**
+   * Handles clicking on the bouncer in the rock room. Checks if the clicked object matches the
+   * riddle object.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   private void onClickBouncer(MouseEvent event) {
     System.out.println("bouncer clicked");
     isRiddleObject("bouncer");
   }
 
-  // function for handing clicking the disco ball
+  /**
+   * Handles clicking on the disco ball in the rock room. Checks if the clicked object matches the
+   * riddle object.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   private void onClickDisco(MouseEvent event) {
     System.out.println("disco clicked");
     isRiddleObject("disco ball");
   }
 
-  // function for handing clicking the speaker
+  /**
+   * Handles clicking on the speakers in the rock room. Checks if the clicked object matches the
+   * riddle object.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   private void onClickSpeaker(MouseEvent event) {
     System.out.println("speaker clicked");
     isRiddleObject("speakers");
   }
 
-  // function for handing clicking the red lock
+  /**
+   * Handles clicking on the red lock in the room. Removes the lock if the player has completed the
+   * piano task.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   private void onClickRed(MouseEvent event) {
     // removes the lock if the player has completed the piano task
@@ -136,7 +176,12 @@ public class RaveController extends AbstractRoomController {
     System.out.println("red clicked");
   }
 
-  // function for handing clicking the green lock
+  /**
+   * Handles clicking on the green lock in the room. Removes the lock if the player has completed
+   * the safe task.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   private void onClickGreen(MouseEvent event) {
     // removes the lock if the player has completed the safe task
@@ -149,7 +194,12 @@ public class RaveController extends AbstractRoomController {
     System.out.println("green clicked");
   }
 
-  // function for handing clicking the blue lock
+  /**
+   * Handles clicking on the blue lock in the room. Removes the lock if the player has completed the
+   * music quiz.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   private void onClickBlue(MouseEvent event) {
     // removes the lock if the player has completed the music quiz
@@ -162,7 +212,12 @@ public class RaveController extends AbstractRoomController {
     System.out.println("blue clicked");
   }
 
-  // function for handing clicking the yellow lock
+  /**
+   * Handles clicking on the yellow lock in the room. Removes the lock if the player has completed
+   * the harp event.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   private void onClickYellow(MouseEvent event) {
     // removes the lock if player has completed the harp event
@@ -175,7 +230,12 @@ public class RaveController extends AbstractRoomController {
     System.out.println("yellow clicked");
   }
 
-  // function for handing clicking the door
+  /**
+   * Handles clicking on the door in the room. Unlocks the door if the player has unlocked all the
+   * locks.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   private void onClickDoor(MouseEvent event) {
     // unlocks the door if the player has unlocked all the locks
@@ -187,7 +247,13 @@ public class RaveController extends AbstractRoomController {
     System.out.println("door clicked");
   }
 
-  // function for handing clicking the opened door
+  /**
+   * Handles clicking on the opened door in the room. Sets the game won state to true, changing the
+   * scene to the end game scene.
+   *
+   * @param event The MouseEvent representing the click event.
+   * @throws IOException If an I/O error occurs during scene transition.
+   */
   @FXML
   private void onClickOpenedDoor(MouseEvent event) throws IOException {
     // sets the game won state to true, changing the scene to the end game scene
@@ -197,7 +263,12 @@ public class RaveController extends AbstractRoomController {
     System.out.println("opened door clicked");
   }
 
-  // function for handing clicking the classical door
+  /**
+   * Handles clicking on the classical door to transition to the classical room scene.
+   *
+   * @param event The MouseEvent representing the click event.
+   * @throws IOException If an I/O error occurs during scene transition.
+   */
   @FXML
   private void doGoClassical(MouseEvent event) throws IOException {
     // changes the scene to the classical room
@@ -206,7 +277,12 @@ public class RaveController extends AbstractRoomController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICAL));
   }
 
-  // function for handing clicking the rock door
+  /**
+   * Handles clicking on the rock door to transition to the rock room scene.
+   *
+   * @param event The MouseEvent representing the click event.
+   * @throws IOException If an I/O error occurs during scene transition.
+   */
   @FXML
   private void doGoRock(MouseEvent event) throws IOException {
     // changes the scene to the rock room
@@ -215,14 +291,19 @@ public class RaveController extends AbstractRoomController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCK));
   }
 
-  // function for toggling note visibility
+  /** Toggles note visibility by showing note panes and hiding arrows. */
   @FXML
   private void onClickNote1() {
     gameState.getRockBigTaskManager().setVisibilityNotePanes(true);
     gameState.getRockBigTaskManager().setVisibilityArrows(false);
   }
 
-  // helper function to check for if the riddle object selected is the clicked on object
+  /**
+   * Helper function to check if the clicked object matches the riddle object and updates relevant
+   * labels.
+   *
+   * @param object The object clicked by the player.
+   */
   public void isRiddleObject(String object) {
     if (riddleObject.equals(object)
         && GameState.isRiddleResolved
@@ -236,7 +317,10 @@ public class RaveController extends AbstractRoomController {
     }
   }
 
-  // function for setting the circles to set up the harp game
+  /**
+   * Sets up the circles for the harp game by selecting random colors for each circle and filling
+   * them.
+   */
   public void setCircles() {
     // select random colours for each circle and fills them
     HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
@@ -246,7 +330,11 @@ public class RaveController extends AbstractRoomController {
     }
   }
 
-  // function for handing clicking the third circle
+  /**
+   * Handles clicking on the third circle in the harp game.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   public void onClickedCircle3(MouseEvent event) {
     HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
@@ -256,7 +344,11 @@ public class RaveController extends AbstractRoomController {
     circle3.setDisable(true);
   }
 
-  // function for handing clicking the fourth circle
+  /**
+   * Handles clicking on the fourth circle in the harp game.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   public void onClickedCircle4(MouseEvent event) {
     HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
@@ -266,7 +358,11 @@ public class RaveController extends AbstractRoomController {
     circle4.setDisable(true);
   }
 
-  // function for handing clicking the fifth circle
+  /**
+   * Handles clicking on the fifth circle in the harp game.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   public void onClickedCircle5(MouseEvent event) {
     HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);

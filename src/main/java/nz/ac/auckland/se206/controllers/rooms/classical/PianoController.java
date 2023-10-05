@@ -20,6 +20,7 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.TaskManager.LargeTask;
 
+/** Controller class for handling the piano room. */
 public class PianoController {
 
   private static final int C_NOTE_LOCATION = 90;
@@ -36,6 +37,7 @@ public class PianoController {
   // sequence of notes played by user
   public static String notesPlayed = "";
 
+  /** Resets the notes played by the user. */
   public static void resetNotesPlayed() {
     notesPlayed = "";
   }
@@ -83,6 +85,12 @@ public class PianoController {
   private ArrayList<ImageView> notesLetterList;
   private MediaPlayer pianoNotePlayer;
 
+  /**
+   * Initializes the PianoEventController by setting up the game state, labels, and other
+   * game-related variables.
+   *
+   * @throws IOException If there is an issue with input/output.
+   */
   @FXML
   private void initialize() throws IOException {
     // gets the gamestate instance, adding the labels for timers to the gamestate
@@ -119,7 +127,11 @@ public class PianoController {
     }
   }
 
-  // loads the notes on music sheet according to its location on the sheet
+  /**
+   * Loads the notes on the music sheet based on their location on the sheet.
+   *
+   * @throws IOException If there is an issue with loading note letter images.
+   */
   public void loadNotes() throws IOException {
     for (int i = 0; i < notesList.size(); i++) {
       // set the y location of each note
@@ -163,7 +175,11 @@ public class PianoController {
     }
   }
 
-  // loads the notes for the rock task
+  /**
+   * Loads the notes for the rock task or hides them based on the game state.
+   *
+   * @throws IOException If there is an issue with loading note letter images.
+   */
   public void loadRockNotes() throws IOException {
     if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
       if (GameState.isNoteSequenceFound) {
@@ -182,13 +198,25 @@ public class PianoController {
     }
   }
 
-  // gets the url for the note letter image
+  /**
+   * Gets the URL for the note letter image based on the note letter.
+   *
+   * @param letter The note letter (A, B, C, etc.).
+   * @return The URL of the note letter image.
+   */
   public String noteLetterUrlGetter(Character letter) {
     String url = "/images/classicalRoom/Notes/" + Character.toUpperCase(letter) + "Note.png";
     return url;
   }
 
-  // plays the A note
+  /**
+   * Handles the event when a piano key is clicked, plays the corresponding note, and checks for a
+   * win condition.
+   *
+   * @param event The MouseEvent representing the key click event.
+   * @throws IOException If there is an issue with playing the piano note.
+   * @throws URISyntaxException If there is an issue with the audio file's URI.
+   */
   @FXML
   public void onClickedKeyA(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("A Key Pressed");
@@ -197,7 +225,14 @@ public class PianoController {
     checkWin();
   }
 
-  // plays the B note
+  /**
+   * Handles the event when a piano key is clicked, plays the corresponding note, and checks for a
+   * win condition.
+   *
+   * @param event The MouseEvent representing the key click event.
+   * @throws IOException If there is an issue with playing the piano note.
+   * @throws URISyntaxException If there is an issue with the audio file's URI.
+   */
   @FXML
   public void onClickedKeyB(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("B Key Pressed");
@@ -206,7 +241,14 @@ public class PianoController {
     checkWin();
   }
 
-  // plays the C note
+  /**
+   * Handles the event when a piano key is clicked, plays the corresponding note, and checks for a
+   * win condition.
+   *
+   * @param event The MouseEvent representing the key click event.
+   * @throws IOException If there is an issue with playing the piano note.
+   * @throws URISyntaxException If there is an issue with the audio file's URI.
+   */
   @FXML
   public void onClickedKeyC(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("C Key Pressed");
@@ -215,7 +257,14 @@ public class PianoController {
     checkWin();
   }
 
-  // plays the D note
+  /**
+   * Handles the event when a piano key is clicked, plays the corresponding note, and checks for a
+   * win condition.
+   *
+   * @param event The MouseEvent representing the key click event.
+   * @throws IOException If there is an issue with playing the piano note.
+   * @throws URISyntaxException If there is an issue with the audio file's URI.
+   */
   @FXML
   public void onClickedKeyD(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("D Key Pressed");
@@ -224,7 +273,14 @@ public class PianoController {
     checkWin();
   }
 
-  // plays the E note
+  /**
+   * Handles the event when a piano key is clicked, plays the corresponding note, and checks for a
+   * win condition.
+   *
+   * @param event The MouseEvent representing the key click event.
+   * @throws IOException If there is an issue with playing the piano note.
+   * @throws URISyntaxException If there is an issue with the audio file's URI.
+   */
   @FXML
   public void onClickedKeyE(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("E Key Pressed");
@@ -233,7 +289,14 @@ public class PianoController {
     checkWin();
   }
 
-  // plays the F note
+  /**
+   * Handles the event when a piano key is clicked, plays the corresponding note, and checks for a
+   * win condition.
+   *
+   * @param event The MouseEvent representing the key click event.
+   * @throws IOException If there is an issue with playing the piano note.
+   * @throws URISyntaxException If there is an issue with the audio file's URI.
+   */
   @FXML
   public void onClickedKeyF(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("F Key Pressed");
@@ -242,7 +305,14 @@ public class PianoController {
     checkWin();
   }
 
-  // plays the G note
+  /**
+   * Handles the event when a piano key is clicked, plays the corresponding note, and checks for a
+   * win condition.
+   *
+   * @param event The MouseEvent representing the key click event.
+   * @throws IOException If there is an issue with playing the piano note.
+   * @throws URISyntaxException If there is an issue with the audio file's URI.
+   */
   @FXML
   public void onClickedKeyG(MouseEvent event) throws IOException, URISyntaxException {
     System.out.println("G Key Pressed");
@@ -251,7 +321,12 @@ public class PianoController {
     checkWin();
   }
 
-  // uses media player to play the piano note
+  /**
+   * Uses a media player to play the piano note with the given audio name.
+   *
+   * @param audioName The name of the audio file to play.
+   * @throws URISyntaxException If there is an issue with the audio file's URI.
+   */
   public void playPianoNotePlayer(String audioName) throws URISyntaxException {
     Media note =
         new Media(getClass().getResource("/sounds/" + audioName + ".mp3").toURI().toString());
@@ -259,7 +334,11 @@ public class PianoController {
     pianoNotePlayer.play();
   }
 
-  // checks if the user has played the correct note sequence
+  /**
+   * Checks if the user has played the correct note sequence and updates the game state accordingly.
+   *
+   * @throws IOException If there is an issue with switching scenes.
+   */
   public void checkWin() throws IOException {
     System.out.println(notesPlayed);
     if (notesPlayed.contains(notesToPlay)) { // user has played the correct sequence
@@ -272,7 +351,13 @@ public class PianoController {
     }
   }
 
-  // switches back to the classical room when leaving piano
+  /**
+   * Handles the event when the "Leave Piano" button is clicked to switch back to the classical
+   * room.
+   *
+   * @param event The MouseEvent representing the button click event.
+   * @throws IOException If there is an issue with switching scenes.
+   */
   @FXML
   public void onClickedLeavePiano(MouseEvent event) throws IOException {
     System.out.println("Leave Piano Clicked");

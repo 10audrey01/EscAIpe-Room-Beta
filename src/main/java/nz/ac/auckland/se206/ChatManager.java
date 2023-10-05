@@ -18,6 +18,10 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
+/**
+ * Manages the chat interface in the game, including text display, user input, and game sprite
+ * updates.
+ */
 public class ChatManager {
 
   private GameState gameState;
@@ -29,6 +33,7 @@ public class ChatManager {
   private String messages;
   private ChatMessage lastMsg;
 
+  /** Constructs a new ChatManager, initializing its components and state. */
   public ChatManager() {
     this.gameState = GameState.getInstance();
     this.messages = "";
@@ -38,27 +43,43 @@ public class ChatManager {
     ttsCheckBoxes = new ArrayList<CheckBox>();
   }
 
-  // Add a TextArea to the list for displaying chat messages
+  /**
+   * Adds a TextArea to the list for displaying chat messages.
+   *
+   * @param textArea The TextArea to be added.
+   */
   public void addTextArea(TextArea textArea) {
     textAreas.add(textArea);
   }
 
-  // Add a TextField to the list for user input
+  /**
+   * Adds a TextField to the list for user input.
+   *
+   * @param textField The TextField to be added.
+   */
   public void addTextField(TextField textField) {
     textFields.add(textField);
   }
 
-  // Add an ImageView for displaying game sprites
+  /**
+   * Adds an ImageView for displaying game sprites.
+   *
+   * @param image The ImageView for game sprites to be added.
+   */
   public void addSprite(ImageView image) {
     gmSprites.add(image);
   }
 
-  // Add a checkbox for toggling text to speech
+  /**
+   * Adds a checkbox for toggling text-to-speech (TTS).
+   *
+   * @param checkBox The CheckBox for TTS to be added.
+   */
   public void addTtsCheckBox(CheckBox checkBox) {
     ttsCheckBoxes.add(checkBox);
   }
 
-  // Clear the text in all textFields
+  /** Clears the text in all textFields. */
   public void clearAllTextFields() {
     Platform.runLater(
         () -> {
@@ -68,6 +89,11 @@ public class ChatManager {
         });
   }
 
+  /**
+   * Sets the checkbox selection state for text-to-speech (TTS).
+   *
+   * @param selected True if TTS checkbox should be selected, false otherwise.
+   */
   public void setCheckboxSelected(boolean selected) {
     Platform.runLater(
         () -> {
@@ -77,7 +103,11 @@ public class ChatManager {
         });
   }
 
-  // Set game sprites to loading state
+  /**
+   * Sets the game sprites to a loading state by updating their images with a loading GIF.
+   *
+   * @throws IOException If there is an issue loading the image.
+   */
   private void setToLoading() throws IOException {
     Image image = new Image(App.class.getResource("/images/gm/gmloading.gif").openStream());
     Platform.runLater(
@@ -88,7 +118,11 @@ public class ChatManager {
         });
   }
 
-  // Set game sprites to default state
+  /**
+   * Sets the game sprites to their default state by updating their images with a default image.
+   *
+   * @throws IOException If there is an issue loading the image.
+   */
   private void setToDefault() throws IOException {
     Image image = new Image(App.class.getResource("/images/gm/gmdefault.png").openStream());
     Platform.runLater(
@@ -99,7 +133,13 @@ public class ChatManager {
         });
   }
 
-  // Generate the initial chat message to start the conversation
+  /**
+   * Generates the initial chat message to start the conversation with the game master (GM). This
+   * method initializes the conversation by sending a greeting message to the GM, which is generated
+   * using GPT. It also handles text-to-speech conversion if the GM responds with an audio message.
+   *
+   * @throws ApiProxyException If there is an issue with the API proxy while communicating with
+   */
   public void generateInitialMessage() throws ApiProxyException {
 
     Task<Void> initializeMsgTask =
@@ -141,7 +181,12 @@ public class ChatManager {
     initializeRiddleThread.start();
   }
 
-  // Add a user or AI chat message to the chat boxes
+  /**
+   * Adds a chat message to the chat boxes in the user interface. The message can be from the user
+   * or the game master (GM), and this method appends the message to the appropriate chat boxes.
+   *
+   * @param msg The chat message to be added to the chat boxes.
+   */
   public void addMessage(ChatMessage msg) {
     // check if the role of the message is the user or the gamemaster
     if (msg.getRole().equals("assistant")) {
@@ -159,7 +204,10 @@ public class ChatManager {
         });
   }
 
-  // Clear all text areas
+  /**
+   * Clears the text content of all text areas used for displaying chat messages in the user
+   * interface.
+   */
   public void clearAllTextArea() {
     Platform.runLater(
         () -> {
@@ -169,7 +217,14 @@ public class ChatManager {
         });
   }
 
-  // Handle user's message input and initiate a conversation with the AI
+  /**
+   * Handles the user's message input and initiates a conversation with the AI. It processes the
+   * user's input, sends it to the AI, and displays the AI's response in the chat interface.
+   *
+   * @param inputText The TextField containing the user's message input.
+   * @throws ApiProxyException If there is an issue with the API proxy.
+   * @throws IOException If there is an issue with IO operations.
+   */
   @FXML
   public void onSendMessage(TextField inputText) throws ApiProxyException, IOException {
     String message = inputText.getText();
@@ -230,7 +285,14 @@ public class ChatManager {
     onSendMessageThread.start();
   }
 
-  // Run the GPT model with a given chat message
+  /**
+   * Runs the GPT model with a given chat message. It sends the message to the AI, receives a
+   * response, and returns the AI's response.
+   *
+   * @param msg The chat message to be sent to the AI.
+   * @return The AI's response as a ChatMessage.
+   * @throws ApiProxyException If there is an issue with the API proxy.
+   */
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     if (chatCompletionRequest.getMessages().size() > 3) {
       chatCompletionRequest.getMessages().remove(2);

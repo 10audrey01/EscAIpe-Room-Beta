@@ -23,6 +23,7 @@ import nz.ac.auckland.se206.TaskManager.LargeTask;
 import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
+/** Controller class for handling the rock room. */
 public class RockController extends AbstractRoomController {
 
   @FXML private Rectangle classicalDoor;
@@ -50,6 +51,12 @@ public class RockController extends AbstractRoomController {
   private String[] noteSequence;
   private int numberOfCorrectGuitarClicks = 0;
 
+  /**
+   * Initializes the Rock Room's graphical components and game variables when the room is loaded.
+   * This method is called automatically when the FXML file is loaded.
+   *
+   * @throws ApiProxyException If there is an error in generating the initial chat message.
+   */
   @FXML
   private void initialize() throws ApiProxyException {
 
@@ -72,7 +79,12 @@ public class RockController extends AbstractRoomController {
     setCircles();
   }
 
-  // function for handing clicking the rave door
+  /**
+   * Switches the scene to the Rave Room when the rave door is clicked.
+   *
+   * @param event The mouse event triggered by clicking the rave door.
+   * @throws IOException If there is an error while switching scenes.
+   */
   @FXML
   private void doGoRave(MouseEvent event) throws IOException {
     // switches the scene to the rave room scene
@@ -81,7 +93,12 @@ public class RockController extends AbstractRoomController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.RAVE));
   }
 
-  // function for handing clicking the classical door
+  /**
+   * Switches the scene to the Classical Room when the classical door is clicked.
+   *
+   * @param event The mouse event triggered by clicking the classical door.
+   * @throws IOException If there is an error while switching scenes.
+   */
   @FXML
   private void doGoClassical(MouseEvent event) throws IOException {
     // switches the scene to the classical room scene
@@ -90,7 +107,11 @@ public class RockController extends AbstractRoomController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICAL));
   }
 
-  // function for handing clicking the guitarist
+  /**
+   * Switches the scene to the Guitarist Room when the guitarist is clicked.
+   *
+   * @param event The mouse event triggered by clicking the guitarist.
+   */
   @FXML
   private void onClickGuitarist(MouseEvent event) {
     // switches the scene to the guitarist scene
@@ -100,13 +121,23 @@ public class RockController extends AbstractRoomController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.GUITARIST));
   }
 
-  // function for handing clicking the drums
+  /**
+   * Handles clicking on the drums.
+   *
+   * @param event The mouse event triggered by clicking the drums.
+   */
   @FXML
   private void onClickDrums(MouseEvent event) {
     System.out.println("drums clicked");
   }
 
-  // function for handing clicking the cyan guitar
+  /**
+   * Handles clicking on the cyan guitar and checks the correctness of the guitar sequence for the
+   * rock room task.
+   *
+   * @param event The mouse event triggered by clicking the cyan guitar.
+   * @throws URISyntaxException If there is an issue with URIs.
+   */
   @FXML
   private void onClickCyanGuitar(MouseEvent event) throws URISyntaxException {
     // checks the correctness of the guitar sequence for the rock room task
@@ -119,7 +150,13 @@ public class RockController extends AbstractRoomController {
     }
   }
 
-  // function for handing clicking the blue guitar
+  /**
+   * Handles clicking on the blue guitar and checks the correctness of the guitar sequence for the
+   * rock room task.
+   *
+   * @param event The mouse event triggered by clicking the blue guitar.
+   * @throws URISyntaxException If there is an issue with URIs.
+   */
   @FXML
   private void onClickBlueGuitar(MouseEvent event) throws URISyntaxException {
     // checks the correctness of the guitar sequence for the rock room task
@@ -132,7 +169,13 @@ public class RockController extends AbstractRoomController {
     }
   }
 
-  // function for handing clicking the purple guitar
+  /**
+   * Handles clicking on the purple guitar and checks the correctness of the guitar sequence for the
+   * rock room task.
+   *
+   * @param event The mouse event triggered by clicking the purple guitar.
+   * @throws URISyntaxException If there is an issue with URIs.
+   */
   @FXML
   private void onClickPurpleGuitar(MouseEvent event) throws URISyntaxException {
     // checks the correctness of the guitar sequence for the rock room task
@@ -145,7 +188,13 @@ public class RockController extends AbstractRoomController {
     }
   }
 
-  // function for handing clicking the yellow guitar
+  /**
+   * Handles clicking on the yellow guitar and checks the correctness of the guitar sequence for the
+   * rock room task.
+   *
+   * @param event The mouse event triggered by clicking the yellow guitar.
+   * @throws URISyntaxException If there is an issue with URIs.
+   */
   @FXML
   private void onClickYellowGuitar(MouseEvent event) throws URISyntaxException {
     // checks the correctness of the guitar sequence for the rock room task
@@ -158,20 +207,29 @@ public class RockController extends AbstractRoomController {
     }
   }
 
-  // function for handing clicking the amplifier
+  /**
+   * Handles clicking on the amplifier.
+   *
+   * @param event The mouse event triggered by clicking the amplifier.
+   */
   @FXML
   private void onClickAmplifier(MouseEvent event) {
     System.out.println("amplifier clicked");
   }
 
-  // function for handling the toggling of the note
+  /** Handles the toggling of the note. */
   @FXML
   private void onClickNote1() {
     gameState.getRockBigTaskManager().setVisibilityNotePanes(true);
     gameState.getRockBigTaskManager().setVisibilityArrows(false);
   }
 
-  // function for handling playing of a note
+  /**
+   * Handles playing a note on a guitar in the rock room.
+   *
+   * @param guitarColour The color of the guitar clicked.
+   * @throws URISyntaxException If there is an issue with URIs.
+   */
   public void playNote(Colour guitarColour) throws URISyntaxException {
     if (gameState.getTaskManager().largeTask == LargeTask.ROCK) {
 
@@ -219,14 +277,23 @@ public class RockController extends AbstractRoomController {
     }
   }
 
-  // function which plays a random note
+  /**
+   * Plays a random note on a guitar in the rock room.
+   *
+   * @throws URISyntaxException If there is an issue with URIs.
+   */
   public void playRandomNote() throws URISyntaxException {
     String randomNote = audioNames.get((int) (Math.random() * 7));
     playGuitarNotePlayer(randomNote);
     System.out.println("Random note " + randomNote + " played");
   }
 
-  // function which plays the media for the note
+  /**
+   * Plays the media for a specific note on the guitar.
+   *
+   * @param audioName The name of the audio file representing the note.
+   * @throws URISyntaxException If there is an issue with URIs.
+   */
   public void playGuitarNotePlayer(String audioName) throws URISyntaxException {
     Media note =
         new Media(getClass().getResource("/sounds/" + audioName + ".mp3").toURI().toString());
@@ -234,7 +301,11 @@ public class RockController extends AbstractRoomController {
     guitarNotePlayer.play();
   }
 
-  // function for checking the guitar sequence
+  /**
+   * Checks the correctness of the guitar sequence in the rock room task.
+   *
+   * @param guitarColour The color of the guitar clicked.
+   */
   public void checkGuitarSequence(Colour guitarColour) {
     if (GameState.isRiddleObjectFound && !GameState.isNoteSequenceFound) {
       // check if the guitar clicked is the correct one
@@ -257,7 +328,11 @@ public class RockController extends AbstractRoomController {
     }
   }
 
-  // function for handling the clicking of the note
+  /**
+   * Handles clicking on the note in the rock room.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   public void onClickNote(MouseEvent event) {
     // switches the scene to the note scene
@@ -266,7 +341,10 @@ public class RockController extends AbstractRoomController {
     currentScene.setRoot(SceneManager.getUiRoot(AppUi.ROCKNOTE));
   }
 
-  // function for handling the setting of the circles for the harp event
+  /**
+   * Sets the appearance of circles for the harp event in the rock room. Uses the HarpController to
+   * retrieve colors and opacity settings.
+   */
   public void setCircles() {
     HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
     for (int i = 0; i < circles.size(); i++) {
@@ -275,7 +353,12 @@ public class RockController extends AbstractRoomController {
     }
   }
 
-  // function for handling clicking circle 1
+  /**
+   * Handles clicking on circle 1 during the harp event in the rock room. Updates the state of the
+   * harp event using the HarpController.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   public void onClickedCircle1(MouseEvent event) {
     HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
@@ -285,7 +368,12 @@ public class RockController extends AbstractRoomController {
     circle1.setDisable(true);
   }
 
-  // function for handling clicking circle 2
+  /**
+   * Handles clicking on circle 2 during the harp event in the rock room. Updates the state of the
+   * harp event using the HarpController.
+   *
+   * @param event The MouseEvent representing the click event.
+   */
   @FXML
   public void onClickedCircle2(MouseEvent event) {
     HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
