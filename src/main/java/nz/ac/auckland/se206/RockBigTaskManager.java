@@ -231,7 +231,10 @@ public class RockBigTaskManager {
     }
   }
 
-  // Methods to style labels based on colors
+  /**
+   * Sets the style of labels based on colors for all the color groups. This method calls the
+   * 'labelStyle' method for each color group.
+   */
   public void setLabelColours() {
     labelStyle(colourLabels1, 0);
     labelStyle(colourLabels2, 1);
@@ -239,9 +242,15 @@ public class RockBigTaskManager {
     labelStyle(colourLabels4, 3);
   }
 
+  /**
+   * Styles a list of labels based on the specified color index.
+   *
+   * @param labelList The list of labels to style.
+   * @param colourIndex The index of the color to apply to the labels.
+   */
   public void labelStyle(ArrayList<Label> labelList, int colourIndex) {
     for (Label label : labelList) {
-      // Set background color and border color
+      // Set background color, border color, and a random number as label text.
       label.setStyle(
           "-fx-background-color: transparent"
               + "; -fx-border-color:"
@@ -251,7 +260,10 @@ public class RockBigTaskManager {
     }
   }
 
-  // Generate a random note sequence
+  /**
+   * Generates a random note sequence of 4 notes and assigns it to the 'noteSequence' array. Each
+   * note is randomly selected from the available notes.
+   */
   public void setNoteSequence() {
     for (int i = 0; i < 4; i++) {
       noteSequence[i] = notes.get((int) (Math.random() * notes.size()));
@@ -260,11 +272,19 @@ public class RockBigTaskManager {
         "Note sequence: " + noteSequence[0] + noteSequence[1] + noteSequence[2] + noteSequence[3]);
   }
 
+  /**
+   * Retrieves the current note sequence as an array of strings.
+   *
+   * @return An array of strings representing the note sequence.
+   */
   public String[] getNoteSequence() {
     return noteSequence;
   }
 
-  // Create a mapping of colors to numbers
+  /**
+   * Creates and sets a mapping of colors to numbers. The mapping is constructed based on the order
+   * of colors and numbers specified in the 'colours' and 'order' lists.
+   */
   public void setOrderColourMap() {
     orderColourMap = new HashMap<Colour, Integer>();
     orderColourMap.put(colours.get(0), order.get(0));
@@ -273,11 +293,21 @@ public class RockBigTaskManager {
     orderColourMap.put(colours.get(3), order.get(3));
   }
 
+  /**
+   * Retrieves the mapping of colors to numbers.
+   *
+   * @return A HashMap containing the mapping of colors to numbers.
+   */
   public HashMap<Colour, Integer> getOrderColourMap() {
     return orderColourMap;
   }
 
-  // Update note sequence labels as guitars are clicked
+  /**
+   * Updates the note sequence labels by concatenating the provided note sequence string and setting
+   * it as the text for all associated labels.
+   *
+   * @param noteSequence The string representing the note sequence to be appended.
+   */
   public void setNoteSequenceLabels(String noteSequence) {
     noteSequenceString = noteSequenceString.concat(noteSequence);
     for (Label label : noteSequenceLabels) {
@@ -285,7 +315,10 @@ public class RockBigTaskManager {
     }
   }
 
-  // clears the note sequence labels
+  /**
+   * Clears the note sequence labels by resetting the note sequence string and setting empty text
+   * for all associated labels.
+   */
   public void clearNoteSequenceLabels() {
     noteSequenceString = "";
     for (Label label : noteSequenceLabels) {
