@@ -49,7 +49,10 @@ public abstract class AbstractRoomController {
   protected ArrayList<Label> objectiveLabels;
   protected ArrayList<ImageView> stepKeys;
 
-  // function which toggles the visibility of the chatbox
+  /**
+   * Toggles the visibility of the chatbox, allowing the player to show or hide the in-game chat
+   * interface.
+   */
   @FXML
   protected void toggleChat() {
     if (chatOpened) {
@@ -64,13 +67,24 @@ public abstract class AbstractRoomController {
     chatOpened = !chatOpened;
   }
 
-  // function for handling key presses
+  /**
+   * Handles key presses and logs the pressed key's code.
+   *
+   * @param event The KeyEvent representing the key press.
+   */
   @FXML
   public void onKeyPressed(KeyEvent event) {
     System.out.println("key " + event.getCode() + " pressed");
   }
 
-  // function for handling if the player presses enter - for sending messages to the gm
+  /**
+   * Handles key releases and logs the released key's code. If the Enter key is released and the
+   * chat is open, sends the entered message to the game manager.
+   *
+   * @param event The KeyEvent representing the key release.
+   * @throws ApiProxyException If there is an issue with the API proxy.
+   * @throws IOException If there is an issue with input/output.
+   */
   @FXML
   public void onKeyReleased(KeyEvent event) throws ApiProxyException, IOException {
     System.out.println("key " + event.getCode() + " released");
@@ -81,6 +95,9 @@ public abstract class AbstractRoomController {
     }
   }
 
+  /**
+   * Toggles the Text-to-Speech (TTS) feature on or off and updates the checkbox state accordingly.
+   */
   @FXML
   public void onClickTts() {
     TextToSpeech.isTtsEnabled.set(!TextToSpeech.isTtsEnabled.get()); // Toggle TTS
@@ -89,7 +106,10 @@ public abstract class AbstractRoomController {
         .setCheckboxSelected(TextToSpeech.isTtsEnabled.get()); // Update checkbox
   }
 
-  // initialise all gamestate variables
+  /**
+   * Initializes all gamestate variables, adding necessary labels, elements, and components to the
+   * gamestate instance for proper functionality.
+   */
   public void initialiseAllGameStateVariables() {
 
     objectiveLabels = new ArrayList<Label>(List.of(step1Label, step2Label, step3Label, step4Label));
