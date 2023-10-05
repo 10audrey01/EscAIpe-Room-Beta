@@ -20,7 +20,7 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
-// Controller class for the bodybuilder event
+/** Controller class for handling the bodybuilder event room. */
 public class BodybuilderController {
 
   @FXML private TextArea speechBox;

@@ -20,6 +20,7 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.TaskManager.LargeTask;
 
+/** Controller class for handling the piano room. */
 public class PianoController {
 
   private static final int C_NOTE_LOCATION = 90;

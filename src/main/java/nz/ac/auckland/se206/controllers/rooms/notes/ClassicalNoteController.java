@@ -11,6 +11,7 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/** Controller class for handling the classical note room. */
 public class ClassicalNoteController {
   @FXML private Text classicalHintText;
   @FXML private Label timerLabel;

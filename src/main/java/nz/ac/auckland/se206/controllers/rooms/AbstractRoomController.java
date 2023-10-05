@@ -16,6 +16,7 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
+/** Abstract class for the room controllers. */
 public abstract class AbstractRoomController {
 
   @FXML protected Pane chatBoxPane;

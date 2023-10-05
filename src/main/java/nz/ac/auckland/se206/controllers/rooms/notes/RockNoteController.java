@@ -11,6 +11,7 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/** Controller class for handling the rock note room. */
 public class RockNoteController {
   @FXML private Text rockHintText;
   @FXML private Button btnReturn;

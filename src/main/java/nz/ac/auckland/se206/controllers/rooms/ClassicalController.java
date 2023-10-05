@@ -18,6 +18,7 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.rooms.classical.PianoController;
 
+/** Controller class for handling the classical room. */
 public class ClassicalController extends AbstractRoomController {
 
   @FXML private Rectangle raveDoor;
