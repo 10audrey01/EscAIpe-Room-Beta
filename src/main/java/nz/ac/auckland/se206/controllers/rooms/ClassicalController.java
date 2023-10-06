@@ -246,6 +246,6 @@ public class ClassicalController extends AbstractRoomController {
   @FXML
   private void onClickNote1() {
     gameState.getRockBigTaskManager().setVisibilityNotePanes(true);
-    gameState.getRockBigTaskManager().setVisibilityArrows(false);
+    gameState.getRockBigTaskManager().setVisibilityNoteArrows(false);
   }
 }

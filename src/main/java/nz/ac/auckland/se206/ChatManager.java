@@ -30,6 +30,7 @@ public class ChatManager {
   private ArrayList<TextField> textFields;
   private ArrayList<ImageView> gmSprites;
   private ArrayList<CheckBox> ttsCheckBoxes;
+  private ArrayList<ImageView> gmArrows;
   private String messages;
   private ChatMessage lastMsg;
 
@@ -41,6 +42,7 @@ public class ChatManager {
     textFields = new ArrayList<TextField>();
     gmSprites = new ArrayList<ImageView>();
     ttsCheckBoxes = new ArrayList<CheckBox>();
+    gmArrows = new ArrayList<ImageView>();
   }
 
   /**
@@ -79,6 +81,10 @@ public class ChatManager {
     ttsCheckBoxes.add(checkBox);
   }
 
+  public void addGmArrowGif(ImageView arrowGmGif) {
+    gmArrows.add(arrowGmGif);
+  }
+
   /** Clears the text in all textFields. */
   public void clearAllTextFields() {
     Platform.runLater(
@@ -99,6 +105,20 @@ public class ChatManager {
         () -> {
           for (CheckBox checkBox : ttsCheckBoxes) {
             checkBox.setSelected(selected);
+          }
+        });
+  }
+
+  /**
+   * Sets the visibility of the game master (GM) arrow.
+   *
+   * @param visible True if the GM arrow should be visible, false otherwise.
+   */
+  public void setVisibilityGmArrows(boolean visible) {
+    Platform.runLater(
+        () -> {
+          for (ImageView arrow : gmArrows) {
+            arrow.setVisible(visible);
           }
         });
   }
