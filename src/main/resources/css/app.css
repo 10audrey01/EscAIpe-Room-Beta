@@ -1,239 +1,338 @@
 #amplifierPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #guitaristPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #drumsPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #cyanGuitarPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #blueGuitarPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #purpleGuitarPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #yellowGuitarPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #posterPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #djPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #bodybuilderPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #bouncerPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #discoPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #speakerPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #celloPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #celloBowPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #clarinetPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #harpPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #grandPianoPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #tambourinePane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #trumpetPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #doorPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #aKey:hover {
-    -fx-border-color: #bbcce9;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #bbcce9;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #bKey:hover {
-    -fx-border-color: #bbcce9;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #bbcce9;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #cKey:hover {
-    -fx-border-color: #bbcce9;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #bbcce9;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #dKey:hover {
-    -fx-border-color: #bbcce9;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #bbcce9;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #eKey:hover {
-    -fx-border-color: #bbcce9;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #bbcce9;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #fKey:hover {
-    -fx-border-color: #bbcce9;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #bbcce9;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #gKey:hover {
-    -fx-border-color: #bbcce9;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #bbcce9;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #leavePiano:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #leaveHarp:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #rockNotePane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #classicalNotePane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #playTrumpetPane:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #leaveTrumpet:hover {
-    -fx-border-color: #fff;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+  -fx-border-color: #fff;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
 }
 
 #objectiveList {
-    -fx-border-color: #000;
-    -fx-border-width: 1px;
-    -fx-border-style: solid;
+  -fx-border-color: #000;
+  -fx-border-width: 1px;
+  -fx-border-style: solid;
 }
 
-.testshape {
-    -fx-shape: "M 100 200 C 150 150 100 50 200 50 L 700 50 L 700 350 L 200 350 C 100 350 150 250 100 200 ";
+.chatShape {
+  -fx-shape: "M 100 200 C 150 150 100 50 200 50 L 700 50 L 700 350 L 200 350 C 100 350 150 250 100 200 ";
 }
 
 .text-area-game-master {
-    -fx-background-color: FFF5D8;
+  -fx-background-color: FFF5D8;
 }
 
 .text-area-game-master .content {
-    -fx-background-color: FFF5D8;
-    -fx-background-insets: 0;
-    -fx-background-radius: 0;
+  -fx-background-color: FFF5D8;
+  -fx-background-insets: 0;
+  -fx-background-radius: 0;
 }
 
 .text-area-game-master:focused .content {
-    -fx-background-color: FFF5D8;
-    -fx-background-insets: 0;
-    -fx-background-radius: 0;
+  -fx-background-color: FFF5D8;
+  -fx-background-insets: 0;
+  -fx-background-radius: 0;
 }
 
 .text-area-game-master .scroll-bar:vertical {
-    -fx-pref-width: 1;
-    -fx-opacity: 0;
+  -fx-pref-width: 1;
+  -fx-opacity: 0;
 }
 
 .text-area-game-master .scroll-bar:horizontal {
-    -fx-pref-height: 1;
-    -fx-opacity: 0;
+  -fx-pref-height: 1;
+  -fx-opacity: 0;
+}
+
+.text-area-guitarist {
+  -fx-background-color: FFF5D8;
+  -fx-background-radius: 50;
+  -fx-border-radius: 50;
+}
+
+.text-area-guitarist .content {
+  -fx-background-color: FFF5D8;
+  -fx-background-insets: 0;
+  -fx-background-radius: 5;
+}
+
+.text-area-guitarist:focused .content {
+  -fx-background-color: FFF5D8;
+  -fx-background-insets: 0;
+  -fx-background-radius: 5;
+}
+
+.text-area-guitarist .scroll-bar:vertical {
+  -fx-pref-width: 1;
+  -fx-opacity: 0;
+}
+
+.text-area-guitarist .scroll-pane {
+  -fx-background-color: transparent;
+}
+.text-area-guitarist .scroll-pane .viewport {
+  -fx-background-color: transparent;
+}
+.text-area-guitarist .scroll-pane .content {
+  -fx-background-color: transparent;
+}
+
+.text-area-bodybuilder {
+  -fx-background-color: FFF5D8;
+  -fx-background-radius: 30;
+  -fx-border-radius: 30;
+}
+
+.text-area-bodybuilder .content {
+  -fx-background-color: FFF5D8;
+  -fx-background-insets: 0;
+  -fx-background-radius: 5;
+}
+
+.text-area-bodybuilder:focused .content {
+  -fx-background-color: FFF5D8;
+  -fx-background-insets: 0;
+  -fx-background-radius: 5;
+}
+
+.text-area-bodybuilder .scroll-bar:vertical {
+  -fx-pref-width: 1;
+  -fx-opacity: 0;
+}
+
+.text-area-bodybuilder .scroll-pane {
+  -fx-background-color: transparent;
+}
+.text-area-bodybuilder .scroll-pane .viewport {
+  -fx-background-color: transparent;
+}
+.text-area-bodybuilder .scroll-pane .content {
+  -fx-background-color: transparent;
+}
+
+.text-area-dj {
+  -fx-background-color: FFF5D8;
+  -fx-background-radius: 30;
+  -fx-border-radius: 30;
+}
+
+.text-area-dj .content {
+  -fx-background-color: FFF5D8;
+  -fx-background-insets: 0;
+  -fx-background-radius: 5;
+}
+
+.text-area-dj:focused .content {
+  -fx-background-color: FFF5D8;
+  -fx-background-insets: 0;
+  -fx-background-radius: 5;
+}
+
+.text-area-dj .scroll-bar:vertical {
+  -fx-pref-width: 1;
+  -fx-opacity: 0;
+}
+
+.text-area-dj .scroll-pane {
+  -fx-background-color: transparent;
+}
+.text-area-dj .scroll-pane .viewport {
+  -fx-background-color: transparent;
+}
+.text-area-dj .scroll-pane .content {
+  -fx-background-color: transparent;
 }

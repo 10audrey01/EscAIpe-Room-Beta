@@ -209,7 +209,7 @@
                   <Image url="@../images/gm/gmdefault.png" />
                </image>
             </ImageView>
-                        <Button layoutX="160.0" layoutY="5.0" mnemonicParsing="false" prefHeight="142.0" prefWidth="245.0" style="-fx-background-color: FFF5D8;" styleClass="testshape" stylesheets="@../css/app.css" />
+                        <Button layoutX="160.0" layoutY="5.0" mnemonicParsing="false" prefHeight="142.0" prefWidth="245.0" style="-fx-background-color: FFF5D8;" styleClass="chatShape" stylesheets="@../css/app.css" />
             <VBox alignment="TOP_CENTER" layoutX="186.0" prefHeight="195.0" prefWidth="1046.0">
                <children>
                   <TextArea fx:id="textArea" editable="false" prefHeight="149.0" prefWidth="1123.0" styleClass="text-area-game-master" stylesheets="@../css/app.css" wrapText="true">
@@ -219,6 +219,9 @@
                      <font>
                         <Font size="16.0" />
                      </font>
+                     <padding>
+                        <Insets bottom="10.0" right="10.0" top="10.0" />
+                     </padding>
                   </TextArea>
                   <TextField fx:id="textField" prefHeight="26.0" prefWidth="1156.0" promptText="Enter Response Here" style="-fx-background-color: FFF5D8;">
                      <VBox.margin>
