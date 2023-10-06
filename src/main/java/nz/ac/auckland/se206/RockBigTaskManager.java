@@ -183,7 +183,7 @@ public class RockBigTaskManager {
   }
 
   /**
-   * Adds an ImageView representing an arrow image to the list of arrows.
+   * Adds an ImageView representing an arrow image to the list of note arrows.
    *
    * @param arrow The ImageView to add to the list of arrows.
    */

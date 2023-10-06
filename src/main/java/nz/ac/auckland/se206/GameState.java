@@ -261,6 +261,7 @@ public class GameState {
    * @param textField The text field for entering chat messages.
    * @param gmSprite The sprite for the game master (GM).
    * @param ttsCheckBox The checkbox for enabling text-to-speech functionality.
+   * @param gmArrowGif The arrow gif for the GM.
    */
   public void addInitialLabels(
       Label timerLabel,

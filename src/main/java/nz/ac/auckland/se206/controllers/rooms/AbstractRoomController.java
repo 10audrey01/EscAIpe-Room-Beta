@@ -53,7 +53,7 @@ public abstract class AbstractRoomController {
 
   /**
    * Toggles the visibility of the chatbox, allowing the player to show or hide the in-game chat
-   * interface.
+   * interface. Also hides the GM arrows once the GM has been clicked.
    */
   @FXML
   protected void toggleChat() {

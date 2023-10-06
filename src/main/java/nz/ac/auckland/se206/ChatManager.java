@@ -109,6 +109,11 @@ public class ChatManager {
         });
   }
 
+  /**
+   * Sets the visibility of the game master (GM) arrow.
+   *
+   * @param visible True if the GM arrow should be visible, false otherwise.
+   */
   public void setVisibilityGmArrows(boolean visible) {
     Platform.runLater(
         () -> {
