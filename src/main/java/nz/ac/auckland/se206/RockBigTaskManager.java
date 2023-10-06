@@ -40,7 +40,7 @@ public class RockBigTaskManager {
   private ArrayList<Pane> notePanes;
   private ArrayList<ImageView> noteImages;
   private ArrayList<Label> noteSequenceLabels;
-  private ArrayList<ImageView> arrows;
+  private ArrayList<ImageView> noteArrows;
   private ArrayList<Colour> colours; // List of available colors
   private ArrayList<String> notes; // List of available notes
   private ArrayList<Integer> order; // Random order of colors/numbers
@@ -60,7 +60,7 @@ public class RockBigTaskManager {
     this.notePanes = new ArrayList<Pane>();
     this.noteImages = new ArrayList<ImageView>();
     this.noteSequenceLabels = new ArrayList<Label>();
-    this.arrows = new ArrayList<ImageView>();
+    this.noteArrows = new ArrayList<ImageView>();
     this.colours = new ArrayList<Colour>();
     colours.add(Colour.YELLOW);
     colours.add(Colour.BLUE);
@@ -116,7 +116,7 @@ public class RockBigTaskManager {
     addToNotePanes(pane);
     addToNoteImage(noteImage);
     addToNoteSequenceLabels(noteSequenceLabel);
-    addToArrows(arrow);
+    addToNoteArrows(arrow);
   }
 
   /**
@@ -187,8 +187,8 @@ public class RockBigTaskManager {
    *
    * @param arrow The ImageView to add to the list of arrows.
    */
-  public void addToArrows(ImageView arrow) {
-    arrows.add(arrow);
+  public void addToNoteArrows(ImageView arrow) {
+    noteArrows.add(arrow);
   }
 
   /**
@@ -225,8 +225,8 @@ public class RockBigTaskManager {
    *
    * @param visibility The visibility flag to set for arrow images.
    */
-  public void setVisibilityArrows(boolean visibility) {
-    for (ImageView arrow : arrows) {
+  public void setVisibilityNoteArrows(boolean visibility) {
+    for (ImageView arrow : noteArrows) {
       arrow.setVisible(visibility);
     }
   }

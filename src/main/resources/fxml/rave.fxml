@@ -145,7 +145,7 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <ImageView fx:id="pointingArrowGif" fitHeight="208.0" fitWidth="231.0" layoutX="716.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="45.0" visible="false">
+      <ImageView fx:id="arrowNoteGif" fitHeight="208.0" fitWidth="231.0" layoutX="716.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="45.0" visible="false">
          <image>
             <Image url="@../images/pointingArrow.gif" />
          </image>
@@ -209,7 +209,7 @@
                   <Image url="@../images/gm/gmdefault.png" />
                </image>
             </ImageView>
-                        <Button layoutX="157.0" layoutY="4.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="245.0" style="-fx-background-color: FFF5D8;" styleClass="testshape" stylesheets="@../css/app.css" />
+                        <Button layoutX="160.0" layoutY="5.0" mnemonicParsing="false" prefHeight="142.0" prefWidth="245.0" style="-fx-background-color: FFF5D8;" styleClass="testshape" stylesheets="@../css/app.css" />
             <VBox alignment="TOP_CENTER" layoutX="186.0" prefHeight="195.0" prefWidth="1046.0">
                <children>
                   <TextArea fx:id="textArea" editable="false" prefHeight="149.0" prefWidth="1123.0" styleClass="text-area-game-master" stylesheets="@../css/app.css" wrapText="true">

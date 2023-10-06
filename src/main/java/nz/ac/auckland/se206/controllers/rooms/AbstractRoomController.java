@@ -35,7 +35,7 @@ public abstract class AbstractRoomController {
   @FXML protected Label hintLabel;
   @FXML protected Label noteSequenceLabel;
   @FXML protected ImageView gmSprite;
-  @FXML protected ImageView pointingArrowGif;
+  @FXML protected ImageView arrowNoteGif;
   @FXML protected ImageView noteImage;
   @FXML protected ImageView noteImage1;
   @FXML protected ImageView step1BlueKey;
@@ -135,6 +135,10 @@ public abstract class AbstractRoomController {
             notePane,
             noteImage1,
             noteSequenceLabel,
-            pointingArrowGif);
+            arrowNoteGif);
+
+    gameState
+        .getChatManager()
+        .setCheckboxSelected(TextToSpeech.isTtsEnabled.get()); // Update checkbox
   }
 }

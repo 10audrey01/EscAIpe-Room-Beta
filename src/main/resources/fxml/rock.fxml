@@ -90,7 +90,7 @@
       </Pane>
       <Pane fx:id="guitaristPane" layoutX="491.0" layoutY="171.0" onMouseClicked="#onClickGuitarist" prefHeight="154.0" prefWidth="148.0" />
       <Pane fx:id="purpleGuitarPane" layoutX="457.0" layoutY="345.0" onMouseClicked="#onClickPurpleGuitar" prefHeight="75.0" prefWidth="233.0" rotate="143.1" snapToPixel="false" />
-      <ImageView fx:id="pointingArrowGif" fitHeight="208.0" fitWidth="231.0" layoutX="716.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="45.0" visible="false">
+      <ImageView fx:id="arrowNoteGif" fitHeight="208.0" fitWidth="231.0" layoutX="716.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="45.0" visible="false">
          <image>
             <Image url="@../images/pointingArrow.gif" />
          </image>

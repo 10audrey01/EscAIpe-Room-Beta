@@ -295,7 +295,7 @@ public class RaveController extends AbstractRoomController {
   @FXML
   private void onClickNote1() {
     gameState.getRockBigTaskManager().setVisibilityNotePanes(true);
-    gameState.getRockBigTaskManager().setVisibilityArrows(false);
+    gameState.getRockBigTaskManager().setVisibilityNoteArrows(false);
   }
 
   /**
@@ -313,7 +313,7 @@ public class RaveController extends AbstractRoomController {
       gameState.getRockBigTaskManager().setLabelColours();
       gameState.getRockBigTaskManager().setOrderColourMap();
       gameState.getRockBigTaskManager().setVisibilityNoteImages(true);
-      gameState.getRockBigTaskManager().setVisibilityArrows(true);
+      gameState.getRockBigTaskManager().setVisibilityNoteArrows(true);
     }
   }
 

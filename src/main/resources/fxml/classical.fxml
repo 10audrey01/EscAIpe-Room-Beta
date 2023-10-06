@@ -80,7 +80,7 @@
             </ImageView>
          </children>
       </Pane>
-      <ImageView fx:id="pointingArrowGif" fitHeight="208.0" fitWidth="231.0" layoutX="716.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="45.0" visible="false">
+      <ImageView fx:id="arrowNoteGif" fitHeight="208.0" fitWidth="231.0" layoutX="716.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="45.0" visible="false">
          <image>
             <Image url="@../images/pointingArrow.gif" />
          </image>
