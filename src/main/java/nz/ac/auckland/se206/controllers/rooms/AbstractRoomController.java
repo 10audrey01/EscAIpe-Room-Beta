@@ -35,7 +35,8 @@ public abstract class AbstractRoomController {
   @FXML protected Label hintLabel;
   @FXML protected Label noteSequenceLabel;
   @FXML protected ImageView gmSprite;
-  @FXML protected ImageView arrowNoteGif;
+  @FXML protected ImageView noteArrowGif;
+  @FXML protected ImageView gmArrowGif;
   @FXML protected ImageView noteImage;
   @FXML protected ImageView noteImage1;
   @FXML protected ImageView step1BlueKey;
@@ -45,6 +46,7 @@ public abstract class AbstractRoomController {
   @FXML protected CheckBox ttsCheckBox;
 
   protected boolean chatOpened = false;
+  protected boolean gmClicked = false;
   protected GameState gameState;
   protected ArrayList<Label> objectiveLabels;
   protected ArrayList<ImageView> stepKeys;
@@ -65,6 +67,12 @@ public abstract class AbstractRoomController {
       chatBoxPane.setOpacity(0.95);
     }
     chatOpened = !chatOpened;
+
+    // hide gm arrows once gm has been clicked
+    if (!gmClicked) {
+      gameState.getChatManager().setVisibilityGmArrows(false);
+    }
+    gmClicked = true;
   }
 
   /**
@@ -118,7 +126,8 @@ public abstract class AbstractRoomController {
 
     // add all relevant labels to gamestate instance
     gameState = GameState.getInstance();
-    gameState.addInitialLabels(timerLabel, hintLabel, textArea, textField, gmSprite, ttsCheckBox);
+    gameState.addInitialLabels(
+        timerLabel, hintLabel, textArea, textField, gmSprite, ttsCheckBox, gmArrowGif);
 
     // add objective labels and steps to the objective list manager
     gameState.getObjectiveListManager().addObjectiveLabels(objectiveLabels);
@@ -135,7 +144,7 @@ public abstract class AbstractRoomController {
             notePane,
             noteImage1,
             noteSequenceLabel,
-            arrowNoteGif);
+            noteArrowGif);
 
     gameState
         .getChatManager()

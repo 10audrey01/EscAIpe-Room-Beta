@@ -268,7 +268,8 @@ public class GameState {
       TextArea textArea,
       TextField textField,
       ImageView gmSprite,
-      CheckBox ttsCheckBox) {
+      CheckBox ttsCheckBox,
+      ImageView gmArrowGif) {
     // add the timer labels for the global timer
     instance.timeManager.addToTimers(timerLabel);
     // add the hint labels for the hint manager
@@ -279,5 +280,7 @@ public class GameState {
     instance.chatManager.addSprite(gmSprite);
     // add the checkbox for the text to speech
     instance.chatManager.addTtsCheckBox(ttsCheckBox);
+    // add the arrow gif for the gm
+    instance.chatManager.addGmArrowGif(gmArrowGif);
   }
 }

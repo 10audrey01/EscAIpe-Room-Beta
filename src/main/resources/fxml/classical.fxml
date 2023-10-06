@@ -80,7 +80,7 @@
             </ImageView>
          </children>
       </Pane>
-      <ImageView fx:id="arrowNoteGif" fitHeight="208.0" fitWidth="231.0" layoutX="716.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="45.0" visible="false">
+      <ImageView fx:id="noteArrowGif" fitHeight="208.0" fitWidth="231.0" layoutX="716.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="45.0" visible="false">
          <image>
             <Image url="@../images/pointingArrow.gif" />
          </image>
@@ -168,6 +168,11 @@
             <Font size="17.0" />
          </font>
       </Label>
+      <ImageView fx:id="gmArrowGif" fitHeight="208.0" fitWidth="231.0" layoutX="38.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true" rotate="-60.0">
+         <image>
+            <Image url="@../images/pointingArrow.gif" />
+         </image>
+      </ImageView>
       <ImageView fx:id="gamemaster" fitHeight="134.0" fitWidth="107.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#toggleChat" pickOnBounds="true">
          <image>
             <Image url="@../images/gm/gmclassical.png" />
