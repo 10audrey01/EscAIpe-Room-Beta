@@ -98,12 +98,12 @@ public class TrumpetController {
   private void setSymbols() throws IOException {
     // Load images for the musical notes (on and off)
     Image onNoteImage =
-        new Image(App.class.getResource("/images/classicalRoom/Note.png").openStream());
+        new Image(App.class.getResource("/images/classicalRoom/Up.png").openStream());
     Image offNoteImage =
-        new Image(App.class.getResource("/images/classicalRoom/RestNote.png").openStream());
+        new Image(App.class.getResource("/images/classicalRoom/Down.png").openStream());
 
     // Check the value of each noteToPlay digit and update the corresponding note symbol
-    if (noteToPlay / 100 == 1) {
+    if (noteToPlay / 100 == 0) {
       Platform.runLater(
           () -> {
             note1Symbol.setImage(onNoteImage);
@@ -114,7 +114,7 @@ public class TrumpetController {
             note1Symbol.setImage(offNoteImage);
           });
     }
-    if (noteToPlay / 10 % 10 == 1) {
+    if (noteToPlay / 10 % 10 == 0) {
       Platform.runLater(
           () -> {
             note2Symbol.setImage(onNoteImage);
@@ -125,7 +125,7 @@ public class TrumpetController {
             note2Symbol.setImage(offNoteImage);
           });
     }
-    if (noteToPlay % 10 == 1) {
+    if (noteToPlay % 10 == 0) {
       Platform.runLater(
           () -> {
             note3Symbol.setImage(onNoteImage);
