@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers.rooms.classical;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.application.Platform;
@@ -11,6 +12,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
@@ -30,9 +33,11 @@ public class TrumpetController {
   @FXML private ImageView beamNote3;
   @FXML private ImageView beamNote4;
   @FXML private ImageView beamNote5;
+  @FXML private ImageView playingMusicGif;
   @FXML private Pane leaveTrumpet;
   @FXML private Pane playTrumpet;
   @FXML private Label timerLabel;
+
   private boolean isButton1Down;
   private boolean isButton2Down;
   private boolean isButton3Down;
@@ -41,6 +46,7 @@ public class TrumpetController {
   private ArrayList<Integer> noteSequence;
   private Integer noteToPlay;
   private int currentNoteIndex;
+  private MediaPlayer trumpetNotePlayer;
 
   private GameState gameState;
 
@@ -324,8 +330,10 @@ public class TrumpetController {
    * played correctly.
    */
   @FXML
-  public void onClickedPlayTrumpet(MouseEvent event) {
+  public void onClickedPlayTrumpet(MouseEvent event) throws URISyntaxException {
     System.out.println("Play Trumpet Clicked");
+    playMusicGif();
+    playNoteSound();
     // check if the notes have been played correctly
     if (checkNote1() && checkNote2() && checkNote3()) {
       System.out.println("Correct note played");
@@ -338,8 +346,67 @@ public class TrumpetController {
   }
 
   /**
-   * Handles the case when the player inputs the correct note, increments the note index, and
-   * updates the next note to play.
+   * Helper for the event for playing the sound gif animation when the player clicks "Play Trumpet"
+   * button after note is played.
+   */
+  @FXML
+  public void playMusicGif() {
+    // play the gif animation
+    playingMusicGif.setVisible(true);
+    // turn off the gif animation after 500ms
+    new java.util.Timer()
+        .schedule(
+            new java.util.TimerTask() {
+              @Override
+              public void run() {
+                playingMusicGif.setVisible(false);
+              }
+            },
+            500);
+  }
+
+  /**
+   * Helper for the playing the sound when the player clicks "Play Trumpet" button after note is
+   * played. This will play the sound of the note to play.
+   */
+  @FXML
+  public void playNoteSound() throws URISyntaxException {
+    // check what note was played and change sound file to corresponding sound
+    Integer noteplayed = 0;
+    if (isButton1Down) {
+      noteplayed += 100;
+    }
+    if (isButton2Down) {
+      noteplayed += 10;
+    }
+    if (isButton3Down) {
+      noteplayed += 1;
+    }
+    String audioName = noteplayed.toString();
+    if (noteplayed == 11) {
+      audioName = "011";
+    } else if (noteplayed == 10) {
+      audioName = "010";
+    } else if (noteplayed == 1) {
+      audioName = "001";
+    } else if (noteplayed == 0) {
+      audioName = "000";
+    }
+
+    Media note =
+        new Media(
+            getClass()
+                .getResource("/sounds/trumpetSounds/" + audioName + ".wav")
+                .toURI()
+                .toString());
+    trumpetNotePlayer = new MediaPlayer(note);
+    trumpetNotePlayer.setVolume(0.05);
+    trumpetNotePlayer.play();
+  }
+
+  /**
+   * Handles the case when the player inputs the correct note. This will increase the note index,
+   * and updates the next note to play.
    */
   public void correctNotePlayed() {
     // increment the note index
