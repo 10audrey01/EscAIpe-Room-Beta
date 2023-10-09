@@ -81,17 +81,17 @@
             </Label>
          </children>
       </Pane>
-            <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="251.0" layoutY="86.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: FFFF;" stylesheets="@../css/fontstyle.css" text="HINTS LEFT:">
+            <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="251.0" layoutY="86.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: FFF5D8;" stylesheets="@../css/fontstyle.css" text="HINTS LEFT:">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label fx:id="cooldownLabel" alignment="CENTER" layoutX="656.0" layoutY="209.0" prefHeight="73.0" prefWidth="295.0" style="-fx-background-color: FFFF;" stylesheets="@../css/fontstyle.css" text="You can choose an answer!" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="cooldownLabel" alignment="CENTER" layoutX="656.0" layoutY="209.0" prefHeight="73.0" prefWidth="295.0" style="-fx-background-color: FFF5D8;" stylesheets="@../css/fontstyle.css" text="You can choose an answer!" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1158.0" layoutY="27.0" prefHeight="45.0" prefWidth="107.0" style="-fx-background-color: FFFF;" styleClass="timerLabel" stylesheets="@../css/fontstyle.css">
+      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1158.0" layoutY="27.0" prefHeight="45.0" prefWidth="107.0" style="-fx-background-color: FFF5D8;" styleClass="timerLabel" stylesheets="@../css/fontstyle.css">
          <font>
             <Font size="30.0" />
          </font>

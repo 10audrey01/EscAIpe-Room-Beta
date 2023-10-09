@@ -45,7 +45,7 @@
             <TextField fx:id="textField" layoutX="52.0" layoutY="318.0" prefHeight="32.0" prefWidth="528.0" promptText="Enter Response Here" style="-fx-background-color: FFF5D8;" styleClass="text-area-gm" stylesheets="@../css/fontstyle.css" />
          </children>
       </Pane>
-      <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="68.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: FFFF;" stylesheets="@../css/fontstyle.css" text="HINTS LEFT:">
+      <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="68.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: FFF5D8;" stylesheets="@../css/fontstyle.css" text="HINTS LEFT:">
          <font>
             <Font size="17.0" />
          </font>
@@ -54,7 +54,7 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1158.0" layoutY="27.0" prefHeight="45.0" prefWidth="107.0" style="-fx-background-color: FFFF;" styleClass="timerLabel" stylesheets="@../css/fontstyle.css">
+      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1158.0" layoutY="27.0" prefHeight="45.0" prefWidth="107.0" style="-fx-background-color: FFF5D8;" styleClass="timerLabel" stylesheets="@../css/fontstyle.css">
          <font>
             <Font size="30.0" />
          </font>
