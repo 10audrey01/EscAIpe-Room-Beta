@@ -1,0 +1,63 @@
+.label {
+  -fx-font-family: "Comic Sans MS";
+}
+
+.title {
+  -fx-font-family: "Comic Sans MS";
+  -fx-font-size: 60px;
+}
+
+.timerLabel {
+  -fx-font-family: "Comic Sans MS";
+  -fx-font-size: 30px;
+}
+
+.button .text {
+  -fx-font-family: "Comic Sans MS";
+  -fx-font-size: 18px;
+}
+
+.gamePageBtn .text {
+  -fx-font-family: "Comic Sans MS";
+  -fx-font-size: 25px;
+}
+
+.playSongBtn .text {
+  -fx-font-family: "Comic Sans MS";
+  -fx-font-size: 38px;
+}
+
+.toggle-button .text {
+  -fx-font-family: "Comic Sans MS";
+  -fx-font-size: 25px;
+}
+
+.text-area .content {
+  -fx-font-family: "Comic Sans MS";
+}
+
+.text-field {
+  -fx-font-family: "Comic Sans MS";
+  -fx-font-size: 18px;
+}
+
+.check-box {
+  -fx-font-family: "Comic Sans MS";
+}
+
+.text-area-guitarist {
+  -fx-font-family: "Comic Sans MS";
+}
+
+.text-area-game-master {
+  -fx-font-family: "Comic Sans MS";
+  -fx-font-size: 18px;
+}
+
+.text-area-bodybuilder {
+  -fx-font-family: "Comic Sans MS";
+}
+
+.text-area-dj {
+  -fx-font-family: "Comic Sans MS";
+}

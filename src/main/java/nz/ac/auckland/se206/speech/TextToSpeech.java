@@ -65,8 +65,6 @@ public class TextToSpeech {
     boolean isFirst = true;
 
     for (final String sentence : sentences) {
-      System.out.println(isTtsEnabled.get());
-      System.out.println(sentence);
       if (!isTtsEnabled.get()) {
         return;
       }

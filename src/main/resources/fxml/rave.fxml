@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -140,10 +141,14 @@
             </ImageView>
          </children>
       </Pane>
-      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1158.0" layoutY="27.0" prefHeight="45.0" prefWidth="107.0" style="-fx-background-color: FFF5D8;">
+      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1158.0" layoutY="27.0" prefHeight="45.0" prefWidth="107.0" style="-fx-background-color: FFF5D8;" styleClass="timerLabel">
          <font>
             <Font size="30.0" />
          </font>
+         <stylesheets>
+            <URL value="@../css/fontstyle.css" />
+            <URL value="@../css/fontstyle.css" />
+         </stylesheets>
       </Label>
       <ImageView fx:id="noteArrowGif" fitHeight="208.0" fitWidth="231.0" layoutX="716.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" rotate="45.0" visible="false">
          <image>
@@ -212,7 +217,7 @@
                         <Button layoutX="160.0" layoutY="5.0" mnemonicParsing="false" prefHeight="142.0" prefWidth="245.0" style="-fx-background-color: FFF5D8;" styleClass="chatShape" stylesheets="@../css/app.css" />
             <VBox alignment="TOP_CENTER" layoutX="186.0" prefHeight="195.0" prefWidth="1046.0">
                <children>
-                  <TextArea fx:id="textArea" editable="false" prefHeight="149.0" prefWidth="1123.0" styleClass="text-area-game-master" stylesheets="@../css/app.css" wrapText="true">
+                  <TextArea fx:id="textArea" editable="false" prefHeight="149.0" prefWidth="1123.0" styleClass="text-area-game-master" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
@@ -222,8 +227,12 @@
                      <padding>
                         <Insets bottom="10.0" right="10.0" top="10.0" />
                      </padding>
+                     <stylesheets>
+                        <URL value="@../css/app.css" />
+                        <URL value="@../css/fontstyle.css" />
+                     </stylesheets>
                   </TextArea>
-                  <TextField fx:id="textField" prefHeight="26.0" prefWidth="1156.0" promptText="Enter Response Here" style="-fx-background-color: FFF5D8;">
+                  <TextField fx:id="textField" prefHeight="26.0" prefWidth="1156.0" promptText="Enter Response Here" style="-fx-background-color: FFF5D8;" stylesheets="@../css/fontstyle.css">
                      <VBox.margin>
                         <Insets bottom="5.0" />
                      </VBox.margin>
@@ -243,7 +252,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ImageView>
-      <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="7.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: FFF5D8;" text="HINTS LEFT:">
+      <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="7.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: FFF5D8;" stylesheets="@../css/fontstyle.css" text="HINTS LEFT:">
          <font>
             <Font size="17.0" />
          </font>
@@ -263,7 +272,7 @@
       </ImageView>
       <Pane layoutX="920.0" layoutY="7.0" prefHeight="226.0" prefWidth="230.0">
          <children>
-            <VBox fx:id="objectiveList" layoutY="3.0" maxWidth="231.0" prefHeight="221.0" prefWidth="211.0" spacing="10.0" style="-fx-background-color: FFF5D8;">
+            <VBox fx:id="objectiveList" layoutY="3.0" maxWidth="231.0" prefHeight="221.0" prefWidth="211.0" spacing="10.0" style="-fx-background-color: FFF5D8;" stylesheets="@../css/fontstyle.css">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="215.0" text="HOW TO ESCAPE 101" textAlignment="CENTER" underline="true" wrapText="true">
                      <font>
@@ -328,7 +337,7 @@
             </VBox>
          </children>
       </Pane>
-      <CheckBox fx:id="ttsCheckBox" layoutX="8.0" layoutY="155.0" mnemonicParsing="false" onAction="#onClickTts" selected="true" style="-fx-background-color: FFF5D8;" text="Text-to-Speech">
+      <CheckBox fx:id="ttsCheckBox" layoutX="8.0" layoutY="155.0" mnemonicParsing="false" onAction="#onClickTts" selected="true" style="-fx-background-color: FFF5D8;" stylesheets="@../css/fontstyle.css" text="Text-to-Speech">
          <font>
             <Font size="14.0" />
          </font>

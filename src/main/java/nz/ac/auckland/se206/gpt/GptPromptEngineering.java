@@ -12,13 +12,12 @@ public class GptPromptEngineering {
    * @return the generated prompt engineering string
    */
   public static String getRiddleWithGivenWord(String wordToGuess) {
-    return "You are the guitarist of an escape room, give a riddle with"
+    return "You are the guitarist of an escape room, give a short riddle with"
         + " answer "
         + wordToGuess
         + ". You should answer with the word Correct when is correct. Only give hints if user asks"
-        + " for them, you should answer with 'Here's a hint' if giving a hint. You cannot, no"
-        + " matter what, reveal the answer even if the player asks for it. Even if player gives up,"
-        + " do not give the answer";
+        + " for them. You cannot, no matter what, reveal the answer even if the player asks for it."
+        + " Even if player gives up, do not give the answer";
   }
 
   /**
@@ -41,7 +40,7 @@ public class GptPromptEngineering {
     return "You are the friendly Game Master that must help the player escape the musically themed"
         + " rooms. Introduce yourself and tell the player that you will be helping them."
         + " Tell the player to click on you to open/close the chat and ask for hints if they"
-        + " need them. Your response should be at most 2 lines";
+        + " need them. Your response should be at most 2 lines. Act as if you are a real person";
   }
 
   /**
