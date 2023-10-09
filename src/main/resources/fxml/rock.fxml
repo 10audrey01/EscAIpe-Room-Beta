@@ -181,12 +181,12 @@
             </VBox>
          </children>
       </Pane>
-   <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="7.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: FFF5D8;" text="HINTS LEFT:">
+   <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="7.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: FFF5D8;" stylesheets="@../css/fontstyle.css" text="HINTS LEFT:">
       <font>
          <Font size="17.0" />
       </font>
    </Label>
-      <Pane layoutX="920.0" layoutY="7.0" prefHeight="226.0" prefWidth="230.0">
+      <Pane layoutX="920.0" layoutY="7.0" prefHeight="226.0" prefWidth="230.0" stylesheets="@../css/fontstyle.css">
          <children>
             <VBox fx:id="objectiveList" layoutY="3.0" maxWidth="231.0" prefHeight="221.0" prefWidth="211.0" spacing="10.0" style="-fx-background-color: FFF5D8;">
                <children>
@@ -266,12 +266,12 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </ImageView>
-      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1158.0" layoutY="27.0" prefHeight="45.0" prefWidth="107.0" style="-fx-background-color: FFF5D8;">
+      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1158.0" layoutY="27.0" prefHeight="45.0" prefWidth="107.0" style="-fx-background-color: FFF5D8;" styleClass="timerLabel" stylesheets="@../css/fontstyle.css">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <CheckBox fx:id="ttsCheckBox" layoutX="8.0" layoutY="155.0" mnemonicParsing="false" onAction="#onClickTts" selected="true" style="-fx-background-color: FFF5D8;" text="Text-to-Speech">
+      <CheckBox fx:id="ttsCheckBox" layoutX="8.0" layoutY="155.0" mnemonicParsing="false" onAction="#onClickTts" selected="true" style="-fx-background-color: FFF5D8;" stylesheets="@../css/fontstyle.css" text="Text-to-Speech">
          <font>
             <Font size="14.0" />
          </font>

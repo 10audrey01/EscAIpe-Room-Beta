@@ -50,8 +50,10 @@ public class App extends Application {
 
     scene = new Scene(SceneManager.getUiRoot(AppUi.START), 1280, 720);
 
-    String css = App.class.getResource("/css/app.css").toExternalForm();
-    scene.getStylesheets().add(css);
+    String appCss = App.class.getResource("/css/app.css").toExternalForm();
+    String fontCss = App.class.getResource("/css/fontstyle.css").toExternalForm();
+    scene.getStylesheets().add(appCss);
+    scene.getStylesheets().add(fontCss);
     stage.setScene(scene);
     stage.show();
   }

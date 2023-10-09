@@ -11,41 +11,41 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.StartController">
    <children>
-      <Button fx:id="startGameBtn" layoutX="511.0" layoutY="594.0" mnemonicParsing="false" onAction="#onGameStart" prefHeight="80.0" prefWidth="259.0" text="Start Game!">
+      <Button fx:id="startGameBtn" layoutX="511.0" layoutY="594.0" mnemonicParsing="false" onAction="#onGameStart" prefHeight="80.0" prefWidth="259.0" styleClass="gamePageBtn" stylesheets="@../css/fontstyle.css" text="Start Game!">
          <font>
-            <Font size="25.0" />
+            <Font name="Comic Sans MS" size="72.0" />
          </font></Button>
-      <Label fx:id="gameNameLabel" alignment="CENTER" layoutX="1.0" layoutY="34.0" prefHeight="88.0" prefWidth="1280.0" text="Tune Trapped">
+      <Label fx:id="gameNameLabel" alignment="CENTER" layoutX="1.0" layoutY="34.0" prefHeight="88.0" prefWidth="1280.0" styleClass="title" stylesheets="@../css/fontstyle.css" text="Tune Trapped">
          <font>
             <Font size="60.0" />
          </font>
       </Label>
-      <Label layoutX="142.0" layoutY="210.0" text="Select difficulty:">
+      <Label alignment="CENTER" layoutX="117.0" layoutY="210.0" prefHeight="42.0" prefWidth="259.0" styleClass="selectLabel" stylesheets="@../css/fontstyle.css" text="Select difficulty:">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <ToggleButton fx:id="mediumBtn" layoutX="116.0" layoutY="406.0" mnemonicParsing="false" onAction="#onClickMedium" onMouseEntered="#onMediumEnter" onMouseExited="#onMediumExit" prefHeight="80.0" prefWidth="259.0" text="MEDIUM">
+      <ToggleButton fx:id="mediumBtn" layoutX="116.0" layoutY="406.0" mnemonicParsing="false" onAction="#onClickMedium" onMouseEntered="#onMediumEnter" onMouseExited="#onMediumExit" prefHeight="80.0" prefWidth="259.0" stylesheets="@../css/fontstyle.css" text="MEDIUM">
          <font>
             <Font size="25.0" />
          </font>
          <toggleGroup>
             <ToggleGroup fx:id="difficulty" />
          </toggleGroup></ToggleButton>
-      <ToggleButton fx:id="hardBtn" layoutX="117.0" layoutY="514.0" mnemonicParsing="false" onAction="#onClickHard" onMouseEntered="#onHardEnter" onMouseExited="#onHardExit" prefHeight="80.0" prefWidth="259.0" text="HARD" toggleGroup="$difficulty">
+      <ToggleButton fx:id="hardBtn" layoutX="117.0" layoutY="514.0" mnemonicParsing="false" onAction="#onClickHard" onMouseEntered="#onHardEnter" onMouseExited="#onHardExit" prefHeight="80.0" prefWidth="259.0" stylesheets="@../css/fontstyle.css" text="HARD" toggleGroup="$difficulty">
          <font>
             <Font size="25.0" />
          </font></ToggleButton>
-      <ToggleButton fx:id="easyBtn" layoutX="116.0" layoutY="298.0" mnemonicParsing="false" onAction="#onClickEasy" onMouseEntered="#onEasyEnter" onMouseExited="#onEasyExit" prefHeight="80.0" prefWidth="259.0" text="EASY" toggleGroup="$difficulty">
+      <ToggleButton fx:id="easyBtn" layoutX="116.0" layoutY="298.0" mnemonicParsing="false" onAction="#onClickEasy" onMouseEntered="#onEasyEnter" onMouseExited="#onEasyExit" prefHeight="80.0" prefWidth="259.0" stylesheets="@../css/fontstyle.css" text="EASY" toggleGroup="$difficulty">
          <font>
             <Font size="25.0" />
          </font></ToggleButton>
-      <Label layoutX="923.0" layoutY="210.0" text="Select time limit:">
+      <Label alignment="CENTER" layoutX="903.0" layoutY="210.0" prefHeight="42.0" prefWidth="259.0" styleClass="selectLabel" stylesheets="@../css/fontstyle.css" text="Select time limit:">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <ToggleButton fx:id="sixMinsBtn" layoutX="903.0" layoutY="514.0" mnemonicParsing="false" onAction="#onClickSix" prefHeight="80.0" prefWidth="259.0" text="6 mins">
+      <ToggleButton fx:id="sixMinsBtn" layoutX="903.0" layoutY="514.0" mnemonicParsing="false" onAction="#onClickSix" prefHeight="80.0" prefWidth="259.0" stylesheets="@../css/fontstyle.css" text="6 mins">
          <font>
             <Font size="25.0" />
          </font>
@@ -53,37 +53,37 @@
             <ToggleGroup fx:id="timeLimit" />
          </toggleGroup>
       </ToggleButton>
-      <ToggleButton fx:id="fourMinsBtn" layoutX="903.0" layoutY="406.0" mnemonicParsing="false" onAction="#onClickFour" prefHeight="80.0" prefWidth="259.0" text="4 mins" toggleGroup="$timeLimit">
+      <ToggleButton fx:id="fourMinsBtn" layoutX="903.0" layoutY="406.0" mnemonicParsing="false" onAction="#onClickFour" prefHeight="80.0" prefWidth="259.0" stylesheets="@../css/fontstyle.css" text="4 mins" toggleGroup="$timeLimit">
          <font>
             <Font size="25.0" />
          </font>
       </ToggleButton>
-      <ToggleButton fx:id="twoMinsBtn" layoutX="903.0" layoutY="298.0" mnemonicParsing="false" onAction="#onClickTwo" prefHeight="80.0" prefWidth="259.0" text="2 mins" toggleGroup="$timeLimit">
+      <ToggleButton fx:id="twoMinsBtn" layoutX="903.0" layoutY="298.0" mnemonicParsing="false" onAction="#onClickTwo" prefHeight="80.0" prefWidth="259.0" stylesheets="@../css/fontstyle.css" text="2 mins" toggleGroup="$timeLimit">
          <font>
             <Font size="25.0" />
          </font>
       </ToggleButton>
-      <Label fx:id="difficultyDescriptionLabel" alignment="CENTER" layoutX="421.0" layoutY="360.0" prefHeight="80.0" prefWidth="437.0" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="difficultyDescriptionLabel" alignment="CENTER" layoutX="421.0" layoutY="360.0" prefHeight="207.0" prefWidth="437.0" styleClass="selectLabel" stylesheets="@../css/fontstyle.css" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="390.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="421.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/gm/gmclassical.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="549.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="581.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/gm/gmrave.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="708.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="744.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/gm/gmrock.png" />
          </image>
       </ImageView>
-      <Label layoutX="481.0" layoutY="298.0" text="Click on me in game to chat!">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="389.0" layoutY="298.0" prefHeight="66.0" prefWidth="500.0" styleClass="selectLabel" stylesheets="@../css/fontstyle.css" text="Click on me in game to chat!">
          <font>
             <Font size="26.0" />
          </font>
