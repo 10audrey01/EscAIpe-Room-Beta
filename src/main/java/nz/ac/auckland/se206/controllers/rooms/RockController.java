@@ -323,6 +323,7 @@ public class RockController extends AbstractRoomController {
 
       if (numberOfCorrectGuitarClicks == 4) {
         GameState.isNoteSequenceFound = true;
+        gameState.getObjectiveListManager().completeObjective3();
         System.out.println("Correct sequence played");
       }
     }

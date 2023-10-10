@@ -43,8 +43,6 @@ public class ClassicalController extends AbstractRoomController {
   private int numOfTambourinePresses;
   private int tambourineLimit;
 
-  private GameState gameState;
-
   private DraggableMaker draggableMaker = new DraggableMaker();
 
   private AnimationTimer celloPlayTimer =
@@ -161,9 +159,10 @@ public class ClassicalController extends AbstractRoomController {
   private void doClickedGrandPiano(MouseEvent event) throws IOException {
     // changes the scene to the piano scene controller.
     System.out.println("Grand Piano Clicked");
-    PianoController.resetNotesPlayed();
+    
 
     PianoController pianoController = (PianoController) SceneManager.getController(AppUi.PIANO);
+    pianoController.resetNotesPlayed();
     pianoController.loadRockNotes();
 
     Pane current = (Pane) event.getSource();

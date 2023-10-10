@@ -60,6 +60,18 @@ public class ObjectiveListManager {
   }
 
   /**
+   * Changing text of an objective label for every objective label in a specific step.
+   *
+   * @param labelIndex The index of the step for which the objective label is changed.
+   * @param text The text to change the objective label to.
+   */
+  public void changeObjectiveLabelText(int labelIndex, String text) {
+    for (Label label : this.allObjectiveLabels.get(labelIndex)) {
+      label.setText(text);
+    }
+  }
+
+  /**
    * Adds an ImageView representing a key for a specific step.
    *
    * @param keyIndex The index of the step for which the key ImageView is added.
@@ -100,6 +112,18 @@ public class ObjectiveListManager {
   /** Marks objective 3 as completed if the riddle is resolved. */
   public void completeObjective3() {
     if (GameState.isRiddleResolved) {
+      // set the text of objective 3 to "Find the riddle object" if the riddle is resolved
+      changeObjectiveLabelText(2, "- Find the riddle object");
+    }
+    if (GameState.isRiddleObjectFound) {
+      // set the text of objective 3 to "Find the note sequence" if the riddle object is found
+      changeObjectiveLabelText(2, "- Find the note sequence");
+    }
+    if (GameState.isNoteSequenceFound) {
+      // set the text of objective 3 to "Play the piano" if the note sequence is found
+      changeObjectiveLabelText(2, "- Play the piano");
+    }
+    if (GameState.isPianoPlayed) {
       strikeThroughLabels(this.allObjectiveLabels.get(2)); // Apply strikethrough effect to labels
     }
   }
