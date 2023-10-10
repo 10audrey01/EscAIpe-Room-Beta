@@ -124,7 +124,8 @@ public class PianoController {
         notesBuilder.append(noteSequence[i]);
       }
 
-      String notesToPlay = notesBuilder.toString();
+      String notesToPlay = (notesBuilder.append(notesBuilder)).toString();
+      System.out.println("Notes to play: " + notesToPlay);
       System.out.println(notesToPlay);
       loadRockNotes();
     }
