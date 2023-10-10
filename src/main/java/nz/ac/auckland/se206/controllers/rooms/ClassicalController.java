@@ -181,6 +181,10 @@ public class ClassicalController extends AbstractRoomController {
   private void doClickedTrumpet(MouseEvent event) throws IOException {
     // changes the scene to the trumpet scene controller.
     System.out.println("Trumpet Clicked");
+    Pane current = (Pane) event.getSource();
+    Scene currentScene = current.getScene();
+
+    currentScene.setRoot(SceneManager.getUiRoot(AppUi.TRUMPET));
   }
 
   /**
