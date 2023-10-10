@@ -145,7 +145,7 @@ public class GuitaristRiddleController {
   /**
    * Sends a message to the GPT model.
    *
-   * @param event the action event triggered by the send button
+   * @param inputText textfield element that the player has submitted to for GPT to respond.
    * @throws ApiProxyException if there is an error communicating with the API proxy
    * @throws IOException if there is an I/O error
    */

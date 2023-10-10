@@ -10,14 +10,14 @@ import javax.speech.synthesis.SynthesizerModeDesc;
 /** Text-to-speech API using the JavaX speech library. */
 public class TextToSpeech {
 
-  public static AtomicBoolean isTtsEnabled = new AtomicBoolean(true);
-
   /** Custom unchecked exception for Text-to-speech issues. */
   static class TextToSpeechException extends RuntimeException {
     public TextToSpeechException(final String message) {
       super(message);
     }
   }
+
+  public static AtomicBoolean isTtsEnabled = new AtomicBoolean(true);
 
   /**
    * Main function to speak the given list of sentences.
