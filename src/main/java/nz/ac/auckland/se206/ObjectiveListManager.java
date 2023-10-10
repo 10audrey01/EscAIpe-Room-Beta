@@ -125,6 +125,7 @@ public class ObjectiveListManager {
     }
     if (GameState.isPianoPlayed) {
       strikeThroughLabels(this.allObjectiveLabels.get(2)); // Apply strikethrough effect to labels
+      setVisibilityKey(2, true); // key 3 obtained after win
     }
   }
 
