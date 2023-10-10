@@ -43,8 +43,6 @@ public class ClassicalController extends AbstractRoomController {
   private int numOfTambourinePresses;
   private int tambourineLimit;
 
-  private GameState gameState;
-
   private DraggableMaker draggableMaker = new DraggableMaker();
 
   private AnimationTimer celloPlayTimer =
