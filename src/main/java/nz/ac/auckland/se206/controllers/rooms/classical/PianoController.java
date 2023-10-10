@@ -31,17 +31,6 @@ public class PianoController {
   private static final int A_NOTE_LOCATION = 15;
   private static final int B_NOTE_LOCATION = 0;
 
-  // winning squence
-  public static String notesToPlay = "ABCDEFGA";
-
-  // sequence of notes played by user
-  public static String notesPlayed = "";
-
-  /** Resets the notes played by the user. */
-  public static void resetNotesPlayed() {
-    notesPlayed = "";
-  }
-
   @FXML private ImageView note1;
   @FXML private ImageView note2;
   @FXML private ImageView note3;
@@ -80,6 +69,12 @@ public class PianoController {
   @FXML private Pane leavePiano;
   @FXML private Label timerLabel;
 
+  // winning squence
+  private String notesToPlay;
+
+  // sequence of notes played by user
+  private String notesPlayed = "";
+
   private GameState gameState;
   private ArrayList<ImageView> notesList;
   private ArrayList<ImageView> notesLetterList;
@@ -110,7 +105,6 @@ public class PianoController {
                 note6Letter,
                 note7Letter,
                 note8Letter));
-    loadNotes();
 
     gameState = GameState.getInstance();
 
@@ -124,10 +118,15 @@ public class PianoController {
         notesBuilder.append(noteSequence[i]);
       }
 
-      String notesToPlay = (notesBuilder.append(notesBuilder)).toString();
+      notesToPlay = (notesBuilder.append(notesBuilder)).toString();
       System.out.println("Notes to play: " + notesToPlay);
       loadRockNotes();
     }
+  }
+
+  /** Resets the notes played by the user. */
+  public void resetNotesPlayed() {
+    notesPlayed = "";
   }
 
   /**
@@ -138,6 +137,8 @@ public class PianoController {
   public void loadNotes() throws IOException {
     for (int i = 0; i < notesList.size(); i++) {
       // set the y location of each note
+      System.out.println(i);
+      System.out.println(notesToPlay);
       switch (notesToPlay.charAt(i)) {
         case 'A':
           notesList.get(i).setY(A_NOTE_LOCATION);
