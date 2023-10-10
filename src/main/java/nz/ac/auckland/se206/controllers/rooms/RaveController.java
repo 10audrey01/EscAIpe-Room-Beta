@@ -310,6 +310,7 @@ public class RaveController extends AbstractRoomController {
         && !GameState.isRiddleObjectFound) {
       // if the object is the correct one, set relevant labels to notify the user
       GameState.isRiddleObjectFound = true;
+      gameState.getObjectiveListManager().completeObjective3();
       gameState.getRockBigTaskManager().setLabelColours();
       gameState.getRockBigTaskManager().setOrderColourMap();
       gameState.getRockBigTaskManager().setVisibilityNoteImages(true);
