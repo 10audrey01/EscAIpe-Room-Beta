@@ -15,12 +15,14 @@ public class ObjectiveListManager {
 
   private ArrayList<ArrayList<Label>> allObjectiveLabels; // Lists of objective labels for each step
   private ArrayList<ArrayList<ImageView>> allStepKeys; // Lists of step keys for each step
+  private GameState gameState;
 
   /**
    * Initializes a new instance of the ObjectiveListManager class. It initializes lists for
    * objective labels and step keys.
    */
   public ObjectiveListManager() {
+    gameState = GameState.getInstance();
     this.allObjectiveLabels =
         new ArrayList<ArrayList<Label>>(
             List.of(
@@ -93,6 +95,14 @@ public class ObjectiveListManager {
     this.addStepKey(3, stepKeys.get(3));
   }
 
+  /** Initialise the objective list by setting the text of each objective label to the objective. */
+  public void initialiseObjectiveList() {
+    changeObjectiveLabelText(0, gameState.getTaskManager().getTask(0).getTaskDescription());
+    changeObjectiveLabelText(1, gameState.getTaskManager().getTask(1).getTaskDescription());
+    changeObjectiveLabelText(2, gameState.getTaskManager().getTask(2).getTaskDescription());
+    changeObjectiveLabelText(3, gameState.getTaskManager().getTask(3).getTaskDescription());
+  }
+
   /** Marks objective 1 as completed if the music quiz is completed. */
   public void completeObjective1() {
     if (GameState.isMusicQuizCompleted) {
@@ -111,7 +121,7 @@ public class ObjectiveListManager {
 
   /** Marks objective 3 as completed if the riddle is resolved. */
   public void completeObjective3() {
-    if (GameState.isRiddleResolved) {
+    if (GameState.isRiddleSolved) {
       // set the text of objective 3 to "Find the riddle object" if the riddle is resolved
       changeObjectiveLabelText(2, "- Find the riddle object");
     }
@@ -119,7 +129,7 @@ public class ObjectiveListManager {
       // set the text of objective 3 to "Find the note sequence" if the riddle object is found
       changeObjectiveLabelText(2, "- Find the note sequence");
     }
-    if (GameState.isNoteSequenceFound) {
+    if (GameState.isGuitarsPlayed) {
       // set the text of objective 3 to "Play the piano" if the note sequence is found
       changeObjectiveLabelText(2, "- Play the piano");
     }
