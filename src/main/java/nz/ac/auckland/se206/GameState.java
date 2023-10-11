@@ -47,16 +47,22 @@ public class GameState {
   private static GameState instance; // Singleton instance of GameState
   public static Difficulty difficulty; // Current game difficulty
   public static PlayTime time; // Current game playtime
-  public static boolean isRiddleResolved = false;
+
+  // task completion variables for long task
+  public static boolean isRiddleSolved = false;
   public static boolean isRiddleObjectFound = false;
-  public static boolean isNoteSequenceFound = false;
-  public static boolean isKeyFound = false;
+  public static boolean isGuitarsPlayed = false;
+  public static boolean isPianoPlayed = false;
+
+  // task completion variables for short tasks
   public static boolean isMusicQuizCompleted = false;
   public static boolean isSafeOpened = false;
-  public static boolean isPianoPlayed = false;
   public static boolean isHarpPlayed = false;
-  public static boolean isEscaped = false;
   public static boolean isTrumpetPlayed = false;
+
+  // task completion variables for ending the game
+  public static boolean isKeyFound = false;
+  public static boolean isEscaped = false;
 
   /**
    * Returns the singleton instance of the GameState class.
@@ -93,10 +99,10 @@ public class GameState {
    */
   public static void resetVariables() {
     // reset riddle fileds
-    isRiddleResolved = false;
+    isRiddleSolved = false;
     isRiddleObjectFound = false;
     // reset note fields
-    isNoteSequenceFound = false;
+    isGuitarsPlayed = false;
     isKeyFound = false;
     // reset minitask fields
     isMusicQuizCompleted = false;
