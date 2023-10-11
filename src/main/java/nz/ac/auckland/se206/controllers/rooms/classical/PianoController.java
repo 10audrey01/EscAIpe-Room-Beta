@@ -186,7 +186,7 @@ public class PianoController {
    */
   public void loadRockNotes() throws IOException {
     if (gameState.getTaskManager().getCurrentLargeTask() == LargeTask.ROCK) {
-      if (GameState.isNoteSequenceFound) {
+      if (GameState.isGuitarsPlayed) {
         loadNotes();
         for (int i = 0; i < notesLetterList.size(); i++) {
           notesLetterList.get(i).setOpacity(100);

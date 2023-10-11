@@ -63,13 +63,13 @@ public class GptPromptEngineering {
    * @return A hint provided by the game master, tailored to the player's progress.
    */
   public static String getGmHint() {
-    if (!GameState.isRiddleResolved) {
+    if (!GameState.isRiddleSolved) {
       return "Tell the player that maybe the guitarist can help them. Your response should be at"
           + " most 2 lines. Start your answer with 'Here's a hint: '";
     } else if (!GameState.isRiddleObjectFound) {
       return "Tell the player that they should find the riddle object. Your response should be at"
           + " most 2 lines. Start your answer with 'Here's a hint: '";
-    } else if (!GameState.isNoteSequenceFound) {
+    } else if (!GameState.isGuitarsPlayed) {
       return "Tell the player that the colours on the note might relate to some objects in a room."
           + " Your response should be at most 2 lines. Start your answer with 'Here's a"
           + " hint: '";

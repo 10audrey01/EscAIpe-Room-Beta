@@ -66,7 +66,7 @@ public class RoomController {
   public void clickDoor(MouseEvent event) throws IOException {
     System.out.println("door clicked");
 
-    if (!GameState.isRiddleResolved) {
+    if (!GameState.isRiddleSolved) {
       showDialog("Info", "Riddle", "You need to resolve the riddle!");
       App.setRoot("chat");
       return;
@@ -88,7 +88,7 @@ public class RoomController {
   @FXML
   public void clickVase(MouseEvent event) {
     System.out.println("vase clicked");
-    if (GameState.isRiddleResolved && !GameState.isKeyFound) {
+    if (GameState.isRiddleSolved && !GameState.isKeyFound) {
       showDialog("Info", "Key Found", "You found a key under the vase!");
       GameState.isKeyFound = true;
     }

@@ -201,7 +201,7 @@ public class GuitaristRiddleController {
                 gameState.getHintManager().useHint();
               }
               if (response.getContent().startsWith("Correct")) {
-                GameState.isRiddleResolved = true;
+                GameState.isRiddleSolved = true;
                 gameState
                     .getObjectiveListManager()
                     .completeObjective3(); // objective 3 is to talk to guitarist
