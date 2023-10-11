@@ -3,6 +3,7 @@ package nz.ac.auckland.se206;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -61,25 +62,11 @@ public class RockBigTaskManager {
     this.noteImages = new ArrayList<ImageView>();
     this.noteSequenceLabels = new ArrayList<Label>();
     this.noteArrows = new ArrayList<ImageView>();
-    this.colours = new ArrayList<Colour>();
-    colours.add(Colour.YELLOW);
-    colours.add(Colour.BLUE);
-    colours.add(Colour.PURPLE);
-    colours.add(Colour.CYAN);
+    this.colours =
+        new ArrayList<Colour>(List.of(Colour.YELLOW, Colour.BLUE, Colour.PURPLE, Colour.CYAN));
     Collections.shuffle(colours); // Randomize the order of colors
-    this.notes = new ArrayList<String>();
-    notes.add("C");
-    notes.add("D");
-    notes.add("E");
-    notes.add("F");
-    notes.add("G");
-    notes.add("A");
-    notes.add("B");
-    this.order = new ArrayList<Integer>();
-    order.add(1);
-    order.add(2);
-    order.add(3);
-    order.add(4);
+    this.notes = new ArrayList<String>(List.of("C", "D", "E", "F", "G", "A", "B"));
+    this.order = new ArrayList<Integer>(List.of(1, 2, 3, 4));
     Collections.shuffle(order); // Randomize the order of numbers
     this.noteSequenceString = "";
     setNoteSequence();
