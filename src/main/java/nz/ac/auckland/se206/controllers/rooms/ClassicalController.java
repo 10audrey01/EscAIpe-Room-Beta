@@ -19,7 +19,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.rooms.classical.PianoController;
 
 /** Controller class for handling the classical room. */
-public class ClassicalController extends AbstractRoomController {
+public class ClassicalController extends RoomController {
 
   @FXML private Rectangle raveDoor;
   @FXML private Rectangle rockDoor;
@@ -159,7 +159,6 @@ public class ClassicalController extends AbstractRoomController {
   private void doClickedGrandPiano(MouseEvent event) throws IOException {
     // changes the scene to the piano scene controller.
     System.out.println("Grand Piano Clicked");
-    
 
     PianoController pianoController = (PianoController) SceneManager.getController(AppUi.PIANO);
     pianoController.resetNotesPlayed();

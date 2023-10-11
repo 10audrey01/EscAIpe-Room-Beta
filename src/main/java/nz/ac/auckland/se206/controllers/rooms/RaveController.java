@@ -18,7 +18,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
 
 /** Controller class for handling the rave room. */
-public class RaveController extends AbstractRoomController {
+public class RaveController extends RoomController {
   private static ArrayList<String> objects;
   private static String riddleObject;
 
@@ -305,9 +305,7 @@ public class RaveController extends AbstractRoomController {
    * @param object The object clicked by the player.
    */
   public void isRiddleObject(String object) {
-    if (riddleObject.equals(object)
-        && GameState.isRiddleResolved
-        && !GameState.isRiddleObjectFound) {
+    if (riddleObject.equals(object) && GameState.isRiddleSolved && !GameState.isRiddleObjectFound) {
       // if the object is the correct one, set relevant labels to notify the user
       GameState.isRiddleObjectFound = true;
       gameState.getObjectiveListManager().completeObjective3();

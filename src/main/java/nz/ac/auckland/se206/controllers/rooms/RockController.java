@@ -24,7 +24,7 @@ import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
 /** Controller class for handling the rock room. */
-public class RockController extends AbstractRoomController {
+public class RockController extends RoomController {
 
   @FXML private Rectangle classicalDoor;
   @FXML private Rectangle raveDoor;
@@ -233,7 +233,7 @@ public class RockController extends AbstractRoomController {
   public void playNote(Colour guitarColour) throws URISyntaxException {
     if (gameState.getTaskManager().getCurrentLargeTask() == LargeTask.ROCK) {
 
-      if (GameState.isRiddleObjectFound && !GameState.isNoteSequenceFound) {
+      if (GameState.isRiddleObjectFound && !GameState.isGuitarsPlayed) {
         noteSequence = gameState.getRockBigTaskManager().getNoteSequence();
         orderColourMap = gameState.getRockBigTaskManager().getOrderColourMap();
 
@@ -307,7 +307,7 @@ public class RockController extends AbstractRoomController {
    * @param guitarColour The color of the guitar clicked.
    */
   public void checkGuitarSequence(Colour guitarColour) {
-    if (GameState.isRiddleObjectFound && !GameState.isNoteSequenceFound) {
+    if (GameState.isRiddleObjectFound && !GameState.isGuitarsPlayed) {
       // check if the guitar clicked is the correct one
       if (orderColourMap.get(guitarColour) - 1 == numberOfCorrectGuitarClicks) {
         // if it is, set the note sequence label to the note sequence
@@ -322,7 +322,7 @@ public class RockController extends AbstractRoomController {
       }
 
       if (numberOfCorrectGuitarClicks == 4) {
-        GameState.isNoteSequenceFound = true;
+        GameState.isGuitarsPlayed = true;
         gameState.getObjectiveListManager().completeObjective3();
         System.out.println("Correct sequence played");
       }
