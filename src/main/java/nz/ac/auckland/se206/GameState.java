@@ -14,14 +14,14 @@ import nz.ac.auckland.se206.controllers.rooms.rave.BodybuilderController;
  * Represents the state of the game, including game difficulty, playtime, and various game states.
  */
 public class GameState {
-  /** Difficulty enum to represent the game difficulty */
+  /** Difficulty enum to represent the game difficulty. */
   public enum Difficulty {
     EASY,
     MEDIUM,
     HARD
   }
 
-  /** Playtime enum to represent the gme time. Each enum returns its respective time in minutes */
+  /** Playtime enum to represent the gme time. Each enum returns its respective time in minutes. */
   public enum PlayTime {
     TWO(2),
     FOUR(4),

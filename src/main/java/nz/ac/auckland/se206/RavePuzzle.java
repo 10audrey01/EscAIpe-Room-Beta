@@ -19,7 +19,6 @@ public class RavePuzzle {
 
   /** Initializes a new instance of the RavePuzzle class. Generates a random safe code solution. */
   public RavePuzzle() {
-    String solution = "";
     // Generate random solution
     Random random = new Random();
     StringBuilder solutionBuilder = new StringBuilder();
@@ -29,7 +28,7 @@ public class RavePuzzle {
       solutionBuilder.append(currentNumber);
     }
 
-    solution = solutionBuilder.toString();
+    String solution = solutionBuilder.toString();
 
     System.out.println(solution);
 

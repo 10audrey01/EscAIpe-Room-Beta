@@ -382,6 +382,7 @@ public class TrumpetController {
     if (isButton3Down) {
       noteplayed += 1;
     }
+    // get the correct audio sequence to get the audio file name for the played notes by the player
     String audioName = noteplayed.toString();
     if (noteplayed == 11) {
       audioName = "011";
@@ -393,12 +394,14 @@ public class TrumpetController {
       audioName = "000";
     }
 
+    // load the notes from resources for the game to play
     Media note =
         new Media(
             getClass()
                 .getResource("/sounds/trumpetSounds/" + audioName + ".wav")
                 .toURI()
                 .toString());
+    // set the note as the current player and play the sound the player has inputted
     trumpetNotePlayer = new MediaPlayer(note);
     trumpetNotePlayer.setVolume(0.05);
     trumpetNotePlayer.play();
