@@ -253,12 +253,12 @@ public class GameState {
    * @throws IOException If an I/O error occurs during game initialization.
    */
   public void startGame() throws IOException {
-    this.taskManager.generateTasks(); // Generate game tasks
     this.timeManager.setTime(time.getTime() * 60); // Set game time
     this.timeManager.startCountdown(); // Start countdown timer
     this.hintManager.initialiseManager(difficulty); // Initialize hint manager based on difficulty
     this.ravePuzzle.setHints(classicalNote, rockNote); // Set hints for the Rave puzzle
     this.bodybuilderController.initialiseCode(); // Initialize code for the Bodybuilder puzzle
+    this.objectiveListManager.initialiseObjectiveList(); // Initialize objective list
   }
 
   /**
