@@ -5,8 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import nz.ac.auckland.se206.tasks.HarpTask;
 import nz.ac.auckland.se206.tasks.MusicQuizTask;
-import nz.ac.auckland.se206.tasks.PianoTask;
 import nz.ac.auckland.se206.tasks.RiddleTask;
+import nz.ac.auckland.se206.tasks.SafeTask;
 import nz.ac.auckland.se206.tasks.Task;
 import nz.ac.auckland.se206.tasks.TrumpetTask;
 
@@ -19,6 +19,17 @@ import nz.ac.auckland.se206.tasks.TrumpetTask;
 public class TaskManager {
   /** ArrayList to store tasks in the game. */
   public ArrayList<Task> taskList;
+
+  public ArrayList<TaskType> individualTasks;
+
+  /** Enum to represent individual tasks in the game. */
+  public enum TaskType {
+    RIDDLE,
+    MUSIC_QUIZ,
+    HARP,
+    PIANO,
+    TRUMPET
+  }
 
   /** Enum to represent larger tasks in the game. */
   public enum LargeTask {
@@ -49,17 +60,16 @@ public class TaskManager {
 
   /** Generates a randomized list of individual tasks and sets the current large task. */
   public void generateTasks() {
-    List<Task> availableTasks =
+    ArrayList<Task> availableTasks =
         new ArrayList<Task>(
-            List.of(
-                new MusicQuizTask(),
-                new HarpTask(),
-                new RiddleTask(),
-                new PianoTask(),
-                new TrumpetTask()));
+            List.of(new MusicQuizTask(), new HarpTask(), new TrumpetTask(), new SafeTask()));
     Collections.shuffle(availableTasks); // Shuffle the available tasks to randomize them
+    taskList = availableTasks;
 
     this.largeTask = LargeTask.ROCK; // Set the initial large task
+    // change a random task in the tasklist to be the large task (RiddleTask)
+    int randomTaskIndex = (int) (Math.random() * taskList.size());
+    taskList.set(randomTaskIndex, new RiddleTask());
   }
 
   /**
@@ -79,5 +89,20 @@ public class TaskManager {
    */
   public Task getTask(int taskIndex) {
     return this.taskList.get(taskIndex);
+  }
+
+  /**
+   * Get index of a specific task.
+   *
+   * @param task The task to get the index of.
+   */
+  public int getTaskIndex(Class<? extends Task> task) {
+    // check what the task is and return its index in taskList
+    for (int i = 0; i < this.taskList.size(); i++) {
+      if (this.taskList.get(i).getClass() == task) {
+        return i;
+      }
+    }
+    return -1;
   }
 }
