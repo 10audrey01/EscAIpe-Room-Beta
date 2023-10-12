@@ -103,47 +103,24 @@ public class ObjectiveListManager {
     changeObjectiveLabelText(3, gameState.getTaskManager().getTask(3).getTaskDescription());
   }
 
-  /** Marks objective 1 as completed if the music quiz is completed. */
-  public void completeObjective1() {
-    if (GameState.isMusicQuizCompleted) {
-      strikeThroughLabels(this.allObjectiveLabels.get(0)); // Apply strikethrough effect to labels
-      setVisibilityKey(0, true); // Set visibility of step 1 key to true
-    }
-  }
-
-  /** Marks objective 2 as completed if the safe is opened. */
-  public void completeObjective2() {
-    if (GameState.isSafeOpened) {
-      strikeThroughLabels(this.allObjectiveLabels.get(1)); // Apply strikethrough effect to labels
-      setVisibilityKey(1, true); // Set visibility of step 2 key to true
-    }
-  }
-
-  /** Marks objective 3 as completed if the riddle is resolved. */
-  public void completeObjective3() {
-    if (GameState.isRiddleSolved) {
-      // set the text of objective 3 to "Find the riddle object" if the riddle is resolved
-      changeObjectiveLabelText(2, "- Find the riddle object");
-    }
-    if (GameState.isRiddleObjectFound) {
-      // set the text of objective 3 to "Find the note sequence" if the riddle object is found
-      changeObjectiveLabelText(2, "- Find the note sequence");
-    }
-    if (GameState.isGuitarsPlayed) {
-      // set the text of objective 3 to "Play the piano" if the note sequence is found
-      changeObjectiveLabelText(2, "- Play the piano");
-    }
-    if (GameState.isPianoPlayed) {
-      strikeThroughLabels(this.allObjectiveLabels.get(2)); // Apply strikethrough effect to labels
-      setVisibilityKey(2, true); // key 3 obtained after win
-    }
-  }
-
-  /** Marks objective 4 as completed if the harp is played. */
-  public void completeObjective4() {
-    if (GameState.isHarpPlayed) {
-      strikeThroughLabels(this.allObjectiveLabels.get(3)); // Apply strikethrough effect to labels
-      setVisibilityKey(3, true); // Set visibility of step 4 key to true
+  /** Marks an objective completed if corresponding task is completed */
+  public void completeObjective(int taskIndex) {
+    // check if task has next task
+    if (gameState.getTaskManager().getTask(taskIndex).hasMoreTasks()) {
+      // if it does, set the next task as the current task
+      gameState
+          .getTaskManager()
+          .updateTask(taskIndex, gameState.getTaskManager().getTask(taskIndex).getNextTask());
+      // update the objective label to the next task
+      changeObjectiveLabelText(
+          taskIndex, gameState.getTaskManager().getTask(taskIndex).getTaskDescription());
+    } else {
+      // mark the objective as completed
+      gameState.getTaskManager().getTask(taskIndex).setCompleted(true);
+      // apply strikethrough effect to the objective label
+      this.strikeThroughLabels(this.allObjectiveLabels.get(taskIndex));
+      // make the key visible
+      this.setVisibilityKey(taskIndex, true);
     }
   }
 
