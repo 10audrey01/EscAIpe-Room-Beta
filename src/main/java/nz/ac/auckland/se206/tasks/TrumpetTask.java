@@ -7,5 +7,6 @@ public class TrumpetTask extends Task {
     super();
     this.taskDescription = "- Play the trumpet";
     this.isCompleted = GameState.isTrumpetPlayed;
+    this.hasMoreTasks = false;
   }
 }

@@ -7,5 +7,6 @@ public class MusicQuizTask extends Task {
     super();
     this.taskDescription = "- Help the DJ";
     this.isCompleted = GameState.isMusicQuizCompleted;
+    this.hasMoreTasks = false;
   }
 }

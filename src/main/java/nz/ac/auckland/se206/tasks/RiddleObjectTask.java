@@ -7,5 +7,7 @@ public class RiddleObjectTask extends Task {
     super();
     this.taskDescription = "- Find the object";
     this.isCompleted = GameState.isRiddleObjectFound;
+    this.hasMoreTasks = true;
+    this.nextTask = new GuitarTask();
   }
 }

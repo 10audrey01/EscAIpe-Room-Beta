@@ -5,5 +5,6 @@ public class SafeTask extends Task {
     super();
     this.taskDescription = "- Help the bodybulder";
     this.isCompleted = false;
+    this.hasMoreTasks = false;
   }
 }

@@ -7,5 +7,6 @@ public class PianoTask extends Task {
     super();
     this.taskDescription = " - Play the piano";
     this.isCompleted = GameState.isPianoPlayed;
+    this.hasMoreTasks = false;
   }
 }

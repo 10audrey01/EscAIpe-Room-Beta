@@ -7,5 +7,7 @@ public class RiddleTask extends Task {
     super();
     this.taskDescription = "- Talk to the guitarist";
     this.isCompleted = GameState.isRiddleSolved;
+    this.hasMoreTasks = true;
+    this.nextTask = new RiddleObjectTask();
   }
 }

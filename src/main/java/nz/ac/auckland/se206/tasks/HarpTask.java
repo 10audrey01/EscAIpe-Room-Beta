@@ -7,5 +7,6 @@ public class HarpTask extends Task {
     super();
     this.taskDescription = "- Play the harp";
     this.isCompleted = GameState.isHarpPlayed;
+    this.hasMoreTasks = false;
   }
 }
