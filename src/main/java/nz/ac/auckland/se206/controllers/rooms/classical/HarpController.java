@@ -18,6 +18,7 @@ import javafx.scene.shape.Line;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.tasks.HarpTask;
 
 /** Controller class for handling the harp room. */
 public class HarpController {
@@ -63,6 +64,7 @@ public class HarpController {
   @FXML private Pane leaveHarp;
   @FXML private Label timerLabel;
 
+  private int taskIndex;
   private GameState gameState;
   private ArrayList<Line> strings;
   private ArrayList<Line> notesToPlay;
@@ -86,6 +88,7 @@ public class HarpController {
     // get instance of gamestate and add the timer label to the gamestate
     this.gameState = GameState.getInstance();
     gameState.getTimeManager().addToTimers(timerLabel);
+    taskIndex = gameState.getTaskManager().getTaskIndex(HarpTask.class);
 
     // list of all available strings of the harp
     strings =
@@ -261,7 +264,7 @@ public class HarpController {
       System.out.println("Harp completed");
       harpSequencePlayable = false;
       GameState.isHarpPlayed = true;
-      gameState.getObjectiveListManager().completeObjective4();
+      gameState.getObjectiveListManager().completeObjective(taskIndex);
     }
     // set the circle colours
     setCircleColours();

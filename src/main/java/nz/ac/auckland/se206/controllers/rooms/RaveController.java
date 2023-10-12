@@ -16,6 +16,9 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
+import nz.ac.auckland.se206.tasks.MusicQuizTask;
+import nz.ac.auckland.se206.tasks.RiddleTask;
+import nz.ac.auckland.se206.tasks.SafeTask;
 
 /** Controller class for handling the rave room. */
 public class RaveController extends RoomController {
@@ -62,10 +65,14 @@ public class RaveController extends RoomController {
   private boolean isBlueLockUnlocked = false;
   private boolean isYellowLockUnlocked = false;
 
+  // index of the task in the objective list
+  private int taskIndex;
+
   /** Initializes the FXML file for the rock room and sets up various components and variables. */
   @FXML
   private void initialize() {
     initialiseAllGameStateVariables();
+    taskIndex = gameState.getTaskManager().getTaskIndex(RiddleTask.class);
 
     chatOpened = true;
 
@@ -101,10 +108,12 @@ public class RaveController extends RoomController {
   @FXML
   private void onClickDj(MouseEvent event) {
     System.out.println("dj clicked");
-    // switches the scene to the music quiz scene
-    Pane current = (Pane) event.getSource();
-    Scene currentScene = current.getScene();
-    currentScene.setRoot(SceneManager.getUiRoot(AppUi.MUSICQUIZ));
+    // switches the scene to the music quiz scene if the task has been selected
+    if (gameState.getTaskManager().getTaskIndex(MusicQuizTask.class) != -1) {
+      Pane current = (Pane) event.getSource();
+      Scene currentScene = current.getScene();
+      currentScene.setRoot(SceneManager.getUiRoot(AppUi.MUSICQUIZ));
+    }
   }
 
   /**
@@ -116,10 +125,12 @@ public class RaveController extends RoomController {
   @FXML
   private void onClickBodybuilder(MouseEvent event) {
     System.out.println("bodybuilder clicked");
-    // switches the scene to the bodybuilder safe minigame scene
-    Pane current = (Pane) event.getSource();
-    Scene currentScene = current.getScene();
-    currentScene.setRoot(SceneManager.getUiRoot(AppUi.BODYBUILDER));
+    // switches the scene to the bodybuilder safe minigame scene only if safe task has been selected
+    if (gameState.getTaskManager().getTaskIndex(SafeTask.class) != -1) {
+      Pane current = (Pane) event.getSource();
+      Scene currentScene = current.getScene();
+      currentScene.setRoot(SceneManager.getUiRoot(AppUi.BODYBUILDER));
+    }
   }
 
   /**
@@ -167,7 +178,7 @@ public class RaveController extends RoomController {
   @FXML
   private void onClickRed(MouseEvent event) {
     // removes the lock if the player has completed the piano task
-    if (GameState.isPianoPlayed) {
+    if (gameState.getTaskManager().getTask(2).isCompleted()) {
       // set the visibility of the key 3 to false
       gameState.getObjectiveListManager().setVisibilityKey(2, false);
       redLock.setVisible(false);
@@ -185,7 +196,7 @@ public class RaveController extends RoomController {
   @FXML
   private void onClickGreen(MouseEvent event) {
     // removes the lock if the player has completed the safe task
-    if (GameState.isSafeOpened) {
+    if (gameState.getTaskManager().getTask(1).isCompleted()) {
       // set the visibility of the key 2 to false
       gameState.getObjectiveListManager().setVisibilityKey(1, false);
       greenLock.setVisible(false);
@@ -203,7 +214,7 @@ public class RaveController extends RoomController {
   @FXML
   private void onClickBlue(MouseEvent event) {
     // removes the lock if the player has completed the music quiz
-    if (GameState.isMusicQuizCompleted) {
+    if (gameState.getTaskManager().getTask(0).isCompleted()) {
       // set the visibility of the key 1 to false
       gameState.getObjectiveListManager().setVisibilityKey(0, false);
       blueLock.setVisible(false);
@@ -221,7 +232,7 @@ public class RaveController extends RoomController {
   @FXML
   private void onClickYellow(MouseEvent event) {
     // removes the lock if player has completed the harp event
-    if (GameState.isHarpPlayed) {
+    if (gameState.getTaskManager().getTask(3).isCompleted()) {
       // set the visibility of the key 4 to false
       gameState.getObjectiveListManager().setVisibilityKey(3, false);
       yellowLock.setVisible(false);
@@ -308,7 +319,7 @@ public class RaveController extends RoomController {
     if (riddleObject.equals(object) && GameState.isRiddleSolved && !GameState.isRiddleObjectFound) {
       // if the object is the correct one, set relevant labels to notify the user
       GameState.isRiddleObjectFound = true;
-      gameState.getObjectiveListManager().completeObjective3();
+      gameState.getObjectiveListManager().completeObjective(taskIndex);
       gameState.getRockBigTaskManager().setLabelColours();
       gameState.getRockBigTaskManager().setOrderColourMap();
       gameState.getRockBigTaskManager().setVisibilityNoteImages(true);

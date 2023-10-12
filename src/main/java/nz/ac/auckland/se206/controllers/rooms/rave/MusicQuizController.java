@@ -26,6 +26,7 @@ import nz.ac.auckland.se206.GameState.Difficulty;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
+import nz.ac.auckland.se206.tasks.MusicQuizTask;
 
 /** Controller class for handling the music quiz event room. */
 public class MusicQuizController {
@@ -64,6 +65,9 @@ public class MusicQuizController {
   private Thread timerThread;
   private boolean timerStarted;
 
+  // task index for the objective list manager
+  private int taskIndex;
+
   /**
    * Initializes the MusicQuizController by setting up the gamestate, labels, timers, and other
    * game-related variables.
@@ -78,6 +82,7 @@ public class MusicQuizController {
     this.gameState = GameState.getInstance();
     this.gameState.getTimeManager().addToTimers(timerLabel);
     this.gameState.getHintManager().addHintLabel(hintLabel);
+    taskIndex = gameState.getTaskManager().getTaskIndex(MusicQuizTask.class);
 
     // initial values for managing the game
     this.timeToAnswer = 0;
@@ -282,7 +287,7 @@ public class MusicQuizController {
       hintBtn.setVisible(false);
       GameState.isMusicQuizCompleted = true;
       speechBox.setText("Nice work bro. For you, I got this key for you man.");
-      gameState.getObjectiveListManager().completeObjective1();
+      gameState.getObjectiveListManager().completeObjective(taskIndex);
       answerLabel.setText("CORRECT");
       answerLabel.setTextFill(Color.GREEN);
       cooldownLabel.setVisible(false);

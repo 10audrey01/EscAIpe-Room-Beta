@@ -22,6 +22,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.TaskManager.LargeTask;
 import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
+import nz.ac.auckland.se206.tasks.RiddleTask;
 
 /** Controller class for handling the rock room. */
 public class RockController extends RoomController {
@@ -51,6 +52,9 @@ public class RockController extends RoomController {
   private String[] noteSequence;
   private int numberOfCorrectGuitarClicks = 0;
 
+  // task index for the rock room task
+  private int taskIndex;
+
   /**
    * Initializes the Rock Room's graphical components and game variables when the room is loaded.
    * This method is called automatically when the FXML file is loaded.
@@ -61,6 +65,7 @@ public class RockController extends RoomController {
   private void initialize() throws ApiProxyException {
 
     initialiseAllGameStateVariables();
+    taskIndex = gameState.getTaskManager().getTaskIndex(RiddleTask.class);
 
     gameState.getChatManager().generateInitialMessage();
 
@@ -323,7 +328,7 @@ public class RockController extends RoomController {
 
       if (numberOfCorrectGuitarClicks == 4) {
         GameState.isGuitarsPlayed = true;
-        gameState.getObjectiveListManager().completeObjective3();
+        gameState.getObjectiveListManager().completeObjective(taskIndex);
         System.out.println("Correct sequence played");
       }
     }

@@ -17,6 +17,8 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.rooms.classical.PianoController;
+import nz.ac.auckland.se206.tasks.HarpTask;
+import nz.ac.auckland.se206.tasks.TrumpetTask;
 
 /** Controller class for handling the classical room. */
 public class ClassicalController extends RoomController {
@@ -180,10 +182,13 @@ public class ClassicalController extends RoomController {
   private void doClickedTrumpet(MouseEvent event) throws IOException {
     // changes the scene to the trumpet scene controller.
     System.out.println("Trumpet Clicked");
-    Pane current = (Pane) event.getSource();
-    Scene currentScene = current.getScene();
 
-    currentScene.setRoot(SceneManager.getUiRoot(AppUi.TRUMPET));
+    // only switch to the trumpet scene if the trumpet task is selected
+    if (gameState.getTaskManager().getTaskIndex(TrumpetTask.class) != -1) {
+      Pane current = (Pane) event.getSource();
+      Scene currentScene = current.getScene();
+      currentScene.setRoot(SceneManager.getUiRoot(AppUi.TRUMPET));
+    }
   }
 
   /**
@@ -196,10 +201,13 @@ public class ClassicalController extends RoomController {
   private void doClickedHarp(MouseEvent event) throws IOException {
     // changes the scene to the harp controller scene
     System.out.println("Harp Clicked");
-    Pane current = (Pane) event.getSource();
-    Scene currentScene = current.getScene();
 
-    currentScene.setRoot(SceneManager.getUiRoot(AppUi.HARP));
+    // only switch to the harp scene if the harp task is selected
+    if (gameState.getTaskManager().getTaskIndex(HarpTask.class) != -1) {
+      Pane current = (Pane) event.getSource();
+      Scene currentScene = current.getScene();
+      currentScene.setRoot(SceneManager.getUiRoot(AppUi.HARP));
+    }
   }
 
   /**
