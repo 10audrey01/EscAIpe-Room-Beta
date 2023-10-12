@@ -20,17 +20,6 @@ public class TaskManager {
   /** ArrayList to store tasks in the game. */
   public ArrayList<Task> taskList;
 
-  public ArrayList<TaskType> individualTasks;
-
-  /** Enum to represent individual tasks in the game. */
-  public enum TaskType {
-    RIDDLE,
-    MUSIC_QUIZ,
-    HARP,
-    PIANO,
-    TRUMPET
-  }
-
   /** Enum to represent larger tasks in the game. */
   public enum LargeTask {
     RAVE,
