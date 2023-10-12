@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/app.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.RaveController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/app.css" xmlns="http://javafx.com/javafx/18.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.RaveController">
    <children>
       <Text layoutX="232.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="rav" />
       <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true">
@@ -207,7 +207,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </Circle>
-      <Pane fx:id="chatBoxPane" layoutX="25.0" layoutY="510.0" opacity="0.95" prefHeight="195.0" prefWidth="1232.0" style="-fx-background-color: clear; -fx-background-radius: 5px;">
+      <Pane fx:id="chatBoxPane" layoutX="25.0" layoutY="510.0" opacity="0.95" prefHeight="195.0" prefWidth="1232.0" style="-fx-background-color: transparent; -fx-background-radius: 5px;">
          <children>
             <ImageView fx:id="gmSprite" fitHeight="186.0" fitWidth="200.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                <image>
