@@ -22,9 +22,10 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.TaskManager.LargeTask;
 import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
+import nz.ac.auckland.se206.tasks.RiddleTask;
 
 /** Controller class for handling the rock room. */
-public class RockController extends AbstractRoomController {
+public class RockController extends RoomController {
 
   @FXML private Rectangle classicalDoor;
   @FXML private Rectangle raveDoor;
@@ -51,6 +52,9 @@ public class RockController extends AbstractRoomController {
   private String[] noteSequence;
   private int numberOfCorrectGuitarClicks = 0;
 
+  // task index for the rock room task
+  private int taskIndex;
+
   /**
    * Initializes the Rock Room's graphical components and game variables when the room is loaded.
    * This method is called automatically when the FXML file is loaded.
@@ -61,6 +65,7 @@ public class RockController extends AbstractRoomController {
   private void initialize() throws ApiProxyException {
 
     initialiseAllGameStateVariables();
+    taskIndex = gameState.getTaskManager().getTaskIndex(RiddleTask.class);
 
     gameState.getChatManager().generateInitialMessage();
 
@@ -233,7 +238,7 @@ public class RockController extends AbstractRoomController {
   public void playNote(Colour guitarColour) throws URISyntaxException {
     if (gameState.getTaskManager().getCurrentLargeTask() == LargeTask.ROCK) {
 
-      if (GameState.isRiddleObjectFound && !GameState.isNoteSequenceFound) {
+      if (GameState.isRiddleObjectFound && !GameState.isGuitarsPlayed) {
         noteSequence = gameState.getRockBigTaskManager().getNoteSequence();
         orderColourMap = gameState.getRockBigTaskManager().getOrderColourMap();
 
@@ -307,7 +312,7 @@ public class RockController extends AbstractRoomController {
    * @param guitarColour The color of the guitar clicked.
    */
   public void checkGuitarSequence(Colour guitarColour) {
-    if (GameState.isRiddleObjectFound && !GameState.isNoteSequenceFound) {
+    if (GameState.isRiddleObjectFound && !GameState.isGuitarsPlayed) {
       // check if the guitar clicked is the correct one
       if (orderColourMap.get(guitarColour) - 1 == numberOfCorrectGuitarClicks) {
         // if it is, set the note sequence label to the note sequence
@@ -322,8 +327,8 @@ public class RockController extends AbstractRoomController {
       }
 
       if (numberOfCorrectGuitarClicks == 4) {
-        GameState.isNoteSequenceFound = true;
-        gameState.getObjectiveListManager().completeObjective3();
+        GameState.isGuitarsPlayed = true;
+        gameState.getObjectiveListManager().completeObjective(taskIndex);
         System.out.println("Correct sequence played");
       }
     }

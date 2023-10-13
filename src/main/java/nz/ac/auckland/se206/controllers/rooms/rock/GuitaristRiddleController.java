@@ -22,6 +22,7 @@ import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionRequest;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
+import nz.ac.auckland.se206.tasks.RiddleTask;
 
 /** Controller class for handling the bodybuilder event room. */
 public class GuitaristRiddleController {
@@ -34,6 +35,7 @@ public class GuitaristRiddleController {
 
   private GameState gameState;
   private ChatCompletionRequest chatCompletionRequest;
+  private int taskIndex;
 
   /**
    * Initializes the RockController, setting up the game state, timer label, and generating the
@@ -48,6 +50,7 @@ public class GuitaristRiddleController {
     this.gameState = GameState.getInstance();
     gameState.getTimeManager().addToTimers(timerLabel);
     gameState.getHintManager().addHintLabel(hintLabel);
+    taskIndex = gameState.getTaskManager().getTaskIndex(RiddleTask.class);
     generateInitialMessage();
   }
 
@@ -201,10 +204,10 @@ public class GuitaristRiddleController {
                 gameState.getHintManager().useHint();
               }
               if (response.getContent().startsWith("Correct")) {
-                GameState.isRiddleResolved = true;
+                GameState.isRiddleSolved = true;
                 gameState
                     .getObjectiveListManager()
-                    .completeObjective3(); // objective 3 is to talk to guitarist
+                    .completeObjective(taskIndex); // objective 3 is to talk to guitarist
               }
             }
             return null;

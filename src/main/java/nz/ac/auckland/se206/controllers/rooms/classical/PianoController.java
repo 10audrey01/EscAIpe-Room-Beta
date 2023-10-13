@@ -19,6 +19,7 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.TaskManager.LargeTask;
+import nz.ac.auckland.se206.tasks.RiddleTask;
 
 /** Controller class for handling the piano room. */
 public class PianoController {
@@ -75,6 +76,7 @@ public class PianoController {
   // sequence of notes played by user
   private String notesPlayed = "";
 
+  private int taskIndex;
   private GameState gameState;
   private ArrayList<ImageView> notesList;
   private ArrayList<ImageView> notesLetterList;
@@ -91,6 +93,7 @@ public class PianoController {
     // gets the gamestate instance, adding the labels for timers to the gamestate
     gameState = GameState.getInstance();
     gameState.getTimeManager().addToTimers(timerLabel);
+    taskIndex = gameState.getTaskManager().getTaskIndex(RiddleTask.class);
     // initialise the notes and note letters
     notesList =
         new ArrayList<ImageView>(List.of(note1, note2, note3, note4, note5, note6, note7, note8));
@@ -106,11 +109,8 @@ public class PianoController {
                 note7Letter,
                 note8Letter));
 
-    gameState = GameState.getInstance();
-
     if (gameState.getTaskManager().getCurrentLargeTask()
         == LargeTask.ROCK) { // execute if the chosen big task is ROCK
-      notesToPlay = "";
       String[] noteSequence = gameState.getRockBigTaskManager().getNoteSequence();
       StringBuilder notesBuilder = new StringBuilder();
 
@@ -186,7 +186,7 @@ public class PianoController {
    */
   public void loadRockNotes() throws IOException {
     if (gameState.getTaskManager().getCurrentLargeTask() == LargeTask.ROCK) {
-      if (GameState.isNoteSequenceFound) {
+      if (GameState.isGuitarsPlayed) {
         loadNotes();
         for (int i = 0; i < notesLetterList.size(); i++) {
           notesLetterList.get(i).setOpacity(100);
@@ -348,8 +348,8 @@ public class PianoController {
     if (notesPlayed.contains(notesToPlay)) { // user has played the correct sequence
       System.out.println("You Win");
       GameState.isPianoPlayed = true;
-      gameState.getObjectiveListManager().completeObjective3();
-      gameState.getObjectiveListManager().setVisibilityKey(2, true); // key 3 obtained after win
+      gameState.getObjectiveListManager().completeObjective(taskIndex);
+
       Pane current = (Pane) leavePiano.getParent();
       Scene currentScene = current.getScene();
       currentScene.setRoot(SceneManager.getUiRoot(AppUi.CLASSICAL));

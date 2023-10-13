@@ -19,6 +19,7 @@ import nz.ac.auckland.se206.RavePuzzle;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
+import nz.ac.auckland.se206.tasks.SafeTask;
 
 /** Controller class for handling the bodybuilder event room. */
 public class BodybuilderController {
@@ -58,6 +59,7 @@ public class BodybuilderController {
   private RavePuzzle puzzleInstance;
   private String code = "";
   private String solution = "";
+  private int taskIndex;
 
   /**
    * Initializes the SafeController by setting up the gamestate, labels, and other game-related
@@ -72,6 +74,7 @@ public class BodybuilderController {
     this.gameState.getTimeManager().addToTimers(timerLabel);
     this.gameState.getHintManager().addHintLabel(hintLabel);
     this.gameState.setBodybuilderController(this);
+    taskIndex = gameState.getTaskManager().getTaskIndex(SafeTask.class);
     this.speechBox.setText("Hey bro, I need your help... I need to open this safe.");
     //
     resetSafe();
@@ -409,7 +412,7 @@ public class BodybuilderController {
       resultText.setText("CORRECT (" + code + ")");
       resultText.setFill(Color.GREEN);
       GameState.isSafeOpened = true;
-      gameState.getObjectiveListManager().completeObjective2();
+      gameState.getObjectiveListManager().completeObjective(taskIndex);
       btnHint.setVisible(false);
       return;
     }

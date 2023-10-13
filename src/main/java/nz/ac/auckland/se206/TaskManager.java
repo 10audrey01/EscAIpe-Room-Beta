@@ -3,6 +3,12 @@ package nz.ac.auckland.se206;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import nz.ac.auckland.se206.tasks.HarpTask;
+import nz.ac.auckland.se206.tasks.MusicQuizTask;
+import nz.ac.auckland.se206.tasks.RiddleTask;
+import nz.ac.auckland.se206.tasks.SafeTask;
+import nz.ac.auckland.se206.tasks.Task;
+import nz.ac.auckland.se206.tasks.TrumpetTask;
 
 /**
  * The TaskManager class is responsible for managing tasks in a game application. It handles both
@@ -11,15 +17,8 @@ import java.util.List;
  * and completed through this class.
  */
 public class TaskManager {
-  /** Enum to represent individual tasks in the game. */
-  public enum Task {
-    FINDOBJECT,
-    SAFECODE,
-    PLAYPIANO,
-    SELECTGUITAR,
-    MUSICQUIZ,
-    PLAYHARP
-  }
+  /** ArrayList to store tasks in the game. */
+  public ArrayList<Task> taskList;
 
   /** Enum to represent larger tasks in the game. */
   public enum LargeTask {
@@ -28,8 +27,6 @@ public class TaskManager {
     CLASSICAL
   }
 
-  private ArrayList<Task> tasks; // List to store individual tasks
-  private ArrayList<Task> completedTasks; // List to store completed individual tasks
   private LargeTask largeTask; // The current large task
 
   /**
@@ -37,7 +34,7 @@ public class TaskManager {
    * them in a randomized order.
    */
   public TaskManager() {
-    this.tasks = new ArrayList<Task>();
+    this.taskList = new ArrayList<Task>();
     generateTasks(); // Initialize tasks when creating a TaskManager instance
   }
 
@@ -52,35 +49,49 @@ public class TaskManager {
 
   /** Generates a randomized list of individual tasks and sets the current large task. */
   public void generateTasks() {
-    List<Task> availableTasks = new ArrayList<Task>(List.of(Task.values()));
+    ArrayList<Task> availableTasks =
+        new ArrayList<Task>(
+            List.of(new MusicQuizTask(), new HarpTask(), new TrumpetTask(), new SafeTask()));
     Collections.shuffle(availableTasks); // Shuffle the available tasks to randomize them
-
-    for (int i = 0; i < availableTasks.size(); i++) {
-      Task selectedTask = availableTasks.get(i);
-      tasks.add(selectedTask); // Add selected tasks to the list
-      System.out.println(selectedTask); // Print the selected task (for debugging)
-    }
+    taskList = availableTasks;
 
     this.largeTask = LargeTask.ROCK; // Set the initial large task
+    // change a random task in the tasklist to be the large task (RiddleTask)
+    int randomTaskIndex = (int) (Math.random() * taskList.size());
+    taskList.set(randomTaskIndex, new RiddleTask());
   }
 
   /**
-   * Adds an individual task to the list of tasks.
+   * Updates task at specific index.
    *
-   * @param thisTask The individual task to add.
+   * @param taskIndex The index of the task to update.
+   * @param task The task to update to.
    */
-  public void addTask(Task thisTask) {
-    this.tasks.add(thisTask); // Add an individual task to the list
+  public void updateTask(int taskIndex, Task task) {
+    this.taskList.set(taskIndex, task);
   }
 
   /**
-   * Marks an individual task as completed by removing it from the list of tasks and adding it to
-   * the list of completed tasks.
+   * Gets the task at specific index.
    *
-   * @param thisTask The individual task to mark as completed.
+   * @param taskIndex The index of the task to get.
    */
-  public void completeTask(Task thisTask) {
-    this.tasks.remove(thisTask); // Remove a completed individual task from the list
-    this.completedTasks.add(thisTask); // Add the completed task to the completed tasks list
+  public Task getTask(int taskIndex) {
+    return this.taskList.get(taskIndex);
+  }
+
+  /**
+   * Get index of a specific task.
+   *
+   * @param task The task to get the index of.
+   */
+  public int getTaskIndex(Class<? extends Task> task) {
+    // check what the task is and return its index in taskList
+    for (int i = 0; i < this.taskList.size(); i++) {
+      if (this.taskList.get(i).getClass() == task) {
+        return i;
+      }
+    }
+    return -1;
   }
 }

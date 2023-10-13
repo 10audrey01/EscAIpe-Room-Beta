@@ -18,6 +18,7 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.tasks.TrumpetTask;
 
 /** Controller class for handling the trumpet room. */
 public class TrumpetController {
@@ -47,6 +48,7 @@ public class TrumpetController {
   private Integer noteToPlay;
   private int currentNoteIndex;
   private MediaPlayer trumpetNotePlayer;
+  private int taskIndex;
 
   private GameState gameState;
 
@@ -61,6 +63,7 @@ public class TrumpetController {
     // set gamestate and add timer for the controller
     gameState = GameState.getInstance();
     gameState.getTimeManager().addToTimers(timerLabel);
+    taskIndex = gameState.getTaskManager().getTaskIndex(TrumpetTask.class);
     // set initial fields
     isButton1Down = false;
     isButton2Down = false;
@@ -415,12 +418,13 @@ public class TrumpetController {
     // increment the note index
     currentNoteIndex++;
     if (currentNoteIndex <= 4) {
-      // if the sequence isn't finished, set the next note to play
+      // if the sequence isn't completed, set the next note to play
       noteToPlay = noteSequence.get(currentNoteIndex);
     } else {
-      // otherwise the sequence is completed, so finish the task
+      // otherwise the sequence is completed and complete the task
       System.out.println("Trumpet completed");
       GameState.isTrumpetPlayed = true;
+      gameState.getObjectiveListManager().completeObjective(taskIndex);
       hideAllSymbols();
     }
 
@@ -444,10 +448,8 @@ public class TrumpetController {
       // update the respective views of the beams based on the current indices
       if (currentNoteIndex > i) {
         beamNotes.get(i).setOpacity(1);
-        System.out.println("Show");
       } else {
         beamNotes.get(i).setOpacity(0);
-        System.out.println("Hide");
       }
     }
   }
