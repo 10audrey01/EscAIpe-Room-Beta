@@ -24,6 +24,7 @@ import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 import nz.ac.auckland.se206.tasks.HarpTask;
 import nz.ac.auckland.se206.tasks.RiddleTask;
+import nz.ac.auckland.se206.tasks.SafeTask;
 import nz.ac.auckland.se206.tasks.Task;
 
 /** Controller class for handling the rock room. */
@@ -84,6 +85,7 @@ public class RockController extends RoomController {
     // create and set circles for the harp event
     circles = new ArrayList<Circle>(List.of(circle1, circle2));
     setCircles();
+    setRockNote();
   }
 
   /**
@@ -333,6 +335,22 @@ public class RockController extends RoomController {
         gameState.getObjectiveListManager().completeObjective(taskIndex);
         System.out.println("Correct sequence played");
       }
+    }
+  }
+
+  public void setRockNote() {
+    // check if the safe task is chosen
+    boolean safeTaskChosen = false;
+    // note only appears if the safe task is chosen
+    for (int i = 0; i < gameState.getTaskManager().taskList.size(); i++) {
+      Task task = gameState.getTaskManager().taskList.get(i);
+      if (task instanceof SafeTask) {
+        safeTaskChosen = true;
+      }
+    }
+    if (safeTaskChosen) {
+      rockNotePane.setVisible(true);
+      rockNotePane.setDisable(false);
     }
   }
 

@@ -18,6 +18,8 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.rooms.classical.PianoController;
 import nz.ac.auckland.se206.tasks.HarpTask;
+import nz.ac.auckland.se206.tasks.SafeTask;
+import nz.ac.auckland.se206.tasks.Task;
 import nz.ac.auckland.se206.tasks.TrumpetTask;
 
 /** Controller class for handling the classical room. */
@@ -69,6 +71,8 @@ public class ClassicalController extends RoomController {
     isTambourineBroken = false;
     isDraggable = false;
     tambourineLimit = 100;
+
+    setRockNote();
   }
 
   /** Makes the cello bow and tambourine panes draggable and starts the cello play timer. */
@@ -237,6 +241,22 @@ public class ClassicalController extends RoomController {
       isTambourineBroken = true;
     }
     numOfTambourinePresses++;
+  }
+
+  public void setRockNote() {
+    // check if the safe task is chosen
+    boolean safeTaskChosen = false;
+    // note only appears if the safe task is chosen
+    for (int i = 0; i < gameState.getTaskManager().taskList.size(); i++) {
+      Task task = gameState.getTaskManager().taskList.get(i);
+      if (task instanceof SafeTask) {
+        safeTaskChosen = true;
+      }
+    }
+    if (safeTaskChosen) {
+      classicalNotePane.setVisible(true);
+      classicalNotePane.setDisable(false);
+    }
   }
 
   /**
