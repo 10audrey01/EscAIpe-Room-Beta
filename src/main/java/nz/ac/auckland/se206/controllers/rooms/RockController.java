@@ -338,6 +338,7 @@ public class RockController extends RoomController {
     }
   }
 
+  /** Sets the appearance of notes for safe task in the rock room. */
   public void setRockNote() {
     // check if the safe task is chosen
     boolean safeTaskChosen = false;

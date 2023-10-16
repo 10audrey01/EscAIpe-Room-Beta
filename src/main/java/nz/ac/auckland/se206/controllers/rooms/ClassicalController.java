@@ -72,7 +72,7 @@ public class ClassicalController extends RoomController {
     isDraggable = false;
     tambourineLimit = 100;
 
-    setRockNote();
+    setClassicalNote();
   }
 
   /** Makes the cello bow and tambourine panes draggable and starts the cello play timer. */
@@ -243,7 +243,8 @@ public class ClassicalController extends RoomController {
     numOfTambourinePresses++;
   }
 
-  public void setRockNote() {
+  /** Sets the appearance of notes for safe task in the classical room. */
+  public void setClassicalNote() {
     // check if the safe task is chosen
     boolean safeTaskChosen = false;
     // note only appears if the safe task is chosen
