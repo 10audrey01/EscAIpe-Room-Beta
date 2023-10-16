@@ -52,8 +52,10 @@ public class App extends Application {
 
     String appCss = App.class.getResource("/css/app.css").toExternalForm();
     String fontCss = App.class.getResource("/css/fontstyle.css").toExternalForm();
+    String buttonCss = App.class.getResource("/css/button+labelstyle.css").toExternalForm();
     scene.getStylesheets().add(appCss);
     scene.getStylesheets().add(fontCss);
+    scene.getStylesheets().add(buttonCss);
     stage.setScene(scene);
     stage.show();
   }

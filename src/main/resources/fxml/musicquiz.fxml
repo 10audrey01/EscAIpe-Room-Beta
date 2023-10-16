@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.rave.MusicQuizController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.rave.MusicQuizController">
    <children>
       <ImageView fitHeight="740.0" fitWidth="1293.0" layoutY="-20.0" pickOnBounds="true">
          <image>
@@ -22,8 +22,8 @@
             <Image url="@../images/raveRoom/dj.png" />
          </image>
       </ImageView>
-      <Button layoutX="213.0" layoutY="170.0" mnemonicParsing="false" prefHeight="149.0" prefWidth="336.0" style="-fx-background-color: FFF5D8;" styleClass="chatShape" stylesheets="@../css/app.css" />
-      <TextArea fx:id="speechBox" editable="false" layoutX="251.0" layoutY="170.0" prefHeight="150.0" prefWidth="326.0" style="-fx-background-color: FFF5D8;" styleClass="text-area-dj" wrapText="true">
+      <Button layoutX="213.0" layoutY="170.0" mnemonicParsing="false" prefHeight="149.0" prefWidth="336.0" style="-fx-background-color: ffff;" styleClass="chatShape" stylesheets="@../css/app.css" />
+      <TextArea fx:id="speechBox" editable="false" layoutX="251.0" layoutY="170.0" prefHeight="150.0" prefWidth="326.0" style="-fx-background-color: ffff;" styleClass="text-area-dj" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
@@ -34,43 +34,59 @@
             <URL value="@../css/app.css" />
             <URL value="@../css/fontstyle.css" />
          </stylesheets></TextArea>
-      <Button fx:id="btnReturn" layoutX="1060.0" layoutY="30.0" mnemonicParsing="false" onAction="#onClickReturn" stylesheets="@../css/fontstyle.css" text="Return">
+      <Button fx:id="btnReturn" layoutX="1060.0" layoutY="30.0" mnemonicParsing="false" onAction="#onClickReturn" text="Return">
          <font>
             <Font size="18.0" />
-         </font></Button>
-      <Button fx:id="songBtn" layoutX="656.0" layoutY="73.0" mnemonicParsing="false" onAction="#onClickSongBtn" prefHeight="116.0" prefWidth="295.0" styleClass="playSongBtn" stylesheets="@../css/fontstyle.css" text="PLAY SONG">
+         </font>
+         <stylesheets>
+            <URL value="@../css/fontstyle.css" />
+            <URL value="@../css/button+labelstyle.css" />
+         </stylesheets></Button>
+      <Button fx:id="songBtn" layoutX="656.0" layoutY="73.0" mnemonicParsing="false" onAction="#onClickSongBtn" prefHeight="116.0" prefWidth="295.0" styleClass="playSongBtn" text="PLAY SONG">
          <font>
             <Font size="1.0" />
          </font>
+         <stylesheets>
+            <URL value="@../css/fontstyle.css" />
+            <URL value="@../css/button+labelstyle.css" />
+         </stylesheets>
       </Button>
-      <Button fx:id="hintBtn" layoutX="478.0" layoutY="87.0" mnemonicParsing="false" onAction="#onClickHint" prefHeight="44.0" prefWidth="99.0" stylesheets="@../css/fontstyle.css" text="Use hint">
+      <Button fx:id="hintBtn" layoutX="451.0" layoutY="87.0" mnemonicParsing="false" onAction="#onClickHint" prefHeight="44.0" prefWidth="126.0" text="Use hint">
          <font>
             <Font size="18.0" />
          </font>
+         <stylesheets>
+            <URL value="@../css/fontstyle.css" />
+            <URL value="@../css/button+labelstyle.css" />
+         </stylesheets>
       </Button>
-      <Pane layoutX="577.0" layoutY="350.0" prefHeight="131.0" prefWidth="491.0" stylesheets="@../css/fontstyle.css">
+      <Pane layoutX="577.0" layoutY="350.0" prefHeight="131.0" prefWidth="491.0">
          <children>
-            <Button fx:id="optionOneBtn" layoutX="33.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickOne" stylesheets="@../css/fontstyle.css" text="Option 1">
+            <Button fx:id="optionOneBtn" layoutY="-1.0" mnemonicParsing="false" onAction="#onClickOne" text="Option 1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <stylesheets>
+                  <URL value="@../css/fontstyle.css" />
+                  <URL value="@../css/button+labelstyle.css" />
+               </stylesheets></Button>
+            <Button fx:id="optionTwoBtn" layoutX="198.0" mnemonicParsing="false" onAction="#onClickTwo" text="Option 2">
                <font>
                   <Font size="16.0" />
                </font></Button>
-            <Button fx:id="optionTwoBtn" layoutX="185.0" layoutY="16.0" mnemonicParsing="false" onAction="#onClickTwo" text="Option 2">
+            <Button fx:id="optionThreeBtn" layoutX="396.0" mnemonicParsing="false" onAction="#onClickThree" text="Option 3">
                <font>
                   <Font size="16.0" />
                </font></Button>
-            <Button fx:id="optionThreeBtn" layoutX="347.0" layoutY="16.0" mnemonicParsing="false" onAction="#onClickThree" text="Option 3">
+            <Button fx:id="optionFourBtn" layoutX="-1.0" layoutY="76.0" mnemonicParsing="false" onAction="#onClickFour" text="Option 4">
                <font>
                   <Font size="16.0" />
                </font></Button>
-            <Button fx:id="optionFourBtn" layoutX="33.0" layoutY="55.0" mnemonicParsing="false" onAction="#onClickFour" text="Option 4">
+            <Button fx:id="optionFiveBtn" layoutX="199.0" layoutY="75.0" mnemonicParsing="false" onAction="#onClickFive" text="Option 5">
                <font>
                   <Font size="16.0" />
                </font></Button>
-            <Button fx:id="optionFiveBtn" layoutX="185.0" layoutY="55.0" mnemonicParsing="false" onAction="#onClickFive" text="Option 5">
-               <font>
-                  <Font size="16.0" />
-               </font></Button>
-            <Button fx:id="optionSixBtn" layoutX="347.0" layoutY="55.0" mnemonicParsing="false" onAction="#onClickSix" text="Option 6">
+            <Button fx:id="optionSixBtn" layoutX="397.0" layoutY="75.0" mnemonicParsing="false" onAction="#onClickSix" text="Option 6">
                <font>
                   <Font size="16.0" />
                </font></Button>
@@ -80,21 +96,37 @@
                </font>
             </Label>
          </children>
+         <stylesheets>
+            <URL value="@../css/fontstyle.css" />
+            <URL value="@../css/button+labelstyle.css" />
+         </stylesheets>
       </Pane>
-            <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="251.0" layoutY="86.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: FFF5D8;" stylesheets="@../css/fontstyle.css" text="HINTS LEFT:">
+            <Label fx:id="hintLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="251.0" layoutY="86.0" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: ffff;" styleClass="borderLabel" text="HINTS LEFT: ">
          <font>
             <Font size="17.0" />
          </font>
+         <stylesheets>
+            <URL value="@../css/fontstyle.css" />
+            <URL value="@../css/button+labelstyle.css" />
+         </stylesheets>
       </Label>
-      <Label fx:id="cooldownLabel" alignment="CENTER" layoutX="656.0" layoutY="209.0" prefHeight="73.0" prefWidth="295.0" style="-fx-background-color: FFF5D8;" stylesheets="@../css/fontstyle.css" text="You can choose an answer!" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="cooldownLabel" alignment="CENTER" layoutX="656.0" layoutY="209.0" prefHeight="73.0" prefWidth="295.0" style="-fx-background-color: ffff;" styleClass="borderLabel" text="You can choose an answer!" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="21.0" />
          </font>
+         <stylesheets>
+            <URL value="@../css/fontstyle.css" />
+            <URL value="@../css/button+labelstyle.css" />
+         </stylesheets>
       </Label>
-      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1158.0" layoutY="27.0" prefHeight="45.0" prefWidth="107.0" style="-fx-background-color: FFF5D8;" styleClass="timerLabel" stylesheets="@../css/fontstyle.css">
+      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1158.0" layoutY="27.0" prefHeight="45.0" prefWidth="107.0" style="-fx-background-color: ffff;" styleClass="timerLabel">
          <font>
             <Font size="30.0" />
          </font>
+         <stylesheets>
+            <URL value="@../css/fontstyle.css" />
+            <URL value="@../css/button+labelstyle.css" />
+         </stylesheets>
       </Label>
    </children>
 </Pane>

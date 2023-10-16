@@ -16,9 +16,11 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
+import nz.ac.auckland.se206.tasks.HarpTask;
 import nz.ac.auckland.se206.tasks.MusicQuizTask;
 import nz.ac.auckland.se206.tasks.RiddleTask;
 import nz.ac.auckland.se206.tasks.SafeTask;
+import nz.ac.auckland.se206.tasks.Task;
 
 /** Controller class for handling the rave room. */
 public class RaveController extends RoomController {
@@ -332,11 +334,22 @@ public class RaveController extends RoomController {
    * them.
    */
   public void setCircles() {
+    // check if harp task is selected
+    boolean harpTaskChosen = false;
+    // circles only appear if harp task is selected
+    for (int i = 0; i < gameState.getTaskManager().taskList.size(); i++) {
+      Task task = gameState.getTaskManager().taskList.get(i);
+      if (task instanceof HarpTask) {
+        harpTaskChosen = true;
+      }
+    }
     // select random colours for each circle and fills them
-    HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
-    for (int i = 0; i < circles.size(); i++) {
-      circles.get(i).setFill(harpController.getColourIndex(i + 2));
-      circles.get(i).setOpacity(100);
+    if (harpTaskChosen) {
+      HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
+      for (int i = 0; i < circles.size(); i++) {
+        circles.get(i).setFill(harpController.getColourIndex(i + 2));
+        circles.get(i).setOpacity(100);
+      }
     }
   }
 

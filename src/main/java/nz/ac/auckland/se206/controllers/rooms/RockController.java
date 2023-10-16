@@ -22,7 +22,10 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.TaskManager.LargeTask;
 import nz.ac.auckland.se206.controllers.rooms.classical.HarpController;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
+import nz.ac.auckland.se206.tasks.HarpTask;
 import nz.ac.auckland.se206.tasks.RiddleTask;
+import nz.ac.auckland.se206.tasks.SafeTask;
+import nz.ac.auckland.se206.tasks.Task;
 
 /** Controller class for handling the rock room. */
 public class RockController extends RoomController {
@@ -82,6 +85,7 @@ public class RockController extends RoomController {
     // create and set circles for the harp event
     circles = new ArrayList<Circle>(List.of(circle1, circle2));
     setCircles();
+    setRockNote();
   }
 
   /**
@@ -334,6 +338,23 @@ public class RockController extends RoomController {
     }
   }
 
+  /** Sets the appearance of notes for safe task in the rock room. */
+  public void setRockNote() {
+    // check if the safe task is chosen
+    boolean safeTaskChosen = false;
+    // note only appears if the safe task is chosen
+    for (int i = 0; i < gameState.getTaskManager().taskList.size(); i++) {
+      Task task = gameState.getTaskManager().taskList.get(i);
+      if (task instanceof SafeTask) {
+        safeTaskChosen = true;
+      }
+    }
+    if (safeTaskChosen) {
+      rockNotePane.setVisible(true);
+      rockNotePane.setDisable(false);
+    }
+  }
+
   /**
    * Handles clicking on the note in the rock room.
    *
@@ -352,10 +373,22 @@ public class RockController extends RoomController {
    * retrieve colors and opacity settings.
    */
   public void setCircles() {
-    HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
-    for (int i = 0; i < circles.size(); i++) {
-      circles.get(i).setFill(harpController.getColourIndex(i));
-      circles.get(i).setOpacity(100);
+    // check if the harp task is chosen
+    boolean harpTaskChosen = false;
+    // circles only appear if the harp task is chosen
+    for (int i = 0; i < gameState.getTaskManager().taskList.size(); i++) {
+      Task task = gameState.getTaskManager().taskList.get(i);
+      if (task instanceof HarpTask) {
+        harpTaskChosen = true;
+      }
+    }
+    // select random colours for each circle and fills them
+    if (harpTaskChosen) {
+      HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
+      for (int i = 0; i < circles.size(); i++) {
+        circles.get(i).setFill(harpController.getColourIndex(i));
+        circles.get(i).setOpacity(100);
+      }
     }
   }
 
