@@ -204,26 +204,49 @@
 
 #objectiveList {
   -fx-border-color: #000;
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+
+  -fx-border-radius: 50px 5px 60px 5px/5px 60px 5px 50px;
+  -fx-background-radius: 50px 5px 60px 5px/5px 60px 5px 50px;
+}
+
+#ttsCheckBox {
+  -fx-border-color: #000;
+  -fx-border-width: 1.5px;
+  -fx-border-style: solid;
+
+  -fx-border-radius: 40px 3px 40px 3px/3px 40px 3px 40px;
+  -fx-background-radius: 40px 3px 40px 3px/3px 40px 3px 40px;
+}
+
+#ttsCheckBox .box {
+  -fx-background-color: #fff;
+  -fx-border-color: #000;
   -fx-border-width: 1px;
   -fx-border-style: solid;
+
+  -fx-border-radius: 40px 3px 40px 3px/3px 40px 3px 40px;
+  -fx-background-radius: 40px 3px 40px 3px/3px 40px 3px 40px;
 }
 
 .chatShape {
   -fx-shape: "M 100 200 C 150 150 100 50 200 50 L 700 50 L 700 350 L 200 350 C 100 350 150 250 100 200 ";
+  -fx-border-color: transparent;
 }
 
 .text-area-game-master {
-  -fx-background-color: FFF5D8;
+  -fx-background-color: ffffff;
 }
 
 .text-area-game-master .content {
-  -fx-background-color: FFF5D8;
+  -fx-background-color: ffffff;
   -fx-background-insets: 0;
   -fx-background-radius: 0;
 }
 
 .text-area-game-master:focused .content {
-  -fx-background-color: FFF5D8;
+  -fx-background-color: ffffff;
   -fx-background-insets: 0;
   -fx-background-radius: 0;
 }
@@ -239,19 +262,19 @@
 }
 
 .text-area-guitarist {
-  -fx-background-color: FFF5D8;
+  -fx-background-color: ffffff;
   -fx-background-radius: 50;
   -fx-border-radius: 50;
 }
 
 .text-area-guitarist .content {
-  -fx-background-color: FFF5D8;
+  -fx-background-color: ffffff;
   -fx-background-insets: 0;
   -fx-background-radius: 5;
 }
 
 .text-area-guitarist:focused .content {
-  -fx-background-color: FFF5D8;
+  -fx-background-color: ffffff;
   -fx-background-insets: 0;
   -fx-background-radius: 5;
 }
@@ -272,19 +295,19 @@
 }
 
 .text-area-bodybuilder {
-  -fx-background-color: FFF5D8;
+  -fx-background-color: ffffff;
   -fx-background-radius: 30;
   -fx-border-radius: 30;
 }
 
 .text-area-bodybuilder .content {
-  -fx-background-color: FFF5D8;
+  -fx-background-color: ffffff;
   -fx-background-insets: 0;
   -fx-background-radius: 5;
 }
 
 .text-area-bodybuilder:focused .content {
-  -fx-background-color: FFF5D8;
+  -fx-background-color: ffffff;
   -fx-background-insets: 0;
   -fx-background-radius: 5;
 }
@@ -305,19 +328,19 @@
 }
 
 .text-area-dj {
-  -fx-background-color: FFF5D8;
+  -fx-background-color: ffffff;
   -fx-background-radius: 30;
   -fx-border-radius: 30;
 }
 
 .text-area-dj .content {
-  -fx-background-color: FFF5D8;
+  -fx-background-color: ffffff;
   -fx-background-insets: 0;
   -fx-background-radius: 5;
 }
 
 .text-area-dj:focused .content {
-  -fx-background-color: FFF5D8;
+  -fx-background-color: ffffff;
   -fx-background-insets: 0;
   -fx-background-radius: 5;
 }
