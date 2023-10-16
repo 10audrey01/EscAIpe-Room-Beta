@@ -103,7 +103,7 @@ public class ObjectiveListManager {
     changeObjectiveLabelText(3, gameState.getTaskManager().getTask(3).getTaskDescription());
   }
 
-  /** Marks an objective completed if corresponding task is completed */
+  /** Marks an objective completed if corresponding task is completed. */
   public void completeObjective(int taskIndex) {
     // check if task has next task
     if (gameState.getTaskManager().getTask(taskIndex).hasMoreTasks()) {

@@ -15,6 +15,8 @@ import javafx.scene.layout.Pane;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 import nz.ac.auckland.se206.speech.TextToSpeech;
+import nz.ac.auckland.se206.tasks.HarpTask;
+import nz.ac.auckland.se206.tasks.Task;
 
 /** Abstract class for the room controllers. */
 public abstract class RoomController {
@@ -112,6 +114,24 @@ public abstract class RoomController {
     gameState
         .getChatManager()
         .setCheckboxSelected(TextToSpeech.isTtsEnabled.get()); // Update checkbox
+  }
+
+  /**
+   * Checks if the harp task is selected.
+   *
+   * @return True if the harp task is selected, false otherwise.
+   */
+  public boolean isHarpTaskChosen() {
+    // check if harp task is selected
+    boolean harpTaskChosen = false;
+    // circles only appear if harp task is selected
+    for (int i = 0; i < gameState.getTaskManager().getTaskList().size(); i++) {
+      Task task = gameState.getTaskManager().getTaskList().get(i);
+      if (task instanceof HarpTask) {
+        harpTaskChosen = true;
+      }
+    }
+    return harpTaskChosen;
   }
 
   /**

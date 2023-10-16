@@ -25,6 +25,9 @@ public class TaskManager {
     CLASSICAL
   }
 
+  /** ArrayList to store tasks in the game. */
+  private ArrayList<Task> taskList;
+
   private LargeTask largeTask; // The current large task
 
   /** ArrayList to store tasks in the game. */
@@ -99,5 +102,14 @@ public class TaskManager {
       }
     }
     return -1;
+  }
+
+  /**
+   * Gets the task list.
+   *
+   * @return The task list.
+   */
+  public ArrayList<Task> getTaskList() {
+    return this.taskList;
   }
 }
