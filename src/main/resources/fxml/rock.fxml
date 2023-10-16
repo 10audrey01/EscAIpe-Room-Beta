@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/app.css" xmlns="http://javafx.com/javafx/18.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.RockController">
+<Pane onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/app.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.rooms.RockController">
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0">
          <image>
@@ -140,11 +140,11 @@
                </image></ImageView>
          </children>
       </Pane>
-      <Circle fx:id="circle1" fill="WHITE" layoutX="840.0" layoutY="496.0" onMouseClicked="#onClickedCircle1" radius="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+      <Circle fx:id="circle1" fill="WHITE" layoutX="840.0" layoutY="496.0" onMouseClicked="#onClickedCircle1" opacity="0.0" radius="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Circle>
-      <Circle fx:id="circle2" fill="WHITE" layoutX="1190.0" layoutY="222.0" onMouseClicked="#onClickedCircle2" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+      <Circle fx:id="circle2" fill="WHITE" layoutX="1190.0" layoutY="222.0" onMouseClicked="#onClickedCircle2" opacity="0.0" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Circle>

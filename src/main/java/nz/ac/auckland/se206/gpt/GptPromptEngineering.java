@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.gpt;
 
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.TaskManager;
 
 /** Utility class for generating GPT prompt engineering strings. */
 public class GptPromptEngineering {
@@ -63,27 +64,45 @@ public class GptPromptEngineering {
    * @return A hint provided by the game master, tailored to the player's progress.
    */
   public static String getGmHint() {
-    if (!GameState.isRiddleSolved) {
-      return "Tell the player that maybe the guitarist can help them. Your response should be at"
-          + " most 2 lines. Start your answer with 'Here's a hint: '";
-    } else if (!GameState.isRiddleObjectFound) {
-      return "Tell the player that they should find the riddle object. Your response should be at"
-          + " most 2 lines. Start your answer with 'Here's a hint: '";
-    } else if (!GameState.isGuitarsPlayed) {
-      return "Tell the player that the colours on the note might relate to some objects in a room."
-          + " Your response should be at most 2 lines. Start your answer with 'Here's a"
-          + " hint: '";
-    } else if (!GameState.isPianoPlayed) {
-      return "Tell the player that the note sequence they found could be played on an instrument."
-          + " Your response should be at most 2 lines. Start your answer with 'Here's a"
-          + " hint: '";
-    } else if (!GameState.isHarpPlayed) {
-      return "Tell the player that they should look for hidden circles in each room. Your response"
-          + " should be at most 2 lines. Start your answer with 'Here's a hint: '";
-    } else { // if all the objectives are completed
-      return "Tell the player that they should unlock the door and escape. Your response should be"
-          + " at most 2 lines. Start your answer with 'Here's a hint: '";
+    TaskManager taskManager = GameState.getInstance().getTaskManager();
+
+    for (int i = 0; i < taskManager.taskList.size(); i++) {
+      String task = taskManager.taskList.get(i).getTaskDescription();
+      if (!taskManager.taskList.get(i).isCompleted()) {
+        switch (task) {
+          case "- Talk to the guitarist":
+            return "Tell the player that maybe the guitarist can help them. Your response should be"
+                + " at most 2 lines. Start your answer with 'Here's a hint: '";
+          case "- Find the object":
+            return "Tell the player that they should find the riddle object. Your response should"
+                + " be at most 2 lines. Start your answer with 'Here's a hint: '";
+          case "- Play the guitars":
+            return "Tell the player that the colours on the note might relate to some objects in a"
+                + " room. Your response should be at most 2 lines. Start your answer with"
+                + " 'Here's a hint: '";
+          case "- Play the piano":
+            return "Tell the player that the note sequence they found could be played on an"
+                + " instrument. Your response should be at most 2 lines. Start your answer"
+                + " with 'Here's a hint: '";
+          case "- Play the harp":
+            return "Tell the player that they should look for hidden circles in each room. Your"
+                + " response should be at most 2 lines. Start your answer with 'Here's a hint:"
+                + " '";
+          case "- Play the trumpet":
+            return "Tell the player to think about how a trumpet is played. Your response should be"
+                + " at most 2 lines. Start your answer with 'Here's a hint: '";
+          case "- Help the DJ":
+            return "Tell the player that they should find the DJ. Your response should be at most 2"
+                + " lines. Start your answer with 'Here's a hint: '";
+          case "- Help the bodybuilder":
+            return "Tell the player that they should find the bodybuilder. Your response should be"
+                + " at most 2 lines. Start your answer with 'Here's a hint: '";
+        }
+      }
     }
+    // if all tasks are completed
+    return "Tell the player that they should unlock the door and escape. Your response should"
+        + " be at most 2 lines. Start your answer with 'Here's a hint: '";
   }
 
   /**
