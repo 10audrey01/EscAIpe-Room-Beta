@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -90,10 +91,14 @@
             </HBox>
          </children>
       </Pane>
-      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1148.0" layoutY="27.0" prefHeight="45.0" prefWidth="102.0" style="-fx-background-color: FFF5D8;" styleClass="timerLabel" stylesheets="@../css/fontstyle.css">
+      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1148.0" layoutY="27.0" prefHeight="45.0" prefWidth="102.0" style="-fx-background-color: ffff;" styleClass="timerLabel">
          <font>
             <Font size="30.0" />
          </font>
+         <stylesheets>
+            <URL value="@../css/fontstyle.css" />
+            <URL value="@../css/button+labelstyle.css" />
+         </stylesheets>
       </Label>
       <ImageView fx:id="beamNote1" fitHeight="82.0" fitWidth="84.0" layoutX="347.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
          <image>
