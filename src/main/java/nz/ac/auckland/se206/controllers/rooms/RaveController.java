@@ -334,14 +334,16 @@ public class RaveController extends RoomController {
    * them.
    */
   public void setCircles() {
-    // select random colours for each circle and fills them
+    // check if harp task is selected
     boolean harpTaskChosen = false;
+    // circles only appear if harp task is selected
     for (int i = 0; i < gameState.getTaskManager().taskList.size(); i++) {
       Task task = gameState.getTaskManager().taskList.get(i);
       if (task instanceof HarpTask) {
         harpTaskChosen = true;
       }
     }
+    // select random colours for each circle and fills them
     if (harpTaskChosen) {
       HarpController harpController = (HarpController) SceneManager.getController(AppUi.HARP);
       for (int i = 0; i < circles.size(); i++) {

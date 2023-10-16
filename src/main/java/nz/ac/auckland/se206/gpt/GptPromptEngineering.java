@@ -68,8 +68,8 @@ public class GptPromptEngineering {
 
     for (int i = 0; i < taskManager.taskList.size(); i++) {
       String task = taskManager.taskList.get(i).getTaskDescription();
-      if (!taskManager.taskList.get(i).isCompleted()) {
-        switch (task) {
+      if (!taskManager.taskList.get(i).isCompleted()) { // if task is not completed
+        switch (task) { // generate hint based on task, using switch statement
           case "- Talk to the guitarist":
             return "Tell the player that maybe the guitarist can help them. Your response should be"
                 + " at most 2 lines. Start your answer with 'Here's a hint: '";
