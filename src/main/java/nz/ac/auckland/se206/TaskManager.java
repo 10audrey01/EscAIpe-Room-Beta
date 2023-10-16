@@ -17,8 +17,6 @@ import nz.ac.auckland.se206.tasks.TrumpetTask;
  * and completed through this class.
  */
 public class TaskManager {
-  /** ArrayList to store tasks in the game. */
-  public ArrayList<Task> taskList;
 
   /** Enum to represent larger tasks in the game. */
   public enum LargeTask {
@@ -28,6 +26,9 @@ public class TaskManager {
   }
 
   private LargeTask largeTask; // The current large task
+
+  /** ArrayList to store tasks in the game. */
+  private ArrayList<Task> taskList;
 
   /**
    * Constructs a TaskManager instance and initializes the list of individual tasks by generating
@@ -78,6 +79,11 @@ public class TaskManager {
    */
   public Task getTask(int taskIndex) {
     return this.taskList.get(taskIndex);
+  }
+
+  /** Gets the current task list instance. */
+  public ArrayList<Task> getTaskList() {
+    return this.taskList;
   }
 
   /**

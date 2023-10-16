@@ -248,8 +248,8 @@ public class ClassicalController extends RoomController {
     // check if the safe task is chosen
     boolean safeTaskChosen = false;
     // note only appears if the safe task is chosen
-    for (int i = 0; i < gameState.getTaskManager().taskList.size(); i++) {
-      Task task = gameState.getTaskManager().taskList.get(i);
+    for (int i = 0; i < gameState.getTaskManager().getTaskList().size(); i++) {
+      Task task = gameState.getTaskManager().getTaskList().get(i);
       if (task instanceof SafeTask) {
         safeTaskChosen = true;
       }
