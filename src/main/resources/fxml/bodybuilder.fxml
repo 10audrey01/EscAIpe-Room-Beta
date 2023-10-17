@@ -53,51 +53,51 @@
          <children>
             <Button fx:id="btnOne" layoutX="17.0" layoutY="156.0" mnemonicParsing="false" onAction="#onClickOne" text="1">
                <font>
-                  <Font size="30.0" />
+                  <Font size="12.0" />
                </font></Button>
             <Button fx:id="btnTwo" layoutX="92.0" layoutY="156.0" mnemonicParsing="false" onAction="#onClickTwo" text="2">
                <font>
-                  <Font size="30.0" />
+                  <Font size="12.0" />
                </font></Button>
             <Button fx:id="btnThree" layoutX="167.0" layoutY="156.0" mnemonicParsing="false" onAction="#onClickThree" text="3">
                <font>
-                  <Font size="30.0" />
+                  <Font size="12.0" />
                </font></Button>
             <Button fx:id="btnFour" layoutX="17.0" layoutY="221.0" mnemonicParsing="false" onAction="#onClickFour" text="4">
                <font>
-                  <Font size="30.0" />
+                  <Font size="12.0" />
                </font></Button>
             <Button fx:id="btnFive" layoutX="91.0" layoutY="221.0" mnemonicParsing="false" onAction="#onClickFive" text="5">
                <font>
-                  <Font size="30.0" />
+                  <Font size="12.0" />
                </font></Button>
             <Button fx:id="btnSix" layoutX="167.0" layoutY="221.0" mnemonicParsing="false" onAction="#onClickSix" text="6">
                <font>
-                  <Font size="30.0" />
+                  <Font size="12.0" />
                </font></Button>
             <Button fx:id="btnSeven" layoutX="18.0" layoutY="288.0" mnemonicParsing="false" onAction="#onClickSeven" text="7">
                <font>
-                  <Font size="30.0" />
+                  <Font size="12.0" />
                </font></Button>
             <Button fx:id="btnEight" layoutX="91.0" layoutY="288.0" mnemonicParsing="false" onAction="#onClickEight" text="8">
                <font>
-                  <Font size="30.0" />
+                  <Font size="12.0" />
                </font></Button>
             <Button fx:id="btnNine" layoutX="167.0" layoutY="288.0" mnemonicParsing="false" onAction="#onClickNine" text="9">
                <font>
-                  <Font size="30.0" />
+                  <Font size="12.0" />
                </font></Button>
             <Button fx:id="btnRemove" layoutX="19.0" layoutY="359.0" mnemonicParsing="false" onAction="#onClickRemove" text="x">
                <font>
-                  <Font size="30.0" />
+                  <Font size="12.0" />
                </font></Button>
             <Button fx:id="btnZero" layoutX="90.0" layoutY="359.0" mnemonicParsing="false" onAction="#onClickZero" text="0">
                <font>
-                  <Font size="30.0" />
+                  <Font size="12.0" />
                </font></Button>
             <Button fx:id="btnSubmit" layoutX="163.0" layoutY="362.0" mnemonicParsing="false" onAction="#onClickSubmit" text="sub">
                <font>
-                  <Font size="25.0" />
+                  <Font size="13.0" />
                </font></Button>
             <Text fx:id="codeInputText" layoutX="23.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="203.21630859375">
                <font>
