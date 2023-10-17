@@ -97,7 +97,7 @@ public class TaskManager {
   }
 
   /**
-   * Gets the task list.
+   * Gets the task list for the current completable tasks in the game.
    *
    * @return The task list.
    */
